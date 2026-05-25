@@ -7,9 +7,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          react: ['react', 'react-dom'],
-          gsap: ['gsap'],
+        manualChunks: (id) => {
+          if (id.includes('node_modules/gsap')) return 'gsap'
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) return 'react'
         },
       },
     },
