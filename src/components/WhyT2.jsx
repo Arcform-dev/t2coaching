@@ -13,7 +13,7 @@ const FEATURES = [
   {
     num: '02', accent: '#F5A623',
     title: 'Real dirt & sweat, not just data.',
-    body: "Wendy has trained in wind, altitude, cold, and heat. She's raced the bike course at Kona. The coaching she provides is grounded in lived experience — she knows what your body goes through because she's been there.",
+    body: "Wendy has trained in wind, altitude, cold, and heat. She's raced — and won — at Kona. The coaching she provides is grounded in lived experience — she knows what your body goes through because she's been there.",
   },
   {
     num: '03', accent: '#D4201A',
@@ -32,8 +32,8 @@ const FEATURES = [
   },
   {
     num: '06', accent: '#7EC8E3',
-    title: 'Race-day nutrition is a discipline too.',
-    body: 'Bonking at mile 80 isn\'t bad luck — it\'s a fueling failure. Wendy integrates nutrition strategy directly into your training plan so your gut is race-ready long before you toe the start line.',
+    title: 'Health is priority #1.',
+    body: 'You have to be healthy to build fitness, and fit to perform. Wendy coaches the whole athlete — strength, mobility, nutrition, sleep and injury prevention — so you improve without breaking down.',
   },
   {
     num: '07', accent: '#4AABCC',
@@ -43,11 +43,11 @@ const FEATURES = [
   {
     num: '08', accent: '#7EC8E3',
     title: 'Built to race for decades.',
-    body: 'Short-term peak performance and long-term athletic development are not the same thing. Wendy builds careers, not just seasons — with periodization designed to keep you healthy, improving, and racing for years.',
+    body: 'Short-term peaks and long-term development are not the same thing. Wendy builds careers, not just seasons — with periodization designed to keep you healthy, improving, and racing for years.',
   },
 ]
 
-function FeatureCard({ f, style }) {
+function FeatureCard({ f }) {
   return (
     <div style={{
       background: 'rgba(8,18,32,0.7)',
@@ -55,10 +55,10 @@ function FeatureCard({ f, style }) {
       WebkitBackdropFilter: 'blur(16px)',
       border: '1px solid rgba(255,255,255,0.1)',
       borderRadius: 20,
-      padding: '36px 36px 32px',
+      padding: '32px 30px 30px',
       position: 'relative',
       overflow: 'hidden',
-      ...style,
+      height: '100%',
     }}>
       <div style={{
         display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
@@ -85,153 +85,60 @@ function FeatureCard({ f, style }) {
 }
 
 export default function WhyT2() {
-  const wrapRef   = useRef(null)
   const headerRef = useRef(null)
-  const trackRef  = useRef(null)   // desktop horizontal track
-  const mobileRef = useRef([])     // mobile card refs
+  const cardsRef  = useRef([])
 
   useEffect(() => {
-    const wrap   = wrapRef.current
+    const anims = []
     const header = headerRef.current
-    const track  = trackRef.current
-    if (!wrap) return
 
-    const mm = gsap.matchMedia()
+    if (header) {
+      anims.push(gsap.fromTo(header,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out',
+          scrollTrigger: { trigger: header, start: 'top 85%', once: true } }
+      ))
+    }
 
-    // ── DESKTOP: horizontal pinned scroll ──────────────────────────────────
-    mm.add('(min-width: 768px)', () => {
-      if (!track) return
-
-      // Header slides down from above
-      if (header) {
-        gsap.fromTo(header,
-          { y: -30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.75, ease: 'power3.out',
-            scrollTrigger: { trigger: wrap, start: 'top 85%', once: true } }
-        )
-      }
-
-      // Pin the section and scroll the track horizontally
-      const st = gsap.to(track, {
-        x: () => -(track.scrollWidth - wrap.offsetWidth),
-        ease: 'none',
-        scrollTrigger: {
-          trigger: wrap,
-          start: 'top top',
-          end: () => `+=${track.scrollWidth - wrap.offsetWidth + 80}`,
-          scrub: 1.2,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
-      })
-
-      return () => { st.scrollTrigger?.kill() }
+    cardsRef.current.forEach((item, i) => {
+      if (!item) return
+      const fromX = i % 2 === 0 ? -40 : 40
+      anims.push(gsap.fromTo(item,
+        { x: fromX, y: 24, opacity: 0 },
+        { x: 0, y: 0, opacity: 1, duration: 0.7, ease: 'power3.out',
+          scrollTrigger: { trigger: item, start: 'top 88%', once: true } }
+      ))
     })
 
-    // ── MOBILE: vertical stagger ───────────────────────────────────────────
-    mm.add('(max-width: 767px)', () => {
-      if (header) {
-        gsap.fromTo(header,
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out',
-            scrollTrigger: { trigger: wrap, start: 'top 80%', once: true } }
-        )
-      }
-      mobileRef.current.forEach((item, i) => {
-        if (!item) return
-        const fromX = i % 2 === 0 ? -50 : 50
-        gsap.fromTo(item,
-          { x: fromX, y: 20, opacity: 0 },
-          { x: 0, y: 0, opacity: 1, duration: 0.7, ease: 'power3.out',
-            scrollTrigger: { trigger: item, start: 'top 86%', once: true } }
-        )
-      })
-    })
-
-    return () => mm.revert()
+    // Clean up only this component's own animations + triggers on unmount.
+    return () => anims.forEach(a => { a.scrollTrigger?.kill(); a.kill() })
   }, [])
 
-  const headerContent = (
-    <div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-        <div style={{ height: 1, width: 40, background: '#7EC8E3' }} />
-        <span style={{ fontSize: 11, fontWeight: 600, color: '#F5A623', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Why T2</span>
-        <div style={{ height: 1, width: 40, background: '#7EC8E3' }} />
-      </div>
-      <h2 style={{
-        fontFamily: "'DM Serif Display', Georgia, serif",
-        fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
-        color: '#ffffff', lineHeight: 1.2, marginBottom: 10,
-      }}>
-        What makes Wendy{' '}
-        <em style={{ color: '#7EC8E3', fontStyle: 'italic' }}>different.</em>
-      </h2>
-      <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6 }}>
-        Not every coach has stood on the Kona finish line.
-      </p>
-    </div>
-  )
-
   return (
-    <section ref={wrapRef} className="why-section" style={{ background: 'transparent', position: 'relative' }}>
-
-      {/* ── DESKTOP: fixed header + horizontal track ── */}
-      <div className="why-desktop-track" style={{ height: '100%', flexDirection: 'column', position: 'relative' }}>
-        {/* Header absolute top-left */}
-        <div ref={headerRef} style={{
-          position: 'absolute', top: 60, left: '6vw',
-          maxWidth: 460, zIndex: 10,
-        }}>
-          {headerContent}
-        </div>
-
-        {/* Horizontal card track */}
-        <div style={{
-          position: 'absolute',
-          top: '50%', transform: 'translateY(-30%)',
-          width: '100%', overflow: 'hidden',
-          paddingTop: 80,
-        }}>
-          <div
-            ref={trackRef}
-            style={{
-              display: 'flex',
-              gap: 28,
-              paddingLeft: '6vw',
-              paddingRight: '12vw',
-              width: 'max-content',
-              willChange: 'transform',
-            }}
-          >
-            {FEATURES.map((f) => (
-              <FeatureCard key={f.title} f={f} style={{ width: 'min(420px, 80vw)', flexShrink: 0 }} />
-            ))}
+    <section style={{ background: 'transparent', padding: '80px 0 100px' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
+        <div ref={headerRef} style={{ textAlign: 'center', maxWidth: 580, margin: '0 auto 56px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 16 }}>
+            <div style={{ height: 1, width: 40, background: '#7EC8E3' }} />
+            <span style={{ fontSize: 11, fontWeight: 600, color: '#F5A623', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Why T2</span>
+            <div style={{ height: 1, width: 40, background: '#7EC8E3' }} />
           </div>
+          <h2 style={{
+            fontFamily: "'DM Serif Display', Georgia, serif",
+            fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
+            color: '#ffffff', lineHeight: 1.2, marginBottom: 10,
+          }}>
+            What makes Wendy{' '}
+            <em style={{ color: '#7EC8E3', fontStyle: 'italic' }}>different.</em>
+          </h2>
+          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6 }}>
+            Not every coach has stood on the Kona finish line.
+          </p>
         </div>
 
-        {/* Scroll hint — desktop only */}
-        <div style={{
-          position: 'absolute', right: 48, bottom: 40,
-          display: 'flex', alignItems: 'center', gap: 8,
-          color: 'rgba(255,255,255,0.3)',
-          fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase',
-        }}>
-          <svg width="32" height="10" viewBox="0 0 32 10" fill="none">
-            <path d="M0 5h28M24 1l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          Scroll to explore
-        </div>
-      </div>
-
-      {/* ── MOBILE: stacked grid ── */}
-      <div className="why-mobile-grid" style={{ padding: '80px 32px 100px' }}>
-        <div ref={headerRef} style={{ textAlign: 'center', maxWidth: 560, margin: '0 auto 56px' }}>
-          {headerContent}
-        </div>
         <div className="why-grid" style={{ display: 'grid', gap: 20 }}>
           {FEATURES.map((f, i) => (
-            <div key={f.title} ref={el => mobileRef.current[i] = el}>
+            <div key={f.title} ref={el => cardsRef.current[i] = el}>
               <FeatureCard f={f} />
             </div>
           ))}
