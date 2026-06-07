@@ -248,8 +248,8 @@ export default function Hero() {
               boxShadow: '0 40px 80px rgba(0,0,0,0.35)',
             }}>
               <img
-                src="/wendy-finish.jpg"
-                alt="Wendy Mader — Kona Ironman Champion"
+                src="/wendy-hero.jpg"
+                alt="Wendy Mader at the Ironman World Championship"
                 style={{
                   position: 'absolute', inset: 0,
                   width: '100%', height: '100%',
