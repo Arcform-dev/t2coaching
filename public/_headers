@@ -3,8 +3,15 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  # Always re-validate HTML so a new deploy never serves stale index.html
-  # (fingerprinted assets below keep their long immutable cache).
+
+# HTML must always re-validate so a new deploy never serves a stale
+# index.html that points at old hashed JS (Cloudflare Pages defaults HTML
+# to no-cache, but we set it explicitly on the routes that serve index.html).
+# Listed separately from /* so it does NOT combine with the immutable
+# Cache-Control on /assets/* below.
+/
+  Cache-Control: public, max-age=0, must-revalidate
+/index.html
   Cache-Control: public, max-age=0, must-revalidate
 
 /assets/*
