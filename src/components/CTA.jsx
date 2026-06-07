@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { BOOKING_URL } from '../data/siteContent'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -119,7 +120,7 @@ export default function CTA() {
           {/* CTA */}
           <a
             ref={btnRef}
-            href="https://t2coaching.com/calendar/"
+            href={BOOKING_URL}
             target="_blank" rel="noopener noreferrer"
             style={{
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',

@@ -1,36 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { TESTIMONIALS as REAL_TESTIMONIALS } from '../data/testimonials'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const TESTIMONIALS = [
-  {
-    quote: "Wendy changed my entire approach to racing. She had me doing things I'd never considered and by race day I felt more prepared than I ever had. I knocked 22 minutes off my Ironman PR.",
-    name: 'Mark S.',
-    tag: 'Ironman Athlete · 2x Finisher',
-  },
-  {
-    quote: "I was skeptical about remote coaching, but Wendy's communication and attention to detail are unlike anything I've experienced. She knows my schedule, my strengths, my weaknesses. It's incredibly personal.",
-    name: 'Lisa T.',
-    tag: 'Age Group Triathlete · Colorado',
-  },
-  {
-    quote: "Working with a coach who has actually raced Kona is a completely different experience. The race strategy alone was worth the entire season. I qualified for 70.3 Worlds in my second year with Wendy.",
-    name: 'David R.',
-    tag: '70.3 Worlds Qualifier',
-  },
-  {
-    quote: "As a beginner, I was intimidated to work with an elite coach. Wendy made me feel welcome and capable from day one. She met me exactly where I was — and pushed me further than I thought possible.",
-    name: 'Sarah M.',
-    tag: 'Sprint Triathlon Finisher · First Season',
-  },
-  {
-    quote: "The 12-week plan was incredible value. Detailed, periodized, specific to my race. Not a cookie-cutter plan — it had my name on it from the first workout. Highly recommend.",
-    name: 'James K.',
-    tag: 'Olympic Distance Athlete',
-  },
-]
+// Home page shows short excerpts; full stories live on /testimonials.
+const TESTIMONIALS = REAL_TESTIMONIALS.map(t => ({
+  quote: t.excerpt,
+  name: t.name,
+  tag: t.tag,
+}))
 
 function Stars() {
   return (
@@ -185,6 +166,20 @@ export default function Testimonials() {
               transition: 'all 0.3s ease',
             }} />
           ))}
+        </div>
+
+        <div style={{ marginTop: 36, textAlign: 'center' }}>
+          <Link to="/testimonials" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            color: '#7EC8E3', fontSize: 15, fontWeight: 600, textDecoration: 'none',
+            padding: '12px 28px', borderRadius: 100,
+            border: '1px solid rgba(126,200,227,0.4)',
+          }}>
+            Read full athlete stories
+            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>

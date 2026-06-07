@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { HERO_STATS, BOOKING_URL } from '../data/siteContent'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -15,12 +16,6 @@ function Words({ text, style }) {
     </>
   )
 }
-
-const HERO_STATS = [
-  { num: '47',  label: 'Athletes to Kona' },
-  { num: '3×',  label: 'Kona Qualifier' },
-  { num: '31yr', label: 'Coaching Career' },
-]
 
 export default function Hero() {
   const sectionRef  = useRef(null)
@@ -191,7 +186,7 @@ export default function Hero() {
             {/* CTAs */}
             <div ref={ctaRef} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 14 }}>
               <a
-                href="https://t2coaching.com/calendar/"
+                href={BOOKING_URL}
                 target="_blank" rel="noopener noreferrer"
                 style={{
                   display: 'inline-flex', alignItems: 'center', justifyContent: 'center',

@@ -98,3 +98,42 @@ section, footer {
 .wr-inner {
   display: block;
 }
+
+/* ── Multipage layout grids ─────────────────────────────────────────────── */
+.footer-grid     { grid-template-columns: 1fr; }
+.services-grid   { grid-template-columns: 1fr; }
+.gallery-grid    { grid-template-columns: repeat(2, 1fr); }
+.blog-grid       { grid-template-columns: 1fr; }
+.philosophy-grid { grid-template-columns: 1fr; }
+.story-grid      { grid-template-columns: 1fr; }
+.contact-grid    { grid-template-columns: 1fr; }
+.how-grid        { grid-template-columns: 1fr; }
+.form-row        { grid-template-columns: 1fr; }
+.resources-grid  { grid-template-columns: 1fr; }
+
+@media (min-width: 640px) {
+  .blog-grid     { grid-template-columns: repeat(2, 1fr); }
+  .how-grid      { grid-template-columns: repeat(2, 1fr); }
+  .form-row      { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid  { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 768px) {
+  .footer-grid     { grid-template-columns: 1.5fr 1fr 1fr; }
+  .services-grid   { grid-template-columns: repeat(3, 1fr); }
+  .philosophy-grid { grid-template-columns: repeat(2, 1fr); }
+  .story-grid      { grid-template-columns: 1.1fr 0.9fr; }
+  .contact-grid    { grid-template-columns: 1.1fr 0.9fr; }
+  .resources-grid  { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .blog-grid       { grid-template-columns: repeat(3, 1fr); }
+  .philosophy-grid { grid-template-columns: repeat(3, 1fr); }
+  .how-grid        { grid-template-columns: repeat(4, 1fr); }
+  .gallery-grid    { grid-template-columns: repeat(4, 1fr); }
+  .resources-grid  { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Gallery hover zoom */
+.gallery-item:hover img { transform: scale(1.06); }

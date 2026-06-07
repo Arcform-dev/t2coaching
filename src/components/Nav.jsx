@@ -1,15 +1,32 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { gsap } from 'gsap'
+import { BOOKING_URL } from '../data/siteContent'
 
 const NAVY = '#0D2B3E'
 const BLUE = '#1A6B8A'
 const SKY = '#7EC8E3'
 const RED = '#D4201A'
 
+const LINKS = [
+  { label: 'About', to: '/about' },
+  { label: 'Services', to: '/services' },
+  { label: 'Testimonials', to: '/testimonials' },
+  { label: 'Gallery', to: '/gallery' },
+  { label: 'Blog', to: '/blog' },
+  { label: 'Contact', to: '/contact' },
+]
+
 export default function Nav() {
   const ref = useRef(null)
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
+
+  const isHome = pathname === '/'
+  // Interior pages have no full-bleed hero behind the nav, so use the solid
+  // treatment by default there. On home, stay transparent until scrolled.
+  const solid = scrolled || !isHome
 
   useEffect(() => {
     const el = ref.current
@@ -20,14 +37,12 @@ export default function Nav() {
     )
     const onScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const links = [
-    { label: 'Programs', href: '#programs' },
-    { label: 'About', href: '#about' },
-    { label: 'Testimonials', href: '#testimonials' },
-  ]
+  const linkColor = solid ? 'rgba(13,43,62,0.68)' : 'rgba(255,255,255,0.85)'
+  const activeColor = solid ? NAVY : '#ffffff'
 
   return (
     <nav
@@ -37,10 +52,10 @@ export default function Nav() {
         top: 0, left: 0, right: 0,
         zIndex: 9999,
         transition: 'background 0.35s ease, box-shadow 0.35s ease',
-        background: scrolled ? 'rgba(255, 255, 255, 0.97)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
-        boxShadow: scrolled ? '0 1px 0 rgba(0,0,0,0.08)' : 'none',
+        background: solid ? 'rgba(255, 255, 255, 0.97)' : 'transparent',
+        backdropFilter: solid ? 'blur(20px)' : 'none',
+        WebkitBackdropFilter: solid ? 'blur(20px)' : 'none',
+        boxShadow: solid ? '0 1px 0 rgba(0,0,0,0.08)' : 'none',
       }}
     >
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
@@ -49,7 +64,7 @@ export default function Nav() {
           justifyContent: 'space-between', height: 72,
         }}>
           {/* Logo */}
-          <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
+          <Link to="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
             <div style={{
               width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
               background: `linear-gradient(135deg, ${SKY}, ${BLUE})`,
@@ -60,23 +75,26 @@ export default function Nav() {
             <span style={{
               fontFamily: "'DM Serif Display', Georgia, serif",
               fontSize: 20, lineHeight: 1,
-              color: scrolled ? NAVY : '#ffffff',
+              color: solid ? NAVY : '#ffffff',
               transition: 'color 0.35s ease',
             }}>T2 Coaching</span>
-          </a>
+          </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex" style={{ alignItems: 'center', gap: 36 }}>
-            {links.map(({ label, href }) => (
-              <a key={label} href={href} style={{
-                fontSize: 14, fontWeight: 500, letterSpacing: '0.025em',
-                color: scrolled ? 'rgba(13,43,62,0.68)' : 'rgba(255,255,255,0.85)',
+          <div className="hidden md:flex" style={{ alignItems: 'center', gap: 26 }}>
+            {LINKS.map(({ label, to }) => (
+              <NavLink key={label} to={to} style={({ isActive }) => ({
+                position: 'relative',
+                fontSize: 14, fontWeight: isActive ? 600 : 500, letterSpacing: '0.025em',
+                color: isActive ? activeColor : linkColor,
                 textDecoration: 'none',
                 transition: 'color 0.2s ease',
-              }}>{label}</a>
+                paddingBottom: 2,
+                borderBottom: isActive ? `2px solid ${SKY}` : '2px solid transparent',
+              })}>{label}</NavLink>
             ))}
             <a
-              href="https://t2coaching.com/calendar/"
+              href={BOOKING_URL}
               target="_blank" rel="noopener noreferrer"
               style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
@@ -102,7 +120,7 @@ export default function Nav() {
             {[0, 1, 2].map(i => (
               <span key={i} style={{
                 display: 'block', width: 24, height: 2, borderRadius: 2,
-                background: scrolled ? NAVY : '#fff',
+                background: solid ? NAVY : '#fff',
                 transition: 'all 0.25s ease',
                 transform: open && i === 0 ? 'rotate(45deg) translateY(7px)' :
                            open && i === 2 ? 'rotate(-45deg) translateY(-7px)' : 'none',
@@ -116,7 +134,7 @@ export default function Nav() {
       {/* Mobile menu */}
       <div style={{
         overflow: 'hidden',
-        maxHeight: open ? 300 : 0,
+        maxHeight: open ? 460 : 0,
         transition: 'max-height 0.3s ease',
         background: 'rgba(255,255,255,0.98)',
         backdropFilter: 'blur(20px)',
@@ -124,17 +142,19 @@ export default function Nav() {
         borderTop: open ? '1px solid rgba(0,0,0,0.07)' : 'none',
       }}>
         <div style={{ padding: '16px 32px 28px' }}>
-          {links.map(({ label, href }) => (
-            <a key={label} href={href} onClick={() => setOpen(false)} style={{
+          {LINKS.map(({ label, to }) => (
+            <NavLink key={label} to={to} onClick={() => setOpen(false)} style={({ isActive }) => ({
               display: 'block', padding: '13px 0',
-              fontSize: 15, fontWeight: 500, color: NAVY,
+              fontSize: 15, fontWeight: isActive ? 600 : 500,
+              color: isActive ? BLUE : NAVY,
               textDecoration: 'none',
               borderBottom: '1px solid rgba(0,0,0,0.06)',
-            }}>{label}</a>
+            })}>{label}</NavLink>
           ))}
           <a
-            href="https://t2coaching.com/calendar/"
+            href={BOOKING_URL}
             target="_blank" rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               marginTop: 16,

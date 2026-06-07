@@ -1,32 +1,31 @@
 import './App.css'
-import Nav from './components/Nav'
-import RaceCourse from './components/RaceCourse'
-import Hero from './components/Hero'
-import SocialProof from './components/SocialProof'
-import Stats from './components/Stats'
-import Marquee from './components/Marquee'
-import Programs from './components/Programs'
-import About from './components/About'
-import WhyT2 from './components/WhyT2'
-import Testimonials from './components/Testimonials'
-import CTA from './components/CTA'
-import Footer from './components/Footer'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import Layout from './components/Layout'
+import Home from './pages/Home'
+import About from './pages/About'
+import Services from './pages/Services'
+import Testimonials from './pages/Testimonials'
+import Gallery from './pages/Gallery'
+import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
+import Resources from './pages/Resources'
+import Contact from './pages/Contact'
 
 export default function App() {
   return (
-    <>
-      <RaceCourse />
-      <Nav />
-      <Hero />
-      <SocialProof />
-      <Stats />
-      <Marquee />
-      <Programs />
-      <About />
-      <WhyT2 />
-      <Testimonials />
-      <CTA />
-      <Footer />
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="services" element={<Services />} />
+        <Route path="testimonials" element={<Testimonials />} />
+        <Route path="gallery" element={<Gallery />} />
+        <Route path="blog" element={<Blog />} />
+        <Route path="blog/:slug" element={<BlogPost />} />
+        <Route path="resources" element={<Resources />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
+    </Routes>
   )
 }

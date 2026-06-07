@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { TOP_CREDENTIALS } from '../data/credentials'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const CREDS = ['USAT Certified Coach', 'USA Cycling Certified', 'USA Swimming Certified']
+const CREDS = TOP_CREDENTIALS
 
 export default function About() {
   const sectionRef = useRef(null)
@@ -89,15 +91,15 @@ export default function About() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 18, marginBottom: 32 }}>
               {[
-                'Wendy Mader is not a desk-coach. She is a Kona Ironman World Championship finisher who has raced at the highest level of the sport — and spent more than 30 years translating that experience into results for her athletes.',
-                "Her philosophy is simple: great coaching meets you where you are. Whether you're a weekend warrior juggling family and a full-time job, or an age grouper with a Kona slot in your sights, Wendy designs training that fits your life — not the other way around.",
-                'Based in Colorado, she coaches athletes remotely and in person across all three disciplines with USA Triathlon, USA Cycling, and USA Swimming certifications — making T2 Coaching one of the rare programs where a single elite coach guides every discipline.',
+                "Wendy Mader is not a desk-coach. She's a D1 collegiate swimmer turned Kona Ironman World Champion — 2008 Overall Amateur Winner — and a 21-time Ironman finisher who has spent more than 30 years racing at the highest level of the sport.",
+                "Her philosophy is simple: great coaching meets you where you are. Whether you're juggling family and a full-time job, learning to swim for your first Ironman, or chasing a Kona slot, Wendy designs training that fits your life — not the other way around.",
+                "Based in Marietta, Georgia, she coaches athletes worldwide via Zoom — and in person at races. With a Master's in Exercise & Sport Science and 26 years of coaching, she's the rare coach who still swims, bikes, and runs right alongside the athletes she guides.",
               ].map((text, i) => (
                 <p key={i} style={{ fontSize: 16, color: 'rgba(255,255,255,0.72)', lineHeight: 1.72 }}>{text}</p>
               ))}
             </div>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 28 }}>
               {CREDS.map((c, i) => (
                 <span key={c} ref={el => credsRef.current[i] = el} style={{
                   display: 'inline-block',
@@ -108,6 +110,16 @@ export default function About() {
                 }}>{c}</span>
               ))}
             </div>
+
+            <Link to="/about" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              color: '#F5A623', fontSize: 15, fontWeight: 600, textDecoration: 'none',
+            }}>
+              Read Wendy's full story
+              <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
 
           {/* Image + Quote */}

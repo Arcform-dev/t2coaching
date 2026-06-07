@@ -1,15 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { STATS } from '../data/siteContent'
 
 gsap.registerPlugin(ScrollTrigger)
-
-const STATS = [
-  { value: 30, suffix: '+', label: 'Years Experience', sub: 'Elite coaching since 1994' },
-  { value: 1,  suffix: '',  label: 'Kona Champion',    sub: 'The pinnacle of the sport' },
-  { value: 500,suffix: '+', label: 'Athletes Coached', sub: 'From first-timers to qualifiers' },
-  { value: 3,  suffix: '',  label: 'Disciplines. 1 Coach.', sub: 'Swim, bike, run — all mastered' },
-]
 
 function StatCard({ value, suffix, label, sub, index }) {
   const cardRef = useRef(null)

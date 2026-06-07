@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local secrets for Cloudflare Pages Functions (wrangler pages dev)
+.dev.vars
+
+# Wendy's raw source content (docx/zip) — kept out of the build & repo
+content-source/

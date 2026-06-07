@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { BOOKING_URL } from '../data/siteContent'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -8,10 +10,10 @@ const PROGRAMS = [
   {
     badge: 'Most Popular',
     badgeColor: '#D4201A',
-    title: 'Multisport & Single Sport Coaching',
+    title: 'Multisport & Single-Sport Coaching',
     description:
-      'Full-season personalized coaching across triathlon, duathlon, or individual disciplines. Weekly structured training, unlimited communication, and race-day strategy built around your schedule and goals.',
-    highlight: 'Starting at $200/month',
+      'Full-season personalized coaching across triathlon, duathlon, or individual disciplines. Custom training in TrainingPeaks, unlimited communication, and race-day strategy built around your schedule and goals.',
+    highlight: '$300 / month',
     icon: (
       <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" width="26" height="26">
         <circle cx="20" cy="20" r="14" />
@@ -24,7 +26,7 @@ const PROGRAMS = [
     title: 'Private Lessons',
     description:
       'One-on-one focused sessions in swimming, cycling, or running. Perfect for targeted technique work, a skills breakthrough, or expert eyes on a specific weakness before race day.',
-    highlight: 'Swim · Bike · Run',
+    highlight: '$150 first · $75 follow-ups',
     icon: (
       <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" width="26" height="26">
         <path d="M8 32L20 10l12 22" strokeLinejoin="round" />
@@ -38,7 +40,7 @@ const PROGRAMS = [
     title: '12-Week Custom Plan',
     description:
       "A fully customized 12-week training plan delivered to your device — structured periodization, sport-specific workouts, and Wendy's signature race-day strategy at an accessible price.",
-    highlight: 'One-time investment',
+    highlight: '$300 one-time',
     icon: (
       <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" width="26" height="26">
         <rect x="6" y="8" width="28" height="26" rx="3" />
@@ -138,7 +140,7 @@ function ProgramCard({ program, index }) {
       </div>
 
       <a
-        href="https://t2coaching.com/calendar/"
+        href={BOOKING_URL}
         target="_blank" rel="noopener noreferrer"
         style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -199,6 +201,20 @@ export default function Programs() {
           {PROGRAMS.map((p, i) => (
             <ProgramCard key={p.title} program={p} index={i} />
           ))}
+        </div>
+
+        <div style={{ marginTop: 40, textAlign: 'center' }}>
+          <Link to="/services" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            color: '#7EC8E3', fontSize: 15, fontWeight: 600, textDecoration: 'none',
+            padding: '12px 28px', borderRadius: 100,
+            border: '1px solid rgba(126,200,227,0.4)',
+          }}>
+            View all services & pricing
+            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>

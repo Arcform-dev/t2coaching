@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { FEATURED_QUOTE } from '../data/testimonials'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -45,9 +46,9 @@ export default function SocialProof() {
           fontStyle: 'italic',
           color: 'rgba(255,255,255,0.9)',
           lineHeight: 1.55,
-          maxWidth: 720,
+          maxWidth: 760,
         }}>
-          "Qualified for Kona in my first attempt. Best investment I've made in 12 years of triathlon."
+          "{FEATURED_QUOTE.quote}"
         </blockquote>
 
         {/* Attribution */}
@@ -56,7 +57,7 @@ export default function SocialProof() {
           <span style={{
             fontSize: 12, fontWeight: 600,
             color: '#C9A84C', letterSpacing: '0.14em', textTransform: 'uppercase',
-          }}>Mark D. — Age Grouper · 2023 Kona Qualifier</span>
+          }}>{FEATURED_QUOTE.attribution}</span>
           <div style={{ width: 28, height: 1, background: '#C9A84C' }} />
         </div>
       </div>
