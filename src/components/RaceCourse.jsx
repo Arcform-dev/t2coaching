@@ -192,47 +192,6 @@ export default function RaceCourse() {
           <div style={{ position: 'absolute', top: 0, right: '11%', width: 1, height: '100%', background: 'rgba(255,255,255,0.07)' }} />
         </div>
 
-        {/* Cyclist silhouette at horizon */}
-        <div style={{
-          position: 'absolute', bottom: '48%', left: '50%',
-          transform: 'translate(-50%, 50%)', pointerEvents: 'none',
-        }}>
-          <svg viewBox="0 0 300 152" width="300" height="152" fill="none" stroke="#05020d" strokeLinecap="round" strokeLinejoin="round">
-            {/* Rear wheel */}
-            <circle cx="52" cy="106" r="40" strokeWidth="8"/>
-            <circle cx="52" cy="106" r="5" fill="#05020d" stroke="none"/>
-            {/* Front wheel */}
-            <circle cx="224" cy="106" r="40" strokeWidth="8"/>
-            <circle cx="224" cy="106" r="5" fill="#05020d" stroke="none"/>
-            {/* Frame: main triangle */}
-            <polyline points="52,106 96,50 224,106" strokeWidth="7"/>
-            {/* Seat tube */}
-            <line x1="96" y1="50" x2="136" y2="106" strokeWidth="6"/>
-            {/* Seat post */}
-            <line x1="96" y1="50" x2="92" y2="26" strokeWidth="6"/>
-            {/* Saddle */}
-            <path d="M76,24 L112,24" strokeWidth="7"/>
-            {/* Top tube to fork crown */}
-            <line x1="96" y1="50" x2="168" y2="54" strokeWidth="6"/>
-            {/* Fork */}
-            <path d="M168,54 L224,106" strokeWidth="6"/>
-            {/* Aero handlebar stem */}
-            <path d="M168,54 L200,48" strokeWidth="6"/>
-            {/* Aero bar extensions */}
-            <line x1="186" y1="47" x2="186" y2="36" strokeWidth="5"/>
-            <line x1="200" y1="47" x2="200" y2="36" strokeWidth="5"/>
-            <path d="M183,36 L203,36" strokeWidth="6"/>
-            {/* Rider: helmet head */}
-            <ellipse cx="88" cy="14" rx="14" ry="11" fill="#05020d" stroke="none"/>
-            {/* Rider: flat aero torso */}
-            <path d="M82,24 C95,32 134,42 200,46 L200,54 C132,50 92,40 78,32 Z" fill="#05020d" stroke="none"/>
-            {/* Arms on bars */}
-            <path d="M188,44 L200,44" strokeWidth="8"/>
-            {/* Legs pedaling */}
-            <path d="M100,54 L90,80 L80,102" strokeWidth="9"/>
-            <path d="M106,56 L118,80 L130,100" strokeWidth="9"/>
-          </svg>
-        </div>
       </div>
 
       {/* ══ RUN — finish line celebration ════════════════════════════════════ */}
