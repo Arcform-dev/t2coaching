@@ -11,7 +11,7 @@ export const SERVICES = [
   {
     id: 'coaching',
     badge: 'Most Popular',
-    badgeColor: '#D4201A',
+    badgeColor: '#C9A84C',
     icon: 'clock',
     title: 'Multisport & Single-Sport Coaching',
     price: '$300',

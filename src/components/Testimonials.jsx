@@ -107,42 +107,39 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Cards grid */}
+        {/* Cards grid — lighter "voice" panels, distinct from the solid offer cards */}
         <div ref={cardsRef} className="testimonials-grid" style={{ display: 'grid', gap: 20, position: 'relative' }}>
-          <div style={{
-            position: 'absolute', top: -20, left: -8,
-            fontFamily: "'DM Serif Display', Georgia, serif",
-            fontSize: 140, color: 'rgba(126,200,227,0.1)',
-            lineHeight: 1, pointerEvents: 'none', userSelect: 'none',
-          }}>"</div>
-
           {cards.map(({ t, prominence }, i) => (
             <div
               key={`${active}-${i}`}
               onClick={() => i !== 0 && setActive((active + i) % TESTIMONIALS.length)}
               className={prominence === 'tertiary' ? 't-card-3' : ''}
               style={{
-                background: 'rgba(8,18,32,0.7)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                border: `1px solid ${prominence === 'primary' ? '#7EC8E3' : 'rgba(255,255,255,0.1)'}`,
-                borderRadius: 20,
-                padding: 28,
-                boxShadow: prominence === 'primary' ? '0 8px 32px rgba(126,200,227,0.2)' : 'none',
-                transform: prominence === 'primary' ? 'scale(1.01)' : 'scale(1)',
-                opacity: prominence === 'tertiary' ? 0.55 : 1,
+                background: prominence === 'primary' ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.05)',
+                borderLeft: `3px solid ${prominence === 'primary' ? '#7EC8E3' : 'rgba(126,200,227,0.35)'}`,
+                borderRadius: '4px 16px 16px 4px',
+                padding: '26px 28px',
+                opacity: prominence === 'tertiary' ? 0.7 : 1,
                 cursor: i !== 0 ? 'pointer' : 'default',
               }}
             >
+              {/* Anchored serif quote glyph — signals testimony */}
+              <div style={{
+                fontFamily: "'DM Serif Display', Georgia, serif",
+                fontSize: 44, lineHeight: 0.6, color: 'rgba(126,200,227,0.4)',
+                marginBottom: 14,
+              }}>“</div>
               <Stars />
               <blockquote style={{
-                fontSize: 15, color: 'rgba(255,255,255,0.82)',
-                lineHeight: 1.7, marginBottom: 22,
-              }}>"{t.quote}"</blockquote>
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontSize: 'clamp(1.05rem, 1.6vw, 1.2rem)', fontStyle: 'italic',
+                color: 'rgba(255,255,255,0.9)',
+                lineHeight: 1.6, margin: '14px 0 22px',
+              }}>{t.quote}</blockquote>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                 <div style={{
                   width: 38, height: 38, borderRadius: '50%', flexShrink: 0,
-                  background: 'linear-gradient(135deg, #7EC8E3, #1A6B8A)',
+                  background: '#1A6B8A',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
                   <span style={{ color: '#fff', fontSize: 13, fontWeight: 700 }}>{t.name.charAt(0)}</span>

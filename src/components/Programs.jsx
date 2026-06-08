@@ -9,7 +9,8 @@ gsap.registerPlugin(ScrollTrigger)
 const PROGRAMS = [
   {
     badge: 'Most Popular',
-    badgeColor: '#D4201A',
+    badgeColor: '#C9A84C',
+    featured: true,
     title: 'Multisport & Single-Sport Coaching',
     description:
       'Full-season personalized coaching across triathlon, duathlon, or individual disciplines. Custom training in TrainingPeaks, unlimited communication, and race-day strategy built around your schedule and goals.',
@@ -58,56 +59,42 @@ function ProgramCard({ program, index }) {
   useEffect(() => {
     const el = cardRef.current
     if (!el) return
-    // Alternating: left → right → left
-    const fromX = index % 2 === 0 ? -60 : 60
-    gsap.fromTo(el,
-      { x: fromX, y: 30, opacity: 0 },
+    const anim = gsap.fromTo(el,
+      { y: 32, opacity: 0 },
       {
-        x: 0, y: 0, opacity: 1,
-        duration: 0.8, delay: index * 0.1, ease: 'power3.out',
+        y: 0, opacity: 1,
+        duration: 0.7, delay: index * 0.1, ease: 'power3.out',
         scrollTrigger: { trigger: el, start: 'top 85%', once: true },
       }
     )
+    return () => { anim.scrollTrigger?.kill(); anim.kill() }
   }, [index])
 
-  const onMouseMove = (e) => {
-    const el = cardRef.current
-    if (!el) return
-    const rect = el.getBoundingClientRect()
-    const rotateX = ((e.clientY - rect.top - rect.height / 2) / rect.height) * -7
-    const rotateY = ((e.clientX - rect.left - rect.width / 2) / rect.width) * 7
-    gsap.to(el, { rotateX, rotateY, transformPerspective: 900, duration: 0.25, ease: 'power2.out' })
-  }
-
-  const onMouseLeave = () => {
-    gsap.to(cardRef.current, { rotateX: 0, rotateY: 0, duration: 0.65, ease: 'elastic.out(1, 0.4)' })
-  }
-
   const p = program
+  const featured = p.featured
   return (
     <div
       ref={cardRef}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
       style={{
         position: 'relative',
         display: 'flex', flexDirection: 'column',
-        background: 'rgba(8,18,32,0.7)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        border: '1px solid rgba(255,255,255,0.1)',
+        background: '#0D2B3E',
+        border: featured ? '1px solid rgba(201,168,76,0.55)' : '1px solid rgba(255,255,255,0.1)',
         borderRadius: 20,
         padding: '36px 32px 32px',
-        willChange: 'transform',
-        transformStyle: 'preserve-3d',
+        overflow: 'hidden',
+        boxShadow: featured ? '0 18px 48px rgba(0,0,0,0.32)' : 'none',
       }}
     >
+      {/* Featured gets a solid gold top bar — the visual "pick this one" cue */}
+      {featured && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: '#C9A84C' }} />}
+
       {p.badge && (
-        <div style={{ position: 'absolute', top: -13, left: 28 }}>
+        <div style={{ position: 'absolute', top: 18, right: 22 }}>
           <span style={{
             display: 'inline-block',
             background: p.badgeColor, color: '#fff',
-            fontSize: 11, fontWeight: 600,
+            fontSize: 11, fontWeight: 700,
             padding: '4px 12px', borderRadius: 100, letterSpacing: '0.04em',
           }}>{p.badge}</span>
         </div>
@@ -115,7 +102,7 @@ function ProgramCard({ program, index }) {
 
       <div style={{
         width: 52, height: 52, borderRadius: 12,
-        background: 'rgba(126,200,227,0.12)', color: '#1A6B8A',
+        background: 'rgba(126,200,227,0.14)', color: '#7EC8E3',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         marginBottom: 24, flexShrink: 0,
       }}>{p.icon}</div>
@@ -130,12 +117,13 @@ function ProgramCard({ program, index }) {
         {p.description}
       </p>
 
-      <div style={{ marginBottom: 20 }}>
+      <div style={{
+        marginBottom: 22, paddingTop: 20,
+        borderTop: '1px solid rgba(255,255,255,0.08)',
+      }}>
         <span style={{
-          display: 'inline-block',
-          background: 'rgba(126,200,227,0.15)', color: '#7EC8E3',
-          fontSize: 12, fontWeight: 600,
-          padding: '5px 12px', borderRadius: 100, letterSpacing: '0.03em',
+          fontFamily: "'DM Serif Display', Georgia, serif",
+          fontSize: 26, color: '#7EC8E3', lineHeight: 1,
         }}>{p.highlight}</span>
       </div>
 
@@ -145,13 +133,15 @@ function ProgramCard({ program, index }) {
         style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           gap: 8, whiteSpace: 'nowrap',
-          background: '#0D2B3E', color: '#fff',
-          fontSize: 14, fontWeight: 600,
-          padding: '14px 24px', borderRadius: 12,
+          background: featured ? '#C9A84C' : 'transparent',
+          color: featured ? '#fff' : '#7EC8E3',
+          border: featured ? '1px solid #C9A84C' : '1px solid rgba(126,200,227,0.5)',
+          fontSize: 14, fontWeight: featured ? 700 : 600,
+          padding: '14px 24px', borderRadius: 100,
           textDecoration: 'none',
         }}
       >
-        Book a Call
+        {featured ? 'Book Your Free Call' : 'Book a Call'}
         <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
@@ -189,8 +179,7 @@ export default function Programs() {
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             color: '#ffffff', lineHeight: 1.15, marginBottom: 16,
           }}>
-            Coaching built for how you{' '}
-            <em style={{ color: '#7EC8E3', fontStyle: 'italic' }}>actually live.</em>
+            Coaching built for how you actually live.
           </h2>
           <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65 }}>
             Whether you're chasing your first finish line or gunning for Kona, there's a path designed for you.

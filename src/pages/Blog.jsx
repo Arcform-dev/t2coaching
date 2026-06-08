@@ -11,7 +11,7 @@ const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 function PostCard({ post }) {
   const inner = (
     <GlassCard style={{ height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ position: 'relative', aspectRatio: '16/10', background: 'linear-gradient(135deg, #0D2B3E, #1A6B8A)', overflow: 'hidden' }}>
+      <div style={{ position: 'relative', aspectRatio: '16/10', background: '#0D2B3E', overflow: 'hidden' }}>
         {post.cover ? (
           <img src={post.cover} alt={post.title} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         ) : (

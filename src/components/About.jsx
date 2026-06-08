@@ -85,8 +85,7 @@ export default function About() {
               color: '#ffffff', lineHeight: 1.2, marginBottom: 28,
             }}>
               I've been in your shoes —<br />
-              and on that{' '}
-              <em style={{ color: '#7EC8E3', fontStyle: 'italic' }}>finish line.</em>
+              and on that finish line.
             </h2>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 18, marginBottom: 32 }}>

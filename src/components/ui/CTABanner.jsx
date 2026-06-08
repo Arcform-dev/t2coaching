@@ -13,12 +13,8 @@ export default function CTABanner({
     <section style={{
       position: 'relative', overflow: 'hidden',
       padding: '80px 0 100px',
-      background: 'linear-gradient(135deg, #0D2B3E 0%, #1A6B8A 50%, #0D2B3E 100%)',
+      background: '#0D2B3E',
     }}>
-      <div style={{
-        position: 'absolute', inset: 0, opacity: 0.18, pointerEvents: 'none',
-        background: 'radial-gradient(ellipse 70% 60% at 50% 50%, #4AABCC, transparent 70%)',
-      }} />
       <Reveal style={{ position: 'relative', zIndex: 2 }}>
         <div style={{ maxWidth: 720, margin: '0 auto', padding: '0 32px', textAlign: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 18 }}>

@@ -43,7 +43,7 @@ export default function Testimonials() {
                 <GlassCard style={{ padding: 'clamp(28px, 4vw, 44px)' }}>
                   {/* Header */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 22, flexWrap: 'wrap' }}>
-                    <div style={{ width: 60, height: 60, borderRadius: '50%', overflow: 'hidden', flexShrink: 0, background: 'linear-gradient(135deg, #7EC8E3, #1A6B8A)' }}>
+                    <div style={{ width: 60, height: 60, borderRadius: '50%', overflow: 'hidden', flexShrink: 0, background: '#1A6B8A' }}>
                       <img src={t.photo} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                     <div style={{ flex: 1, minWidth: 180 }}>

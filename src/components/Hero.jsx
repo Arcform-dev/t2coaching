@@ -19,7 +19,6 @@ function Words({ text, style }) {
 
 export default function Hero() {
   const sectionRef  = useRef(null)
-  const glowRef     = useRef(null)
   const eyebrowRef  = useRef(null)
   const headlineRef = useRef(null)
   const subRef      = useRef(null)
@@ -29,8 +28,6 @@ export default function Hero() {
   const imageRef    = useRef(null)
 
   useEffect(() => {
-    const section   = sectionRef.current
-    const glow      = glowRef.current
     const eyebrow   = eyebrowRef.current
     const headline  = headlineRef.current
     const sub       = subRef.current
@@ -79,19 +76,6 @@ export default function Hero() {
     gsap.to(scrollHint, {
       y: 9, repeat: -1, yoyo: true, duration: 1.2, ease: 'sine.inOut', delay: 2.5,
     })
-
-    if (glow && section) {
-      gsap.to(glow, {
-        yPercent: -45,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-        },
-      })
-    }
   }, [])
 
   return (
@@ -101,34 +85,8 @@ export default function Hero() {
       display: 'flex',
       alignItems: 'center',
       overflow: 'hidden',
-      background: 'linear-gradient(155deg, #0D2B3E 0%, #163d57 28%, #1A6B8A 58%, #3a9abc 78%, #7EC8E3 100%)',
+      background: '#0D2B3E',
     }}>
-      {/* Noise grain */}
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 7,
-        opacity: 0.042,
-        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23n)'/%3E%3C/svg%3E")`,
-        backgroundRepeat: 'repeat',
-        backgroundSize: '320px 320px',
-      }} />
-
-      {/* Parallax glow */}
-      <div ref={glowRef} style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none',
-        background: 'radial-gradient(ellipse 80% 60% at 65% 40%, rgba(74,171,204,0.24) 0%, transparent 70%)',
-        willChange: 'transform',
-      }} />
-
-      {/* Bottom fade */}
-      <div style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0, height: 220, pointerEvents: 'none',
-        background: 'linear-gradient(to top, rgba(13,43,62,0.55), transparent)',
-      }} />
-
-      {/* Decorative lines */}
-      <div style={{ position: 'absolute', top: '25%', right: 56, width: 1, height: 180, background: 'rgba(255,255,255,0.08)' }} />
-      <div style={{ position: 'absolute', top: '15%', left: '28%', height: 1, width: 120, background: 'rgba(255,255,255,0.07)' }} />
-
       {/* Two-column content */}
       <div style={{
         position: 'relative', zIndex: 10,
@@ -215,6 +173,17 @@ export default function Hero() {
               }}>View Programs</a>
             </div>
 
+            {/* Risk-reversal microcopy directly under the primary CTA */}
+            <p style={{
+              display: 'flex', alignItems: 'center', gap: 8,
+              marginTop: 16, fontSize: 13, color: 'rgba(255,255,255,0.55)',
+            }}>
+              <svg width="15" height="15" fill="none" stroke="#C9A84C" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              Free 15-minute discovery call · No commitment, no sales pitch
+            </p>
+
             {/* Real stats */}
             <div ref={statsRef} style={{
               display: 'flex', gap: 40, marginTop: 52,
@@ -244,7 +213,7 @@ export default function Hero() {
               borderRadius: 24,
               overflow: 'hidden',
               aspectRatio: '3 / 4',
-              background: 'linear-gradient(160deg, #0D2B3E 0%, #1A6B8A 50%, #4AABCC 85%, #7EC8E3 100%)',
+              background: '#0D2B3E',
               boxShadow: '0 40px 80px rgba(0,0,0,0.35)',
             }}>
               <img

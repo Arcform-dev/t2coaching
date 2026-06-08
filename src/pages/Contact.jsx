@@ -164,7 +164,7 @@ export default function Contact() {
                   </p>
                   <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
-                    background: '#D4201A', color: '#fff', fontSize: 14, fontWeight: 600,
+                    background: '#C9A84C', color: '#fff', fontSize: 14, fontWeight: 700,
                     padding: '13px 26px', borderRadius: 100, textDecoration: 'none',
                   }}>Book a Free Call</a>
                 </GlassCard>

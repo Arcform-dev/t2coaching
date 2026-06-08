@@ -6,7 +6,7 @@ import { BOOKING_URL } from '../data/siteContent'
 const NAVY = '#0D2B3E'
 const BLUE = '#1A6B8A'
 const SKY = '#7EC8E3'
-const RED = '#D4201A'
+const GOLD = '#C9A84C'
 
 const LINKS = [
   { label: 'About', to: '/about' },
@@ -67,7 +67,7 @@ export default function Nav() {
           <Link to="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
             <div style={{
               width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
-              background: `linear-gradient(135deg, ${SKY}, ${BLUE})`,
+              background: BLUE,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}>
               <span style={{ color: '#fff', fontWeight: 700, fontSize: 12, letterSpacing: '0.04em' }}>T2</span>
@@ -99,12 +99,12 @@ export default function Nav() {
               style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 whiteSpace: 'nowrap',
-                background: RED, color: '#fff',
-                fontSize: 14, fontWeight: 600,
+                background: GOLD, color: '#fff',
+                fontSize: 14, fontWeight: 700,
                 padding: '10px 22px', borderRadius: 100,
                 textDecoration: 'none', letterSpacing: '0.01em',
               }}
-            >Book a Call</a>
+            >Book a Free Call</a>
           </div>
 
           {/* Mobile hamburger */}
@@ -158,12 +158,12 @@ export default function Nav() {
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               marginTop: 16,
-              background: RED, color: '#fff',
-              fontSize: 14, fontWeight: 600,
+              background: GOLD, color: '#fff',
+              fontSize: 14, fontWeight: 700,
               padding: '14px 0',
               borderRadius: 100, textDecoration: 'none',
             }}
-          >Book a Call</a>
+          >Book a Free Call</a>
         </div>
       </div>
     </nav>

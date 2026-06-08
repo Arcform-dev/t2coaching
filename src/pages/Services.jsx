@@ -29,16 +29,25 @@ const ICONS = {
 }
 
 function ServiceCard({ s }) {
+  const featured = s.badge === 'Most Popular'
   return (
-    <GlassCard style={{ position: 'relative', display: 'flex', flexDirection: 'column', padding: '40px 32px 32px', height: '100%' }}>
+    <div style={{
+      position: 'relative', display: 'flex', flexDirection: 'column',
+      padding: '40px 32px 32px', height: '100%', overflow: 'hidden',
+      background: '#0D2B3E',
+      border: featured ? '1px solid rgba(201,168,76,0.55)' : '1px solid rgba(255,255,255,0.1)',
+      borderRadius: 20,
+      boxShadow: featured ? '0 18px 48px rgba(0,0,0,0.32)' : 'none',
+    }}>
+      {featured && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: '#C9A84C' }} />}
       {s.badge && (
-        <div style={{ position: 'absolute', top: -13, left: 28 }}>
-          <span style={{ display: 'inline-block', background: s.badgeColor, color: '#fff', fontSize: 11, fontWeight: 600, padding: '4px 12px', borderRadius: 100, letterSpacing: '0.04em' }}>
+        <div style={{ position: 'absolute', top: 18, right: 22 }}>
+          <span style={{ display: 'inline-block', background: s.badgeColor, color: '#fff', fontSize: 11, fontWeight: 700, padding: '4px 12px', borderRadius: 100, letterSpacing: '0.04em' }}>
             {s.badge}
           </span>
         </div>
       )}
-      <div style={{ width: 52, height: 52, borderRadius: 12, background: 'rgba(126,200,227,0.12)', color: '#1A6B8A', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 22 }}>
+      <div style={{ width: 52, height: 52, borderRadius: 12, background: 'rgba(126,200,227,0.14)', color: '#7EC8E3', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 22 }}>
         {ICONS[s.icon]}
       </div>
       <h3 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 21, color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>{s.title}</h3>
@@ -63,13 +72,16 @@ function ServiceCard({ s }) {
 
       <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-        background: '#0D2B3E', color: '#fff', fontSize: 14, fontWeight: 600,
-        padding: '14px 24px', borderRadius: 12, textDecoration: 'none',
+        background: featured ? '#C9A84C' : 'transparent',
+        color: featured ? '#fff' : '#7EC8E3',
+        border: featured ? '1px solid #C9A84C' : '1px solid rgba(126,200,227,0.5)',
+        fontSize: 14, fontWeight: featured ? 700 : 600,
+        padding: '14px 24px', borderRadius: 100, textDecoration: 'none',
       }}>
-        Book a Call
+        {featured ? 'Book Your Free Call' : 'Book a Call'}
         <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
       </a>
-    </GlassCard>
+    </div>
   )
 }
 
@@ -107,7 +119,7 @@ export default function Services() {
               padding: 'clamp(32px, 5vw, 52px)',
               display: 'flex', flexWrap: 'wrap', gap: 28, alignItems: 'center', justifyContent: 'space-between',
               borderColor: 'rgba(201,168,76,0.35)',
-              background: 'linear-gradient(135deg, rgba(8,18,32,0.85), rgba(26,107,138,0.4))',
+              background: '#0D2B3E',
             }}>
               <div style={{ flex: '1 1 360px' }}>
                 <span style={{ fontSize: 11, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Free to start</span>

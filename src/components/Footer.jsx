@@ -31,7 +31,7 @@ export default function Footer() {
             <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', marginBottom: 18 }}>
               <div style={{
                 width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
-                background: 'linear-gradient(135deg, #7EC8E3, #1A6B8A)',
+                background: '#1A6B8A',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
                 <span style={{ color: '#fff', fontWeight: 700, fontSize: 12 }}>T2</span>

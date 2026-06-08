@@ -66,25 +66,8 @@ export default function CTA() {
     <section ref={sectionRef} style={{
       position: 'relative', overflow: 'hidden',
       padding: '100px 0 120px',
-      background: 'linear-gradient(135deg, #0D2B3E 0%, #1A6B8A 50%, #0D2B3E 100%)',
+      background: '#0D2B3E',
     }}>
-      {/* Grid overlay */}
-      <div style={{
-        position: 'absolute', inset: 0, opacity: 0.04, pointerEvents: 'none',
-        backgroundImage: 'linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)',
-        backgroundSize: '60px 60px',
-      }} />
-      {/* Radial glow */}
-      <div style={{
-        position: 'absolute', inset: 0, opacity: 0.18, pointerEvents: 'none',
-        background: 'radial-gradient(ellipse 70% 60% at 50% 50%, #4AABCC, transparent 70%)',
-      }} />
-      {/* Decorative circles */}
-      <div style={{ position: 'absolute', top: 32, left: 32, width: 64, height: 64, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.07)' }} />
-      <div style={{ position: 'absolute', top: 48, left: 48, width: 32, height: 32, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.07)' }} />
-      <div style={{ position: 'absolute', bottom: 40, right: 40, width: 96, height: 96, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.07)' }} />
-      <div style={{ position: 'absolute', bottom: 56, right: 56, width: 40, height: 40, borderRadius: '50%', border: '1px solid rgba(245,166,35,0.15)' }} />
-
       <div style={{ position: 'relative', zIndex: 10, maxWidth: 800, margin: '0 auto', padding: '0 32px', textAlign: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20 }}>
 

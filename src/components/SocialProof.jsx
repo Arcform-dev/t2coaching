@@ -20,7 +20,7 @@ export default function SocialProof() {
 
   return (
     <div ref={bandRef} style={{
-      background: '#0B1F2E',
+      background: '#0D2B3E',
       padding: '40px 32px',
       borderTop: '1px solid rgba(126,200,227,0.1)',
       borderBottom: '1px solid rgba(126,200,227,0.1)',

@@ -99,7 +99,7 @@ function GuideSignup() {
     <GlassCard style={{
       padding: 'clamp(32px, 5vw, 52px)',
       borderColor: 'rgba(201,168,76,0.35)',
-      background: 'linear-gradient(135deg, rgba(8,18,32,0.88), rgba(26,107,138,0.4))',
+      background: '#0D2B3E',
     }}>
       <div className="story-grid" style={{ display: 'grid', gap: 40, alignItems: 'center' }}>
         <div>
