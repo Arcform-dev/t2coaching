@@ -11,6 +11,7 @@ const GOLD = '#C9A84C'
 const LINKS = [
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/services' },
+  { label: 'Process', to: '/process' },
   { label: 'Testimonials', to: '/testimonials' },
   { label: 'Gallery', to: '/gallery' },
   { label: 'Blog', to: '/blog' },

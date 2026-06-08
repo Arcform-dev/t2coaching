@@ -114,3 +114,18 @@ section, footer {
 
 /* Gallery hover zoom */
 .gallery-item:hover img { transform: scale(1.06); }
+
+/* ── Process page ───────────────────────────────────────────────────────── */
+/* Single column on mobile (stepper collapses to the sticky top bar); sticky
+   sidebar + scrolling panels on desktop. align-items:start keeps sticky alive. */
+.process-grid { display: grid; grid-template-columns: 1fr; }
+.week-grid    { grid-template-columns: 1fr; }
+
+@media (min-width: 640px) {
+  .week-grid  { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .process-grid { grid-template-columns: 300px 1fr; column-gap: 72px; align-items: start; }
+  .week-grid    { grid-template-columns: repeat(7, 1fr); }
+}

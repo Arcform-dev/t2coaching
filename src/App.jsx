@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
+import Process from './pages/Process'
 import Testimonials from './pages/Testimonials'
 import Gallery from './pages/Gallery'
 import Blog from './pages/Blog'
@@ -18,6 +19,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="services" element={<Services />} />
+        <Route path="process" element={<Process />} />
         <Route path="testimonials" element={<Testimonials />} />
         <Route path="gallery" element={<Gallery />} />
         <Route path="blog" element={<Blog />} />
