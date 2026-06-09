@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { BOOKING_URL } from '../data/siteContent'
@@ -124,6 +125,13 @@ export default function CTA() {
           <p ref={noteRef} style={{ fontSize: 13, color: 'rgba(255,255,255,0.3)' }}>
             No sales pitch. Just a real conversation about your goals.
           </p>
+
+          <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 600, color: '#7EC8E3', textDecoration: 'none' }}>
+            Prefer to write? Send a message
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>

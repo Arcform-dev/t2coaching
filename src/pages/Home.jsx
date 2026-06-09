@@ -4,9 +4,12 @@ import SocialProof from '../components/SocialProof'
 import Stats from '../components/Stats'
 import Marquee from '../components/Marquee'
 import Programs from '../components/Programs'
+import ProcessPreview from '../components/ProcessPreview'
 import About from '../components/About'
 import WhyT2 from '../components/WhyT2'
 import Testimonials from '../components/Testimonials'
+import GalleryPreview from '../components/GalleryPreview'
+import BlogPreview from '../components/BlogPreview'
 import CTA from '../components/CTA'
 
 export default function Home() {
@@ -21,9 +24,12 @@ export default function Home() {
       <Stats />
       <Marquee />
       <Programs />
+      <ProcessPreview />
       <About />
       <WhyT2 />
       <Testimonials />
+      <GalleryPreview />
+      <BlogPreview />
       <CTA />
     </>
   )
