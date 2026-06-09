@@ -1,7 +1,6 @@
 import useDocumentMeta from '../hooks/useDocumentMeta'
 import Hero from '../components/Hero'
 import SocialProof from '../components/SocialProof'
-import AsFeaturedIn from '../components/AsFeaturedIn'
 import Stats from '../components/Stats'
 import Marquee from '../components/Marquee'
 import Programs from '../components/Programs'
@@ -22,7 +21,6 @@ export default function Home() {
     <>
       <Hero />
       <SocialProof />
-      <AsFeaturedIn />
       <Stats />
       <Marquee />
       <Programs />
