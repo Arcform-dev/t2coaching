@@ -25,7 +25,7 @@ export function CardBody({ className, ...props }) {
   return (
     <div
       role="group"
-      className={cn('flex flex-col space-y-1.5 border-t border-white/10 p-4', className)}
+      className={cn('flex flex-col gap-2.5 border-t border-white/10 px-6 pt-7 pb-7', className)}
       {...props}
     />
   )

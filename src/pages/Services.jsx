@@ -146,7 +146,7 @@ export default function Services() {
                 </CardVisual>
                 <CardBody>
                   <CardTitle>Your progress, tracked</CardTitle>
-                  <CardDescription>Wendy reviews your numbers every week and adjusts your plan.</CardDescription>
+                  <CardDescription>Reviewed and adjusted every week.</CardDescription>
                 </CardBody>
               </AnimatedCard>
             </GlassCard>
