@@ -31,17 +31,20 @@ export function CardBody({ className, ...props }) {
   )
 }
 
-export function CardTitle({ className, ...props }) {
+// Serif title to match the rest of the site's card headings (DM Serif Display),
+// and a higher-contrast description for legibility.
+export function CardTitle({ className, style, ...props }) {
   return (
     <h3
-      className={cn('text-lg font-semibold leading-none tracking-tight text-white', className)}
+      className={cn('text-xl leading-snug text-white', className)}
+      style={{ fontFamily: "'DM Serif Display', Georgia, serif", ...style }}
       {...props}
     />
   )
 }
 
 export function CardDescription({ className, ...props }) {
-  return <p className={cn('text-sm text-white/55', className)} {...props} />
+  return <p className={cn('text-sm leading-relaxed text-white/70', className)} {...props} />
 }
 
 export function CardVisual({ className, ...props }) {
