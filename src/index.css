@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @source "../index.html";
 @source "./src";
@@ -143,4 +143,50 @@ section, footer {
 }
 .shine-btn:hover::before {
   background-position: -100% 0;
+}
+
+/* ── Hero redesign (feature/hero-redesign) ─────────────────────────────────
+   Full-bleed finish-line photo, Kona-lava palette, "Finish Clock" device.
+   Responsive-sensitive bits live here; typography/layout are inline in Hero.jsx. */
+.hero2-photo { object-position: 74% center; }
+
+.hero2-scrim {
+  background:
+    linear-gradient(98deg,
+      #0B2738 0%, rgba(11,39,56,0.93) 26%, rgba(11,39,56,0.58) 50%,
+      rgba(11,39,56,0.12) 76%, rgba(11,39,56,0) 100%),
+    linear-gradient(to top,
+      #071A26 0%, rgba(7,26,38,0.55) 18%, rgba(7,26,38,0) 40%);
+}
+
+.hero2-content { align-self: center; }
+
+.hero2-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 30px; border-radius: 999px;
+  background: #C8431F; color: #F5F1E9;
+  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+  font-size: 1.05rem; font-weight: 600; text-decoration: none;
+  box-shadow: 0 12px 34px rgba(200,67,31,0.40);
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.hero2-cta svg { transition: transform .25s ease; }
+.hero2-cta:hover { background: #E0512B; transform: translateY(-2px); box-shadow: 0 16px 42px rgba(224,81,43,0.5); }
+.hero2-cta:hover svg { transform: translateX(4px); }
+.hero2-cta:focus-visible { outline: 3px solid #F6A36B; outline-offset: 3px; }
+
+@media (max-width: 860px) {
+  .hero2-photo { object-position: 68% 18%; }
+  .hero2-scrim {
+    background:
+      linear-gradient(180deg, rgba(11,39,56,0.35) 0%, rgba(11,39,56,0.72) 42%, #0B2738 82%),
+      linear-gradient(to top, #071A26, transparent 60%);
+  }
+  .hero2-content { align-self: end; }
+}
+@media (max-width: 520px) {
+  .hero2-cta { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero2-cta, .hero2-cta svg { transition: none; }
 }
