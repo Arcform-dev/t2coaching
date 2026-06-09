@@ -103,6 +103,7 @@ export default function CTA() {
           {/* CTA */}
           <a
             ref={btnRef}
+            className="shine-btn"
             href={BOOKING_URL}
             target="_blank" rel="noopener noreferrer"
             style={{

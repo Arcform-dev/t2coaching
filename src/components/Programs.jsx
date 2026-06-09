@@ -128,6 +128,7 @@ function ProgramCard({ program, index }) {
       </div>
 
       <a
+        className="shine-btn"
         href={BOOKING_URL}
         target="_blank" rel="noopener noreferrer"
         style={{

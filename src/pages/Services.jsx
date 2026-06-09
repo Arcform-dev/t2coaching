@@ -70,7 +70,7 @@ function ServiceCard({ s }) {
         ))}
       </ul>
 
-      <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
+      <a className="shine-btn" href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
         background: featured ? '#C9A84C' : 'transparent',
         color: featured ? '#fff' : '#7EC8E3',
@@ -128,7 +128,7 @@ export default function Services() {
                 </h3>
                 <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, maxWidth: 520 }}>{FREE_OFFER.body}</p>
               </div>
-              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
+              <a className="shine-btn" href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10, whiteSpace: 'nowrap',
                 background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
                 padding: '16px 36px', borderRadius: 100, textDecoration: 'none',

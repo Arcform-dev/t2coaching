@@ -94,6 +94,7 @@ export default function Nav() {
               })}>{label}</NavLink>
             ))}
             <a
+              className="shine-btn"
               href={BOOKING_URL}
               target="_blank" rel="noopener noreferrer"
               style={{
@@ -152,6 +153,7 @@ export default function Nav() {
             })}>{label}</NavLink>
           ))}
           <a
+            className="shine-btn"
             href={BOOKING_URL}
             target="_blank" rel="noopener noreferrer"
             onClick={() => setOpen(false)}

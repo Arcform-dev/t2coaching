@@ -33,6 +33,7 @@ export default function CTABanner({
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center' }}>
             <a
+              className="shine-btn"
               href={primaryHref}
               target="_blank" rel="noopener noreferrer"
               style={{

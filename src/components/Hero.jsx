@@ -144,6 +144,7 @@ export default function Hero() {
             {/* CTAs */}
             <div ref={ctaRef} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 14 }}>
               <a
+                className="shine-btn"
                 href={BOOKING_URL}
                 target="_blank" rel="noopener noreferrer"
                 style={{

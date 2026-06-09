@@ -162,7 +162,7 @@ export default function Contact() {
                   <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, marginBottom: 18 }}>
                     Book a free 15-minute discovery call — no commitment, just a real conversation.
                   </p>
-                  <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
+                  <a className="shine-btn" href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
                     background: '#C9A84C', color: '#fff', fontSize: 14, fontWeight: 700,
                     padding: '13px 26px', borderRadius: 100, textDecoration: 'none',

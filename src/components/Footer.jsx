@@ -76,6 +76,7 @@ export default function Footer() {
               ))}
             </div>
             <a
+              className="shine-btn"
               href={BOOKING_URL}
               target="_blank" rel="noopener noreferrer"
               style={{
