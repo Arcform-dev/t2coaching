@@ -20,7 +20,6 @@ function Words({ text, style }) {
 
 export default function CTA() {
   const sectionRef  = useRef(null)
-  const eyebrowRef  = useRef(null)
   const headlineRef = useRef(null)
   const subRef      = useRef(null)
   const btnRef      = useRef(null)
@@ -28,12 +27,11 @@ export default function CTA() {
 
   useEffect(() => {
     const section  = sectionRef.current
-    const eyebrow  = eyebrowRef.current
     const headline = headlineRef.current
     const sub      = subRef.current
     const btn      = btnRef.current
     const note     = noteRef.current
-    if (!section || !eyebrow || !headline || !sub || !btn || !note) return
+    if (!section || !headline || !sub || !btn || !note) return
 
     const words = headline.querySelectorAll('.wr-inner')
 
@@ -41,17 +39,13 @@ export default function CTA() {
       scrollTrigger: { trigger: section, start: 'top 74%', once: true },
     })
 
-    tl.fromTo(eyebrow,
-        { y: 28, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' })
-      .fromTo(words,
+    tl.fromTo(words,
         { yPercent: 110 },
-        { yPercent: 0, duration: 0.8, stagger: 0.055, ease: 'power3.out' },
-        '-=0.3')
+        { yPercent: 0, duration: 0.8, stagger: 0.055, ease: 'power3.out' })
       .fromTo(sub,
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.65, ease: 'power2.out' },
-        '-=0.45')
+        '-=0.4')
       .fromTo(btn,
         { y: 28, opacity: 0, scale: 0.95 },
         { y: 0, opacity: 1, scale: 1, duration: 0.55, ease: 'back.out(1.4)' },
@@ -71,15 +65,6 @@ export default function CTA() {
       <div style={{ position: 'relative', zIndex: 10, maxWidth: 800, margin: '0 auto', padding: '0 32px', textAlign: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20 }}>
 
-          {/* Eyebrow */}
-          <div ref={eyebrowRef} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{ width: 40, height: 1, background: '#F5A623' }} />
-            <span style={{ fontSize: 11, fontWeight: 600, color: '#F5A623', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
-              Start Your Season
-            </span>
-            <div style={{ width: 40, height: 1, background: '#F5A623' }} />
-          </div>
-
           {/* Headline — word-by-word wipe */}
           <h2 ref={headlineRef} style={{
             fontFamily: "'DM Serif Display', Georgia, serif",
@@ -97,7 +82,7 @@ export default function CTA() {
             color: 'rgba(255,255,255,0.62)',
             maxWidth: 480, lineHeight: 1.68,
           }}>
-            30 minutes with Wendy could change your entire season. No commitment required — just a real conversation about where you are and where you want to go.
+            Thirty minutes with Wendy can change the shape of your season. It is a real conversation about where you are now and where you want to go.
           </p>
 
           {/* CTA */}
@@ -116,14 +101,14 @@ export default function CTA() {
               boxShadow: '0 12px 40px rgba(201,168,76,0.45)',
             }}
           >
-            Book a Free Call with Wendy
+            Book a free call with Wendy
             <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
 
           <p ref={noteRef} style={{ fontSize: 13, color: 'rgba(255,255,255,0.3)' }}>
-            No sales pitch. Just a real conversation about your goals.
+            The first call is free and takes about fifteen minutes.
           </p>
         </div>
       </div>

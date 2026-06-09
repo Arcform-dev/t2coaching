@@ -39,7 +39,7 @@ export default function Footer() {
               <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 20, color: '#ffffff' }}>T2 Coaching</span>
             </Link>
             <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 18 }}>
-              Personalized swim, run & triathlon coaching from a Kona Ironman World Champion — built around your life.
+              Personalized swim, run & triathlon coaching from a Kona Ironman World Champion, built around your life.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <a href={`mailto:${CONTACT.email}`} style={{ fontSize: 14, color: 'rgba(255,255,255,0.62)', textDecoration: 'none' }}>{CONTACT.email}</a>

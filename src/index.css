@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 @source "../index.html";
 @source "./src";
@@ -143,4 +143,68 @@ section, footer {
 }
 .shine-btn:hover::before {
   background-position: -100% 0;
+}
+
+/* ── Split hero (homepage) ─────────────────────────────────────────────────
+   Left: Wendy at the Kona finish, with the headline set *behind* her. The
+   photo's top half is pure white, so mix-blend-mode: multiply drops it out and
+   the words read through it while her figure stays in front. Right: plain CTA. */
+.split-hero {
+  display: flex;
+  min-height: 100svh;
+}
+.split-hero__visual {
+  position: relative;
+  flex: 1 1 50%;
+  isolation: isolate;          /* keep the multiply blend contained to this panel */
+  background: #ffffff;
+  overflow: hidden;
+}
+.split-hero__behind {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 24px 24px;
+}
+.split-hero__behind span {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 4.8vw, 4rem);
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  color: #0D2B3E;
+  white-space: nowrap;
+}
+.split-hero__photo {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  mix-blend-mode: multiply;
+}
+.split-hero__cta {
+  flex: 1 1 50%;
+  background: #0D2B3E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(40px, 6vw, 96px);
+}
+
+@media (max-width: 860px) {
+  .split-hero { flex-direction: column; }
+  .split-hero__visual { flex: none; min-height: 60svh; }
+  .split-hero__cta { flex: none; padding: 56px 28px 72px; }
+}
+@media (max-width: 420px) {
+  .split-hero__behind span { font-size: clamp(1.6rem, 8vw, 2.3rem); }
 }

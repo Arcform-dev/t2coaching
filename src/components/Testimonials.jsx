@@ -70,13 +70,6 @@ export default function Testimonials() {
           flexWrap: 'wrap', gap: 20, marginBottom: 56,
         }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-              <div style={{ width: 32, height: 1, background: '#F5A623' }} />
-              <span style={{
-                fontSize: 11, fontWeight: 600, color: '#F5A623',
-                letterSpacing: '0.2em', textTransform: 'uppercase',
-              }}>Testimonials</span>
-            </div>
             <h2 style={{
               fontFamily: "'DM Serif Display', Georgia, serif",
               fontSize: 'clamp(2rem, 4vw, 3rem)',

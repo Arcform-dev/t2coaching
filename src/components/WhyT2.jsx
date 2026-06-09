@@ -6,70 +6,44 @@ gsap.registerPlugin(ScrollTrigger)
 
 const FEATURES = [
   {
-    num: '01',
-    title: 'Your trajectory is my specialty.',
-    body: 'Most programs hand you a generic plan and call it personalized. Wendy analyzes where you are today — fitness history, lifestyle constraints, race goals — and builds a dynamic plan that evolves with you every single week.',
+    title: 'Health comes before fitness.',
+    body: 'You have to be healthy to build fitness, and fit to perform. Wendy coaches the whole athlete, from strength and mobility to nutrition and sleep, so you get faster without breaking down.',
   },
   {
-    num: '02',
-    title: 'Real dirt & sweat, not just data.',
-    body: "Wendy has trained in wind, altitude, cold, and heat. She's raced — and won — at Kona. The coaching she provides is grounded in lived experience — she knows what your body goes through because she's been there.",
+    title: 'A plan that fits your week.',
+    body: 'Family, work, and travel do not pause for training. Wendy builds your plan around the hours you actually have, and adjusts it whenever your schedule shifts.',
   },
   {
-    num: '03',
-    title: 'Insider race strategy — including Kona.',
-    body: "From pacing the Queen K highway to managing the energy of a local sprint — Wendy has race-specific intelligence most coaches simply don't have. Your pre-race brief will feel like a military op, not a pep talk.",
+    title: 'Coaching, not just a program.',
+    body: 'The plan is only the start. The real value is in working together every week, reviewing how each session felt, and changing course when something is not working for you.',
   },
   {
-    num: '04',
-    title: 'Built for busy people.',
-    body: "Life doesn't pause for training. Wendy designs plans around your real schedule — not an idealized one. Family, work, travel. Your plan bends. Your progress doesn't have to.",
+    title: 'Every workout has a reason.',
+    body: 'Nothing is filler. Each session has a clear purpose, and Wendy explains the thinking behind it so you train with intention instead of guesswork.',
   },
   {
-    num: '05',
-    title: 'Every session has a purpose.',
-    body: 'No junk miles. No guesswork. Every workout has a specific objective — and you\'ll know exactly why you\'re doing it. Wendy explains the science so you execute with intention, not just compliance.',
+    title: 'She still races herself.',
+    body: 'Wendy swims, bikes, and runs alongside the athletes she coaches. From the Kona finish line to 100-mile trail races, she prescribes training she has done herself.',
   },
   {
-    num: '06',
-    title: 'Health is priority #1.',
-    body: 'You have to be healthy to build fitness, and fit to perform. Wendy coaches the whole athlete — strength, mobility, nutrition, sleep and injury prevention — so you improve without breaking down.',
-  },
-  {
-    num: '07',
-    title: 'The mental game, coached.',
-    body: 'The hardest miles are mental. Wendy teaches the performance mindset techniques used by elite athletes — visualization, pain management, race-day focus — so the wall stays in your rearview.',
-  },
-  {
-    num: '08',
-    title: 'Built to race for decades.',
-    body: 'Short-term peaks and long-term development are not the same thing. Wendy builds careers, not just seasons — with periodization designed to keep you healthy, improving, and racing for years.',
+    title: 'Your goals lead.',
+    body: 'Whether you want to finish a first 5k or qualify for Kona, Wendy builds the plan around what matters to you and what your body responds to.',
   },
 ]
 
-// Editorial "reasons" row — no card box, so differentiators read as a numbered
-// list, visually distinct from the solid offer cards and the testimonial quotes.
+// Editorial "reasons" rows — a short accent rule instead of a card box, so the
+// differentiators read distinctly from the solid offer cards and the quotes.
 function FeatureRow({ f, index }) {
   const accent = index % 2 === 0 ? '#F5A623' : '#7EC8E3'
   return (
-    <div style={{
-      display: 'flex', gap: 20, alignItems: 'flex-start',
-      paddingTop: 30,
-      borderTop: '1px solid rgba(255,255,255,0.16)',
-    }}>
-      <span style={{
+    <div style={{ paddingTop: 28, borderTop: '1px solid rgba(255,255,255,0.16)' }}>
+      <div style={{ width: 28, height: 3, background: accent, borderRadius: 2, marginBottom: 16 }} />
+      <h3 style={{
         fontFamily: "'DM Serif Display', Georgia, serif",
-        fontSize: 'clamp(1.7rem, 2.6vw, 2.2rem)',
-        color: accent, lineHeight: 1, flexShrink: 0, minWidth: 52,
-      }}>{f.num}</span>
-      <div>
-        <h3 style={{
-          fontFamily: "'DM Serif Display', Georgia, serif",
-          fontSize: 'clamp(1.15rem, 1.8vw, 1.35rem)',
-          color: '#ffffff', lineHeight: 1.3, marginBottom: 10,
-        }}>{f.title}</h3>
-        <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>{f.body}</p>
-      </div>
+        fontSize: 'clamp(1.15rem, 1.8vw, 1.35rem)',
+        color: '#ffffff', lineHeight: 1.3, marginBottom: 10,
+      }}>{f.title}</h3>
+      <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>{f.body}</p>
     </div>
   )
 }
@@ -100,7 +74,6 @@ export default function WhyT2() {
       ))
     })
 
-    // Clean up only this component's own animations + triggers on unmount.
     return () => anims.forEach(a => { a.scrollTrigger?.kill(); a.kill() })
   }, [])
 
@@ -108,11 +81,6 @@ export default function WhyT2() {
     <section style={{ background: 'transparent', padding: '80px 0 100px' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
         <div ref={headerRef} style={{ textAlign: 'center', maxWidth: 580, margin: '0 auto 56px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 16 }}>
-            <div style={{ height: 1, width: 40, background: '#7EC8E3' }} />
-            <span style={{ fontSize: 11, fontWeight: 600, color: '#F5A623', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Why T2</span>
-            <div style={{ height: 1, width: 40, background: '#7EC8E3' }} />
-          </div>
           <h2 style={{
             fontFamily: "'DM Serif Display', Georgia, serif",
             fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',

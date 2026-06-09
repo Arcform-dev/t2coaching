@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { BOOKING_URL } from '../data/siteContent'
 
@@ -19,14 +19,11 @@ const LINKS = [
 
 export default function Nav() {
   const ref = useRef(null)
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const { pathname } = useLocation()
 
-  const isHome = pathname === '/'
-  // Interior pages have no full-bleed hero behind the nav, so use the solid
-  // treatment by default there. On home, stay transparent until scrolled.
-  const solid = scrolled || !isHome
+  // Solid (white, blurred) on every page — the homepage hero now has a light
+  // left panel, so a transparent nav would render the logo invisible.
+  const solid = true
 
   useEffect(() => {
     const el = ref.current
@@ -35,10 +32,6 @@ export default function Nav() {
       { y: -70, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.75, ease: 'power3.out', delay: 0.2 }
     )
-    const onScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   const linkColor = solid ? 'rgba(13,43,62,0.68)' : 'rgba(255,255,255,0.85)'

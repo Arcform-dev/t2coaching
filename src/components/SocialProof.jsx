@@ -54,11 +54,9 @@ export default function SocialProof() {
         {/* Attribution */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{ width: 28, height: 1, background: '#C9A84C' }} />
-          <span style={{
-            fontSize: 12, fontWeight: 600,
-            color: '#C9A84C', letterSpacing: '0.14em', textTransform: 'uppercase',
-          }}>{FEATURED_QUOTE.attribution}</span>
-          <div style={{ width: 28, height: 1, background: '#C9A84C' }} />
+          <span style={{ fontSize: 14, fontWeight: 600, color: 'rgba(255,255,255,0.75)' }}>
+            {FEATURED_QUOTE.attribution}
+          </span>
         </div>
       </div>
     </div>

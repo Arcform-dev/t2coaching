@@ -7,7 +7,7 @@ export const TESTIMONIALS = [
     tag: 'Ironman Finisher · Age 66',
     photo: '/photos/athlete-finisher-medals.jpg',
     excerpt:
-      "Wendy was an ideal coach for me. My biggest weakness was swimming — I went from not being able to swim freestyle to a 62-minute 2.4-mile open-water swim. She's not a cheerleader; she's straightforward and honest, and she'll push you hard.",
+      "Wendy was an ideal coach for me. My biggest weakness was swimming. I went from not being able to swim freestyle to a 62-minute 2.4-mile open-water swim. She's not a cheerleader; she's straightforward and honest, and she'll push you hard.",
     full: [
       'I found T2 Coaching by searching Google for "Ironman Certified Coach." I contacted Wendy, she interviewed me over the phone, and took me on to prepare for a full 140.6 Ironman. I started triathlon at 63 to improve my fitness and, honestly, to slow down the aging process — I was never a gym rat or a sports guy in school.',
       'After self-coaching a 70.3 and suffering through some mistakes, I knew I needed help for a full Ironman. Coach Wendy was my choice. We identified my strengths and weaknesses and had a clear goal in mind, tracking everything in TrainingPeaks with her insight after almost every workout. My biggest weakness was swimming — and Wendy is incredibly strong in that discipline. I went from swimming breaststroke my first two years to a 62-minute 2.4-mile open-water swim.',
@@ -20,7 +20,7 @@ export const TESTIMONIALS = [
     tag: 'Open-Water Swimmer & Trail Runner · Colorado',
     photo: '/photos/pool-swim-training.jpg',
     excerpt:
-      "She really got it — that I was new to the sport, had three kids at home and a busy job, and needed help with skills and form as much as workouts. She always stresses having a 'why' for the training, and that's made all the difference.",
+      "She really got it: that I was new to the sport, had three kids at home and a busy job, and needed help with skills and form as much as workouts. She always stresses having a 'why' for the training, and that's made all the difference.",
     full: [
       "I first worked with Wendy in 2014 when she coached me in open-water swimming. I had a knee injury and couldn't run, so I'd shifted to swimming. I chose Wendy for her triathlon experience and her deep swimming background. Compared to others I spoke with, she really got it — that I was getting into a new sport, had three kids still at home and a busy job, and needed help with skills and form as well as workouts.",
       'Our work in 2014–2015 launched me into open-water races from 4 miles to 10k. I took a break, then came back in 2019 after knee surgery when I could run again. Her coaching took me from "in recovery" to biking and trail running.',
@@ -32,7 +32,7 @@ export const TESTIMONIALS = [
     tag: 'Aqua-Bike Athlete · Top 15 Nationally',
     photo: '/photos/finish-line-celebration.jpg',
     excerpt:
-      'After I lost my husband, I asked Wendy to coach me. She made it easy and comfortable to talk about personal issues — she knows emotional factors affect performance. She has a wholistic approach, and she practices what she preaches.',
+      'After I lost my husband, I asked Wendy to coach me. She made it easy and comfortable to talk about personal issues. She knows emotional factors affect performance. She has a wholistic approach, and she practices what she preaches.',
     full: [
       'I knew about T2 Coaching because Wendy is my sister, but I had the privilege of seeing her in action when I went with her to Turkey, where she was coaching a number of athletes. I\'ve been on swim teams with different coaches, but watching her with this group was something special. The "turkeys," as we affectionately called them, loved her with a genuineness that couldn\'t be faked — matched by how genuine she was with them.',
       'After I lost my husband, I decided training for triathlons was a good way to not be consumed by grief. Naturally, I asked her to coach me. What I loved was how we morphed in and out of being sisters and coach-and-athlete — I was treated the same as everyone else she coached. After an injury made running difficult, I competed in aqua-bike races and ended up in the top 15 of my age group nationally.',
@@ -56,6 +56,6 @@ export const TESTIMONIALS = [
 // A single short pull-quote for the SocialProof band on the home page.
 export const FEATURED_QUOTE = {
   quote:
-    'I went from not being able to swim freestyle to a 62-minute 2.4-mile open-water swim. Wendy is not a cheerleader — she is straightforward, honest, and she gets results.',
-  attribution: 'Jay — Ironman Finisher, coached to age 66',
+    'I went from not being able to swim freestyle to a 62-minute 2.4-mile open-water swim. Wendy is not a cheerleader. She is straightforward, honest, and she gets results.',
+  attribution: 'Jay, Ironman finisher coached at 66',
 }

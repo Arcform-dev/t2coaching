@@ -72,9 +72,6 @@ export default function Stats() {
             borderBottom: '1px solid rgba(255,255,255,0.09)',
           }}>
             <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#F5A623', flexShrink: 0 }} />
-            <span style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-              By the Numbers
-            </span>
             <span style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.09)' }} />
             <span style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontSize: 15, color: 'rgba(255,255,255,0.45)' }}>
               Coach Wendy Mader

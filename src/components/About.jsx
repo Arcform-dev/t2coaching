@@ -72,27 +72,20 @@ export default function About() {
             padding: '48px 40px',
             border: '1px solid rgba(255,255,255,0.08)',
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
-              <div style={{ width: 32, height: 1, background: '#F5A623' }} />
-              <span style={{ fontSize: 11, fontWeight: 600, color: '#F5A623', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-                About Wendy
-              </span>
-            </div>
-
             <h2 style={{
               fontFamily: "'DM Serif Display', Georgia, serif",
               fontSize: 'clamp(1.9rem, 3.5vw, 2.8rem)',
               color: '#ffffff', lineHeight: 1.2, marginBottom: 28,
             }}>
-              I've been in your shoes —<br />
+              I've been in your shoes,<br />
               and on that finish line.
             </h2>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 18, marginBottom: 32 }}>
               {[
-                "Wendy Mader is not a desk-coach. She's a D1 collegiate swimmer turned Kona Ironman World Champion — 2008 Overall Amateur Winner — and a 21-time Ironman finisher who has spent more than 30 years racing at the highest level of the sport.",
-                "Her philosophy is simple: great coaching meets you where you are. Whether you're juggling family and a full-time job, learning to swim for your first Ironman, or chasing a Kona slot, Wendy designs training that fits your life — not the other way around.",
-                "Based in Marietta, Georgia, she coaches athletes worldwide via Zoom — and in person at races. With a Master's in Exercise & Sport Science and 26 years of coaching, she's the rare coach who still swims, bikes, and runs right alongside the athletes she guides.",
+                "Wendy Mader coaches from inside the sport. She's a D1 collegiate swimmer turned Kona Ironman World Champion, the 2008 Overall Amateur Winner, and a 21-time Ironman finisher who has spent more than 30 years racing at the highest level.",
+                "Her approach is simple: good coaching meets you where you are. Whether you're juggling family and a full-time job, learning to swim for your first Ironman, or chasing a Kona slot, Wendy designs training that fits the life you already have.",
+                "Based in Marietta, Georgia, she coaches athletes worldwide over Zoom and in person at races. With a Master's in Exercise & Sport Science and 26 years of coaching, she still swims, bikes, and runs right alongside the athletes she guides.",
               ].map((text, i) => (
                 <p key={i} style={{ fontSize: 16, color: 'rgba(255,255,255,0.72)', lineHeight: 1.72 }}>{text}</p>
               ))}
@@ -136,7 +129,7 @@ export default function About() {
                   objectFit: 'cover', objectPosition: 'center top',
                 }}
               />
-              {/* Overlay gradient — bottom */}
+              {/* Overlay gradient at the bottom */}
               <div style={{
                 position: 'absolute', bottom: 0, left: 0, right: 0, height: '35%',
                 background: 'linear-gradient(to top, rgba(13,43,62,0.7), transparent)',
@@ -161,7 +154,7 @@ export default function About() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 18 }}>
                 <div style={{ width: 28, height: 2, background: '#F5A623', flexShrink: 0 }} />
                 <span style={{ fontSize: 13, fontWeight: 600, color: '#7EC8E3' }}>
-                  Wendy Mader — Kona Ironman Champion
+                  Wendy Mader, Kona Ironman Champion
                 </span>
               </div>
             </div>

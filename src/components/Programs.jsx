@@ -40,7 +40,7 @@ const PROGRAMS = [
     badgeColor: '#F5A623',
     title: '12-Week Custom Plan',
     description:
-      "A fully customized 12-week training plan delivered to your device — structured periodization, sport-specific workouts, and Wendy's signature race-day strategy at an accessible price.",
+      "A fully customized 12-week training plan delivered to your device, with structured periodization, sport-specific workouts, and Wendy's signature race-day strategy at an accessible price.",
     highlight: '$300 one-time',
     icon: (
       <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" width="26" height="26">
@@ -171,10 +171,6 @@ export default function Programs() {
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
 
         <div ref={headerRef} style={{ maxWidth: 600, marginBottom: 64 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
-            <div style={{ width: 32, height: 1, background: '#F5A623' }} />
-            <span style={{ fontSize: 11, fontWeight: 600, color: '#F5A623', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Programs</span>
-          </div>
           <h2 style={{
             fontFamily: "'DM Serif Display', Georgia, serif",
             fontSize: 'clamp(2rem, 4vw, 3rem)',
