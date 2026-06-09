@@ -4,6 +4,7 @@ import SectionHeading from '../components/ui/SectionHeading'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
+import { AnimatedCard, CardBody, CardTitle, CardDescription, CardVisual, Visual1 } from '../components/ui/AnimatedCard'
 import { SERVICES, FREE_OFFER, HOW_IT_WORKS, WHO_I_COACH } from '../data/services'
 import { BOOKING_URL } from '../data/siteContent'
 
@@ -117,26 +118,37 @@ export default function Services() {
           <Reveal>
             <GlassCard style={{
               padding: 'clamp(32px, 5vw, 52px)',
-              display: 'flex', flexWrap: 'wrap', gap: 28, alignItems: 'center', justifyContent: 'space-between',
+              display: 'flex', flexWrap: 'wrap', gap: 40, alignItems: 'center', justifyContent: 'space-between',
               borderColor: 'rgba(201,168,76,0.35)',
               background: '#0D2B3E',
             }}>
-              <div style={{ flex: '1 1 360px' }}>
+              <div style={{ flex: '1 1 340px' }}>
                 <span style={{ fontSize: 11, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Free to start</span>
                 <h3 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(1.5rem, 3vw, 2.1rem)', color: '#fff', margin: '12px 0 14px' }}>
                   {FREE_OFFER.label}
                 </h3>
-                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, maxWidth: 520 }}>{FREE_OFFER.body}</p>
+                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, maxWidth: 520, marginBottom: 28 }}>{FREE_OFFER.body}</p>
+                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 10, whiteSpace: 'nowrap',
+                  background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
+                  padding: '16px 36px', borderRadius: 100, textDecoration: 'none',
+                  boxShadow: '0 12px 40px rgba(201,168,76,0.4)',
+                }}>
+                  Book Your Free Call
+                  <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                </a>
               </div>
-              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 10, whiteSpace: 'nowrap',
-                background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
-                padding: '16px 36px', borderRadius: 100, textDecoration: 'none',
-                boxShadow: '0 12px 40px rgba(201,168,76,0.4)',
-              }}>
-                Book Your Free Call
-                <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-              </a>
+
+              {/* Data-viz card — hover to see the training-load bars animate */}
+              <AnimatedCard>
+                <CardVisual>
+                  <Visual1 mainColor="#7EC8E3" secondaryColor="#C9A84C" />
+                </CardVisual>
+                <CardBody>
+                  <CardTitle>Your progress, tracked</CardTitle>
+                  <CardDescription>Wendy reviews your numbers every week and adjusts your plan.</CardDescription>
+                </CardBody>
+              </AnimatedCard>
             </GlassCard>
           </Reveal>
         </div>
