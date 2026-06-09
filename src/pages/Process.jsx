@@ -229,20 +229,27 @@ export default function Process() {
   const [active, setActive] = useState(0)
   const panelRefs = useRef([])
 
+  // Scroll-spy: the active step follows whichever panel is most visible. Using
+  // a spread of thresholds + max-ratio is steadier than a single 40% trip wire —
+  // it never lands in a dead zone between two panels.
   useEffect(() => {
+    const ids = STEPS.map((_, i) => `step-panel-${i + 1}`)
+    const panels = ids.map((id) => document.getElementById(id)).filter(Boolean)
+    if (panels.length === 0) return
+    const ratios = new Map()
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const idx = Number(entry.target.dataset.index)
-            if (!Number.isNaN(idx)) setActive(idx)
-          }
-        })
+        for (const entry of entries) ratios.set(entry.target.id, entry.intersectionRatio)
+        let bestId = null
+        let bestRatio = 0
+        for (const [id, ratio] of ratios) {
+          if (ratio > bestRatio) { bestRatio = ratio; bestId = id }
+        }
+        if (bestId) setActive(ids.indexOf(bestId))
       },
-      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+      { threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] }
     )
-    const nodes = panelRefs.current.filter(Boolean)
-    nodes.forEach((node) => observer.observe(node))
+    panels.forEach((panel) => observer.observe(panel))
     return () => observer.disconnect()
   }, [])
 
@@ -309,18 +316,20 @@ export default function Process() {
       <section style={{ padding: '32px 0 80px' }}>
         <div style={WRAP}>
           <div className="process-grid">
-            {/* Sticky sidebar (desktop only) */}
-            <aside className="hidden lg:block">
-              <div style={{ position: 'sticky', top: 104 }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: AMBER, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 22 }}>
+            {/* Sticky full-height stepper spine (desktop only). The aside stretches
+                to the panel column's height; the inner element is pinned at 100vh
+                so the spine fills the viewport and its separators flex to fill. */}
+            <aside className="hidden lg:block" style={{ width: 300, flexShrink: 0 }}>
+              <div style={{ position: 'sticky', top: 96, height: 'calc(100vh - 120px)', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: AMBER, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 24, flexShrink: 0 }}>
                   The Journey
                 </div>
-                <Stepper steps={STEPS} active={active} onSelect={goTo} />
+                <Stepper steps={STEPS} active={active} onSelect={goTo} style={{ flex: 1 }} />
                 <a
                   href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 9, marginTop: 32, background: GOLD, color: '#fff', fontSize: 14, fontWeight: 700, padding: '13px 22px', borderRadius: 100, textDecoration: 'none' }}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 9, marginTop: 24, flexShrink: 0, background: GOLD, color: '#fff', fontSize: 14, fontWeight: 700, padding: '13px 22px', borderRadius: 100, textDecoration: 'none' }}
                 >
                   Book a Free Call <ArrowRight size={16} />
                 </a>
@@ -328,12 +337,12 @@ export default function Process() {
             </aside>
 
             {/* Scrolling panels */}
-            <div>
+            <div style={{ flex: 1, minWidth: 0 }}>
               {STEPS.map((step, i) => (
                 <section
                   key={step.n}
+                  id={`step-panel-${i + 1}`}
                   ref={(el) => { panelRefs.current[i] = el }}
-                  data-index={i}
                   style={{ padding: '52px 0', borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.07)' }}
                 >
                   <Reveal>
