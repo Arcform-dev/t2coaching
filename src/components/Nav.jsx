@@ -3,7 +3,6 @@ import { Link, NavLink } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { BOOKING_URL } from '../data/siteContent'
 
-const NAVY = '#0D2B3E'
 const BLUE = '#1A6B8A'
 const SKY = '#7EC8E3'
 const GOLD = '#C9A84C'
@@ -34,8 +33,8 @@ export default function Nav() {
     )
   }, [])
 
-  const linkColor = solid ? 'rgba(13,43,62,0.68)' : 'rgba(255,255,255,0.85)'
-  const activeColor = solid ? NAVY : '#ffffff'
+  const linkColor = 'rgba(255,255,255,0.82)'
+  const activeColor = '#ffffff'
 
   return (
     <nav
@@ -45,10 +44,10 @@ export default function Nav() {
         top: 0, left: 0, right: 0,
         zIndex: 9999,
         transition: 'background 0.35s ease, box-shadow 0.35s ease',
-        background: solid ? 'rgba(255, 255, 255, 0.97)' : 'transparent',
-        backdropFilter: solid ? 'blur(20px)' : 'none',
-        WebkitBackdropFilter: solid ? 'blur(20px)' : 'none',
-        boxShadow: solid ? '0 1px 0 rgba(0,0,0,0.08)' : 'none',
+        background: 'rgba(13, 43, 62, 0.97)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        boxShadow: '0 1px 0 rgba(255,255,255,0.1)',
       }}
     >
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
@@ -68,7 +67,7 @@ export default function Nav() {
             <span style={{
               fontFamily: "'DM Serif Display', Georgia, serif",
               fontSize: 20, lineHeight: 1,
-              color: solid ? NAVY : '#ffffff',
+              color: '#ffffff',
               transition: 'color 0.35s ease',
             }}>T2 Coaching</span>
           </Link>
@@ -114,7 +113,7 @@ export default function Nav() {
             {[0, 1, 2].map(i => (
               <span key={i} style={{
                 display: 'block', width: 24, height: 2, borderRadius: 2,
-                background: solid ? NAVY : '#fff',
+                background: '#fff',
                 transition: 'all 0.25s ease',
                 transform: open && i === 0 ? 'rotate(45deg) translateY(7px)' :
                            open && i === 2 ? 'rotate(-45deg) translateY(-7px)' : 'none',
@@ -130,19 +129,19 @@ export default function Nav() {
         overflow: 'hidden',
         maxHeight: open ? 460 : 0,
         transition: 'max-height 0.3s ease',
-        background: 'rgba(255,255,255,0.98)',
+        background: 'rgba(13,43,62,0.98)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderTop: open ? '1px solid rgba(0,0,0,0.07)' : 'none',
+        borderTop: open ? '1px solid rgba(255,255,255,0.1)' : 'none',
       }}>
         <div style={{ padding: '16px 32px 28px' }}>
           {LINKS.map(({ label, to }) => (
             <NavLink key={label} to={to} onClick={() => setOpen(false)} style={({ isActive }) => ({
               display: 'block', padding: '13px 0',
               fontSize: 15, fontWeight: isActive ? 600 : 500,
-              color: isActive ? BLUE : NAVY,
+              color: isActive ? SKY : 'rgba(255,255,255,0.85)',
               textDecoration: 'none',
-              borderBottom: '1px solid rgba(0,0,0,0.06)',
+              borderBottom: '1px solid rgba(255,255,255,0.08)',
             })}>{label}</NavLink>
           ))}
           <a

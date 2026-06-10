@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=Archivo:wght@600;700;800;900&display=swap');
 @import "tailwindcss";
 @source "../index.html";
 @source "./src";
@@ -150,10 +150,12 @@ section, footer {
    Wendy, who is flush to the left edge and tall enough that her raised hands
    meet the title line. Short intro plus CTA in the open lower-right. */
 .champ-hero {
-  position: relative;
-  min-height: 100svh;
-  background: #0D2B3E;
-  color: #ffffff;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 0;
+  background: #F7F5F0;
+  color: #0D2B3E;
   overflow: hidden;
 }
 .champ-hero__title {
@@ -163,23 +165,23 @@ section, footer {
   z-index: 1;
   margin: 0;
   text-align: center;
-  font-family: 'Inter', system-ui, sans-serif;
-  font-weight: 800;
+  font-family: 'Archivo', 'Inter', system-ui, sans-serif;
+  font-weight: 900;
   text-transform: uppercase;
   line-height: 0.98;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
 }
 .champ-hero__title span {
   display: block;
   font-size: clamp(2.2rem, 6.6vw, 6rem);
-  color: #F5F1E9;
+  color: #0D2B3E;
   white-space: nowrap;
 }
 .champ-hero__photo {
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 115svh;
+  height: 125svh;
   width: auto;
   z-index: 2;
   pointer-events: none;
@@ -197,7 +199,7 @@ section, footer {
   margin: 0 0 26px;
   font-size: clamp(1rem, 1.4vw, 1.15rem);
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(13, 43, 62, 0.78);
 }
 .champ-hero__actions {
   display: flex;
@@ -220,14 +222,25 @@ section, footer {
   box-shadow: 0 12px 36px rgba(201, 168, 76, 0.4);
 }
 .champ-hero__link {
-  color: #7EC8E3;
+  color: #1A6B8A;
   font-size: 15px;
   font-weight: 600;
   text-decoration: none;
 }
 
+/* Sticky-reveal: the hero pins to the top and the rest of the page scrolls up
+   over it (this wrapper is opaque and sits above the hero). */
+.home-rest {
+  position: relative;
+  z-index: 1;
+  background: #1A6B8A;
+}
+
 @media (max-width: 900px) {
   .champ-hero {
+    position: static;
+    height: auto;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
     align-items: center;

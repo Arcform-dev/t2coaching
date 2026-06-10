@@ -16,13 +16,15 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <SocialProof />
-      <Stats />
-      <Programs />
-      <About />
-      <WhyT2 />
-      <Testimonials />
-      <CTA />
+      <div className="home-rest">
+        <SocialProof />
+        <Stats />
+        <Programs />
+        <About />
+        <WhyT2 />
+        <Testimonials />
+        <CTA />
+      </div>
     </>
   )
 }
