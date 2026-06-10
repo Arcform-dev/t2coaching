@@ -146,9 +146,9 @@ section, footer {
 }
 
 /* ── Champion hero (homepage) ──────────────────────────────────────────────
-   One continuous navy field. A large statement across the top, Wendy on the
-   right (the cut-off white sky was removed from the PNG so she sits straight on
-   the navy), and a short intro plus CTA in the open bottom-left. */
+   One continuous navy field. A large statement across the top sits behind
+   Wendy, who is flush to the left edge and tall enough that her raised hands
+   meet the title line. Short intro plus CTA in the open lower-right. */
 .champ-hero {
   position: relative;
   min-height: 100svh;
@@ -158,16 +158,11 @@ section, footer {
 }
 .champ-hero__title {
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 58%;
+  top: clamp(90px, 22vh, 270px);
+  left: 0; right: 0;
   z-index: 1;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  padding: clamp(80px, 11vh, 120px) 16px 0;
   font-family: 'Inter', system-ui, sans-serif;
   font-weight: 800;
   text-transform: uppercase;
@@ -176,29 +171,29 @@ section, footer {
 }
 .champ-hero__title span {
   display: block;
-  font-size: clamp(2.4rem, 8.2vw, 7rem);
+  font-size: clamp(2.4rem, 8vw, 7rem);
   color: #F5F1E9;
   white-space: nowrap;
 }
 .champ-hero__photo {
   position: absolute;
+  left: 0;
   bottom: 0;
-  right: clamp(0px, 4vw, 80px);
-  left: auto;
-  height: min(84svh, 880px);
+  height: 115svh;
   width: auto;
   z-index: 2;
   pointer-events: none;
-  /* soften the photo's left/right edges into the navy */
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
-          mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+  /* flush on the left; fade only the far-right scene edge into the navy */
+  -webkit-mask-image: linear-gradient(to right, #000 80%, transparent 99%);
+          mask-image: linear-gradient(to right, #000 80%, transparent 99%);
 }
 .champ-hero__intro {
   position: absolute;
-  bottom: clamp(40px, 8vh, 84px);
-  left: clamp(24px, 5vw, 80px);
+  right: clamp(24px, 5vw, 80px);
+  bottom: clamp(56px, 13vh, 150px);
   z-index: 3;
-  max-width: 430px;
+  max-width: 400px;
+  text-align: left;
 }
 .champ-hero__intro p {
   margin: 0 0 26px;
@@ -240,14 +235,16 @@ section, footer {
     align-items: center;
     padding: 96px 24px 56px;
   }
-  .champ-hero__title { position: static; height: auto; padding: 0; }
+  .champ-hero__title { position: static; padding: 0; }
   .champ-hero__title span { font-size: clamp(2rem, 9vw, 3rem); }
   .champ-hero__photo {
-    position: static; right: auto;
-    height: auto; width: auto; max-height: 46svh;
+    position: static;
+    height: auto; width: auto; max-height: 50svh;
     margin: 12px auto 0;
+    -webkit-mask-image: none; mask-image: none;
   }
   .champ-hero__intro {
-    position: static; max-width: 520px; margin-top: 22px;
+    position: static; max-width: 520px; margin-top: 22px; text-align: center;
   }
+  .champ-hero__actions { justify-content: center; }
 }
