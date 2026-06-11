@@ -16,6 +16,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <div className="site-grain" aria-hidden="true" />
     </>
   )
 }

@@ -4,7 +4,6 @@ import { gsap } from 'gsap'
 import { BOOKING_URL } from '../data/siteContent'
 
 const BLUE = '#1A6B8A'
-const SKY = '#7EC8E3'
 const GOLD = '#C9A84C'
 
 const LINKS = [
@@ -33,8 +32,8 @@ export default function Nav() {
     )
   }, [])
 
-  const linkColor = 'rgba(255,255,255,0.82)'
-  const activeColor = '#ffffff'
+  const linkColor = 'rgba(245,241,233,0.82)'
+  const activeColor = GOLD
 
   return (
     <nav
@@ -65,24 +64,27 @@ export default function Nav() {
               <span style={{ color: '#fff', fontWeight: 700, fontSize: 12, letterSpacing: '0.04em' }}>T2</span>
             </div>
             <span style={{
-              fontFamily: "'DM Serif Display', Georgia, serif",
-              fontSize: 20, lineHeight: 1,
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize: 24, lineHeight: 1, fontWeight: 600,
+              letterSpacing: '0.16em', textTransform: 'uppercase',
               color: '#ffffff',
               transition: 'color 0.35s ease',
             }}>T2 Coaching</span>
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex" style={{ alignItems: 'center', gap: 26 }}>
+          <div className="hidden md:flex" style={{ alignItems: 'center', gap: 34 }}>
             {LINKS.map(({ label, to }) => (
               <NavLink key={label} to={to} style={({ isActive }) => ({
                 position: 'relative',
-                fontSize: 14, fontWeight: isActive ? 600 : 500, letterSpacing: '0.025em',
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                textTransform: 'uppercase',
+                fontSize: 17, fontWeight: 600, letterSpacing: '0.14em',
                 color: isActive ? activeColor : linkColor,
                 textDecoration: 'none',
                 transition: 'color 0.2s ease',
-                paddingBottom: 2,
-                borderBottom: isActive ? `2px solid ${SKY}` : '2px solid transparent',
+                paddingBottom: 3,
+                borderBottom: isActive ? `1px solid ${GOLD}` : '1px solid transparent',
               })}>{label}</NavLink>
             ))}
             <a
@@ -137,9 +139,11 @@ export default function Nav() {
         <div style={{ padding: '16px 32px 28px' }}>
           {LINKS.map(({ label, to }) => (
             <NavLink key={label} to={to} onClick={() => setOpen(false)} style={({ isActive }) => ({
-              display: 'block', padding: '13px 0',
-              fontSize: 15, fontWeight: isActive ? 600 : 500,
-              color: isActive ? SKY : 'rgba(255,255,255,0.85)',
+              display: 'block', padding: '14px 0',
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              textTransform: 'uppercase', letterSpacing: '0.12em',
+              fontSize: 18, fontWeight: 600,
+              color: isActive ? GOLD : 'rgba(255,255,255,0.85)',
               textDecoration: 'none',
               borderBottom: '1px solid rgba(255,255,255,0.08)',
             })}>{label}</NavLink>
