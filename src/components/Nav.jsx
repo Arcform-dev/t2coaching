@@ -40,19 +40,24 @@ export default function Nav() {
       ref={ref}
       style={{
         position: 'fixed',
-        top: 0, left: 0, right: 0,
+        top: 16, left: 16, right: 16,
+        margin: '0 auto',
+        maxWidth: 1280,
         zIndex: 9999,
+        borderRadius: 20,
+        overflow: 'hidden',
         transition: 'background 0.35s ease, box-shadow 0.35s ease',
-        background: 'rgba(13, 43, 62, 0.97)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        boxShadow: '0 1px 0 rgba(255,255,255,0.1)',
+        background: 'rgba(13, 43, 62, 0.8)',
+        backdropFilter: 'blur(18px)',
+        WebkitBackdropFilter: 'blur(18px)',
+        border: '1px solid rgba(255,255,255,0.12)',
+        boxShadow: '0 16px 44px rgba(0,0,0,0.34)',
       }}
     >
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
+      <div style={{ padding: '0 26px' }}>
         <div style={{
           display: 'flex', alignItems: 'center',
-          justifyContent: 'space-between', height: 72,
+          justifyContent: 'space-between', height: 64,
         }}>
           {/* Logo */}
           <Link to="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
@@ -136,7 +141,7 @@ export default function Nav() {
         WebkitBackdropFilter: 'blur(20px)',
         borderTop: open ? '1px solid rgba(255,255,255,0.1)' : 'none',
       }}>
-        <div style={{ padding: '16px 32px 28px' }}>
+        <div style={{ padding: '12px 26px 24px' }}>
           {LINKS.map(({ label, to }) => (
             <NavLink key={label} to={to} onClick={() => setOpen(false)} style={({ isActive }) => ({
               display: 'block', padding: '14px 0',
