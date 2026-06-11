@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=Archivo:wght@600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display+SC:wght@400;700;900&display=swap');
 @import "tailwindcss";
 @source "../index.html";
 @source "./src";
@@ -146,66 +146,86 @@ section, footer {
 }
 
 /* ── Champion hero (homepage) ──────────────────────────────────────────────
-   One continuous navy field. A large statement across the top sits behind
-   Wendy, who is flush to the left edge and tall enough that her raised hands
-   meet the title line. Short intro plus CTA in the open lower-right. */
+   Layered: a huge gold Playfair statement fills the field, Wendy (cut out)
+   sits in front of the letters, and a glass card holds a short intro + CTA.
+   The hero pins on desktop while the rest of the page scrolls up over it. */
 .champ-hero {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  z-index: 0;
-  background: #F7F5F0;
-  color: #0D2B3E;
+  position: relative;
+  min-height: 100svh;
+  background: #0D2B3E;
+  color: #ffffff;
   overflow: hidden;
 }
+@media (min-width: 901px) {
+  .champ-hero {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    min-height: 0;
+    z-index: 0;
+  }
+}
+
+/* Gold serif statement behind the athlete */
 .champ-hero__title {
   position: absolute;
-  top: clamp(88px, 20vh, 240px);
-  left: 0; right: 0;
+  inset: 0;
   z-index: 1;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  font-family: 'Archivo', 'Inter', system-ui, sans-serif;
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 0.98;
-  letter-spacing: -0.02em;
+  padding-top: 56px;
+  font-family: 'Playfair Display SC', Georgia, serif;
+  font-weight: 700;
+  color: #C9A84C;
+  line-height: 0.9;
 }
-.champ-hero__title span {
+.champ-hero__title .l1 {
   display: block;
-  font-size: clamp(2.2rem, 6.6vw, 6rem);
-  color: #0D2B3E;
+  font-size: clamp(2.2rem, 11vw, 13.5rem);
   white-space: nowrap;
 }
+.champ-hero__title .l2 {
+  display: block;
+  font-size: clamp(1.3rem, 6.6vw, 8.1rem);   /* ~60% of line 1 */
+  white-space: nowrap;
+}
+
+/* Wendy, cut out and layered over the letters */
 .champ-hero__photo {
   position: absolute;
-  left: 0;
   bottom: 0;
-  height: 125svh;
+  left: 50%;
+  transform: translateX(-50%);
+  height: min(94svh, 980px);
   width: auto;
   z-index: 2;
   pointer-events: none;
-  /* the right-edge + horizon fade into the navy is baked into the PNG alpha */
 }
-.champ-hero__intro {
+
+/* Glass card — short intro + contact button */
+.champ-hero__card {
   position: absolute;
-  right: clamp(24px, 5vw, 80px);
-  bottom: clamp(56px, 13vh, 150px);
   z-index: 3;
+  left: clamp(20px, 5vw, 64px);
+  bottom: clamp(40px, 10vh, 110px);
   max-width: 400px;
-  text-align: left;
+  padding: 30px 32px;
+  border-radius: 18px;
+  background: rgba(10, 30, 44, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(18px);
+          backdrop-filter: blur(18px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 }
-.champ-hero__intro p {
-  margin: 0 0 26px;
-  font-size: clamp(1rem, 1.4vw, 1.15rem);
-  line-height: 1.7;
-  color: rgba(13, 43, 62, 0.78);
-}
-.champ-hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 18px;
+.champ-hero__card p {
+  margin: 0 0 22px;
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.86);
 }
 .champ-hero__cta {
   display: inline-flex;
@@ -213,23 +233,16 @@ section, footer {
   gap: 10px;
   white-space: nowrap;
   background: #C9A84C;
-  color: #fff;
-  font-size: 16px;
+  color: #0D2B3E;
+  font-size: 15px;
   font-weight: 700;
-  padding: 16px 34px;
+  padding: 14px 28px;
   border-radius: 100px;
   text-decoration: none;
-  box-shadow: 0 12px 36px rgba(201, 168, 76, 0.4);
-}
-.champ-hero__link {
-  color: #1A6B8A;
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(201, 168, 76, 0.35);
 }
 
-/* Sticky-reveal: the hero pins to the top and the rest of the page scrolls up
-   over it (this wrapper is opaque and sits above the hero). */
+/* Sticky-reveal: the page content scrolls up over the pinned hero */
 .home-rest {
   position: relative;
   z-index: 1;
@@ -237,25 +250,14 @@ section, footer {
 }
 
 @media (max-width: 900px) {
-  .champ-hero {
-    position: static;
-    height: auto;
-    min-height: 100svh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 96px 24px 56px;
+  .champ-hero__title { padding-top: 84px; }
+  .champ-hero__photo { height: 66svh; }
+  .champ-hero__card {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: calc(100% - 36px);
+    max-width: 460px;
+    bottom: 26px;
   }
-  .champ-hero__title { position: static; padding: 0; }
-  .champ-hero__title span { font-size: clamp(2rem, 9vw, 3rem); }
-  .champ-hero__photo {
-    position: static;
-    height: auto; width: auto; max-height: 50svh;
-    margin: 12px auto 0;
-    -webkit-mask-image: none; mask-image: none;
-  }
-  .champ-hero__intro {
-    position: static; max-width: 520px; margin-top: 22px; text-align: center;
-  }
-  .champ-hero__actions { justify-content: center; }
 }
