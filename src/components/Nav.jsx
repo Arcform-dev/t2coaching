@@ -32,8 +32,8 @@ export default function Nav() {
     )
   }, [])
 
-  const linkColor = 'rgba(245,241,233,0.82)'
-  const activeColor = GOLD
+  const linkColor = 'rgba(13,43,62,0.74)'
+  const activeColor = '#0D2B3E'
 
   return (
     <nav
@@ -47,11 +47,11 @@ export default function Nav() {
         borderRadius: 20,
         overflow: 'hidden',
         transition: 'background 0.35s ease, box-shadow 0.35s ease',
-        background: 'rgba(13, 43, 62, 0.8)',
+        background: 'rgba(255, 255, 255, 0.85)',
         backdropFilter: 'blur(18px)',
         WebkitBackdropFilter: 'blur(18px)',
-        border: '1px solid rgba(255,255,255,0.12)',
-        boxShadow: '0 16px 44px rgba(0,0,0,0.34)',
+        border: '1px solid rgba(13,43,62,0.08)',
+        boxShadow: '0 16px 44px rgba(13,43,62,0.16)',
       }}
     >
       <div style={{ padding: '0 26px' }}>
@@ -72,7 +72,7 @@ export default function Nav() {
               fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontSize: 24, lineHeight: 1, fontWeight: 600,
               letterSpacing: '0.16em', textTransform: 'uppercase',
-              color: '#ffffff',
+              color: '#0D2B3E',
               transition: 'color 0.35s ease',
             }}>T2 Coaching</span>
           </Link>
@@ -99,10 +99,10 @@ export default function Nav() {
               style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 whiteSpace: 'nowrap',
-                background: GOLD, color: '#fff',
-                fontSize: 14, fontWeight: 700,
-                padding: '10px 22px', borderRadius: 100,
-                textDecoration: 'none', letterSpacing: '0.01em',
+                background: '#0D2B3E', color: '#F5F1E9',
+                fontSize: 14, fontWeight: 600,
+                padding: '11px 24px', borderRadius: 100,
+                textDecoration: 'none', letterSpacing: '0.04em',
               }}
             >Book a Free Call</a>
           </div>
@@ -120,7 +120,7 @@ export default function Nav() {
             {[0, 1, 2].map(i => (
               <span key={i} style={{
                 display: 'block', width: 24, height: 2, borderRadius: 2,
-                background: '#fff',
+                background: '#0D2B3E',
                 transition: 'all 0.25s ease',
                 transform: open && i === 0 ? 'rotate(45deg) translateY(7px)' :
                            open && i === 2 ? 'rotate(-45deg) translateY(-7px)' : 'none',
@@ -136,10 +136,10 @@ export default function Nav() {
         overflow: 'hidden',
         maxHeight: open ? 460 : 0,
         transition: 'max-height 0.3s ease',
-        background: 'rgba(13,43,62,0.98)',
+        background: 'rgba(255,255,255,0.97)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderTop: open ? '1px solid rgba(255,255,255,0.1)' : 'none',
+        borderTop: open ? '1px solid rgba(13,43,62,0.08)' : 'none',
       }}>
         <div style={{ padding: '12px 26px 24px' }}>
           {LINKS.map(({ label, to }) => (
@@ -148,9 +148,9 @@ export default function Nav() {
               fontFamily: "'Cormorant Garamond', Georgia, serif",
               textTransform: 'uppercase', letterSpacing: '0.12em',
               fontSize: 18, fontWeight: 600,
-              color: isActive ? GOLD : 'rgba(255,255,255,0.85)',
+              color: isActive ? '#0D2B3E' : 'rgba(13,43,62,0.72)',
               textDecoration: 'none',
-              borderBottom: '1px solid rgba(255,255,255,0.08)',
+              borderBottom: '1px solid rgba(13,43,62,0.08)',
             })}>{label}</NavLink>
           ))}
           <a
@@ -161,9 +161,9 @@ export default function Nav() {
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               marginTop: 16,
-              background: GOLD, color: '#fff',
-              fontSize: 14, fontWeight: 700,
-              padding: '14px 0',
+              background: '#0D2B3E', color: '#F5F1E9',
+              fontSize: 14, fontWeight: 600,
+              padding: '15px 0',
               borderRadius: 100, textDecoration: 'none',
             }}
           >Book a Free Call</a>

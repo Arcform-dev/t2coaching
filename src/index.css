@@ -258,14 +258,15 @@ section, footer {
   align-items: center;
   gap: 10px;
   white-space: nowrap;
-  background: #C9A84C;
+  background: #F5F1E9;
   color: #0D2B3E;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   padding: 14px 28px;
   border-radius: 100px;
   text-decoration: none;
-  box-shadow: 0 10px 30px rgba(201, 168, 76, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
 }
 
 /* Sticky-reveal: the page content scrolls up over the pinned hero */
