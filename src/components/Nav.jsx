@@ -4,7 +4,6 @@ import { gsap } from 'gsap'
 import { BOOKING_URL } from '../data/siteContent'
 
 const BLUE = '#1A6B8A'
-const GOLD = '#C9A84C'
 
 const LINKS = [
   { label: 'About', to: '/about' },
@@ -32,8 +31,8 @@ export default function Nav() {
     )
   }, [])
 
-  const linkColor = 'rgba(13,43,62,0.74)'
-  const activeColor = '#0D2B3E'
+  const linkColor = 'rgba(245,241,233,0.82)'
+  const activeColor = '#ffffff'
 
   return (
     <nav
@@ -44,17 +43,17 @@ export default function Nav() {
         margin: '0 auto',
         maxWidth: 1280,
         zIndex: 9999,
-        borderRadius: 20,
+        borderRadius: 36,
         overflow: 'hidden',
         transition: 'background 0.35s ease, box-shadow 0.35s ease',
-        background: 'rgba(255, 255, 255, 0.85)',
+        background: 'rgba(6, 18, 25, 0.92)',
         backdropFilter: 'blur(18px)',
         WebkitBackdropFilter: 'blur(18px)',
-        border: '1px solid rgba(13,43,62,0.08)',
-        boxShadow: '0 16px 44px rgba(13,43,62,0.16)',
+        border: '1px solid rgba(255,255,255,0.08)',
+        boxShadow: '0 18px 46px rgba(0,0,0,0.4)',
       }}
     >
-      <div style={{ padding: '0 26px' }}>
+      <div style={{ padding: '0 34px' }}>
         <div style={{
           display: 'flex', alignItems: 'center',
           justifyContent: 'space-between', height: 64,
@@ -72,24 +71,24 @@ export default function Nav() {
               fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontSize: 24, lineHeight: 1, fontWeight: 600,
               letterSpacing: '0.16em', textTransform: 'uppercase',
-              color: '#0D2B3E',
+              color: '#F5F1E9',
               transition: 'color 0.35s ease',
             }}>T2 Coaching</span>
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex" style={{ alignItems: 'center', gap: 34 }}>
+          <div className="hidden md:flex" style={{ alignItems: 'center', gap: 8 }}>
             {LINKS.map(({ label, to }) => (
               <NavLink key={label} to={to} style={({ isActive }) => ({
-                position: 'relative',
                 fontFamily: "'Cormorant Garamond', Georgia, serif",
                 textTransform: 'uppercase',
-                fontSize: 17, fontWeight: 600, letterSpacing: '0.14em',
+                fontSize: 16, fontWeight: 600, letterSpacing: '0.12em',
                 color: isActive ? activeColor : linkColor,
                 textDecoration: 'none',
-                transition: 'color 0.2s ease',
-                paddingBottom: 3,
-                borderBottom: isActive ? `1px solid ${GOLD}` : '1px solid transparent',
+                transition: 'color 0.2s ease, border-color 0.2s ease',
+                padding: '7px 16px',
+                borderRadius: 999,
+                border: isActive ? '1px solid rgba(245,241,233,0.4)' : '1px solid transparent',
               })}>{label}</NavLink>
             ))}
             <a
@@ -99,7 +98,7 @@ export default function Nav() {
               style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 whiteSpace: 'nowrap',
-                background: '#0D2B3E', color: '#F5F1E9',
+                background: '#F5F1E9', color: '#0D2B3E',
                 fontSize: 14, fontWeight: 600,
                 padding: '11px 24px', borderRadius: 100,
                 textDecoration: 'none', letterSpacing: '0.04em',
@@ -120,7 +119,7 @@ export default function Nav() {
             {[0, 1, 2].map(i => (
               <span key={i} style={{
                 display: 'block', width: 24, height: 2, borderRadius: 2,
-                background: '#0D2B3E',
+                background: '#F5F1E9',
                 transition: 'all 0.25s ease',
                 transform: open && i === 0 ? 'rotate(45deg) translateY(7px)' :
                            open && i === 2 ? 'rotate(-45deg) translateY(-7px)' : 'none',
@@ -136,10 +135,10 @@ export default function Nav() {
         overflow: 'hidden',
         maxHeight: open ? 460 : 0,
         transition: 'max-height 0.3s ease',
-        background: 'rgba(255,255,255,0.97)',
+        background: 'rgba(6,18,25,0.97)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderTop: open ? '1px solid rgba(13,43,62,0.08)' : 'none',
+        borderTop: open ? '1px solid rgba(255,255,255,0.1)' : 'none',
       }}>
         <div style={{ padding: '12px 26px 24px' }}>
           {LINKS.map(({ label, to }) => (
@@ -148,9 +147,9 @@ export default function Nav() {
               fontFamily: "'Cormorant Garamond', Georgia, serif",
               textTransform: 'uppercase', letterSpacing: '0.12em',
               fontSize: 18, fontWeight: 600,
-              color: isActive ? '#0D2B3E' : 'rgba(13,43,62,0.72)',
+              color: isActive ? '#ffffff' : 'rgba(245,241,233,0.8)',
               textDecoration: 'none',
-              borderBottom: '1px solid rgba(13,43,62,0.08)',
+              borderBottom: '1px solid rgba(255,255,255,0.08)',
             })}>{label}</NavLink>
           ))}
           <a
@@ -161,7 +160,7 @@ export default function Nav() {
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               marginTop: 16,
-              background: '#0D2B3E', color: '#F5F1E9',
+              background: '#F5F1E9', color: '#0D2B3E',
               fontSize: 14, fontWeight: 600,
               padding: '15px 0',
               borderRadius: 100, textDecoration: 'none',
