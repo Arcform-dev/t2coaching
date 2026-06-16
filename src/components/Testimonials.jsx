@@ -116,16 +116,10 @@ export default function Testimonials() {
                 cursor: i !== 0 ? 'pointer' : 'default',
               }}
             >
-              {/* Anchored serif quote glyph — signals testimony */}
-              <div style={{
-                fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
-                fontSize: 44, lineHeight: 0.6, color: 'rgba(126,200,227,0.4)',
-                marginBottom: 14,
-              }}>“</div>
               <Stars />
               <blockquote style={{
                 fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
-                fontSize: 'clamp(1.05rem, 1.6vw, 1.2rem)', fontStyle: 'italic',
+                fontSize: 'clamp(1.05rem, 1.6vw, 1.2rem)',
                 color: 'rgba(255,255,255,0.9)',
                 lineHeight: 1.6, margin: '14px 0 22px',
               }}>{t.quote}</blockquote>

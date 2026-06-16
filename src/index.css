@@ -125,53 +125,15 @@ section, footer {
 /* Gallery hover zoom */
 .gallery-item:hover img { transform: scale(1.06); }
 
-/* ── Shine-on-hover sweep for "Book a Free Call" CTAs ──────────────────────
-   A diagonal white highlight glides across the button on hover. Ported from a
-   shadcn/Tailwind snippet into plain CSS because our buttons use inline styles,
-   and React inline styles can't render a ::before pseudo-element. */
-.shine-btn {
-  position: relative;
-  overflow: hidden;
-}
-.shine-btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background-image: linear-gradient(
-    45deg,
-    transparent 25%,
-    rgba(255, 255, 255, 0.7) 50%,
-    transparent 75%,
-    transparent 100%
-  );
-  background-size: 250% 250%;
-  background-position: 200% 0;
-  background-repeat: no-repeat;
-  transition: background-position 1s ease;
-}
-.shine-btn:hover::before {
-  background-position: -100% 0;
-}
-
 /* ── Gold primary CTA ───────────────────────────────────────────────────────
-   Gold is reserved for the one action we want taken: "Book a Free Call". A soft
-   glow pulse keeps it alive and draws the eye without clutter. */
+   Flat gold button, no shine sweep and no glow pulse — just a quiet hover. The
+   .shine-btn class is left inert on existing buttons (no effect). */
 .cta-gold {
   background: var(--gold);
   color: #0D2B3E;
-  animation: ctaPulse 3.2s ease-in-out infinite;
 }
 .cta-gold:hover {
   background: #d8b85e;
-}
-@keyframes ctaPulse {
-  0%, 100% { box-shadow: 0 8px 22px rgba(201, 168, 76, 0.30); }
-  50%      { box-shadow: 0 12px 36px rgba(201, 168, 76, 0.62); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .cta-gold { animation: none; box-shadow: 0 8px 22px rgba(201, 168, 76, 0.32); }
 }
 
 /* ── Champion hero (homepage) ──────────────────────────────────────────────

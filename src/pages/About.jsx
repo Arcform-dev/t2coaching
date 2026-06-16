@@ -84,13 +84,10 @@ export default function About() {
         <div style={WRAP}>
           <Reveal>
             <GlassCard style={{ padding: 'clamp(32px, 5vw, 56px)', textAlign: 'center', maxWidth: 880, margin: '0 auto' }}>
-              <span style={{ fontSize: 11, fontWeight: 600, color: '#F5A623', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-                {NAME_MEANING.title}
-              </span>
               <p style={{
                 fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
-                fontSize: 'clamp(1.4rem, 2.6vw, 1.9rem)', fontStyle: 'italic',
-                color: '#fff', lineHeight: 1.5, marginTop: 18,
+                fontSize: 'clamp(1.4rem, 2.6vw, 1.9rem)',
+                color: '#fff', lineHeight: 1.5, margin: 0,
               }}>
                 {NAME_MEANING.body}
               </p>

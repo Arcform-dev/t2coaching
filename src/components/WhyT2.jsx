@@ -33,11 +33,9 @@ const FEATURES = [
 
 // Editorial "reasons" rows — a short accent rule instead of a card box, so the
 // differentiators read distinctly from the solid offer cards and the quotes.
-function FeatureRow({ f, index }) {
-  const accent = index % 2 === 0 ? '#F5A623' : '#7EC8E3'
+function FeatureRow({ f }) {
   return (
     <div style={{ paddingTop: 28, borderTop: '1px solid rgba(255,255,255,0.16)' }}>
-      <div style={{ width: 28, height: 3, background: accent, borderRadius: 2, marginBottom: 16 }} />
       <h3 style={{
         fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
         fontSize: 'clamp(1.15rem, 1.8vw, 1.35rem)',

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { BOOKING_URL } from '../data/siteContent'
 
@@ -17,45 +17,45 @@ const LINKS = [
 export default function Nav() {
   const ref = useRef(null)
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const { pathname } = useLocation()
 
-  // Solid (white, blurred) on every page — the homepage hero now has a light
-  // left panel, so a transparent nav would render the logo invisible.
-  const solid = true
+  // Full-width bar: transparent over the hero on the home page, solid once
+  // scrolled. Interior pages have no hero behind it, so it's solid throughout.
+  const isHome = pathname === '/'
+  const solid = scrolled || !isHome
 
   useEffect(() => {
     const el = ref.current
-    if (!el) return
-    gsap.fromTo(el,
-      { y: -70, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.75, ease: 'power3.out', delay: 0.2 }
-    )
+    if (el) {
+      gsap.fromTo(el,
+        { y: -70, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.75, ease: 'power3.out', delay: 0.2 })
+    }
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
-  const linkColor = 'rgba(245,241,233,0.82)'
-  const activeColor = '#ffffff'
 
   return (
     <nav
       ref={ref}
       style={{
         position: 'fixed',
-        top: 16, left: 16, right: 16,
-        margin: '0 auto',
-        maxWidth: 1280,
+        top: 0, left: 0, right: 0,
         zIndex: 9999,
-        borderRadius: 36,
-        overflow: 'hidden',
         transition: 'background 0.35s ease, box-shadow 0.35s ease',
-        background: 'rgba(6, 18, 25, 0.92)',
-        backdropFilter: 'blur(18px)',
-        WebkitBackdropFilter: 'blur(18px)',
-        boxShadow: '0 18px 46px rgba(0,0,0,0.4)',
+        background: solid ? 'rgba(8, 24, 35, 0.95)' : 'transparent',
+        backdropFilter: solid ? 'blur(14px)' : 'none',
+        WebkitBackdropFilter: solid ? 'blur(14px)' : 'none',
+        boxShadow: solid ? '0 1px 0 rgba(255,255,255,0.06)' : 'none',
       }}
     >
-      <div style={{ padding: '0 34px' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
         <div style={{
           display: 'flex', alignItems: 'center',
-          justifyContent: 'space-between', height: 64,
+          justifyContent: 'space-between', height: 72,
         }}>
           {/* Logo */}
           <Link to="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
@@ -68,30 +68,26 @@ export default function Nav() {
             </div>
             <span style={{
               fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
-              fontSize: 24, lineHeight: 1, fontWeight: 600,
-              letterSpacing: '0.16em', textTransform: 'uppercase',
+              fontSize: 22, lineHeight: 1, fontWeight: 600,
+              letterSpacing: '0.14em', textTransform: 'uppercase',
               color: '#F5F1E9',
-              transition: 'color 0.35s ease',
             }}>T2 Coaching</span>
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex" style={{ alignItems: 'center', gap: 8 }}>
+          <div className="hidden md:flex" style={{ alignItems: 'center', gap: 26 }}>
             {LINKS.map(({ label, to }) => (
               <NavLink key={label} to={to} style={({ isActive }) => ({
                 fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
                 textTransform: 'uppercase',
-                fontSize: 16, fontWeight: 600, letterSpacing: '0.12em',
-                color: isActive ? activeColor : linkColor,
+                fontSize: 14, fontWeight: 600, letterSpacing: '0.1em',
+                color: isActive ? '#ffffff' : 'rgba(245,241,233,0.82)',
                 textDecoration: 'none',
-                transition: 'color 0.2s ease, border-color 0.2s ease',
-                padding: '7px 16px',
-                borderRadius: 999,
-                border: isActive ? '1px solid rgba(245,241,233,0.4)' : '1px solid transparent',
+                transition: 'color 0.2s ease',
               })}>{label}</NavLink>
             ))}
             <a
-              className="shine-btn cta-gold"
+              className="cta-gold"
               href={BOOKING_URL}
               target="_blank" rel="noopener noreferrer"
               style={{
@@ -100,7 +96,7 @@ export default function Nav() {
                 color: '#0D2B3E',
                 fontSize: 14, fontWeight: 700,
                 padding: '11px 24px', borderRadius: 100,
-                textDecoration: 'none', letterSpacing: '0.04em',
+                textDecoration: 'none', letterSpacing: '0.02em',
               }}
             >Book a Free Call</a>
           </div>
@@ -134,25 +130,24 @@ export default function Nav() {
         overflow: 'hidden',
         maxHeight: open ? 460 : 0,
         transition: 'max-height 0.3s ease',
-        background: 'rgba(6,18,25,0.97)',
+        background: 'rgba(8,24,35,0.98)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderTop: open ? '1px solid rgba(255,255,255,0.1)' : 'none',
       }}>
-        <div style={{ padding: '12px 26px 24px' }}>
+        <div style={{ padding: '12px 32px 24px' }}>
           {LINKS.map(({ label, to }) => (
             <NavLink key={label} to={to} onClick={() => setOpen(false)} style={({ isActive }) => ({
               display: 'block', padding: '14px 0',
               fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
-              textTransform: 'uppercase', letterSpacing: '0.12em',
-              fontSize: 18, fontWeight: 600,
+              textTransform: 'uppercase', letterSpacing: '0.1em',
+              fontSize: 16, fontWeight: 600,
               color: isActive ? '#ffffff' : 'rgba(245,241,233,0.8)',
               textDecoration: 'none',
               borderBottom: '1px solid rgba(255,255,255,0.08)',
             })}>{label}</NavLink>
           ))}
           <a
-            className="shine-btn cta-gold"
+            className="cta-gold"
             href={BOOKING_URL}
             target="_blank" rel="noopener noreferrer"
             onClick={() => setOpen(false)}

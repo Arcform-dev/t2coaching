@@ -68,7 +68,7 @@ export default function Hero() {
 
       {/* Copy block — headline, action, supporting line; set straight on the navy */}
       <div ref={cardRef} className="champ-hero__card">
-        <h2 className="champ-hero__headline">Personalized Coaching.<br />For YOUR Life.</h2>
+        <h2 className="champ-hero__headline">Personalized Coaching.<br />For Your Life.</h2>
         <a className="shine-btn cta-gold champ-hero__cta" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
           Train with Wendy
         </a>

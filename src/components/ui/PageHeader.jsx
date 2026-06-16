@@ -36,14 +36,6 @@ export default function PageHeader({ eyebrow, title, titleAccent, subtitle, phot
         </>
       )}
       <div style={{ position: 'relative', zIndex: 2, maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
-        {eyebrow && (
-          <div data-ph style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
-            <div style={{ width: 36, height: 1, background: '#F5A623' }} />
-            <span style={{ fontSize: 11, fontWeight: 600, color: '#F5A623', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
-              {eyebrow}
-            </span>
-          </div>
-        )}
         <h1 data-ph style={{
           fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
           fontSize: 'clamp(2.6rem, 6vw, 5rem)',
@@ -51,7 +43,7 @@ export default function PageHeader({ eyebrow, title, titleAccent, subtitle, phot
           maxWidth: 900,
         }}>
           {title}{' '}
-          {titleAccent && <em style={{ color: '#7EC8E3', fontStyle: 'italic' }}>{titleAccent}</em>}
+          {titleAccent && <span style={{ color: '#7EC8E3' }}>{titleAccent}</span>}
         </h1>
         {subtitle && (
           <p data-ph style={{

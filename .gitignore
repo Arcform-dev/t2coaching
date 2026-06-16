@@ -28,3 +28,8 @@ dist-ssr
 
 # Wendy's raw source content (docx/zip) — kept out of the build & repo
 content-source/
+
+# Local Claude Code tooling (do not commit)
+.claude/
+.agents/
+skills-lock.json

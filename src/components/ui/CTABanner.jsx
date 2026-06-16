@@ -17,13 +17,6 @@ export default function CTABanner({
     }}>
       <Reveal style={{ position: 'relative', zIndex: 2 }}>
         <div style={{ maxWidth: 720, margin: '0 auto', padding: '0 32px', textAlign: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 18 }}>
-            <div style={{ width: 40, height: 1, background: '#F5A623' }} />
-            <span style={{ fontSize: 11, fontWeight: 600, color: '#F5A623', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
-              Start Your Season
-            </span>
-            <div style={{ width: 40, height: 1, background: '#F5A623' }} />
-          </div>
           <h2 style={{
             fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
             fontSize: 'clamp(2rem, 5vw, 3.4rem)', color: '#fff', lineHeight: 1.12, marginBottom: 18,
@@ -33,14 +26,12 @@ export default function CTABanner({
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center' }}>
             <a
-              className="shine-btn"
               href={primaryHref}
               target="_blank" rel="noopener noreferrer"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10, whiteSpace: 'nowrap',
                 background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
                 padding: '16px 38px', borderRadius: 100, textDecoration: 'none',
-                boxShadow: '0 12px 40px rgba(201,168,76,0.45)',
               }}
             >
               {primaryLabel}

@@ -73,7 +73,7 @@ export default function CTA() {
           }}>
             <Words text="Ready to" style={{ color: '#ffffff' }} />
             {' '}
-            <Words text="race smarter?" style={{ color: '#7EC8E3', fontStyle: 'italic' }} />
+            <Words text="race smarter?" style={{ color: '#7EC8E3' }} />
           </h2>
 
           {/* Sub */}

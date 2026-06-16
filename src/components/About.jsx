@@ -138,21 +138,15 @@ export default function About() {
               <div style={{ position: 'absolute', bottom: 16, left: 16, width: 36, height: 36, borderBottom: '2px solid rgba(245,166,35,0.55)', borderLeft: '2px solid rgba(245,166,35,0.55)' }} />
             </div>
 
-            <div ref={quoteRef} style={{ background: '#0D2B3E', borderRadius: 18, padding: '28px 28px 24px', position: 'relative' }}>
-              <div style={{
-                position: 'absolute', top: 12, left: 22,
-                fontSize: 56, color: 'rgba(245,166,35,0.45)',
-                fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", lineHeight: 1,
-              }}>"</div>
+            <div ref={quoteRef} style={{ background: '#0D2B3E', borderRadius: 18, padding: '28px 28px 24px' }}>
               <blockquote style={{
                 fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
                 fontSize: 'clamp(1rem, 1.8vw, 1.15rem)',
-                color: '#ffffff', fontStyle: 'italic', lineHeight: 1.55, paddingTop: 20,
+                color: '#ffffff', lineHeight: 1.55, margin: 0,
               }}>
                 Crossing that Kona finish line changed everything I understand about what athletes are capable of. I bring that to every training plan I write.
               </blockquote>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 18 }}>
-                <div style={{ width: 28, height: 2, background: '#F5A623', flexShrink: 0 }} />
+              <div style={{ marginTop: 18 }}>
                 <span style={{ fontSize: 13, fontWeight: 600, color: '#7EC8E3' }}>
                   Wendy Mader, Kona Ironman Champion
                 </span>
