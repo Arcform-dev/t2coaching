@@ -65,19 +65,13 @@ export default function Hero() {
         alt="Wendy Mader celebrating at the Ironman World Championship finish line in Kona, arms raised."
       />
 
-      {/* Glass card — credibility hook + short intro + contact button */}
+      {/* Copy block — headline, action, supporting line; set straight on the navy */}
       <div ref={cardRef} className="champ-hero__card">
-        <p className="champ-hero__eyebrow">
-          Coached personally by <strong>Wendy Mader</strong>
-          <span className="champ-hero__cred">2008 Kona Ironman World Champion</span>
-        </p>
-        <p className="champ-hero__lede">Personalized coaching built around your real life and the hours you actually train.</p>
+        <h2 className="champ-hero__headline">Personalized Coaching.<br />For YOUR Life.</h2>
         <a className="shine-btn cta-gold champ-hero__cta" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
-          Book a free call
-          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
+          Train with Wendy
         </a>
+        <p className="champ-hero__sub">Get coaching by an expert in triathlon and endurance sports. With over 30+ years of experience in the field.</p>
       </div>
     </section>
   )

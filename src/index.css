@@ -1,9 +1,9 @@
 /* Two fonts only:
    - Playfair Display SC — the decorative serif, used ONLY for the giant hero
      statement (like Barrier's "BARRIER").
-   - Hanken Grotesk — one clean business sans for everything else (body, nav,
-     all headings, cards), echoing Barrier's "Built for safety…" lettering. */
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=Playfair+Display+SC:wght@400;700;900&display=swap');
+   - Noto Sans — one clean business sans for everything else (body, nav,
+     all headings, cards). */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display+SC:wght@400;700;900&display=swap');
 @import "tailwindcss";
 @source "../index.html";
 @source "./src";
@@ -25,7 +25,7 @@ html {
 }
 
 body {
-  font-family: 'Hanken Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   /* Single solid teal surface for the entire site — the visual through-line.
      Content sections are transparent and sit on this; navy bands provide rhythm. */
   background: #1A6B8A;
@@ -273,45 +273,19 @@ section, footer {
      (mostly matters on mobile, where the centred cutout fills the width). */
   text-shadow: 0 1px 18px rgba(6, 18, 25, 0.7);
 }
-/* Barrier hierarchy: a small supporting label, then the lava credential eyebrow,
-   then one clean dominant statement, then the action — all in Hanken Grotesk. */
-.champ-hero__eyebrow {
-  margin: 0 0 16px;
-  font-size: 0.9rem;
-  line-height: 1.45;
-  color: rgba(255, 255, 255, 0.82);
-  font-weight: 500;
-}
-.champ-hero__eyebrow strong {
-  color: #ffffff;
+/* Headline — the dominant line, clean and bold. */
+.champ-hero__headline {
+  margin: 0 0 24px;
+  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
   font-weight: 700;
-}
-/* The credential carries the single deliberate lava accent (the marker bar) */
-.champ-hero__cred {
-  display: block;
-  margin-top: 10px;
-  padding-left: 13px;
-  border-left: 3px solid var(--lava);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #ffffff;
-}
-/* The dominant line — clean, medium weight, slight negative tracking, the way
-   Barrier sets "Built for safety. Engineered to last." */
-.champ-hero__lede {
-  margin: 0 0 28px;
-  font-size: clamp(1.25rem, 1.9vw, 1.6rem);
-  font-weight: 500;
-  line-height: 1.32;
+  line-height: 1.1;
   letter-spacing: -0.01em;
-  color: rgba(255, 255, 255, 0.96);
+  color: #ffffff;
 }
+/* Action — sits between the headline and the supporting line, per the layout. */
 .champ-hero__cta {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   white-space: nowrap;
   font-size: 15px;
   font-weight: 700;
@@ -319,6 +293,15 @@ section, footer {
   padding: 14px 28px;
   border-radius: 100px;
   text-decoration: none;
+}
+/* Supporting line — quiet, smaller, below the action. */
+.champ-hero__sub {
+  margin: 24px 0 0;
+  max-width: 380px;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.82);
 }
 
 /* Sticky-reveal: the page content scrolls up over the pinned hero */

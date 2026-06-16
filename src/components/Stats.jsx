@@ -32,7 +32,7 @@ function StatCell({ value, suffix, label, sub, index }) {
       {/* Gold tick — a race-clock marker */}
       <div style={{ width: 18, height: 3, background: '#F5A623', borderRadius: 2, marginBottom: 16 }} />
       <div ref={numRef} style={{
-        fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
+        fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif",
         fontSize: 'clamp(2.4rem, 4.5vw, 3.6rem)',
         color: '#ffffff', lineHeight: 1,
       }}>0{suffix}</div>
@@ -73,7 +73,7 @@ export default function Stats() {
           }}>
             <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#F5A623', flexShrink: 0 }} />
             <span style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.09)' }} />
-            <span style={{ fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif", fontStyle: 'italic', fontSize: 15, color: 'rgba(255,255,255,0.45)' }}>
+            <span style={{ fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif", fontStyle: 'italic', fontSize: 15, color: 'rgba(255,255,255,0.45)' }}>
               Coach Wendy Mader
             </span>
           </div>

@@ -50,10 +50,10 @@ function ServiceCard({ s }) {
       <div style={{ width: 52, height: 52, borderRadius: 12, background: 'rgba(126,200,227,0.14)', color: '#7EC8E3', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 22 }}>
         {ICONS[s.icon]}
       </div>
-      <h3 style={{ fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif", fontSize: 21, color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>{s.title}</h3>
+      <h3 style={{ fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif", fontSize: 21, color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>{s.title}</h3>
 
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 16 }}>
-        <span style={{ fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif", fontSize: 36, color: '#7EC8E3' }}>{s.price}</span>
+        <span style={{ fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif", fontSize: 36, color: '#7EC8E3' }}>{s.price}</span>
         <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>{s.cadence}</span>
       </div>
 
@@ -123,7 +123,7 @@ export default function Services() {
             }}>
               <div style={{ flex: '1 1 360px' }}>
                 <span style={{ fontSize: 11, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Free to start</span>
-                <h3 style={{ fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif", fontSize: 'clamp(1.5rem, 3vw, 2.1rem)', color: '#fff', margin: '12px 0 14px' }}>
+                <h3 style={{ fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif", fontSize: 'clamp(1.5rem, 3vw, 2.1rem)', color: '#fff', margin: '12px 0 14px' }}>
                   {FREE_OFFER.label}
                 </h3>
                 <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, maxWidth: 520 }}>{FREE_OFFER.body}</p>
@@ -152,7 +152,7 @@ export default function Services() {
             {HOW_IT_WORKS.map((step, i) => (
               <Reveal key={step.step} delay={i * 0.08}>
                 <GlassCard style={{ padding: '32px 26px', height: '100%' }}>
-                  <div style={{ fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif", fontSize: 34, color: 'rgba(126,200,227,0.5)', marginBottom: 12 }}>{step.step}</div>
+                  <div style={{ fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif", fontSize: 34, color: 'rgba(126,200,227,0.5)', marginBottom: 12 }}>{step.step}</div>
                   <h3 style={{ fontSize: 17, fontWeight: 600, color: '#fff', marginBottom: 10 }}>{step.title}</h3>
                   <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.64)', lineHeight: 1.65 }}>{step.body}</p>
                 </GlassCard>

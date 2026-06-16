@@ -30,7 +30,7 @@ function PostCard({ post }) {
           <span style={{ fontSize: 11, fontWeight: 600, color: '#7EC8E3', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{post.category}</span>
           {post.readTime && <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>· {post.readTime}</span>}
         </div>
-        <h3 style={{ fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif", fontSize: 20, color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>{post.title}</h3>
+        <h3 style={{ fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif", fontSize: 20, color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>{post.title}</h3>
         <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.64)', lineHeight: 1.65, flex: 1 }}>{post.excerpt}</p>
         <div style={{ marginTop: 18 }}>
           {post.comingSoon ? (

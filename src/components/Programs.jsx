@@ -108,7 +108,7 @@ function ProgramCard({ program, index }) {
       }}>{p.icon}</div>
 
       <h3 style={{
-        fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
+        fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif",
         fontSize: 20, color: '#ffffff',
         lineHeight: 1.3, marginBottom: 12,
       }}>{p.title}</h3>
@@ -122,7 +122,7 @@ function ProgramCard({ program, index }) {
         borderTop: '1px solid rgba(255,255,255,0.08)',
       }}>
         <span style={{
-          fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
+          fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif",
           fontSize: 26, color: '#7EC8E3', lineHeight: 1,
         }}>{p.highlight}</span>
       </div>
@@ -172,7 +172,7 @@ export default function Programs() {
 
         <div ref={headerRef} style={{ maxWidth: 600, marginBottom: 64 }}>
           <h2 style={{
-            fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
+            fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif",
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             color: '#ffffff', lineHeight: 1.15, marginBottom: 16,
           }}>
