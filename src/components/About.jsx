@@ -73,7 +73,7 @@ export default function About() {
             border: '1px solid rgba(255,255,255,0.08)',
           }}>
             <h2 style={{
-              fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif",
+              fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
               fontSize: 'clamp(1.9rem, 3.5vw, 2.8rem)',
               color: '#ffffff', lineHeight: 1.2, marginBottom: 28,
             }}>
@@ -142,10 +142,10 @@ export default function About() {
               <div style={{
                 position: 'absolute', top: 12, left: 22,
                 fontSize: 56, color: 'rgba(245,166,35,0.45)',
-                fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif", lineHeight: 1,
+                fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", lineHeight: 1,
               }}>"</div>
               <blockquote style={{
-                fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif",
+                fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
                 fontSize: 'clamp(1rem, 1.8vw, 1.15rem)',
                 color: '#ffffff', fontStyle: 'italic', lineHeight: 1.55, paddingTop: 20,
               }}>

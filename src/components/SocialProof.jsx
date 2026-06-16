@@ -41,7 +41,7 @@ export default function SocialProof() {
 
         {/* Quote */}
         <blockquote style={{
-          fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif",
+          fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
           fontSize: 'clamp(1.15rem, 2.5vw, 1.5rem)',
           fontStyle: 'italic',
           color: 'rgba(255,255,255,0.9)',

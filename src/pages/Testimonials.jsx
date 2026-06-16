@@ -47,7 +47,7 @@ export default function Testimonials() {
                       <img src={t.photo} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                     <div style={{ flex: 1, minWidth: 180 }}>
-                      <h3 style={{ fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif", fontSize: 22, color: '#fff', lineHeight: 1.1 }}>{t.name}</h3>
+                      <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 22, color: '#fff', lineHeight: 1.1 }}>{t.name}</h3>
                       <p style={{ fontSize: 13, color: '#7EC8E3', fontWeight: 500, marginTop: 4 }}>{t.tag}</p>
                     </div>
                     <Stars />

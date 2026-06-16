@@ -56,7 +56,7 @@ function ResourceCard({ r }) {
       <div style={{ width: 50, height: 50, borderRadius: 12, background: 'rgba(126,200,227,0.12)', color: '#7EC8E3', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 22 }}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={r.icon} /></svg>
       </div>
-      <h3 style={{ fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif", fontSize: 19, color: '#fff', marginBottom: 12 }}>{r.title}</h3>
+      <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 19, color: '#fff', marginBottom: 12 }}>{r.title}</h3>
       <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.64)', lineHeight: 1.7, flex: 1, marginBottom: 20 }}>{r.desc}</p>
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 600, color: '#F5A623' }}>
         {r.cta}
@@ -104,7 +104,7 @@ function GuideSignup() {
       <div className="story-grid" style={{ display: 'grid', gap: 40, alignItems: 'center' }}>
         <div>
           <span style={{ fontSize: 11, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Free Insider's Guide</span>
-          <h3 style={{ fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif", fontSize: 'clamp(1.6rem, 3vw, 2.3rem)', color: '#fff', margin: '14px 0 16px', lineHeight: 1.2 }}>
+          <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 'clamp(1.6rem, 3vw, 2.3rem)', color: '#fff', margin: '14px 0 16px', lineHeight: 1.2 }}>
             How world-class athletes stay on top — without overtraining.
           </h3>
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>

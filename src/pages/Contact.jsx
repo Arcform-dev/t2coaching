@@ -61,14 +61,14 @@ export default function Contact() {
                 {status === 'ok' ? (
                   <div style={{ textAlign: 'center', padding: '40px 0' }}>
                     <div style={{ fontSize: 48, marginBottom: 16 }}>🏁</div>
-                    <h3 style={{ fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif", fontSize: 26, color: '#fff', marginBottom: 12 }}>Message sent!</h3>
+                    <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 26, color: '#fff', marginBottom: 12 }}>Message sent!</h3>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, maxWidth: 380, margin: '0 auto' }}>
                       Thanks for reaching out. I'll get back to you within 1–2 business days. Talk soon!
                     </p>
                   </div>
                 ) : (
                   <form onSubmit={submit}>
-                    <h2 style={{ fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif", fontSize: 24, color: '#fff', marginBottom: 24 }}>Send an inquiry</h2>
+                    <h2 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 24, color: '#fff', marginBottom: 24 }}>Send an inquiry</h2>
 
                     <div className="form-row" style={{ display: 'grid', gap: 18, marginBottom: 18 }}>
                       <div>
@@ -146,7 +146,7 @@ export default function Contact() {
             <Reveal x={40} y={0} delay={0.1}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
                 <GlassCard style={{ padding: '32px 30px' }}>
-                  <h3 style={{ fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif", fontSize: 20, color: '#fff', marginBottom: 22 }}>Reach me directly</h3>
+                  <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 20, color: '#fff', marginBottom: 22 }}>Reach me directly</h3>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
                     <InfoRow label="Email" value={CONTACT.email} href={`mailto:${CONTACT.email}`} />
                     <InfoRow label="Phone" value={CONTACT.phone} href={CONTACT.phoneHref} />
@@ -158,7 +158,7 @@ export default function Contact() {
                 </GlassCard>
 
                 <GlassCard style={{ padding: '32px 30px' }}>
-                  <h3 style={{ fontFamily: "'Noto Sans', system-ui, -apple-system, sans-serif", fontSize: 20, color: '#fff', marginBottom: 8 }}>Prefer to talk?</h3>
+                  <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 20, color: '#fff', marginBottom: 8 }}>Prefer to talk?</h3>
                   <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, marginBottom: 18 }}>
                     Book a free 15-minute discovery call — no commitment, just a real conversation.
                   </p>
