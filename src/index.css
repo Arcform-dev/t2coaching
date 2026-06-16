@@ -3,6 +3,12 @@
 @source "../index.html";
 @source "./src";
 
+:root {
+  /* Single deliberate accent — Kona lava. Used once, on the hero credential. */
+  --lava: #D6442A;
+  --gold: #C9A84C;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -145,6 +151,25 @@ section, footer {
   background-position: -100% 0;
 }
 
+/* ── Gold primary CTA ───────────────────────────────────────────────────────
+   Gold is reserved for the one action we want taken: "Book a Free Call". A soft
+   glow pulse keeps it alive and draws the eye without clutter. */
+.cta-gold {
+  background: var(--gold);
+  color: #0D2B3E;
+  animation: ctaPulse 3.2s ease-in-out infinite;
+}
+.cta-gold:hover {
+  background: #d8b85e;
+}
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 8px 22px rgba(201, 168, 76, 0.30); }
+  50%      { box-shadow: 0 12px 36px rgba(201, 168, 76, 0.62); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cta-gold { animation: none; box-shadow: 0 8px 22px rgba(201, 168, 76, 0.32); }
+}
+
 /* ── Champion hero (homepage) ──────────────────────────────────────────────
    Layered: a huge gold Playfair statement fills the field, Wendy (cut out)
    sits in front of the letters, and a glass card holds a short intro + CTA.
@@ -220,16 +245,21 @@ section, footer {
   white-space: nowrap;
 }
 
-/* Wendy, cut out and layered over the letters */
+/* Wendy, cut out and layered over the letters. The bottom edge is masked into a
+   soft fade so the cutout melts into the navy instead of sitting on top of it.
+   --parallax is driven by Hero.jsx scroll handler for a gentle drift. */
 .champ-hero__photo {
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(var(--parallax, 0));
   height: min(94svh, 980px);
   width: auto;
   z-index: 2;
   pointer-events: none;
+  will-change: transform;
+  -webkit-mask-image: linear-gradient(to bottom, #000 76%, transparent 99%);
+          mask-image: linear-gradient(to bottom, #000 76%, transparent 99%);
 }
 
 /* Glass card — short intro + contact button */
@@ -247,7 +277,31 @@ section, footer {
           backdrop-filter: blur(18px);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 }
-.champ-hero__card p {
+/* Credibility hook — the one specific, earned line of proof */
+.champ-hero__eyebrow {
+  margin: 0 0 18px;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+.champ-hero__eyebrow strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+/* The credential carries the single deliberate lava accent (the marker bar) */
+.champ-hero__cred {
+  display: block;
+  margin-top: 9px;
+  padding-left: 13px;
+  border-left: 3px solid var(--lava);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.champ-hero__lede {
   margin: 0 0 22px;
   font-size: clamp(1rem, 1.4vw, 1.12rem);
   line-height: 1.65;
@@ -258,15 +312,12 @@ section, footer {
   align-items: center;
   gap: 10px;
   white-space: nowrap;
-  background: #F5F1E9;
-  color: #0D2B3E;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.02em;
   padding: 14px 28px;
   border-radius: 100px;
   text-decoration: none;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
 }
 
 /* Sticky-reveal: the page content scrolls up over the pinned hero */

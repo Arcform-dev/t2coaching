@@ -92,14 +92,14 @@ export default function Nav() {
               })}>{label}</NavLink>
             ))}
             <a
-              className="shine-btn"
+              className="shine-btn cta-gold"
               href={BOOKING_URL}
               target="_blank" rel="noopener noreferrer"
               style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 whiteSpace: 'nowrap',
-                background: '#F5F1E9', color: '#0D2B3E',
-                fontSize: 14, fontWeight: 600,
+                color: '#0D2B3E',
+                fontSize: 14, fontWeight: 700,
                 padding: '11px 24px', borderRadius: 100,
                 textDecoration: 'none', letterSpacing: '0.04em',
               }}
@@ -153,15 +153,15 @@ export default function Nav() {
             })}>{label}</NavLink>
           ))}
           <a
-            className="shine-btn"
+            className="shine-btn cta-gold"
             href={BOOKING_URL}
             target="_blank" rel="noopener noreferrer"
             onClick={() => setOpen(false)}
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               marginTop: 16,
-              background: '#F5F1E9', color: '#0D2B3E',
-              fontSize: 14, fontWeight: 600,
+              color: '#0D2B3E',
+              fontSize: 14, fontWeight: 700,
               padding: '15px 0',
               borderRadius: 100, textDecoration: 'none',
             }}
