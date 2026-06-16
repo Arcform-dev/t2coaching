@@ -306,6 +306,24 @@ section, footer {
   color: rgba(255, 255, 255, 0.82);
 }
 
+/* Featured-in press strip — dark logos on a white band. mix-blend-mode:multiply
+   drops each logo's white background into the band; grayscale + low opacity keep
+   the row quiet, full colour on hover. */
+.featured-logo {
+  height: clamp(36px, 5.2vw, 50px);
+  width: auto;
+  max-width: 168px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+.featured-logo:hover { filter: grayscale(0); opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .featured-logo { transition: none; }
+}
+
 /* Sticky-reveal: the page content scrolls up over the pinned hero */
 .home-rest {
   position: relative;
