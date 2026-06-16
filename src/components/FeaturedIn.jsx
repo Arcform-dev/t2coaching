@@ -12,8 +12,8 @@ const LOGOS = [
 export default function FeaturedIn() {
   const slotRef = useRef(null)
 
-  // Minimal "Featured in" rotator: each logo holds ~2s, then swipes left as the
-  // next swipes in from the right (Core Atelier's autoplay carousel, in GSAP).
+  // Minimal "Featured in" rotator (Core Atelier's hero corner): each logo holds
+  // ~2s, then swipes left as the next swipes in from the right.
   useEffect(() => {
     const slot = slotRef.current
     if (!slot) return
@@ -40,24 +40,15 @@ export default function FeaturedIn() {
   }, [])
 
   return (
-    <section style={{ background: '#ffffff', padding: 'clamp(30px, 4.5vw, 48px) 24px' }}>
-      <div style={{
-        maxWidth: 1080, margin: '0 auto',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        gap: 'clamp(16px, 2.4vw, 26px)',
-      }}>
-        <span style={{
-          flexShrink: 0,
-          fontSize: 'clamp(13px, 1.5vw, 15px)', fontWeight: 500,
-          letterSpacing: '0.03em', color: 'rgba(13,43,62,0.55)',
-        }}>Featured in</span>
-
+    <div className="hero-featured">
+      <span className="hero-featured__label">Featured in</span>
+      <div className="featured-chip">
         <div ref={slotRef} className="featured-slot" aria-label="Featured in the Wall Street Journal, TrainingPeaks, Ironman, and Endurance Hour">
           {LOGOS.map(({ src, alt }) => (
             <img key={src} className="featured-logo" src={src} alt={alt} />
           ))}
         </div>
       </div>
-    </section>
+    </div>
   )
 }

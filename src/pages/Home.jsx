@@ -1,6 +1,5 @@
 import useDocumentMeta from '../hooks/useDocumentMeta'
 import Hero from '../components/Hero'
-import FeaturedIn from '../components/FeaturedIn'
 import SocialProof from '../components/SocialProof'
 import Stats from '../components/Stats'
 import Programs from '../components/Programs'
@@ -18,7 +17,6 @@ export default function Home() {
     <>
       <Hero />
       <div className="home-rest">
-        <FeaturedIn />
         <SocialProof />
         <Stats />
         <Programs />

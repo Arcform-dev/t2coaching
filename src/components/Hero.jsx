@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { BOOKING_URL } from '../data/siteContent'
+import FeaturedIn from './FeaturedIn'
 
 export default function Hero() {
   const titleRef = useRef(null)
@@ -73,6 +74,9 @@ export default function Hero() {
         </a>
         <p className="champ-hero__sub">Get coaching by an expert in triathlon and endurance sports. With over 30+ years of experience in the field.</p>
       </div>
+
+      {/* Press rotator, set into the hero's bottom-right corner */}
+      <FeaturedIn />
     </section>
   )
 }
