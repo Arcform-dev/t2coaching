@@ -49,7 +49,6 @@ export default function Nav() {
         background: 'rgba(6, 18, 25, 0.92)',
         backdropFilter: 'blur(18px)',
         WebkitBackdropFilter: 'blur(18px)',
-        border: '1px solid rgba(255,255,255,0.08)',
         boxShadow: '0 18px 46px rgba(0,0,0,0.4)',
       }}
     >
