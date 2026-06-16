@@ -327,29 +327,23 @@ section, footer {
   color: rgba(245, 241, 233, 0.6);
   white-space: nowrap;
 }
-/* Small white chip — T2's logos are colour/detail (not clean white monochrome),
-   so they sit on white where they read cleanly, rather than inverted on navy. */
-.featured-chip {
-  flex-shrink: 0;
-  background: #ffffff;
-  border-radius: 9px;
-  padding: clamp(7px, 0.9vw, 10px) clamp(11px, 1.3vw, 15px);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
-}
 .featured-slot {
   position: relative;
-  width: clamp(86px, 11vw, 116px);
-  height: clamp(22px, 2.8vw, 28px);
+  flex-shrink: 0;
+  width: clamp(98px, 13vw, 140px);
+  height: clamp(26px, 3.4vw, 34px);
 }
+/* Transparent logos, monochrome over the navy (no chip). grayscale(1) drops the
+   colour; invert(1) flips luminance so dark marks go light on the dark bg while
+   filled logos keep their internal detail (rather than flattening to a blob). */
 .featured-logo {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: center;
-  filter: grayscale(1);
-  mix-blend-mode: multiply;
+  object-position: left center;
+  filter: grayscale(1) invert(1);
 }
 /* On mobile the copy card fills the bottom, so the corner rotator is hidden. */
 @media (max-width: 900px) {

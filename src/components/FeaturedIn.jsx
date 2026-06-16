@@ -1,12 +1,13 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 
-// Trimmed (white padding removed) press logos. One shows at a time in the slot.
+// Transparent press logos (SVG-wrapped PNG). One shows at a time in the slot;
+// a brightness(0) invert(1) filter renders each solid white over the navy.
 const LOGOS = [
-  { src: '/logo-wsj-trim.png', alt: 'The Wall Street Journal' },
-  { src: '/logo-trainingpeaks-trim.png', alt: 'TrainingPeaks' },
-  { src: '/logo-ironman-certified-coach-trim.png', alt: 'Ironman Certified Coach' },
-  { src: '/logo-endurance-hour-trim.png', alt: 'Endurance Hour' },
+  { src: '/logo-wsj-trim.svg', alt: 'The Wall Street Journal' },
+  { src: '/logo-trainingpeaks-trim.svg', alt: 'TrainingPeaks' },
+  { src: '/logo-ironman-certified-coach-trim.svg', alt: 'Ironman Certified Coach' },
+  { src: '/logo-endurance-hour-trim.svg', alt: 'Endurance Hour' },
 ]
 
 export default function FeaturedIn() {
@@ -42,12 +43,10 @@ export default function FeaturedIn() {
   return (
     <div className="hero-featured">
       <span className="hero-featured__label">Featured in</span>
-      <div className="featured-chip">
-        <div ref={slotRef} className="featured-slot" aria-label="Featured in the Wall Street Journal, TrainingPeaks, Ironman, and Endurance Hour">
-          {LOGOS.map(({ src, alt }) => (
-            <img key={src} className="featured-logo" src={src} alt={alt} />
-          ))}
-        </div>
+      <div ref={slotRef} className="featured-slot" aria-label="Featured in the Wall Street Journal, TrainingPeaks, Ironman, and Endurance Hour">
+        {LOGOS.map(({ src, alt }) => (
+          <img key={src} className="featured-logo" src={src} alt={alt} />
+        ))}
       </div>
     </div>
   )

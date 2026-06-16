@@ -29,8 +29,6 @@ function StatCell({ value, suffix, label, sub, index }) {
 
   return (
     <div style={{ background: '#0D2B3E', padding: '34px 28px' }}>
-      {/* Gold tick — a race-clock marker */}
-      <div style={{ width: 18, height: 3, background: '#F5A623', borderRadius: 2, marginBottom: 16 }} />
       <div ref={numRef} style={{
         fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
         fontSize: 'clamp(2.4rem, 4.5vw, 3.6rem)',
@@ -65,19 +63,6 @@ export default function Stats() {
           border: '1px solid rgba(255,255,255,0.1)',
           borderRadius: 20, overflow: 'hidden',
         }}>
-          {/* Board header */}
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: 12,
-            padding: '20px 28px',
-            borderBottom: '1px solid rgba(255,255,255,0.09)',
-          }}>
-            <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#F5A623', flexShrink: 0 }} />
-            <span style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.09)' }} />
-            <span style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontStyle: 'italic', fontSize: 15, color: 'rgba(255,255,255,0.45)' }}>
-              Coach Wendy Mader
-            </span>
-          </div>
-
           {/* Stat cells — 1px gaps over a light backing reveal hairline dividers at any column count */}
           <div className="record-grid" style={{ display: 'grid', gap: 1, background: 'rgba(255,255,255,0.09)' }}>
             {STATS.map((s, i) => (

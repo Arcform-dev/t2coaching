@@ -1,8 +1,7 @@
 import useDocumentMeta from '../hooks/useDocumentMeta'
 import Hero from '../components/Hero'
-import SocialProof from '../components/SocialProof'
-import Stats from '../components/Stats'
 import Programs from '../components/Programs'
+import Stats from '../components/Stats'
 import About from '../components/About'
 import WhyT2 from '../components/WhyT2'
 import Testimonials from '../components/Testimonials'
@@ -17,9 +16,8 @@ export default function Home() {
     <>
       <Hero />
       <div className="home-rest">
-        <SocialProof />
-        <Stats />
         <Programs />
+        <Stats />
         <About />
         <WhyT2 />
         <Testimonials />

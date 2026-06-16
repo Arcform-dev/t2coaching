@@ -1,0 +1,515 @@
+{
+  "version": 1,
+  "skills": {
+    "agent-browser": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/utilities/agent-browser/SKILL.md",
+      "computedHash": "3c0141144e8a1ef454e2dd72649b6a3f16112974ebc7e617fdf1795d0d8e6c0c"
+    },
+    "agent-tools": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/agent-tools/SKILL.md",
+      "computedHash": "4dcefaf1cafbc35589c3a4d61799dc3edd3bd843183e82a3c95ee32b929c0ace"
+    },
+    "agent-ui": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "ui/agent-ui/SKILL.md",
+      "computedHash": "def8f77148bc6cfd6d96fc2b053b2d5a19397464a554bfca5914ef5c3f642176"
+    },
+    "ai-automation-workflows": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/content/ai-automation-workflows/SKILL.md",
+      "computedHash": "fd9e4eecc7aff1e76763fdadd09fd4cf494f7061733dcd9a13ad2a9b97df95cb"
+    },
+    "ai-avatar-video": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/video/ai-avatar-video/SKILL.md",
+      "computedHash": "1a52fea665b6856a2a764fd7082db3194430045041bb5182ce66fbc763db0581"
+    },
+    "ai-content-pipeline": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/content/ai-content-pipeline/SKILL.md",
+      "computedHash": "91368c0703f02a4c97f5f2d39946c0407d5b4206199507cc6afcef80b9ec5104"
+    },
+    "ai-image-generation": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/image/ai-image-generation/SKILL.md",
+      "computedHash": "cf0b7e45b1e915e0782b3ec9734c0f1f580f08b88b5ccd2a80e7a582123eaa8f"
+    },
+    "ai-marketing-videos": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/video/ai-marketing-videos/SKILL.md",
+      "computedHash": "fc2a9e1795cfbdbbd38f1d53a755fceeeeea60d7b59f13bc38a91801e6d8236e"
+    },
+    "ai-music-generation": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/audio/ai-music-generation/SKILL.md",
+      "computedHash": "7e4ab46f461535913182c01243785fdc6f96284c6e74e156e89a269dbfaf7a5c"
+    },
+    "ai-podcast": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/content/ai-podcast/SKILL.md",
+      "computedHash": "8dd67854dc81f95dad7bf23940c9d3c2cf5a51cd97d341c8903bfb50cb5ef8ba"
+    },
+    "ai-podcast-creation": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/content/ai-podcast-creation/SKILL.md",
+      "computedHash": "033b4b38f161074effdd5047fbef6b92f84208bf54a86a4f484771be7133ae8f"
+    },
+    "ai-product-photography": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/photo/ai-product-photography/SKILL.md",
+      "computedHash": "a55f20caaf0c5ef29886cd0f982944986f4a1c9733b29523697d69c554bf8166"
+    },
+    "ai-rag-pipeline": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/llm/ai-rag-pipeline/SKILL.md",
+      "computedHash": "09961868a986d1683a0a84e2057d61f896cb3b811adff3322ade24a036f389cb"
+    },
+    "ai-social-media-content": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/social/ai-social-media-content/SKILL.md",
+      "computedHash": "31b62a7efd6a67dd803c1a34d00f28ea76caf078aad4f5b1fa31fa5dd9017209"
+    },
+    "ai-video-generation": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/video/ai-video-generation/SKILL.md",
+      "computedHash": "4b3676be1595da7a745804e01cdaa9b89ef1b4ac4db50120f37f240124d0ed67"
+    },
+    "ai-voice-cloning": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/audio/ai-voice-cloning/SKILL.md",
+      "computedHash": "7b5cf3def7d1da98597ba3e3d4e09cd556fbce55e3d6e827aa646e1667ba5254"
+    },
+    "app-store-screenshots": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/design/app-store-screenshots/SKILL.md",
+      "computedHash": "06ec5e70a30794b9cb95b96830b647cef0e91eb15e703dec3bb56f9fef14a325"
+    },
+    "background-removal": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/image/background-removal/SKILL.md",
+      "computedHash": "a51f395ef8fb747d46084e6dfe586438e2ce7154a2f5ea952d5405f7367cf9ea"
+    },
+    "book-cover-design": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/design/book-cover-design/SKILL.md",
+      "computedHash": "44d9c97b4e9f43939f261a09b963951706d8412eb94df0f5dd7ca0e70e4f3848"
+    },
+    "building-inferencesh-apps": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "sdk/building-apps/SKILL.md",
+      "computedHash": "85723d5bb7ec009a4ca89c5bc87eba3d09333bb6d13700e645490b7c19f15084"
+    },
+    "case-study-writing": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/writing/case-study-writing/SKILL.md",
+      "computedHash": "36cf5704c61149c809de6956afd56e37411aa6f8c047c41d7d990eef6c417748"
+    },
+    "character-design-sheet": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/design/character-design-sheet/SKILL.md",
+      "computedHash": "dda22fa2be34dec6036f7e763c7c4f7fc908a2a231f5f88b84f6ed8e1349ea34"
+    },
+    "chat-ui": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "ui/chat-ui/SKILL.md",
+      "computedHash": "e4b867cb300150004dbd3325de68a12d953957049d7fc4bdbb867471bfc3e473"
+    },
+    "competitor-teardown": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/product/competitor-teardown/SKILL.md",
+      "computedHash": "078672ce73ecad2d487285f8f485e1a955256811708814a734e8f71d60c78b04"
+    },
+    "content-repurposing": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/content/content-repurposing/SKILL.md",
+      "computedHash": "14a103018c29cf20180505a1e73012bbcf4d9d77990225c01d076ee1283242c4"
+    },
+    "customer-persona": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/product/customer-persona/SKILL.md",
+      "computedHash": "b2dd695f6dff5562468eb3b6c283784140def9ed16fb20773a7520f10ebe06e0"
+    },
+    "data-visualization": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/design/data-visualization/SKILL.md",
+      "computedHash": "09ec2e7e1ac4bd87344eb73145714b1bc881d8a50716ae9c7df9df560a5128ca"
+    },
+    "dialogue-audio": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/audio/dialogue-audio/SKILL.md",
+      "computedHash": "4312e189f9c603d87eed12b06498c97212f3065d8fffcd20a4830365be21972e"
+    },
+    "elevenlabs-dialogue": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/audio/elevenlabs-dialogue/SKILL.md",
+      "computedHash": "ac500a80be28c2c92b9eaaf30db5bfe517be4d6b2cae3d17acf6b1462fa6a869"
+    },
+    "elevenlabs-dubbing": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/audio/elevenlabs-dubbing/SKILL.md",
+      "computedHash": "f13c329cc8c761cab28f09f092e5e2a8e65e1b94706da3dcf1381a5b078ba310"
+    },
+    "elevenlabs-music": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/audio/elevenlabs-music/SKILL.md",
+      "computedHash": "716672e7b7b292f8336ae196efb5fbfa13ceeb8b3619aacf1c51b0c6ae8e6305"
+    },
+    "elevenlabs-sound-effects": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/audio/elevenlabs-sound-effects/SKILL.md",
+      "computedHash": "f5bd3de95487c04361609582701a29be192fd68ca155af9205fc248610791cc6"
+    },
+    "elevenlabs-stt": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/audio/elevenlabs-stt/SKILL.md",
+      "computedHash": "1b5519455ed0948bf83dea24c33347fbd926674f5a397b528e5e705c1a4248a3"
+    },
+    "elevenlabs-tts": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/audio/elevenlabs-tts/SKILL.md",
+      "computedHash": "6b7e3c9d09e7811e3448420186ec6017aecd781884b005ad4395cdc99a39f484"
+    },
+    "elevenlabs-voice-changer": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/audio/elevenlabs-voice-changer/SKILL.md",
+      "computedHash": "3e097013b9facc8f43041924033d2a6b9d280d128bc237f3f7a51ec132ab304e"
+    },
+    "elevenlabs-voice-isolator": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/audio/elevenlabs-voice-isolator/SKILL.md",
+      "computedHash": "a072706e261b53e2efa3153e7ec6a0eb80a3c3d0d8a790ead3e71bae533c2df5"
+    },
+    "email-design": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/design/email-design/SKILL.md",
+      "computedHash": "9f14c5403e9a2c5f732f048bcb3abb527339411595dab55e48d2418fa1cc3045"
+    },
+    "explainer-video-guide": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/video/explainer-video-guide/SKILL.md",
+      "computedHash": "ec6cf99eeaac2f306ad75dd7c4753849a69ec7138593bd76ee364c047ec6ff02"
+    },
+    "flux-image": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/image/flux-image/SKILL.md",
+      "computedHash": "0c9043ef555869c0cdaa955b7c479316af5f62655e919efb6d878ee806e62525"
+    },
+    "google-veo": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/video/google-veo/SKILL.md",
+      "computedHash": "806f6191415ebb56c1e47b5c3ce4450692dd2082e9298ba9ae1b60be4c4ed94f"
+    },
+    "gpt-image": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/image/gpt-image/SKILL.md",
+      "computedHash": "d7b376bedb4cab004d07b2b024718afb4877dc87ee537f18e1cbc9dee630d92d"
+    },
+    "happyhorse": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/video/happyhorse/SKILL.md",
+      "computedHash": "d360221ff094a63b1ab674890a1e260fcaafa99df9e45a4538a381d141ab145a"
+    },
+    "image-to-video": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/video/image-to-video/SKILL.md",
+      "computedHash": "00149edc93afd0f3e89b34a9df5142193a4eae88aadf763c193439d6c45f10c2"
+    },
+    "image-upscaling": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/image/image-upscaling/SKILL.md",
+      "computedHash": "d45d5d279bb4db66f586a9d2ad48485db317c89f125c13cf684a8414d6859349"
+    },
+    "infsh-cli": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/infsh-cli/SKILL.md",
+      "computedHash": "a92f194c81cd8fe48c4e0572e72796cde0e26e212f25d254ce00b1965e176dd1"
+    },
+    "javascript-sdk": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "sdk/javascript-sdk/SKILL.md",
+      "computedHash": "aace56735e7f5fa50972ff021469fa0c65857575d47f3f38271743247e8e2bfb"
+    },
+    "landing-page-design": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/design/landing-page-design/SKILL.md",
+      "computedHash": "03240c924aac601d09fa583dffcbfa7e90e4aeb4881c0ca7739cb110e45e2244"
+    },
+    "linkedin-content": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/social/linkedin-content/SKILL.md",
+      "computedHash": "29b830e28d7f4be77f2944ca4444b90239b84181145e3601e613a04f1e537486"
+    },
+    "llm-models": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/llm/llm-models/SKILL.md",
+      "computedHash": "6cae41db2b027ca906e3d05555dc782bce79c8612fbd65ee73b4f13636470929"
+    },
+    "logo-design-guide": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/design/logo-design-guide/SKILL.md",
+      "computedHash": "46d9a0968d41802ede10a7cba0c871f83d9c91a10975d3032c4d00fc1b6fd9a8"
+    },
+    "nano-banana": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/image/nano-banana/SKILL.md",
+      "computedHash": "9f102275cc484775a6c43189b8d4047c95ddf40e4dab78632d15ddbb35f0b38a"
+    },
+    "nano-banana-2": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/image/nano-banana-2/SKILL.md",
+      "computedHash": "f624365e78ee8d797c955dcb85a2c22dc5e08ae4bfbfdf48178b6f8a67a21bd4"
+    },
+    "newsletter-curation": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/writing/newsletter-curation/SKILL.md",
+      "computedHash": "3365ed00870a063e1f10bc13cc05deb721bab0b69c5289c82b25a294e5019124"
+    },
+    "og-image-design": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/design/og-image-design/SKILL.md",
+      "computedHash": "07aee3c3b2c3658b4f17d8bd926e3606aea9174fbf7dc498567b5290a64e795e"
+    },
+    "p-image": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/image/p-image/SKILL.md",
+      "computedHash": "b61e4bc5bf11b7bd8c4c0a00535b116ceb2d6ebdbe2d27cd81c7d0b7855b6b1b"
+    },
+    "p-video": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/video/p-video/SKILL.md",
+      "computedHash": "308bbea03a2e37a16942d7bfda3af811e2cc03320a580c38d7541a6c93d30e7a"
+    },
+    "p-video-avatar": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/video/p-video-avatar/SKILL.md",
+      "computedHash": "ecaa7625a406c4a6bd39b103c09cf22033effc964eeb1bdd7af49e34b20530ff"
+    },
+    "pitch-deck-visuals": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/design/pitch-deck-visuals/SKILL.md",
+      "computedHash": "62061d5dc60418daa55b363f6f38936ebea33fc07c3c55111a35ca722da4790b"
+    },
+    "press-release-writing": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/writing/press-release-writing/SKILL.md",
+      "computedHash": "f9edd820cdd8827dab0a9d4832dc00dc3cb68cd0c1be5bb70323777c70226d5a"
+    },
+    "product-changelog": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/product/product-changelog/SKILL.md",
+      "computedHash": "995128e2fbe908872e6a88bbf3e820d8b606e2e66194300b96909b1a25a3b09e"
+    },
+    "product-hunt-launch": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/product/product-hunt-launch/SKILL.md",
+      "computedHash": "9017a83cc292cc6b48f829db5cc4743b16fc5472d3d12c4c94ed5ad77c945811"
+    },
+    "product-photography": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/photo/product-photography/SKILL.md",
+      "computedHash": "2cbddcd6f9f2ac1cec504fb7ef829ab6242f33dcce1151650bdc6cf65554608e"
+    },
+    "prompt-engineering": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/prompting/prompt-engineering/SKILL.md",
+      "computedHash": "a060324addc4437ac758bb729d587dfc61065ef0aa735af6f24ec98c32d8ad4e"
+    },
+    "python-executor": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/utilities/python-executor/SKILL.md",
+      "computedHash": "943110e8753d078653f98e3208f12d9d1ab66136895967f64ff2ab672e6eb6c5"
+    },
+    "python-sdk": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "sdk/python-sdk/SKILL.md",
+      "computedHash": "796c51b6192e146a376e2bea56b7f254c137007c8974dcadca3bafe5edf217dc"
+    },
+    "qwen-image-2": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/image/qwen-image-2/SKILL.md",
+      "computedHash": "164a3c16b59edf88064516aff630df555889a369ca783815ec1d6255e11a043c"
+    },
+    "qwen-image-2-pro": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/image/qwen-image-2-pro/SKILL.md",
+      "computedHash": "d045770b66e2ae91d3fdaf29deb79fb87a8529d77d12698b9be9c2ba393e5fe2"
+    },
+    "related-skill": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/utilities/related-skill/SKILL.md",
+      "computedHash": "4fadfe63db76aa7d76deca0507bf0f4ca4796bbd8bb0df19a0bf97494715958b"
+    },
+    "remotion-render": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/video/remotion-render/SKILL.md",
+      "computedHash": "9a00df8ceabf3033451cf0c4d41cdda5f38024822de07ea69884055611064ffe"
+    },
+    "seedance": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/video/seedance/SKILL.md",
+      "computedHash": "2daadd06fc813b17fa087deab2dd2f6fd64733b900b5f5f7864f075e0dcf2374"
+    },
+    "seo-content-brief": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/writing/seo-content-brief/SKILL.md",
+      "computedHash": "18f73a9bf2abd95bc66cc63bb6968fa68448dccf6f34f6018dc1974e9f36e498"
+    },
+    "social-media-carousel": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/social/social-media-carousel/SKILL.md",
+      "computedHash": "3487ae9f94461b19126786fc9ff053be0422b68b36954397a1926c821d013ea0"
+    },
+    "speech-to-text": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/audio/speech-to-text/SKILL.md",
+      "computedHash": "948e9d86545b48836f6a89d2e95994065063e5d0d276a05a5550570613e7201a"
+    },
+    "storyboard-creation": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/video/storyboard-creation/SKILL.md",
+      "computedHash": "b58a27c0648b8627622eb62f03ded5530977a9778ee0bda14d535607b1c98739"
+    },
+    "talking-head-production": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/video/talking-head-production/SKILL.md",
+      "computedHash": "e80bd4de13f9539ef8b0108ac81f643d6110343bc724b1baf3be0756ad593143"
+    },
+    "technical-blog-writing": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/writing/technical-blog-writing/SKILL.md",
+      "computedHash": "9d67d512c48d5fd57b7e3e5235983b6434e3fe3b03c25d5f4a057dff12b2e149"
+    },
+    "text-to-speech": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/audio/text-to-speech/SKILL.md",
+      "computedHash": "6d81785c5fe068ae766437fd4a0cb81dcd0fd27211110f0d5a354006854a388d"
+    },
+    "tools-ui": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "ui/tools-ui/SKILL.md",
+      "computedHash": "88156e56526a986befe2f2df9c5421a468fce3f2e2af4a933e8db6e827c9255a"
+    },
+    "twitter-automation": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/social/twitter-automation/SKILL.md",
+      "computedHash": "86aad92ee5cbace7509a9479b11b9c572e3542782963a36447cf4d1a2c02f9c4"
+    },
+    "twitter-thread-creation": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/social/twitter-thread-creation/SKILL.md",
+      "computedHash": "56b5c6aac48323078b47a4775c8c0607c58b6dce460c7a3d5f33c767dd844688"
+    },
+    "video-ad-specs": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/video/video-ad-specs/SKILL.md",
+      "computedHash": "be7a21f2110a19eb6bc78cb2446a80dc25629cb8ce70dce34b04914c9149eb1c"
+    },
+    "video-prompting-guide": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/prompting/video-prompting-guide/SKILL.md",
+      "computedHash": "0d88cdc159390cffb4821f9593fb6a40b4d883f56dfda2295453cb6a6ace48d3"
+    },
+    "web-search": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "tools/llm/web-search/SKILL.md",
+      "computedHash": "48efaf8cc68b6af437977814106f5253154dd07b0a2f42628384ff949bcd71f4"
+    },
+    "widgets-ui": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "ui/widgets-ui/SKILL.md",
+      "computedHash": "d39f6a9c71ca7a5b0686520784e6b809543929dfac7f5a77ed4af44729504b73"
+    },
+    "youtube-thumbnail-design": {
+      "source": "inferen-sh/skills",
+      "sourceType": "github",
+      "skillPath": "guides/design/youtube-thumbnail-design/SKILL.md",
+      "computedHash": "b86486d3ec9d51ec296cc93a2ffbd06821d6a0c5eeb1a1a820e045229ced03dd"
+    }
+  }
+}
