@@ -4,7 +4,8 @@
 @source "./src";
 
 :root {
-  /* The site's single accent — gold. Reserved for eyebrow + primary CTA. */
+  /* Single deliberate accent — Kona lava. Used once, on the hero credential. */
+  --lava: #D6442A;
   --gold: #C9A84C;
 }
 
@@ -170,18 +171,27 @@ section, footer {
 }
 
 /* ── Champion hero (homepage) ──────────────────────────────────────────────
-   Asymmetric editorial composition: a left copy column (eyebrow → headline →
-   subhead → CTA) aligned to the site grid, with Wendy anchored to the right.
-   A left-to-right navy scrim keeps the copy legible over the photo. Palette is
-   navy + a single gold accent — no card, no competing tints.
+   Layered: a huge gold Playfair statement fills the field, Wendy (cut out)
+   sits in front of the letters, and a glass card holds a short intro + CTA.
    The hero pins on desktop while the rest of the page scrolls up over it. */
 .champ-hero {
   position: relative;
   isolation: isolate;
   min-height: 100svh;
-  background: radial-gradient(125% 120% at 80% 28%, #1a4459 0%, #0D2B3E 52%, #07202c 100%);
-  color: #F5F1E9;
+  background:
+    radial-gradient(85% 65% at 50% 20%, rgba(201, 168, 76, 0.13), transparent 55%),
+    radial-gradient(130% 100% at 50% 38%, #163a4f 0%, #0D2B3E 52%, #07202c 100%);
+  color: #ffffff;
   overflow: hidden;
+}
+/* Deeper navy behind the layered scene (below the title) so the gold pops */
+.champ-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(85% 70% at 50% 42%, rgba(6, 22, 33, 0.6), rgba(6, 22, 33, 0.2) 78%, transparent 100%);
 }
 /* Desaturated film-grain over the WHOLE site for texture (Layout renders the
    .site-grain element; fixed so it reads like a static grain over everything). */
@@ -205,81 +215,97 @@ section, footer {
   }
 }
 
-/* Left copy column, aligned to the same 1280 grid as the nav + footer */
-.champ-hero__inner {
-  position: relative;
-  z-index: 3;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 120px 32px 64px;
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-}
-.champ-hero__copy {
-  max-width: 620px;
-}
-
-/* Eyebrow — small-caps credential; the single gold accent up top */
-.champ-hero__eyebrow {
-  margin: 0 0 22px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold);
-}
-
-/* One dominant headline */
+/* Gold serif statement behind the athlete */
 .champ-hero__title {
-  margin: 0 0 26px;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 56px;
+  transform: translateY(-6vh);
   font-family: 'Playfair Display SC', Georgia, serif;
   font-weight: 700;
-  font-size: clamp(2.6rem, 6.4vw, 6rem);
-  line-height: 0.98;
-  letter-spacing: 0.005em;
-  color: #F5F1E9;
-  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.4);
+  color: #C9A84C;
+  line-height: 0.9;
+  text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.4);
+}
+.champ-hero__title .l1 {
+  display: block;
+  font-size: clamp(2.1rem, 10vw, 12.5rem);
+  white-space: nowrap;
+}
+.champ-hero__title .l2 {
+  display: block;
+  font-size: clamp(1.25rem, 6vw, 7.5rem);   /* ~60% of line 1 */
+  white-space: nowrap;
 }
 
-/* Wendy, anchored to the right of the composition. Bottom edge masked into a
-   soft fade so the cutout melts into the navy; --parallax (Hero.jsx) gives a
-   gentle scroll drift. */
+/* Wendy, cut out and layered over the letters. The bottom edge is masked into a
+   soft fade so the cutout melts into the navy instead of sitting on top of it.
+   --parallax is driven by Hero.jsx scroll handler for a gentle drift. */
 .champ-hero__photo {
   position: absolute;
   bottom: 0;
-  right: clamp(-60px, 1vw, 90px);
-  left: auto;
-  transform: translateY(var(--parallax, 0));
-  height: min(92svh, 940px);
+  left: 50%;
+  transform: translateX(-50%) translateY(var(--parallax, 0));
+  height: min(94svh, 980px);
   width: auto;
-  z-index: 1;
-  pointer-events: none;
-  will-change: transform;
-  -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 99%);
-          mask-image: linear-gradient(to bottom, #000 80%, transparent 99%);
-}
-
-/* Scrim: solid navy behind the left copy, fading to clear over the photo, plus
-   a bottom fade to ground the figure. Keeps overlapping text legible. */
-.champ-hero__scrim {
-  position: absolute;
-  inset: 0;
   z-index: 2;
   pointer-events: none;
-  background:
-    linear-gradient(to right, #0D2B3E 0%, rgba(13, 43, 62, 0.92) 30%, rgba(13, 43, 62, 0.2) 60%, transparent 78%),
-    linear-gradient(to top, #07202c 0%, transparent 30%);
+  will-change: transform;
+  -webkit-mask-image: linear-gradient(to bottom, #000 76%, transparent 99%);
+          mask-image: linear-gradient(to bottom, #000 76%, transparent 99%);
 }
 
-/* Subhead — clean, muted, clearly below the headline in the hierarchy */
+/* Glass card — short intro + contact button */
+.champ-hero__card {
+  position: absolute;
+  z-index: 3;
+  left: clamp(24px, 8vw, 110px);
+  bottom: clamp(40px, 10vh, 110px);
+  max-width: 400px;
+  padding: 30px 32px;
+  border-radius: 18px;
+  background: rgba(10, 30, 44, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(18px);
+          backdrop-filter: blur(18px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+/* Credibility hook — the one specific, earned line of proof */
+.champ-hero__eyebrow {
+  margin: 0 0 18px;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+.champ-hero__eyebrow strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+/* The credential carries the single deliberate lava accent (the marker bar) */
+.champ-hero__cred {
+  display: block;
+  margin-top: 9px;
+  padding-left: 13px;
+  border-left: 3px solid var(--lava);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
 .champ-hero__lede {
-  margin: 0 0 36px;
-  max-width: 30em;
-  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
-  line-height: 1.6;
-  color: rgba(245, 241, 233, 0.8);
+  margin: 0 0 22px;
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.86);
 }
 .champ-hero__cta {
   display: inline-flex;
@@ -288,8 +314,8 @@ section, footer {
   white-space: nowrap;
   font-size: 15px;
   font-weight: 700;
-  letter-spacing: 0.03em;
-  padding: 15px 32px;
+  letter-spacing: 0.02em;
+  padding: 14px 28px;
   border-radius: 100px;
   text-decoration: none;
 }
@@ -302,22 +328,14 @@ section, footer {
 }
 
 @media (max-width: 900px) {
-  /* Stack: photo sits behind, copy reads over a stronger bottom scrim */
-  .champ-hero__inner {
-    padding: 110px 24px 56px;
-    align-items: flex-end;
-  }
-  .champ-hero__copy { max-width: 560px; }
-  .champ-hero__title { font-size: clamp(2.4rem, 11vw, 4rem); }
-  .champ-hero__photo {
-    right: 50%;
-    transform: translateX(40%) translateY(var(--parallax, 0));
-    height: 74svh;
-    opacity: 0.9;
-  }
-  .champ-hero__scrim {
-    background:
-      linear-gradient(to top, #07202c 6%, rgba(13, 43, 62, 0.55) 46%, rgba(13, 43, 62, 0.15) 100%),
-      linear-gradient(to right, rgba(13, 43, 62, 0.55), transparent 72%);
+  .champ-hero__title { padding-top: 84px; }
+  .champ-hero__photo { height: 66svh; }
+  .champ-hero__card {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: calc(100% - 36px);
+    max-width: 460px;
+    bottom: 26px;
   }
 }
