@@ -1,7 +1,8 @@
-/* One font, the way Barrier does it: DM Sans across the whole site (the only
-   real webfont on barriergroup.com — their giant "BARRIER" wordmark is artwork,
-   not a typeface). Light for the big statement, heavier weights for emphasis. */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,500&display=swap');
+/* DM Sans for the whole site, used the way Barrier does: Light (300) for the
+   big statement, Regular (400) body, Medium (500) sub-headings, and Bold (700)
+   ONLY on small, mostly all-caps UI (buttons, labels). Playfair Display SC is
+   kept for the one decorative element — the giant gold hero title. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=Playfair+Display+SC:wght@400;700;900&display=swap');
 @import "tailwindcss";
 @source "../index.html";
 @source "./src";
@@ -223,9 +224,8 @@ section, footer {
   /* Anchored high (below the nav) so the statement reads across the top and
      only Wendy's raised arms — not her head and torso — cross the letters. */
   padding-top: clamp(104px, 14vh, 188px);
-  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-family: 'Playfair Display SC', Georgia, serif;
+  font-weight: 700;
   color: #C9A84C;
   line-height: 0.9;
   text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.4);
@@ -272,24 +272,27 @@ section, footer {
      (mostly matters on mobile, where the centred cutout fills the width). */
   text-shadow: 0 1px 18px rgba(6, 18, 25, 0.7);
 }
-/* Headline — the dominant line, clean and bold. */
+/* Headline — the big statement. Barrier sets "Built for safety. Engineered to
+   last." in DM Sans LIGHT with tight tracking; this matches that, not bold. */
 .champ-hero__headline {
-  margin: 0 0 24px;
-  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  margin: 0 0 26px;
+  font-size: clamp(1.95rem, 3vw, 2.7rem);
+  font-weight: 300;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
   color: #ffffff;
 }
-/* Action — sits between the headline and the supporting line, per the layout. */
+/* Action — bold lives here, where it belongs on this site: small, uppercase,
+   letter-spaced UI, the way Barrier sets its "LEARN MORE". */
 .champ-hero__cta {
   display: inline-flex;
   align-items: center;
   white-space: nowrap;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.02em;
-  padding: 14px 28px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 13px 26px;
   border-radius: 100px;
   text-decoration: none;
 }
