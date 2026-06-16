@@ -45,7 +45,7 @@ export default function PageHeader({ eyebrow, title, titleAccent, subtitle, phot
           </div>
         )}
         <h1 data-ph style={{
-          fontFamily: "'Cormorant Garamond', 'DM Serif Display', Georgia, serif",
+          fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
           fontSize: 'clamp(2.6rem, 6vw, 5rem)',
           color: '#ffffff', lineHeight: 1.05, fontWeight: 600,
           maxWidth: 900,

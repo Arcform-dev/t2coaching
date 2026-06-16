@@ -25,7 +25,7 @@ export default function CTABanner({
             <div style={{ width: 40, height: 1, background: '#F5A623' }} />
           </div>
           <h2 style={{
-            fontFamily: "'DM Serif Display', Georgia, serif",
+            fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
             fontSize: 'clamp(2rem, 5vw, 3.4rem)', color: '#fff', lineHeight: 1.12, marginBottom: 18,
           }}>{title}</h2>
           <p style={{ fontSize: 'clamp(1rem, 1.8vw, 1.15rem)', color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, maxWidth: 520, margin: '0 auto 32px' }}>

@@ -13,7 +13,7 @@ function CredColumn({ title, items, accent }) {
   return (
     <GlassCard style={{ padding: '36px 32px' }}>
       <h3 style={{
-        fontFamily: "'DM Serif Display', Georgia, serif",
+        fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
         fontSize: 22, color: '#fff', marginBottom: 22,
       }}>{title}</h3>
       <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -88,7 +88,7 @@ export default function About() {
                 {NAME_MEANING.title}
               </span>
               <p style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
                 fontSize: 'clamp(1.4rem, 2.6vw, 1.9rem)', fontStyle: 'italic',
                 color: '#fff', lineHeight: 1.5, marginTop: 18,
               }}>
@@ -113,7 +113,7 @@ export default function About() {
             {PHILOSOPHY.map((p, i) => (
               <Reveal key={p.title} delay={(i % 3) * 0.08}>
                 <GlassCard style={{ padding: '32px 28px', height: '100%' }}>
-                  <h3 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 19, color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>
+                  <h3 style={{ fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif", fontSize: 19, color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>
                     {p.title}
                   </h3>
                   <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.66)', lineHeight: 1.7 }}>{p.body}</p>
@@ -148,7 +148,7 @@ export default function About() {
                     Featured in {WSJ_FEATURE.outlet}
                   </span>
                 </div>
-                <h3 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(1.3rem, 2.4vw, 1.8rem)', color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>
+                <h3 style={{ fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif", fontSize: 'clamp(1.3rem, 2.4vw, 1.8rem)', color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>
                   "{WSJ_FEATURE.title}"
                 </h3>
                 <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.66)', lineHeight: 1.7, marginBottom: 16 }}>{WSJ_FEATURE.blurb}</p>

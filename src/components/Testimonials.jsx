@@ -71,7 +71,7 @@ export default function Testimonials() {
         }}>
           <div>
             <h2 style={{
-              fontFamily: "'DM Serif Display', Georgia, serif",
+              fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               color: '#ffffff', lineHeight: 1.2,
             }}>
@@ -118,13 +118,13 @@ export default function Testimonials() {
             >
               {/* Anchored serif quote glyph — signals testimony */}
               <div style={{
-                fontFamily: "'DM Serif Display', Georgia, serif",
+                fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
                 fontSize: 44, lineHeight: 0.6, color: 'rgba(126,200,227,0.4)',
                 marginBottom: 14,
               }}>“</div>
               <Stars />
               <blockquote style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
                 fontSize: 'clamp(1.05rem, 1.6vw, 1.2rem)', fontStyle: 'italic',
                 color: 'rgba(255,255,255,0.9)',
                 lineHeight: 1.6, margin: '14px 0 22px',

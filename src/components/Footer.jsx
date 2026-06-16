@@ -36,7 +36,7 @@ export default function Footer() {
               }}>
                 <span style={{ color: '#fff', fontWeight: 700, fontSize: 12 }}>T2</span>
               </div>
-              <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 20, color: '#ffffff' }}>T2 Coaching</span>
+              <span style={{ fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif", fontSize: 20, color: '#ffffff' }}>T2 Coaching</span>
             </Link>
             <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 18 }}>
               Personalized swim, run & triathlon coaching from a Kona Ironman World Champion, built around your life.

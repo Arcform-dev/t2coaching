@@ -26,7 +26,7 @@ export default function SectionHeading({
       )}
       {title && (
         <h2 style={{
-          fontFamily: "'DM Serif Display', Georgia, serif",
+          fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
           fontSize: 'clamp(2rem, 4vw, 3rem)',
           color: '#ffffff', lineHeight: 1.15, marginBottom: subtitle ? 16 : 0,
         }}>{title}</h2>

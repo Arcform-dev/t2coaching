@@ -27,7 +27,7 @@ export default function BlogPost() {
         <section style={{ padding: '160px 0 90px', textAlign: 'center' }}>
           <div style={WRAP}>
             <span style={{ fontSize: 11, fontWeight: 600, color: '#F5A623', letterSpacing: '0.2em', textTransform: 'uppercase' }}>{post.category}</span>
-            <h1 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(2rem, 5vw, 3.2rem)', color: '#fff', lineHeight: 1.2, margin: '18px 0 20px' }}>{post.title}</h1>
+            <h1 style={{ fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif", fontSize: 'clamp(2rem, 5vw, 3.2rem)', color: '#fff', lineHeight: 1.2, margin: '18px 0 20px' }}>{post.title}</h1>
             <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, maxWidth: 560, margin: '0 auto 32px' }}>
               This one's still in the works ✍️ — check back soon. In the meantime, the best training advice is the kind built just for you.
             </p>
@@ -62,7 +62,7 @@ export default function BlogPost() {
             {post.date && <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>{formatDate(post.date)}</span>}
             {post.readTime && <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>· {post.readTime}</span>}
           </div>
-          <h1 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(2.2rem, 5vw, 3.6rem)', color: '#fff', lineHeight: 1.15 }}>{post.title}</h1>
+          <h1 style={{ fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif", fontSize: 'clamp(2.2rem, 5vw, 3.6rem)', color: '#fff', lineHeight: 1.15 }}>{post.title}</h1>
         </div>
       </header>
 
@@ -83,13 +83,13 @@ export default function BlogPost() {
 
           {post.exercises && (
             <div style={{ marginTop: 40, display: 'flex', flexDirection: 'column', gap: 24 }}>
-              <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 28, color: '#fff', marginBottom: 4 }}>The Workout</h2>
+              <h2 style={{ fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif", fontSize: 28, color: '#fff', marginBottom: 4 }}>The Workout</h2>
               {post.exercises.map((ex, i) => (
                 <Reveal key={ex.name} delay={(i % 2) * 0.05}>
                   <GlassCard style={{ padding: '28px 28px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
-                      <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 22, color: 'rgba(126,200,227,0.6)' }}>{String(i + 1).padStart(2, '0')}</span>
-                      <h3 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 20, color: '#fff' }}>{ex.name}</h3>
+                      <span style={{ fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif", fontSize: 22, color: 'rgba(126,200,227,0.6)' }}>{String(i + 1).padStart(2, '0')}</span>
+                      <h3 style={{ fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif", fontSize: 20, color: '#fff' }}>{ex.name}</h3>
                     </div>
                     <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.74)', lineHeight: 1.75, marginBottom: 12 }}>
                       <strong style={{ color: '#7EC8E3', fontWeight: 600 }}>Why: </strong>{ex.why}

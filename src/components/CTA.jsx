@@ -67,7 +67,7 @@ export default function CTA() {
 
           {/* Headline — word-by-word wipe */}
           <h2 ref={headlineRef} style={{
-            fontFamily: "'DM Serif Display', Georgia, serif",
+            fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
             fontSize: 'clamp(2.5rem, 6vw, 5rem)',
             lineHeight: 1.1,
           }}>

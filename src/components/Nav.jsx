@@ -67,7 +67,7 @@ export default function Nav() {
               <span style={{ color: '#fff', fontWeight: 700, fontSize: 12, letterSpacing: '0.04em' }}>T2</span>
             </div>
             <span style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
               fontSize: 24, lineHeight: 1, fontWeight: 600,
               letterSpacing: '0.16em', textTransform: 'uppercase',
               color: '#F5F1E9',
@@ -79,7 +79,7 @@ export default function Nav() {
           <div className="hidden md:flex" style={{ alignItems: 'center', gap: 8 }}>
             {LINKS.map(({ label, to }) => (
               <NavLink key={label} to={to} style={({ isActive }) => ({
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
                 textTransform: 'uppercase',
                 fontSize: 16, fontWeight: 600, letterSpacing: '0.12em',
                 color: isActive ? activeColor : linkColor,
@@ -143,7 +143,7 @@ export default function Nav() {
           {LINKS.map(({ label, to }) => (
             <NavLink key={label} to={to} onClick={() => setOpen(false)} style={({ isActive }) => ({
               display: 'block', padding: '14px 0',
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontFamily: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
               textTransform: 'uppercase', letterSpacing: '0.12em',
               fontSize: 18, fontWeight: 600,
               color: isActive ? '#ffffff' : 'rgba(245,241,233,0.8)',
