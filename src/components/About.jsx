@@ -59,23 +59,19 @@ export default function About() {
   }, [])
 
   return (
-    <section id="about" ref={sectionRef} style={{ background: 'transparent', padding: '80px 0 100px', overflow: 'hidden' }}>
+    <section id="about" ref={sectionRef} style={{ background: 'transparent', padding: '110px 0', overflow: 'hidden' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
-        <div className="about-grid" style={{ display: 'grid', gap: 60, alignItems: 'center' }}>
+        {/* Barrier-style: a full-width rule opens the section, then an asymmetric
+            two-column block with generous spacing (no boxed card). */}
+        <div style={{ height: 1, background: 'rgba(255,255,255,0.16)', marginBottom: 'clamp(40px, 6vw, 72px)' }} />
+        <div className="about-grid" style={{ display: 'grid', gap: 'clamp(40px, 6vw, 88px)', alignItems: 'start' }}>
 
           {/* Text */}
-          <div ref={textRef} style={{
-            background: 'rgba(8,18,32,0.72)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            borderRadius: 20,
-            padding: '48px 40px',
-            border: '1px solid rgba(255,255,255,0.08)',
-          }}>
+          <div ref={textRef}>
             <h2 style={{
               fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
-              fontSize: 'clamp(1.9rem, 3.5vw, 2.8rem)',
-              color: '#ffffff', lineHeight: 1.2, marginBottom: 28,
+              fontSize: 'clamp(2.1rem, 4vw, 3.2rem)',
+              fontWeight: 600, color: '#ffffff', lineHeight: 1.12, marginBottom: 34,
             }}>
               I've been in your shoes,<br />
               and on that finish line.
@@ -134,8 +130,6 @@ export default function About() {
                 position: 'absolute', bottom: 0, left: 0, right: 0, height: '35%',
                 background: 'linear-gradient(to top, rgba(13,43,62,0.7), transparent)',
               }} />
-              <div style={{ position: 'absolute', top: 16, right: 16, width: 36, height: 36, borderTop: '2px solid rgba(245,166,35,0.55)', borderRight: '2px solid rgba(245,166,35,0.55)' }} />
-              <div style={{ position: 'absolute', bottom: 16, left: 16, width: 36, height: 36, borderBottom: '2px solid rgba(245,166,35,0.55)', borderLeft: '2px solid rgba(245,166,35,0.55)' }} />
             </div>
 
             <div ref={quoteRef} style={{ background: '#0D2B3E', borderRadius: 18, padding: '28px 28px 24px' }}>
