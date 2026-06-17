@@ -83,10 +83,11 @@ export default function Hero() {
           tucked in the empty right-of-subject space, on its own parallax plane. */}
       <div ref={annoRef} className="champ-hero__anno" aria-hidden="true">
         <span className="champ-hero__anno-text">Kona<br />World Champ</span>
-        <svg className="champ-hero__anno-arrow" viewBox="0 0 170 96" fill="none">
-          <path d="M162 12 C 104 2, 36 20, 14 70" stroke="currentColor" strokeWidth="5"
+        <svg className="champ-hero__anno-arrow" viewBox="0 0 170 90" fill="none">
+          {/* upward "smile" curve, arrowhead pointing up-left toward Wendy */}
+          <path d="M156 26 C 116 80, 52 82, 16 38" stroke="currentColor" strokeWidth="5"
                 strokeLinecap="round" />
-          <path d="M14 70 L 38 60 M14 70 L 22 44" stroke="currentColor" strokeWidth="5"
+          <path d="M16 38 L 23 63 M16 38 L 41 45" stroke="currentColor" strokeWidth="5"
                 strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>

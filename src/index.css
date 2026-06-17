@@ -275,8 +275,8 @@ section, footer {
 .champ-hero__anno {
   position: absolute;
   z-index: 3;
-  top: 40%;
-  right: clamp(36px, 10vw, 168px);
+  top: 50%;
+  right: clamp(40px, 11vw, 200px);
   text-align: center;
   color: #F5F1E9;
   pointer-events: none;
