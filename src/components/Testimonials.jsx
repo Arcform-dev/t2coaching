@@ -87,7 +87,7 @@ export default function Testimonials() {
               { fn: next, d: 'M9 5l7 7-7 7', label: 'Next' },
             ].map(({ fn, d, label }) => (
               <button key={label} onClick={fn} aria-label={label} style={{
-                width: 46, height: 46, borderRadius: 4,
+                width: 46, height: 46, borderRadius: 0,
                 border: 'none',
                 background: '#0D2B3E', color: '#ffffff',
                 cursor: 'pointer',
@@ -157,7 +157,7 @@ export default function Testimonials() {
           <Link to="/testimonials" style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
             color: '#0D2B3E', fontSize: 15, fontWeight: 600, textDecoration: 'none',
-            padding: '12px 28px', borderRadius: 4,
+            padding: '12px 28px', borderRadius: 0,
             border: '1px solid rgba(13,43,62,0.3)',
           }}>
             Read full athlete stories

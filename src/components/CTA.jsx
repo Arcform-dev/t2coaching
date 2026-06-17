@@ -96,7 +96,7 @@ export default function CTA() {
               gap: 10, whiteSpace: 'nowrap', marginTop: 8,
               background: '#C9A84C', color: '#fff',
               fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)', fontWeight: 700,
-              padding: '18px 42px', borderRadius: 4,
+              padding: '18px 42px', borderRadius: 0,
               textDecoration: 'none',
             }}
           >

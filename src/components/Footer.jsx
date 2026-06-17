@@ -82,7 +82,7 @@ export default function Footer() {
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 background: '#C9A84C', color: '#fff', fontSize: 14, fontWeight: 600,
-                padding: '12px 24px', borderRadius: 4, textDecoration: 'none',
+                padding: '12px 24px', borderRadius: 0, textDecoration: 'none',
               }}
             >Book a Free Call</a>
           </div>

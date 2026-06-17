@@ -94,7 +94,7 @@ export default function About() {
                   border: '1px solid rgba(13,43,62,0.3)',
                   color: '#0D2B3E',
                   fontSize: 12, fontWeight: 600,
-                  padding: '6px 14px', borderRadius: 4, letterSpacing: '0.03em',
+                  padding: '6px 14px', borderRadius: 0, letterSpacing: '0.03em',
                 }}>{c}</span>
               ))}
             </div>

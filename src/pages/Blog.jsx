@@ -20,7 +20,7 @@ function PostCard({ post }) {
           </div>
         )}
         {post.comingSoon && (
-          <span style={{ position: 'absolute', top: 14, right: 14, background: 'rgba(8,18,32,0.85)', color: '#F5A623', fontSize: 11, fontWeight: 600, padding: '5px 12px', borderRadius: 4, letterSpacing: '0.04em' }}>
+          <span style={{ position: 'absolute', top: 14, right: 14, background: 'rgba(8,18,32,0.85)', color: '#F5A623', fontSize: 11, fontWeight: 600, padding: '5px 12px', borderRadius: 0, letterSpacing: '0.04em' }}>
             Coming Soon
           </span>
         )}

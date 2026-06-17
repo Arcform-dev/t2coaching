@@ -42,7 +42,7 @@ function ServiceCard({ s }) {
       {featured && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: '#C9A84C' }} />}
       {s.badge && (
         <div style={{ position: 'absolute', top: 18, right: 22 }}>
-          <span style={{ display: 'inline-block', background: s.badgeColor, color: '#fff', fontSize: 11, fontWeight: 700, padding: '4px 12px', borderRadius: 4, letterSpacing: '0.04em' }}>
+          <span style={{ display: 'inline-block', background: s.badgeColor, color: '#fff', fontSize: 11, fontWeight: 700, padding: '4px 12px', borderRadius: 0, letterSpacing: '0.04em' }}>
             {s.badge}
           </span>
         </div>
@@ -76,7 +76,7 @@ function ServiceCard({ s }) {
         color: featured ? '#fff' : '#7EC8E3',
         border: featured ? '1px solid #C9A84C' : '1px solid rgba(126,200,227,0.5)',
         fontSize: 14, fontWeight: featured ? 700 : 600,
-        padding: '14px 24px', borderRadius: 4, textDecoration: 'none',
+        padding: '14px 24px', borderRadius: 0, textDecoration: 'none',
       }}>
         {featured ? 'Book Your Free Call' : 'Book a Call'}
         <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
@@ -131,7 +131,7 @@ export default function Services() {
               <a className="shine-btn" href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10, whiteSpace: 'nowrap',
                 background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
-                padding: '16px 36px', borderRadius: 4, textDecoration: 'none',
+                padding: '16px 36px', borderRadius: 0, textDecoration: 'none',
                 boxShadow: '0 12px 40px rgba(201,168,76,0.4)',
               }}>
                 Book Your Free Call
@@ -181,7 +181,7 @@ export default function Services() {
                   <span key={w} style={{
                     display: 'inline-block', border: '1px solid rgba(126,200,227,0.4)',
                     background: 'rgba(8,18,32,0.5)', color: 'rgba(255,255,255,0.85)',
-                    fontSize: 14, fontWeight: 500, padding: '10px 16px', borderRadius: 4,
+                    fontSize: 14, fontWeight: 500, padding: '10px 16px', borderRadius: 0,
                   }}>{w}</span>
                 ))}
               </div>
