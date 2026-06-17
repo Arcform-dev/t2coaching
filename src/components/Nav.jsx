@@ -3,8 +3,6 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { BOOKING_URL } from '../data/siteContent'
 
-const BLUE = '#1A6B8A'
-
 const LINKS = [
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/services' },
@@ -58,14 +56,8 @@ export default function Nav() {
           justifyContent: 'space-between', height: 72,
         }}>
           {/* Logo */}
-          <Link to="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-            <div style={{
-              width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
-              background: BLUE,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-              <span style={{ color: '#fff', fontWeight: 700, fontSize: 12, letterSpacing: '0.04em' }}>T2</span>
-            </div>
+          <Link to="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
+            <img src="/photos/logo.png" alt="T2 Coaching" style={{ height: 42, width: 'auto', flexShrink: 0, display: 'block' }} />
             <span style={{
               fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
               fontSize: 22, lineHeight: 1, fontWeight: 600,

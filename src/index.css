@@ -254,8 +254,8 @@ section, footer {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  padding: 13px 26px;
-  border-radius: 100px;
+  padding: 14px 28px;
+  border-radius: 0;
   text-decoration: none;
 }
 /* Supporting line — quiet, smaller, below the action. */
