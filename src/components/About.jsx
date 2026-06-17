@@ -59,11 +59,11 @@ export default function About() {
   }, [])
 
   return (
-    <section id="about" ref={sectionRef} style={{ background: 'transparent', padding: '110px 0', overflow: 'hidden' }}>
+    <section id="about" ref={sectionRef} style={{ background: '#F1ECE3', padding: '110px 0', overflow: 'hidden' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
         {/* Barrier-style: a full-width rule opens the section, then an asymmetric
             two-column block with generous spacing (no boxed card). */}
-        <div style={{ height: 1, background: 'rgba(255,255,255,0.16)', marginBottom: 'clamp(40px, 6vw, 72px)' }} />
+        <div style={{ height: 1, background: 'rgba(13,43,62,0.16)', marginBottom: 'clamp(40px, 6vw, 72px)' }} />
         <div className="about-grid" style={{ display: 'grid', gap: 'clamp(40px, 6vw, 88px)', alignItems: 'start' }}>
 
           {/* Text */}
@@ -71,7 +71,7 @@ export default function About() {
             <h2 style={{
               fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
               fontSize: 'clamp(2.1rem, 4vw, 3.2rem)',
-              fontWeight: 600, color: '#ffffff', lineHeight: 1.12, marginBottom: 34,
+              fontWeight: 600, color: '#0D2B3E', lineHeight: 1.12, marginBottom: 34,
             }}>
               I've been in your shoes,<br />
               and on that finish line.
@@ -83,7 +83,7 @@ export default function About() {
                 "Her approach is simple: good coaching meets you where you are. Whether you're juggling family and a full-time job, learning to swim for your first Ironman, or chasing a Kona slot, Wendy designs training that fits the life you already have.",
                 "Based in Marietta, Georgia, she coaches athletes worldwide over Zoom and in person at races. With a Master's in Exercise & Sport Science and 26 years of coaching, she still swims, bikes, and runs right alongside the athletes she guides.",
               ].map((text, i) => (
-                <p key={i} style={{ fontSize: 16, color: 'rgba(255,255,255,0.72)', lineHeight: 1.72 }}>{text}</p>
+                <p key={i} style={{ fontSize: 16, color: 'rgba(13,43,62,0.74)', lineHeight: 1.72 }}>{text}</p>
               ))}
             </div>
 
@@ -91,8 +91,8 @@ export default function About() {
               {CREDS.map((c, i) => (
                 <span key={c} ref={el => credsRef.current[i] = el} style={{
                   display: 'inline-block',
-                  border: '1px solid rgba(126,200,227,0.55)',
-                  color: '#7EC8E3',
+                  border: '1px solid rgba(13,43,62,0.3)',
+                  color: '#0D2B3E',
                   fontSize: 12, fontWeight: 600,
                   padding: '6px 14px', borderRadius: 4, letterSpacing: '0.03em',
                 }}>{c}</span>

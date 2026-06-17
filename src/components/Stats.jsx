@@ -14,7 +14,7 @@ function StatCell({ value, suffix, label, sub, index }) {
     if (!el) return
     const obj = { val: 0 }
     const st = ScrollTrigger.create({
-      trigger: el, start: 'top 88%', once: true,
+      trigger: el, start: 'top 90%', once: true,
       onEnter: () => {
         if (animated.current) return
         animated.current = true
@@ -27,48 +27,43 @@ function StatCell({ value, suffix, label, sub, index }) {
     return () => st.kill()
   }, [value, suffix, index])
 
+  // Barrier stat: a big number over a gold underline, with label + detail below.
   return (
-    <div style={{ background: '#0D2B3E', padding: '34px 28px' }}>
+    <div>
       <div ref={numRef} style={{
         fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
-        fontSize: 'clamp(2.4rem, 4.5vw, 3.6rem)',
-        color: '#ffffff', lineHeight: 1,
+        fontSize: 'clamp(2.6rem, 5vw, 4rem)',
+        fontWeight: 500, color: '#ffffff', lineHeight: 1,
       }}>0{suffix}</div>
-      <p style={{ fontSize: 14, fontWeight: 600, color: '#ffffff', marginTop: 14, marginBottom: 4 }}>{label}</p>
-      <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.45 }}>{sub}</p>
+      <div style={{ height: 2, background: '#C9A84C', margin: '18px 0 16px' }} />
+      <p style={{ fontSize: 15, fontWeight: 600, color: '#ffffff' }}>{label}</p>
+      <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.45, marginTop: 4 }}>{sub}</p>
     </div>
   )
 }
 
 export default function Stats() {
-  const panelRef = useRef(null)
+  const gridRef = useRef(null)
 
   useEffect(() => {
-    const el = panelRef.current
+    const el = gridRef.current
     if (!el) return
-    const anim = gsap.fromTo(el,
-      { y: 36, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out',
+    const anim = gsap.fromTo(el.children,
+      { y: 28, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'power3.out',
         scrollTrigger: { trigger: el, start: 'top 85%', once: true } }
     )
     return () => { anim.scrollTrigger?.kill(); anim.kill() }
   }, [])
 
   return (
-    <section style={{ padding: '80px 0 90px' }}>
+    <section style={{ background: '#0D2B3E', padding: '110px 0' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 32px' }}>
-        {/* Framed record board — reads like a race-results panel, not a SaaS stat grid */}
-        <div ref={panelRef} style={{
-          background: '#0D2B3E',
-          border: '1px solid rgba(255,255,255,0.1)',
-          borderRadius: 20, overflow: 'hidden',
-        }}>
-          {/* Stat cells — 1px gaps over a light backing reveal hairline dividers at any column count */}
-          <div className="record-grid" style={{ display: 'grid', gap: 1, background: 'rgba(255,255,255,0.09)' }}>
-            {STATS.map((s, i) => (
-              <StatCell key={s.label} {...s} index={i} />
-            ))}
-          </div>
+        <div style={{ height: 1, background: 'rgba(255,255,255,0.16)', marginBottom: 'clamp(40px, 6vw, 72px)' }} />
+        <div ref={gridRef} className="record-grid" style={{ display: 'grid', gap: 'clamp(36px, 5vw, 64px)' }}>
+          {STATS.map((s, i) => (
+            <StatCell key={s.label} {...s} index={i} />
+          ))}
         </div>
       </div>
     </section>

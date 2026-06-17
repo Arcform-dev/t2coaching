@@ -167,18 +167,19 @@ export default function Programs() {
   }, [])
 
   return (
-    <section id="programs" ref={sectionRef} style={{ background: 'transparent', padding: '80px 0 100px' }}>
+    <section id="programs" ref={sectionRef} style={{ background: '#F1ECE3', padding: '110px 0' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
 
-        <div ref={headerRef} style={{ maxWidth: 600, marginBottom: 64 }}>
+        <div style={{ height: 1, background: 'rgba(13,43,62,0.16)', marginBottom: 'clamp(40px, 6vw, 72px)' }} />
+        <div ref={headerRef} style={{ maxWidth: 640, marginBottom: 56 }}>
           <h2 style={{
             fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
             fontSize: 'clamp(2rem, 4vw, 3rem)',
-            color: '#ffffff', lineHeight: 1.15, marginBottom: 16,
+            color: '#0D2B3E', lineHeight: 1.15, marginBottom: 16,
           }}>
             Coaching built for how you actually live.
           </h2>
-          <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.65)', lineHeight: 1.65 }}>
+          <p style={{ fontSize: 18, color: 'rgba(13,43,62,0.7)', lineHeight: 1.65 }}>
             Whether you're chasing your first finish line or gunning for Kona, there's a path designed for you.
           </p>
         </div>
@@ -192,9 +193,9 @@ export default function Programs() {
         <div style={{ marginTop: 40, textAlign: 'center' }}>
           <Link to="/services" style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
-            color: '#7EC8E3', fontSize: 15, fontWeight: 600, textDecoration: 'none',
+            color: '#0D2B3E', fontSize: 15, fontWeight: 600, textDecoration: 'none',
             padding: '12px 28px', borderRadius: 4,
-            border: '1px solid rgba(126,200,227,0.4)',
+            border: '1px solid rgba(13,43,62,0.3)',
           }}>
             View all services & pricing
             <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
