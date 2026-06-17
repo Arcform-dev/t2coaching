@@ -144,7 +144,7 @@ export default function Testimonials() {
         <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 32 }}>
           {TESTIMONIALS.map((_, i) => (
             <button key={i} onClick={() => setActive(i)} aria-label={`Go to ${i + 1}`} style={{
-              borderRadius: 100, border: 'none', cursor: 'pointer', padding: 0,
+              borderRadius: 99, border: 'none', cursor: 'pointer', padding: 0,
               width: i === active ? 24 : 8, height: 8,
               background: i === active ? '#7EC8E3' : 'rgba(255,255,255,0.2)',
               transition: 'all 0.3s ease',
@@ -156,7 +156,7 @@ export default function Testimonials() {
           <Link to="/testimonials" style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
             color: '#7EC8E3', fontSize: 15, fontWeight: 600, textDecoration: 'none',
-            padding: '12px 28px', borderRadius: 100,
+            padding: '12px 28px', borderRadius: 4,
             border: '1px solid rgba(126,200,227,0.4)',
           }}>
             Read full athlete stories

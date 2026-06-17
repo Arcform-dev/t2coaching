@@ -136,7 +136,7 @@ function GuideSignup() {
               <button type="submit" disabled={status === 'sending'} style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                 background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
-                padding: '15px 28px', borderRadius: 100, border: 'none', cursor: 'pointer',
+                padding: '15px 28px', borderRadius: 4, border: 'none', cursor: 'pointer',
                 opacity: status === 'sending' ? 0.7 : 1,
               }}>
                 {status === 'sending' ? 'Sending…' : 'Get the Free Guide'}

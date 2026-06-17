@@ -95,7 +95,7 @@ export default function Nav() {
                 whiteSpace: 'nowrap',
                 color: '#0D2B3E',
                 fontSize: 14, fontWeight: 700,
-                padding: '11px 24px', borderRadius: 100,
+                padding: '11px 24px', borderRadius: 4,
                 textDecoration: 'none', letterSpacing: '0.02em',
               }}
             >Book a Free Call</a>
@@ -157,7 +157,7 @@ export default function Nav() {
               color: '#0D2B3E',
               fontSize: 14, fontWeight: 700,
               padding: '15px 0',
-              borderRadius: 100, textDecoration: 'none',
+              borderRadius: 4, textDecoration: 'none',
             }}
           >Book a Free Call</a>
         </div>

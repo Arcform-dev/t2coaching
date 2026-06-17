@@ -95,7 +95,7 @@ function ProgramCard({ program, index }) {
             display: 'inline-block',
             background: p.badgeColor, color: '#fff',
             fontSize: 11, fontWeight: 700,
-            padding: '4px 12px', borderRadius: 100, letterSpacing: '0.04em',
+            padding: '4px 12px', borderRadius: 4, letterSpacing: '0.04em',
           }}>{p.badge}</span>
         </div>
       )}
@@ -138,7 +138,7 @@ function ProgramCard({ program, index }) {
           color: featured ? '#fff' : '#7EC8E3',
           border: featured ? '1px solid #C9A84C' : '1px solid rgba(126,200,227,0.5)',
           fontSize: 14, fontWeight: featured ? 700 : 600,
-          padding: '14px 24px', borderRadius: 100,
+          padding: '14px 24px', borderRadius: 4,
           textDecoration: 'none',
         }}
       >
@@ -193,7 +193,7 @@ export default function Programs() {
           <Link to="/services" style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
             color: '#7EC8E3', fontSize: 15, fontWeight: 600, textDecoration: 'none',
-            padding: '12px 28px', borderRadius: 100,
+            padding: '12px 28px', borderRadius: 4,
             border: '1px solid rgba(126,200,227,0.4)',
           }}>
             View all services & pricing

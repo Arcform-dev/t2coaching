@@ -122,7 +122,7 @@ export default function Contact() {
                     <button type="submit" disabled={status === 'sending'} style={{
                       width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10,
                       background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
-                      padding: '16px 28px', borderRadius: 100, border: 'none', cursor: 'pointer',
+                      padding: '16px 28px', borderRadius: 4, border: 'none', cursor: 'pointer',
                       opacity: status === 'sending' ? 0.7 : 1, boxShadow: '0 10px 30px rgba(201,168,76,0.35)',
                     }}>
                       {status === 'sending' ? 'Sending…' : 'Send Message'}
@@ -165,7 +165,7 @@ export default function Contact() {
                   <a className="shine-btn" href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
                     background: '#C9A84C', color: '#fff', fontSize: 14, fontWeight: 700,
-                    padding: '13px 26px', borderRadius: 100, textDecoration: 'none',
+                    padding: '13px 26px', borderRadius: 4, textDecoration: 'none',
                   }}>Book a Free Call</a>
                 </GlassCard>
 

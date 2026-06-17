@@ -31,7 +31,7 @@ export default function CTABanner({
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10, whiteSpace: 'nowrap',
                 background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
-                padding: '16px 38px', borderRadius: 100, textDecoration: 'none',
+                padding: '16px 38px', borderRadius: 4, textDecoration: 'none',
               }}
             >
               {primaryLabel}
@@ -42,7 +42,7 @@ export default function CTABanner({
             <Link to="/contact" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8, whiteSpace: 'nowrap',
               color: '#7EC8E3', fontSize: 16, fontWeight: 500,
-              padding: '15px 32px', borderRadius: 100, textDecoration: 'none',
+              padding: '15px 32px', borderRadius: 4, textDecoration: 'none',
               border: '1px solid rgba(126,200,227,0.45)',
             }}>Send a Message</Link>
           </div>
