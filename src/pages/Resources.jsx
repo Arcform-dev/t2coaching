@@ -53,7 +53,7 @@ const RESOURCES = [
 function ResourceCard({ r }) {
   const body = (
     <GlassCard style={{ padding: '32px 28px', height: '100%', display: 'flex', flexDirection: 'column' }} className="resource-card">
-      <div style={{ width: 50, height: 50, borderRadius: 12, background: 'rgba(126,200,227,0.12)', color: '#7EC8E3', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 22 }}>
+      <div style={{ width: 50, height: 50, borderRadius: 0, background: 'rgba(126,200,227,0.12)', color: '#7EC8E3', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 22 }}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={r.icon} /></svg>
       </div>
       <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 19, color: '#fff', marginBottom: 12 }}>{r.title}</h3>
@@ -156,7 +156,7 @@ function GuideSignup() {
 }
 
 const inputStyle = {
-  width: '100%', padding: '15px 18px', borderRadius: 12,
+  width: '100%', padding: '15px 18px', borderRadius: 0,
   background: 'rgba(8,18,32,0.6)', border: '1px solid rgba(255,255,255,0.15)',
   color: '#fff', fontSize: 15, fontFamily: 'inherit', outline: 'none',
 }

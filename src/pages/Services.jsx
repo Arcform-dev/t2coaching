@@ -36,7 +36,7 @@ function ServiceCard({ s }) {
       padding: '40px 32px 32px', height: '100%', overflow: 'hidden',
       background: '#0D2B3E',
       border: featured ? '1px solid rgba(201,168,76,0.55)' : '1px solid rgba(255,255,255,0.1)',
-      borderRadius: 20,
+      borderRadius: 0,
       boxShadow: featured ? '0 18px 48px rgba(0,0,0,0.32)' : 'none',
     }}>
       {featured && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: '#C9A84C' }} />}
@@ -47,7 +47,7 @@ function ServiceCard({ s }) {
           </span>
         </div>
       )}
-      <div style={{ width: 52, height: 52, borderRadius: 12, background: 'rgba(126,200,227,0.14)', color: '#7EC8E3', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 22 }}>
+      <div style={{ width: 52, height: 52, borderRadius: 0, background: 'rgba(126,200,227,0.14)', color: '#7EC8E3', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 22 }}>
         {ICONS[s.icon]}
       </div>
       <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 21, color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>{s.title}</h3>

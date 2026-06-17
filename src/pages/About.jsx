@@ -63,7 +63,7 @@ export default function About() {
 
             <Reveal x={50} y={0} delay={0.1} style={{ position: 'sticky', top: 96 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-                <div style={{ position: 'relative', borderRadius: 20, overflow: 'hidden', aspectRatio: '3/4', background: '#0D2B3E' }}>
+                <div style={{ position: 'relative', borderRadius: 0, overflow: 'hidden', aspectRatio: '3/4', background: '#0D2B3E' }}>
                   <img src="/photos/kona-world-championship-finish.jpg" alt="Wendy Mader finishing the Ironman World Championship in Kona"
                     style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
                   <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '38%', background: 'linear-gradient(to top, rgba(13,43,62,0.85), transparent)' }} />

@@ -8,7 +8,7 @@ import { CONTACT, SOCIALS, BOOKING_URL } from '../data/siteContent'
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 
 const inputStyle = {
-  width: '100%', padding: '13px 16px', borderRadius: 10,
+  width: '100%', padding: '13px 16px', borderRadius: 0,
   background: 'rgba(8,18,32,0.55)', border: '1px solid rgba(255,255,255,0.14)',
   color: '#fff', fontSize: 15, fontFamily: 'inherit', outline: 'none',
 }

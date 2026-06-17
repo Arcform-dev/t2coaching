@@ -80,7 +80,7 @@ function ProgramCard({ program, index }) {
         display: 'flex', flexDirection: 'column',
         background: '#0D2B3E',
         border: featured ? '1px solid rgba(201,168,76,0.55)' : '1px solid rgba(255,255,255,0.1)',
-        borderRadius: 20,
+        borderRadius: 0,
         padding: '36px 32px 32px',
         overflow: 'hidden',
         boxShadow: featured ? '0 18px 48px rgba(0,0,0,0.32)' : 'none',
@@ -101,7 +101,7 @@ function ProgramCard({ program, index }) {
       )}
 
       <div style={{
-        width: 52, height: 52, borderRadius: 12,
+        width: 52, height: 52, borderRadius: 0,
         background: 'rgba(126,200,227,0.14)', color: '#7EC8E3',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         marginBottom: 24, flexShrink: 0,

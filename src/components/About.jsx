@@ -113,7 +113,7 @@ export default function About() {
           {/* Image + Quote */}
           <div ref={imageRef} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div style={{
-              position: 'relative', borderRadius: 20, overflow: 'hidden', aspectRatio: '4 / 5',
+              position: 'relative', borderRadius: 0, overflow: 'hidden', aspectRatio: '4 / 5',
               background: '#0D2B3E',
             }}>
               <img
@@ -132,7 +132,7 @@ export default function About() {
               }} />
             </div>
 
-            <div ref={quoteRef} style={{ background: '#0D2B3E', borderRadius: 18, padding: '28px 28px 24px' }}>
+            <div ref={quoteRef} style={{ background: '#0D2B3E', borderRadius: 0, padding: '28px 28px 24px' }}>
               <blockquote style={{
                 fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
                 fontSize: 'clamp(1rem, 1.8vw, 1.15rem)',

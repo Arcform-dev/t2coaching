@@ -56,7 +56,7 @@ export default function Gallery() {
                   onClick={() => setActive(i)}
                   style={{
                     display: 'block', width: '100%', padding: 0, border: 'none', cursor: 'pointer',
-                    position: 'relative', borderRadius: 16, overflow: 'hidden',
+                    position: 'relative', borderRadius: 0, overflow: 'hidden',
                     aspectRatio: p.span ? '16/9' : '4/5', background: '#0D2B3E',
                   }}
                   className="gallery-item"
@@ -95,7 +95,7 @@ export default function Gallery() {
           </button>
 
           <figure onClick={(e) => e.stopPropagation()} style={{ maxWidth: 'min(900px, 92vw)', maxHeight: '88vh', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <img src={PHOTOS[active].src} alt={PHOTOS[active].caption} style={{ maxWidth: '100%', maxHeight: '80vh', objectFit: 'contain', borderRadius: 12, boxShadow: '0 30px 80px rgba(0,0,0,0.5)' }} />
+            <img src={PHOTOS[active].src} alt={PHOTOS[active].caption} style={{ maxWidth: '100%', maxHeight: '80vh', objectFit: 'contain', borderRadius: 0, boxShadow: '0 30px 80px rgba(0,0,0,0.5)' }} />
             <figcaption style={{ color: 'rgba(255,255,255,0.8)', fontSize: 14, marginTop: 16, textAlign: 'center' }}>{PHOTOS[active].caption}</figcaption>
           </figure>
         </div>

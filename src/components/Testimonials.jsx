@@ -111,7 +111,7 @@ export default function Testimonials() {
               style={{
                 background: prominence === 'primary' ? '#0D2B3E' : '#143751',
                 borderLeft: `3px solid ${prominence === 'primary' ? '#C9A84C' : 'rgba(201,168,76,0.4)'}`,
-                borderRadius: '4px 16px 16px 4px',
+                borderRadius: 0,
                 padding: '26px 28px',
                 opacity: prominence === 'tertiary' ? 0.7 : 1,
                 cursor: i !== 0 ? 'pointer' : 'default',

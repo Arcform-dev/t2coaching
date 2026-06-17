@@ -64,7 +64,7 @@ export default function Footer() {
             <div style={{ display: 'flex', gap: 10, marginBottom: 22 }}>
               {SOCIALS.map(s => (
                 <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={s.label} style={{
-                  width: 40, height: 40, borderRadius: 8,
+                  width: 40, height: 40, borderRadius: 0,
                   border: '1px solid rgba(255,255,255,0.12)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   color: 'rgba(255,255,255,0.62)',
