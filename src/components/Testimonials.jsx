@@ -61,19 +61,20 @@ export default function Testimonials() {
   ]
 
   return (
-    <section id="testimonials" ref={sectionRef} style={{ background: 'transparent', padding: '80px 0 100px', overflow: 'hidden' }}>
+    <section id="testimonials" ref={sectionRef} style={{ background: '#F1ECE3', padding: '110px 0', overflow: 'hidden' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
+        <div style={{ height: 1, background: 'rgba(13,43,62,0.16)', marginBottom: 'clamp(40px, 6vw, 72px)' }} />
 
         {/* Header */}
         <div ref={headerRef} style={{
           display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
-          flexWrap: 'wrap', gap: 20, marginBottom: 56,
+          flexWrap: 'wrap', gap: 20, marginBottom: 48,
         }}>
           <div>
             <h2 style={{
               fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
               fontSize: 'clamp(2rem, 4vw, 3rem)',
-              color: '#ffffff', lineHeight: 1.2,
+              color: '#0D2B3E', lineHeight: 1.2,
             }}>
               Athletes who've crossed<br />their finish lines.
             </h2>
@@ -86,9 +87,9 @@ export default function Testimonials() {
               { fn: next, d: 'M9 5l7 7-7 7', label: 'Next' },
             ].map(({ fn, d, label }) => (
               <button key={label} onClick={fn} aria-label={label} style={{
-                width: 44, height: 44, borderRadius: '50%',
-                border: '1px solid rgba(255,255,255,0.15)',
-                background: 'rgba(8,18,32,0.5)', color: '#ffffff',
+                width: 46, height: 46, borderRadius: 4,
+                border: 'none',
+                background: '#0D2B3E', color: '#ffffff',
                 cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
@@ -108,8 +109,8 @@ export default function Testimonials() {
               onClick={() => i !== 0 && setActive((active + i) % TESTIMONIALS.length)}
               className={prominence === 'tertiary' ? 't-card-3' : ''}
               style={{
-                background: prominence === 'primary' ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.05)',
-                borderLeft: `3px solid ${prominence === 'primary' ? '#7EC8E3' : 'rgba(126,200,227,0.35)'}`,
+                background: prominence === 'primary' ? '#0D2B3E' : '#143751',
+                borderLeft: `3px solid ${prominence === 'primary' ? '#C9A84C' : 'rgba(201,168,76,0.4)'}`,
                 borderRadius: '4px 16px 16px 4px',
                 padding: '26px 28px',
                 opacity: prominence === 'tertiary' ? 0.7 : 1,
@@ -146,7 +147,7 @@ export default function Testimonials() {
             <button key={i} onClick={() => setActive(i)} aria-label={`Go to ${i + 1}`} style={{
               borderRadius: 99, border: 'none', cursor: 'pointer', padding: 0,
               width: i === active ? 24 : 8, height: 8,
-              background: i === active ? '#7EC8E3' : 'rgba(255,255,255,0.2)',
+              background: i === active ? '#0D2B3E' : 'rgba(13,43,62,0.25)',
               transition: 'all 0.3s ease',
             }} />
           ))}
@@ -155,9 +156,9 @@ export default function Testimonials() {
         <div style={{ marginTop: 36, textAlign: 'center' }}>
           <Link to="/testimonials" style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
-            color: '#7EC8E3', fontSize: 15, fontWeight: 600, textDecoration: 'none',
+            color: '#0D2B3E', fontSize: 15, fontWeight: 600, textDecoration: 'none',
             padding: '12px 28px', borderRadius: 4,
-            border: '1px solid rgba(126,200,227,0.4)',
+            border: '1px solid rgba(13,43,62,0.3)',
           }}>
             Read full athlete stories
             <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">

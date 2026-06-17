@@ -76,9 +76,10 @@ export default function WhyT2() {
   }, [])
 
   return (
-    <section style={{ background: 'transparent', padding: '80px 0 100px' }}>
+    <section style={{ background: '#0D2B3E', padding: '110px 0' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
-        <div ref={headerRef} style={{ textAlign: 'center', maxWidth: 580, margin: '0 auto 56px' }}>
+        <div style={{ height: 1, background: 'rgba(255,255,255,0.16)', marginBottom: 'clamp(40px, 6vw, 72px)' }} />
+        <div ref={headerRef} style={{ maxWidth: 580, margin: '0 0 56px' }}>
           <h2 style={{
             fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
             fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
