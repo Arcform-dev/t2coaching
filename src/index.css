@@ -1,8 +1,9 @@
 /* DM Sans for the whole site, used the way Barrier does: Light (300) for the
    big statement, Regular (400) body, Medium (500) sub-headings, and Bold (700)
    ONLY on small, mostly all-caps UI (buttons, labels). Playfair Display SC is
-   kept for the one decorative element — the giant gold hero title. */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=Playfair+Display+SC:wght@400;700;900&display=swap');
+   kept for the giant gold hero title; Caveat is used ONLY for the hand-drawn
+   scrapbook annotation in the hero. */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=Playfair+Display+SC:wght@400;700;900&display=swap');
 @import "tailwindcss";
 @source "../index.html";
 @source "./src";
@@ -266,6 +267,36 @@ section, footer {
   font-weight: 400;
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.82);
+}
+
+/* Scrapbook annotation — hand-drawn note + doodle arrow in the empty space to
+   the right of the cutout. Tilted so it reads "stuck on". --anno-shift is driven
+   by Hero.jsx at a faster rate than the photo for the layered parallax. */
+.champ-hero__anno {
+  position: absolute;
+  z-index: 3;
+  top: 40%;
+  right: clamp(36px, 10vw, 168px);
+  text-align: center;
+  color: #F5F1E9;
+  pointer-events: none;
+  transform: translateY(var(--anno-shift, 0)) rotate(-7deg);
+}
+.champ-hero__anno-text {
+  display: block;
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3vw, 2.9rem);
+  line-height: 0.98;
+}
+.champ-hero__anno-arrow {
+  display: block;
+  width: clamp(96px, 9vw, 138px);
+  height: auto;
+  margin: 4px auto 0 6px;
+}
+@media (max-width: 900px) {
+  .champ-hero__anno { display: none; }
 }
 
 /* Featured-in rotator — set into the hero's bottom-right corner (mirrors the

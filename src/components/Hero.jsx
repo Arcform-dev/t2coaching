@@ -7,6 +7,7 @@ export default function Hero() {
   const titleRef = useRef(null)
   const photoRef = useRef(null)
   const cardRef  = useRef(null)
+  const annoRef  = useRef(null)
 
   useEffect(() => {
     if (titleRef.current) {
@@ -26,9 +27,9 @@ export default function Hero() {
     }
   }, [])
 
-  // Gentle parallax: the cutout drifts up slightly as the page scrolls over the
-  // pinned hero, adding depth without distracting motion. Skipped if the user
-  // prefers reduced motion.
+  // Layered parallax over the pinned hero: the cutout drifts up gently, and the
+  // scrapbook note drifts up faster on its own plane, so the title (sticky),
+  // photo, and note all move at different speeds. Skipped for reduced motion.
   useEffect(() => {
     const photo = photoRef.current
     if (!photo) return
@@ -39,8 +40,11 @@ export default function Hero() {
       if (raf) return
       raf = requestAnimationFrame(() => {
         raf = 0
-        const shift = Math.min(window.scrollY * 0.12, 60)
-        photo.style.setProperty('--parallax', `${-shift}px`)
+        const y = window.scrollY
+        photo.style.setProperty('--parallax', `${-Math.min(y * 0.12, 60)}px`)
+        if (annoRef.current) {
+          annoRef.current.style.setProperty('--anno-shift', `${-Math.min(y * 0.28, 150)}px`)
+        }
       })
     }
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -73,6 +77,18 @@ export default function Hero() {
           Train with Wendy
         </a>
         <p className="champ-hero__sub">Get coaching by an expert in triathlon and endurance sports. With over 30+ years of experience in the field.</p>
+      </div>
+
+      {/* Scrapbook annotation — hand-drawn note + doodle arrow pointing at Wendy,
+          tucked in the empty right-of-subject space, on its own parallax plane. */}
+      <div ref={annoRef} className="champ-hero__anno" aria-hidden="true">
+        <span className="champ-hero__anno-text">Kona<br />World Champ</span>
+        <svg className="champ-hero__anno-arrow" viewBox="0 0 170 96" fill="none">
+          <path d="M162 12 C 104 2, 36 20, 14 70" stroke="currentColor" strokeWidth="5"
+                strokeLinecap="round" />
+          <path d="M14 70 L 38 60 M14 70 L 22 44" stroke="currentColor" strokeWidth="5"
+                strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </div>
 
       {/* Press rotator, set into the hero's bottom-right corner */}
