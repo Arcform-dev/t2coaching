@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import useDocumentMeta from '../hooks/useDocumentMeta'
 import PageHeader from '../components/ui/PageHeader'
 import SectionHeading from '../components/ui/SectionHeading'
@@ -70,7 +71,7 @@ function ServiceCard({ s }) {
         ))}
       </ul>
 
-      <a className="shine-btn" href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
+      <Link className="shine-btn" to={BOOKING_URL} style={{
         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
         background: featured ? '#C9A84C' : 'transparent',
         color: featured ? '#fff' : '#7EC8E3',
@@ -80,7 +81,7 @@ function ServiceCard({ s }) {
       }}>
         {featured ? 'Book Your Free Call' : 'Book a Call'}
         <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-      </a>
+      </Link>
     </div>
   )
 }
@@ -128,7 +129,7 @@ export default function Services() {
                 </h3>
                 <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, maxWidth: 520 }}>{FREE_OFFER.body}</p>
               </div>
-              <a className="shine-btn" href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
+              <Link className="shine-btn" to={BOOKING_URL} style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10, whiteSpace: 'nowrap',
                 background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
                 padding: '16px 36px', borderRadius: 0, textDecoration: 'none',
@@ -136,7 +137,7 @@ export default function Services() {
               }}>
                 Book Your Free Call
                 <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-              </a>
+              </Link>
             </GlassCard>
           </Reveal>
         </div>

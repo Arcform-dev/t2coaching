@@ -113,7 +113,6 @@ export default function Testimonials() {
                 borderLeft: `3px solid ${prominence === 'primary' ? '#C9A84C' : 'rgba(201,168,76,0.4)'}`,
                 borderRadius: 0,
                 padding: '26px 28px',
-                opacity: prominence === 'tertiary' ? 0.7 : 1,
                 cursor: i !== 0 ? 'pointer' : 'default',
               }}
             >

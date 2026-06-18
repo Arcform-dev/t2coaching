@@ -78,10 +78,9 @@ export default function Nav() {
                 transition: 'color 0.2s ease',
               })}>{label}</NavLink>
             ))}
-            <a
+            <Link
               className="cta-gold"
-              href={BOOKING_URL}
-              target="_blank" rel="noopener noreferrer"
+              to={BOOKING_URL}
               style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 whiteSpace: 'nowrap',
@@ -90,7 +89,7 @@ export default function Nav() {
                 padding: '11px 24px', borderRadius: 0,
                 textDecoration: 'none', letterSpacing: '0.02em',
               }}
-            >Book a Free Call</a>
+            >Book a Free Call</Link>
           </div>
 
           {/* Mobile hamburger */}
@@ -138,10 +137,9 @@ export default function Nav() {
               borderBottom: '1px solid rgba(255,255,255,0.08)',
             })}>{label}</NavLink>
           ))}
-          <a
+          <Link
             className="cta-gold"
-            href={BOOKING_URL}
-            target="_blank" rel="noopener noreferrer"
+            to={BOOKING_URL}
             onClick={() => setOpen(false)}
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -151,7 +149,7 @@ export default function Nav() {
               padding: '15px 0',
               borderRadius: 0, textDecoration: 'none',
             }}
-          >Book a Free Call</a>
+          >Book a Free Call</Link>
         </div>
       </div>
     </nav>

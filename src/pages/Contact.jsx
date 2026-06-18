@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import useDocumentMeta from '../hooks/useDocumentMeta'
 import PageHeader from '../components/ui/PageHeader'
 import GlassCard from '../components/ui/GlassCard'
@@ -162,11 +163,11 @@ export default function Contact() {
                   <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, marginBottom: 18 }}>
                     Book a free 15-minute discovery call — no commitment, just a real conversation.
                   </p>
-                  <a className="shine-btn" href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
+                  <Link className="shine-btn" to={BOOKING_URL} style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
                     background: '#C9A84C', color: '#fff', fontSize: 14, fontWeight: 700,
                     padding: '13px 26px', borderRadius: 0, textDecoration: 'none',
-                  }}>Book a Free Call</a>
+                  }}>Book a Free Call</Link>
                 </GlassCard>
 
                 <GlassCard style={{ padding: '28px 30px' }}>

@@ -25,9 +25,8 @@ export default function CTABanner({
             {subtitle}
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center' }}>
-            <a
-              href={primaryHref}
-              target="_blank" rel="noopener noreferrer"
+            <Link
+              to={primaryHref}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10, whiteSpace: 'nowrap',
                 background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
@@ -38,7 +37,7 @@ export default function CTABanner({
               <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </a>
+            </Link>
             <Link to="/contact" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8, whiteSpace: 'nowrap',
               color: '#7EC8E3', fontSize: 16, fontWeight: 500,

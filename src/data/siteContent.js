@@ -1,7 +1,10 @@
 // ── Single source of truth for T2 Coaching site content ──────────────────────
 // All copy here is from Wendy Mader's own intake/content documents.
 
-export const BOOKING_URL = 'https://t2coaching.com/calendar/'
+// "Book a free call" CTAs route to the internal contact page for now — there's
+// no external booking/calendar link wired up yet. Swap in a real URL when ready
+// (and change the <Link> CTAs back to <a target="_blank"> if it's off-site).
+export const BOOKING_URL = '/contact'
 
 export const CONTACT = {
   preferredName: 'Coach Wendy',

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { BOOKING_URL } from '../data/siteContent'
@@ -86,11 +87,10 @@ export default function CTA() {
           </p>
 
           {/* CTA */}
-          <a
+          <Link
             ref={btnRef}
             className="shine-btn"
-            href={BOOKING_URL}
-            target="_blank" rel="noopener noreferrer"
+            to={BOOKING_URL}
             style={{
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
               gap: 10, whiteSpace: 'nowrap', marginTop: 8,
@@ -104,7 +104,7 @@ export default function CTA() {
             <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
+          </Link>
 
           <p ref={noteRef} style={{ fontSize: 13, color: 'rgba(255,255,255,0.3)' }}>
             The first call is free and takes about fifteen minutes.

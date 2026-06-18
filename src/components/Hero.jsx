@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { BOOKING_URL } from '../data/siteContent'
 import FeaturedIn from './FeaturedIn'
@@ -24,6 +25,14 @@ export default function Hero() {
       gsap.fromTo(cardRef.current,
         { opacity: 0 },
         { opacity: 1, duration: 0.8, delay: 0.85, ease: 'power2.out' })
+    }
+    // The scrapbook note comes in last, like it's being stuck on: the text
+    // rises in, then the arrow. We animate the children, not the wrapper, so
+    // the wrapper's rotate(-7deg) + scroll parallax transform stay intact.
+    if (annoRef.current) {
+      gsap.fromTo(annoRef.current.children,
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.7, stagger: 0.18, delay: 1.05, ease: 'power2.out' })
     }
   }, [])
 
@@ -73,9 +82,9 @@ export default function Hero() {
       {/* Copy block — headline, action, supporting line; set straight on the navy */}
       <div ref={cardRef} className="champ-hero__card">
         <h2 className="champ-hero__headline">Personalized Coaching.<br />For Your Life.</h2>
-        <a className="shine-btn cta-gold champ-hero__cta" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+        <Link className="shine-btn cta-gold champ-hero__cta" to={BOOKING_URL}>
           Train with Wendy
-        </a>
+        </Link>
         <p className="champ-hero__sub">Get coaching by an expert in triathlon and endurance sports. With over 30+ years of experience in the field.</p>
       </div>
 

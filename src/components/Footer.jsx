@@ -75,16 +75,15 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <a
+            <Link
               className="shine-btn"
-              href={BOOKING_URL}
-              target="_blank" rel="noopener noreferrer"
+              to={BOOKING_URL}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 background: '#C9A84C', color: '#fff', fontSize: 14, fontWeight: 600,
                 padding: '12px 24px', borderRadius: 0, textDecoration: 'none',
               }}
-            >Book a Free Call</a>
+            >Book a Free Call</Link>
           </div>
         </div>
 

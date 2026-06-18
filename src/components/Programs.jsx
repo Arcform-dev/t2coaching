@@ -127,10 +127,9 @@ function ProgramCard({ program, index }) {
         }}>{p.highlight}</span>
       </div>
 
-      <a
+      <Link
         className="shine-btn"
-        href={BOOKING_URL}
-        target="_blank" rel="noopener noreferrer"
+        to={BOOKING_URL}
         style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           gap: 8, whiteSpace: 'nowrap',
@@ -146,7 +145,7 @@ function ProgramCard({ program, index }) {
         <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
-      </a>
+      </Link>
     </div>
   )
 }

@@ -14,15 +14,16 @@ export default function FeaturedIn() {
   const slotRef = useRef(null)
 
   // Minimal "Featured in" rotator (Core Atelier's hero corner): each logo holds
-  // ~2s, then swipes left as the next swipes in from the right.
+  // ~2s, then rises up and fades out as the next rises in from below — a soft
+  // upward drift (no sideways motion that would collide with the label).
   useEffect(() => {
     const slot = slotRef.current
     if (!slot) return
     const slides = Array.from(slot.querySelectorAll('.featured-logo'))
     if (!slides.length) return
 
-    gsap.set(slides, { opacity: 0, xPercent: 26 })
-    gsap.set(slides[0], { opacity: 1, xPercent: 0 })
+    gsap.set(slides, { opacity: 0, yPercent: 55 })
+    gsap.set(slides[0], { opacity: 1, yPercent: 0 })
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (slides.length < 2 || reduce) return
@@ -32,10 +33,10 @@ export default function FeaturedIn() {
       const cur = slides[i]
       i = (i + 1) % slides.length
       const next = slides[i]
-      gsap.to(cur, { opacity: 0, xPercent: -26, duration: 0.6, ease: 'power2.inOut' })
+      gsap.to(cur, { opacity: 0, yPercent: -55, duration: 0.6, ease: 'power2.inOut' })
       gsap.fromTo(next,
-        { opacity: 0, xPercent: 26 },
-        { opacity: 1, xPercent: 0, duration: 0.6, ease: 'power2.out', delay: 0.12 })
+        { opacity: 0, yPercent: 55 },
+        { opacity: 1, yPercent: 0, duration: 0.6, ease: 'power2.out', delay: 0.12 })
     }, 2200)
     return () => clearInterval(id)
   }, [])
