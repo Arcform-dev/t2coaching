@@ -8,7 +8,12 @@ export default function ScrollToTop() {
   const { pathname } = useLocation()
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // Jump instantly. The page sets `scroll-behavior: smooth` globally (nice for
+    // in-page anchor clicks), but on a route change that turns this reset into an
+    // animated scroll that gets interrupted when the new page's DOM swaps in —
+    // leaving the viewport stuck at the old Y. `behavior: 'instant'` overrides the
+    // CSS so navigation always snaps to the top.
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     // Let the new page mount, then recompute scroll-driven animations.
     const id = requestAnimationFrame(() => ScrollTrigger.refresh())
     return () => cancelAnimationFrame(id)
