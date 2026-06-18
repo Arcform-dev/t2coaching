@@ -58,7 +58,7 @@ function ResourceCard({ r }) {
       </div>
       <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 19, color: '#fff', marginBottom: 12 }}>{r.title}</h3>
       <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.64)', lineHeight: 1.7, flex: 1, marginBottom: 20 }}>{r.desc}</p>
-      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 600, color: '#F5A623' }}>
+      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 600, color: '#C9A84C' }}>
         {r.cta}
         <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
       </span>
@@ -110,7 +110,7 @@ function GuideSignup() {
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
             {GUIDE_POINTS.map((g, i) => (
               <li key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-                <span style={{ color: '#F5A623', flexShrink: 0, marginTop: 2 }}>
+                <span style={{ color: '#C9A84C', flexShrink: 0, marginTop: 2 }}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                 </span>
                 <span style={{ fontSize: 15, color: 'rgba(255,255,255,0.78)', lineHeight: 1.55 }}>{g}</span>
@@ -142,7 +142,7 @@ function GuideSignup() {
                 {status === 'sending' ? 'Sending…' : 'Get the Free Guide'}
               </button>
               {status === 'error' && (
-                <p style={{ fontSize: 13, color: '#F5A623', textAlign: 'center' }}>
+                <p style={{ fontSize: 13, color: '#C9A84C', textAlign: 'center' }}>
                   Couldn't submit just now. Please email t2coachwendy@gmail.com and I'll send it over.
                 </p>
               )}

@@ -133,7 +133,7 @@ export default function Contact() {
                     </button>
 
                     {status === 'error' && (
-                      <p style={{ fontSize: 14, color: '#F5A623', textAlign: 'center', marginTop: 16, lineHeight: 1.5 }}>
+                      <p style={{ fontSize: 14, color: '#C9A84C', textAlign: 'center', marginTop: 16, lineHeight: 1.5 }}>
                         Something went wrong sending your message. Please email me directly at{' '}
                         <a href={`mailto:${CONTACT.email}`} style={{ color: '#7EC8E3' }}>{CONTACT.email}</a>.
                       </p>
@@ -171,7 +171,7 @@ export default function Contact() {
                 </GlassCard>
 
                 <GlassCard style={{ padding: '28px 30px' }}>
-                  <h3 style={{ fontSize: 13, fontWeight: 600, color: '#F5A623', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 16 }}>Follow along</h3>
+                  <h3 style={{ fontSize: 13, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 16 }}>Follow along</h3>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                     {SOCIALS.map((s) => (
                       <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', justifyContent: 'space-between', fontSize: 15, color: 'rgba(255,255,255,0.78)', textDecoration: 'none' }}>

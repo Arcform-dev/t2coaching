@@ -20,7 +20,7 @@ function PostCard({ post }) {
           </div>
         )}
         {post.comingSoon && (
-          <span style={{ position: 'absolute', top: 14, right: 14, background: 'rgba(8,18,32,0.85)', color: '#F5A623', fontSize: 11, fontWeight: 600, padding: '5px 12px', borderRadius: 0, letterSpacing: '0.04em' }}>
+          <span style={{ position: 'absolute', top: 14, right: 14, background: 'rgba(8,18,32,0.85)', color: '#C9A84C', fontSize: 11, fontWeight: 600, padding: '5px 12px', borderRadius: 0, letterSpacing: '0.04em' }}>
             Coming Soon
           </span>
         )}
@@ -36,7 +36,7 @@ function PostCard({ post }) {
           {post.comingSoon ? (
             <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.4)' }}>In the works ✍️</span>
           ) : (
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 600, color: '#F5A623' }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 600, color: '#C9A84C' }}>
               Read article
               <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </span>

@@ -6,7 +6,7 @@ export default function SectionHeading({
   title,
   subtitle,
   align = 'left',
-  eyebrowColor = '#F5A623',
+  eyebrowColor = '#C9A84C',
   style,
 }) {
   const centered = align === 'center'

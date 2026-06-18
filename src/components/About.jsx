@@ -101,7 +101,7 @@ export default function About() {
 
             <Link to="/about" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
-              color: '#F5A623', fontSize: 15, fontWeight: 600, textDecoration: 'none',
+              color: '#C9A84C', fontSize: 15, fontWeight: 600, textDecoration: 'none',
             }}>
               Read Wendy's full story
               <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">

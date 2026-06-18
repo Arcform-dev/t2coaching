@@ -63,7 +63,7 @@ function ServiceCard({ s }) {
       <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 11, marginBottom: 28, flex: 1 }}>
         {s.includes.map((inc, i) => (
           <li key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-            <span style={{ color: '#F5A623', flexShrink: 0, marginTop: 2 }}>
+            <span style={{ color: '#C9A84C', flexShrink: 0, marginTop: 2 }}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
             </span>
             <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.74)', lineHeight: 1.5 }}>{inc}</span>

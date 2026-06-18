@@ -49,7 +49,7 @@ export default function BlogPost() {
       <>
         <section style={{ padding: '160px 0 90px', textAlign: 'center' }}>
           <div style={WRAP}>
-            <span style={{ fontSize: 11, fontWeight: 600, color: '#F5A623', letterSpacing: '0.2em', textTransform: 'uppercase' }}>{post.category}</span>
+            <span style={{ fontSize: 11, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.2em', textTransform: 'uppercase' }}>{post.category}</span>
             <h1 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 'clamp(2rem, 5vw, 3.2rem)', color: '#fff', lineHeight: 1.2, margin: '18px 0 20px' }}>{post.title}</h1>
             <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, maxWidth: 560, margin: '0 auto 32px' }}>
               This one's still in the works ✍️. Check back soon. In the meantime, the best training advice is the kind built just for you.
@@ -81,7 +81,7 @@ export default function BlogPost() {
             All articles
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16, flexWrap: 'wrap' }}>
-            <span style={{ fontSize: 11, fontWeight: 600, color: '#F5A623', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{post.category}</span>
+            <span style={{ fontSize: 11, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{post.category}</span>
             {post.date && <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>{formatDate(post.date)}</span>}
             {post.readTime && <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>· {post.readTime}</span>}
           </div>
@@ -121,7 +121,7 @@ export default function BlogPost() {
                       <strong style={{ color: '#7EC8E3', fontWeight: 600 }}>Why: </strong>{ex.why}
                     </p>
                     <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.74)', lineHeight: 1.75 }}>
-                      <strong style={{ color: '#F5A623', fontWeight: 600 }}>How: </strong>{ex.how}
+                      <strong style={{ color: '#C9A84C', fontWeight: 600 }}>How: </strong>{ex.how}
                     </p>
                   </GlassCard>
                 </Reveal>

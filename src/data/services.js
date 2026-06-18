@@ -46,7 +46,7 @@ export const SERVICES = [
   {
     id: 'plan',
     badge: 'Budget Friendly',
-    badgeColor: '#F5A623',
+    badgeColor: '#C9A84C',
     icon: 'calendar',
     title: '12-Week Custom Training Plan',
     price: '$300',

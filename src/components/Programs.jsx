@@ -25,7 +25,7 @@ const PROGRAMS = [
   },
   {
     badge: 'Budget Friendly',
-    badgeColor: '#F5A623',
+    badgeColor: '#C9A84C',
     title: '12-Week Custom Plan',
     description:
       "A fully customized 12-week training plan delivered to your device, with structured periodization, sport-specific workouts, and Wendy's signature race-day strategy at an accessible price.",

@@ -50,7 +50,7 @@ export default function Footer() {
 
           {/* Nav links */}
           <div>
-            <h4 style={{ fontSize: 12, fontWeight: 600, color: '#F5A623', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 18 }}>Explore</h4>
+            <h4 style={{ fontSize: 12, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 18 }}>Explore</h4>
             <nav style={{ display: 'grid', gap: 12 }}>
               {NAV_LINKS.map(l => (
                 <Link key={l.label} to={l.to} style={{ fontSize: 14, color: 'rgba(255,255,255,0.55)', textDecoration: 'none' }}>{l.label}</Link>
@@ -60,7 +60,7 @@ export default function Footer() {
 
           {/* Connect */}
           <div>
-            <h4 style={{ fontSize: 12, fontWeight: 600, color: '#F5A623', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 18 }}>Connect</h4>
+            <h4 style={{ fontSize: 12, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 18 }}>Connect</h4>
             <div style={{ display: 'flex', gap: 10, marginBottom: 22 }}>
               {SOCIALS.map(s => (
                 <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={s.label} style={{

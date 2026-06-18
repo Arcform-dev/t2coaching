@@ -128,7 +128,7 @@ export default function About() {
             <SectionHeading eyebrow="Credentials & Results" title="Three decades. Every discipline." align="center" />
           </Reveal>
           <div className="story-grid" style={{ display: 'grid', gap: 24 }}>
-            <Reveal x={-40} y={0}><CredColumn title="Race Results & Honors" items={RACE_RESULTS} accent="#F5A623" /></Reveal>
+            <Reveal x={-40} y={0}><CredColumn title="Race Results & Honors" items={RACE_RESULTS} accent="#C9A84C" /></Reveal>
             <Reveal x={40} y={0} delay={0.1}><CredColumn title="Coaching Credentials & Career" items={COACHING_CREDENTIALS} accent="#7EC8E3" /></Reveal>
           </div>
         </div>
