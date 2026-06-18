@@ -167,7 +167,7 @@ section, footer {
   .champ-hero {
     position: sticky;
     top: 0;
-    height: 100vh;
+    height: 88vh;
     min-height: 0;
     z-index: 0;
   }
@@ -186,7 +186,7 @@ section, footer {
   text-align: center;
   /* Anchored high (below the nav) so the statement reads across the top and
      only Wendy's raised arms — not her head and torso — cross the letters. */
-  padding-top: clamp(104px, 14vh, 188px);
+  padding-top: clamp(92px, 11vh, 150px);
   font-family: 'Playfair Display SC', Georgia, serif;
   font-weight: 700;
   color: #C9A84C;
@@ -212,7 +212,7 @@ section, footer {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%) translateY(var(--parallax, 0));
-  height: min(82svh, 880px);
+  height: min(78svh, 820px);
   width: auto;
   z-index: 2;
   pointer-events: none;
