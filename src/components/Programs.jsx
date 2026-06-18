@@ -14,22 +14,19 @@ const PROGRAMS = [
     title: 'Multisport & Single-Sport Coaching',
     description:
       'Full-season personalized coaching across triathlon, duathlon, or individual disciplines. Custom training in TrainingPeaks, unlimited communication, and race-day strategy built around your schedule and goals.',
-    highlight: '$300 / month',
   },
   {
     badge: null,
     title: 'Private Lessons',
     description:
       'One-on-one focused sessions in swimming, cycling, or running. Perfect for targeted technique work, a skills breakthrough, or expert eyes on a specific weakness before race day.',
-    highlight: '$150 first · $75 follow-ups',
   },
   {
     badge: 'Budget Friendly',
     badgeColor: '#C9A84C',
     title: '12-Week Custom Plan',
     description:
-      "A fully customized 12-week training plan delivered to your device, with structured periodization, sport-specific workouts, and Wendy's signature race-day strategy at an accessible price.",
-    highlight: '$300 one-time',
+      "A fully customized 12-week training plan delivered to your device, with structured periodization, sport-specific workouts, and Wendy's signature race-day strategy, without an ongoing commitment.",
   },
 ]
 
@@ -94,16 +91,6 @@ function ProgramCard({ program, index }) {
       <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.72, flex: 1, marginBottom: 24 }}>
         {p.description}
       </p>
-
-      <div style={{
-        marginBottom: 22, paddingTop: 20,
-        borderTop: '1px solid rgba(255,255,255,0.08)',
-      }}>
-        <span style={{
-          fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
-          fontSize: 26, color: '#7EC8E3', lineHeight: 1,
-        }}>{p.highlight}</span>
-      </div>
 
       <Link
         className="shine-btn"
@@ -173,7 +160,7 @@ export default function Programs() {
             padding: '12px 28px', borderRadius: 0,
             border: '1px solid rgba(13,43,62,0.3)',
           }}>
-            View all services & pricing
+            View all coaching services
             <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

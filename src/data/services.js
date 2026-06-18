@@ -1,4 +1,5 @@
-// Wendy's real coaching services & pricing (from her intake form).
+// Wendy's real coaching services (from her intake form). Prices are
+// intentionally omitted — each service routes to a free discovery call.
 // `icon` is a key resolved to an SVG in the components that render services.
 
 export const FREE_OFFER = {
@@ -14,8 +15,6 @@ export const SERVICES = [
     badgeColor: '#C9A84C',
     icon: 'clock',
     title: 'Multisport & Single-Sport Coaching',
-    price: '$300',
-    cadence: '/ month',
     summary:
       'Full personalized coaching across triathlon, duathlon, or a single discipline, built around your schedule, your goals, and your life.',
     includes: [
@@ -31,8 +30,6 @@ export const SERVICES = [
     badge: null,
     icon: 'whistle',
     title: 'Private Swim, Bike or Run Lessons',
-    price: '$150',
-    cadence: 'first lesson · $75 follow-ups',
     summary:
       'One-on-one technique sessions with an Ironman-certified, collegiate-level swim coach. Ideal for a focused breakthrough before race day.',
     includes: [
@@ -49,16 +46,14 @@ export const SERVICES = [
     badgeColor: '#C9A84C',
     icon: 'calendar',
     title: '12-Week Custom Training Plan',
-    price: '$300',
-    cadence: 'one-time',
     summary:
-      'A fully customized 12-week plan after a one-on-one phone consult. A structured, periodized roadmap to your goal race at an accessible price.',
+      'A fully customized 12-week plan after a one-on-one phone consult. A structured, periodized roadmap to your goal race, without an ongoing monthly commitment.',
     includes: [
       'Kickoff phone consultation',
       'Custom, periodized 12-week plan built for your race',
       'Sport-specific workouts with clear purpose',
       "Wendy's signature race-day strategy",
-      'One-time payment (plan delivered as-is, no revisions)',
+      'A one-time plan, delivered as-is (no ongoing revisions)',
     ],
   },
 ]

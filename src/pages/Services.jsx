@@ -53,11 +53,6 @@ function ServiceCard({ s }) {
       </div>
       <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 21, color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>{s.title}</h3>
 
-      <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 16 }}>
-        <span style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 36, color: '#7EC8E3' }}>{s.price}</span>
-        <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>{s.cadence}</span>
-      </div>
-
       <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.66)', lineHeight: 1.7, marginBottom: 22 }}>{s.summary}</p>
 
       <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 11, marginBottom: 28, flex: 1 }}>
@@ -88,14 +83,14 @@ function ServiceCard({ s }) {
 
 export default function Services() {
   useDocumentMeta(
-    'Services & Pricing',
-    'Personalized triathlon coaching ($300/mo), private swim/bike/run lessons ($150 first), and 12-week custom plans ($300). Free 15-minute discovery call.'
+    'Services',
+    'Personalized triathlon coaching, private swim, bike & run lessons, and 12-week custom training plans from Kona Ironman World Champion Wendy Mader. Start with a free 15-minute discovery call.'
   )
 
   return (
     <>
       <PageHeader
-        eyebrow="Coaching & Pricing"
+        eyebrow="Coaching Services"
         title="Coaching built for"
         titleAccent="how you actually live."
         subtitle="Three ways to work with a Kona champion, from full-season personalized coaching to a one-time custom plan. Every option starts with a free conversation."
