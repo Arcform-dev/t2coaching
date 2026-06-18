@@ -167,7 +167,7 @@ section, footer {
   .champ-hero {
     position: sticky;
     top: 0;
-    height: 88vh;
+    height: 100vh;
     min-height: 0;
     z-index: 0;
   }
