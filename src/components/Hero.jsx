@@ -11,29 +11,40 @@ export default function Hero() {
   const annoRef  = useRef(null)
 
   useEffect(() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    // One synchronized entrance. The title, photo, copy card, and scrapbook note
+    // all begin together on the same beat and fade/rise in as a single unit,
+    // instead of cascading in one-after-another. Passing the same START position
+    // to each tween in the timeline is what locks them to the same start time.
+    // The only offsets are tiny intra-element staggers (the two title lines, and
+    // the note's text + arrow) for a touch of polish. We animate annoRef's
+    // children, not the wrapper, so its rotate(-7deg) + parallax transform stay.
+    const START = 0.15
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: reduce ? 0.01 : 0.9 } })
+
     if (titleRef.current) {
-      gsap.fromTo(titleRef.current.children,
+      tl.fromTo(titleRef.current.children,
         { opacity: 0, y: 28 },
-        { opacity: 1, y: 0, duration: 1, stagger: 0.12, delay: 0.15, ease: 'power3.out' })
+        { opacity: 1, y: 0, stagger: 0.07 }, START)
     }
     if (photoRef.current) {
-      gsap.fromTo(photoRef.current,
+      tl.fromTo(photoRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 1.2, delay: 0.4, ease: 'power2.out' })
+        { opacity: 1, duration: reduce ? 0.01 : 1.1 }, START)
     }
     if (cardRef.current) {
-      gsap.fromTo(cardRef.current,
+      tl.fromTo(cardRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 0.8, delay: 0.85, ease: 'power2.out' })
+        { opacity: 1 }, START)
     }
-    // The scrapbook note comes in last, like it's being stuck on: the text
-    // rises in, then the arrow. We animate the children, not the wrapper, so
-    // the wrapper's rotate(-7deg) + scroll parallax transform stay intact.
     if (annoRef.current) {
-      gsap.fromTo(annoRef.current.children,
+      tl.fromTo(annoRef.current.children,
         { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.7, stagger: 0.18, delay: 1.05, ease: 'power2.out' })
+        { opacity: 1, y: 0, stagger: 0.07 }, START)
     }
+
+    return () => tl.kill()
   }, [])
 
   // Layered parallax over the pinned hero: the cutout drifts up gently, and the
