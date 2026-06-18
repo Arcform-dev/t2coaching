@@ -15,12 +15,6 @@ const PROGRAMS = [
     description:
       'Full-season personalized coaching across triathlon, duathlon, or individual disciplines. Custom training in TrainingPeaks, unlimited communication, and race-day strategy built around your schedule and goals.',
     highlight: '$300 / month',
-    icon: (
-      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" width="26" height="26">
-        <circle cx="20" cy="20" r="14" />
-        <path d="M20 11v9l6 3.5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
   },
   {
     badge: null,
@@ -28,12 +22,6 @@ const PROGRAMS = [
     description:
       'One-on-one focused sessions in swimming, cycling, or running. Perfect for targeted technique work, a skills breakthrough, or expert eyes on a specific weakness before race day.',
     highlight: '$150 first · $75 follow-ups',
-    icon: (
-      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" width="26" height="26">
-        <path d="M8 32L20 10l12 22" strokeLinejoin="round" />
-        <path d="M12 24h16" strokeLinecap="round" />
-      </svg>
-    ),
   },
   {
     badge: 'Budget Friendly',
@@ -42,14 +30,6 @@ const PROGRAMS = [
     description:
       "A fully customized 12-week training plan delivered to your device, with structured periodization, sport-specific workouts, and Wendy's signature race-day strategy at an accessible price.",
     highlight: '$300 one-time',
-    icon: (
-      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5" width="26" height="26">
-        <rect x="6" y="8" width="28" height="26" rx="3" />
-        <path d="M13 8V6M27 8V6" strokeLinecap="round" />
-        <path d="M6 18h28" />
-        <path d="M13 26h5M13 31h10" strokeLinecap="round" />
-      </svg>
-    ),
   },
 ]
 
@@ -99,13 +79,6 @@ function ProgramCard({ program, index }) {
           }}>{p.badge}</span>
         </div>
       )}
-
-      <div style={{
-        width: 52, height: 52, borderRadius: 0,
-        background: 'rgba(126,200,227,0.14)', color: '#7EC8E3',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        marginBottom: 24, flexShrink: 0,
-      }}>{p.icon}</div>
 
       <h3 style={{
         fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
