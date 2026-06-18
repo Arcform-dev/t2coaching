@@ -3,7 +3,7 @@ import PageHeader from '../components/ui/PageHeader'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
-import { TESTIMONIALS } from '../data/testimonials'
+import { useTestimonials } from '../lib/content'
 
 const WRAP = { maxWidth: 920, margin: '0 auto', padding: '0 32px' }
 
@@ -25,6 +25,8 @@ export default function Testimonials() {
     'Real stories from the athletes Coach Wendy Mader has guided, from a 66-year-old Ironman finisher to lifelong swimmers and trail runners.'
   )
 
+  const testimonials = useTestimonials() || []
+
   return (
     <>
       <PageHeader
@@ -38,7 +40,7 @@ export default function Testimonials() {
       <section style={{ padding: '50px 0 90px' }}>
         <div style={WRAP}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-            {TESTIMONIALS.map((t, idx) => (
+            {testimonials.map((t, idx) => (
               <Reveal key={t.name} delay={(idx % 2) * 0.08}>
                 <GlassCard style={{ padding: 'clamp(28px, 4vw, 44px)' }}>
                   {/* Header */}

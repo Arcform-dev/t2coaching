@@ -3,29 +3,19 @@ import useDocumentMeta from '../hooks/useDocumentMeta'
 import PageHeader from '../components/ui/PageHeader'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
+import { useGallery } from '../lib/content'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 
-const PHOTOS = [
-  { src: '/photos/kona-world-championship-finish.jpg', caption: '2008 Ironman World Championship, Kona, Hawaii', span: true },
-  { src: '/photos/guiding-blind-athlete-ironman-boulder.jpg', caption: 'Guiding a blind athlete at Ironman Boulder' },
-  { src: '/photos/finish-line-celebration.jpg', caption: 'Crossing the finish line' },
-  { src: '/photos/pool-swim-training.jpg', caption: 'Swim technique session' },
-  { src: '/wendy-bike.jpg', caption: 'On the bike' },
-  { src: '/photos/swimrun-tennessee.jpg', caption: 'SwimRun Tennessee' },
-  { src: '/photos/trail-running.jpg', caption: 'Trail running, a recent passion' },
-  { src: '/wendy-finish.jpg', caption: 'Race day' },
-  { src: '/photos/athlete-finisher-medals.jpg', caption: 'Hard-earned finisher medals' },
-]
-
 export default function Gallery() {
   useDocumentMeta('Gallery', 'Photos from three decades of racing and coaching with Wendy Mader. Kona, Ironman Boulder, open water, trail, and more.')
+  const photos = useGallery() || []
   const [active, setActive] = useState(null)
 
   const close = useCallback(() => setActive(null), [])
   const move = useCallback((dir) => {
-    setActive((a) => (a === null ? a : (a + dir + PHOTOS.length) % PHOTOS.length))
-  }, [])
+    setActive((a) => (a === null ? a : (a + dir + photos.length) % photos.length))
+  }, [photos.length])
 
   useEffect(() => {
     if (active === null) return
@@ -50,7 +40,7 @@ export default function Gallery() {
       <section style={{ padding: '50px 0 90px' }}>
         <div style={WRAP}>
           <div className="gallery-grid" style={{ display: 'grid', gap: 16 }}>
-            {PHOTOS.map((p, i) => (
+            {photos.map((p, i) => (
               <Reveal key={p.src} delay={(i % 4) * 0.06} style={p.span ? { gridColumn: 'span 2' } : undefined}>
                 <button
                   onClick={() => setActive(i)}
@@ -95,8 +85,8 @@ export default function Gallery() {
           </button>
 
           <figure onClick={(e) => e.stopPropagation()} style={{ maxWidth: 'min(900px, 92vw)', maxHeight: '88vh', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <img src={PHOTOS[active].src} alt={PHOTOS[active].caption} style={{ maxWidth: '100%', maxHeight: '80vh', objectFit: 'contain', borderRadius: 0, boxShadow: '0 30px 80px rgba(0,0,0,0.5)' }} />
-            <figcaption style={{ color: 'rgba(255,255,255,0.8)', fontSize: 14, marginTop: 16, textAlign: 'center' }}>{PHOTOS[active].caption}</figcaption>
+            <img src={photos[active].src} alt={photos[active].caption} style={{ maxWidth: '100%', maxHeight: '80vh', objectFit: 'contain', borderRadius: 0, boxShadow: '0 30px 80px rgba(0,0,0,0.5)' }} />
+            <figcaption style={{ color: 'rgba(255,255,255,0.8)', fontSize: 14, marginTop: 16, textAlign: 'center' }}>{photos[active].caption}</figcaption>
           </figure>
         </div>
       )}

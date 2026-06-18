@@ -1,9 +1,10 @@
 import { useParams, Navigate, Link } from 'react-router-dom'
+import { PortableText } from '@portabletext/react'
 import useDocumentMeta from '../hooks/useDocumentMeta'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
-import { getPost } from '../data/posts'
+import { usePost } from '../lib/content'
 
 const WRAP = { maxWidth: 800, margin: '0 auto', padding: '0 32px' }
 
@@ -12,12 +13,34 @@ function formatDate(d) {
   return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
 }
 
+// Renders a Sanity post's rich-text body, styled to match the article layout.
+const ptComponents = {
+  block: {
+    normal: ({ children }) => <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.8)', lineHeight: 1.85, marginBottom: 22 }}>{children}</p>,
+    h2: ({ children }) => <h2 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 28, color: '#fff', margin: '36px 0 12px' }}>{children}</h2>,
+    h3: ({ children }) => <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 21, color: '#fff', margin: '28px 0 10px' }}>{children}</h3>,
+    blockquote: ({ children }) => <blockquote style={{ borderLeft: '3px solid #C9A84C', paddingLeft: 18, margin: '24px 0', color: 'rgba(255,255,255,0.82)', fontSize: 18, lineHeight: 1.7 }}>{children}</blockquote>,
+  },
+  list: {
+    bullet: ({ children }) => <ul style={{ listStyle: 'disc', paddingLeft: 22, marginBottom: 22, color: 'rgba(255,255,255,0.8)', fontSize: 17, lineHeight: 1.8 }}>{children}</ul>,
+    number: ({ children }) => <ol style={{ listStyle: 'decimal', paddingLeft: 22, marginBottom: 22, color: 'rgba(255,255,255,0.8)', fontSize: 17, lineHeight: 1.8 }}>{children}</ol>,
+  },
+  marks: {
+    strong: ({ children }) => <strong style={{ color: '#fff', fontWeight: 700 }}>{children}</strong>,
+    link: ({ children, value }) => <a href={value?.href} target="_blank" rel="noopener noreferrer" style={{ color: '#7EC8E3', textDecoration: 'underline' }}>{children}</a>,
+  },
+}
+
 export default function BlogPost() {
   const { slug } = useParams()
-  const post = getPost(slug)
+  const post = usePost(slug)
 
   useDocumentMeta(post ? post.title : 'Blog', post ? post.excerpt : undefined)
 
+  // Sanity fetch still in flight.
+  if (post === null) {
+    return <section style={{ padding: '180px 0', textAlign: 'center', color: 'rgba(255,255,255,0.5)' }}>Loading…</section>
+  }
   if (!post) return <Navigate to="/blog" replace />
 
   // A "coming soon" topic was opened directly, so show a friendly placeholder.
@@ -76,6 +99,9 @@ export default function BlogPost() {
               </GlassCard>
             </Reveal>
           )}
+
+          {/* Sanity posts carry rich text in `body`; local posts use intro/exercises. */}
+          {post.body && <PortableText value={post.body} components={ptComponents} />}
 
           {post.intro?.map((p, i) => (
             <p key={i} style={{ fontSize: 17, color: 'rgba(255,255,255,0.8)', lineHeight: 1.85, marginBottom: 22 }}>{p}</p>

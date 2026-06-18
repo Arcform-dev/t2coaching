@@ -4,7 +4,7 @@ import PageHeader from '../components/ui/PageHeader'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
-import { POSTS } from '../data/posts'
+import { usePosts } from '../lib/content'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 
@@ -55,6 +55,8 @@ function PostCard({ post }) {
 export default function Blog() {
   useDocumentMeta('Blog', 'Training tips, swim technique, race-day nutrition and lessons from 30+ years of racing, from Coach Wendy Mader.')
 
+  const posts = usePosts() || []
+
   return (
     <>
       <PageHeader
@@ -67,7 +69,7 @@ export default function Blog() {
       <section style={{ padding: '50px 0 90px' }}>
         <div style={WRAP}>
           <div className="blog-grid" style={{ display: 'grid', gap: 28 }}>
-            {POSTS.map((post, i) => (
+            {posts.map((post, i) => (
               <Reveal key={post.slug} delay={(i % 3) * 0.08}>
                 <PostCard post={post} />
               </Reveal>

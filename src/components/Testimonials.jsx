@@ -2,16 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { TESTIMONIALS as REAL_TESTIMONIALS } from '../data/testimonials'
+import { useTestimonials } from '../lib/content'
 
 gsap.registerPlugin(ScrollTrigger)
-
-// Home page shows short excerpts; full stories live on /testimonials.
-const TESTIMONIALS = REAL_TESTIMONIALS.map(t => ({
-  quote: t.excerpt,
-  name: t.name,
-  tag: t.tag,
-}))
 
 function Stars() {
   return (
@@ -30,6 +23,13 @@ export default function Testimonials() {
   const headerRef = useRef(null)
   const cardsRef = useRef(null)
   const [active, setActive] = useState(0)
+
+  // Home page shows short excerpts; full stories live on /testimonials.
+  const TESTIMONIALS = (useTestimonials() || []).map(t => ({
+    quote: t.excerpt,
+    name: t.name,
+    tag: t.tag,
+  }))
 
   useEffect(() => {
     const section = sectionRef.current
@@ -50,6 +50,9 @@ export default function Testimonials() {
       })
     }
   }, [])
+
+  // While a Sanity fetch is in flight there's nothing to show yet.
+  if (!TESTIMONIALS.length) return null
 
   const prev = () => setActive(a => (a === 0 ? TESTIMONIALS.length - 1 : a - 1))
   const next = () => setActive(a => (a === TESTIMONIALS.length - 1 ? 0 : a + 1))
