@@ -35,16 +35,16 @@ function CredColumn({ title, items, accent }) {
 export default function About() {
   useDocumentMeta(
     'About Coach Wendy',
-    "Wendy Mader — D1 swimmer, 2008 Kona Ironman World Champion, and founder of T2 Coaching. Her story, coaching philosophy, and credentials."
+    "Wendy Mader is a Division I swimmer, 2008 Kona Ironman World Champion, and the founder of T2 Coaching. Here's her story, coaching philosophy, and credentials."
   )
 
   return (
     <>
       <PageHeader
         eyebrow="About Coach Wendy"
-        title="I've been in your shoes —"
+        title="I've been in your shoes,"
         titleAccent="and on that finish line."
-        subtitle="A D1 swimmer turned Kona Ironman World Champion, sharing 30+ years of racing and 26 years of coaching with athletes like you."
+        subtitle="I went from a Division I swimmer to a Kona Ironman World Champion, with 30-plus years of racing and 26 years of coaching behind me."
         photo="/photos/kona-world-championship-finish.jpg"
       />
 
@@ -69,7 +69,7 @@ export default function About() {
                   <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '38%', background: 'linear-gradient(to top, rgba(13,43,62,0.85), transparent)' }} />
                   <div style={{ position: 'absolute', bottom: 18, left: 20, right: 20 }}>
                     <span style={{ fontSize: 12, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.08em' }}>
-                      2008 Ironman World Championship — Kona, Hawaii
+                      2008 Ironman World Championship, Kona, Hawaii
                     </span>
                   </div>
                 </div>
@@ -103,7 +103,7 @@ export default function About() {
             <SectionHeading
               eyebrow="Coaching Philosophy"
               title="More than a training plan."
-              subtitle="The greatest joy and purpose of coaching, for me, is the relationship. The magic of your training comes not from the plan itself — but from working together to find what works for you."
+              subtitle="The best part of coaching, for me, is the relationship. The magic of your training doesn't come from the plan. It comes from the two of us working together to find what works for you."
             />
           </Reveal>
           <div className="philosophy-grid" style={{ display: 'grid', gap: 24 }}>
