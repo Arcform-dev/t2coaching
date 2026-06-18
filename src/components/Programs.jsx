@@ -166,10 +166,9 @@ export default function Programs() {
   }, [])
 
   return (
-    <section id="programs" ref={sectionRef} style={{ background: '#F1ECE3', padding: '110px 0' }}>
+    <section id="programs" ref={sectionRef} style={{ background: '#F1ECE3', padding: '64px 0 110px' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
 
-        <div style={{ height: 1, background: 'rgba(13,43,62,0.16)', marginBottom: 'clamp(40px, 6vw, 72px)' }} />
         <div ref={headerRef} style={{ maxWidth: 640, marginBottom: 56 }}>
           <h2 style={{
             fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
