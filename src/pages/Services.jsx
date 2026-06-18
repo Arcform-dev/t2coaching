@@ -98,7 +98,7 @@ export default function Services() {
         eyebrow="Coaching & Pricing"
         title="Coaching built for"
         titleAccent="how you actually live."
-        subtitle="Three ways to work with a Kona champion — from full-season personalized coaching to a one-time custom plan. Every option starts with a free conversation."
+        subtitle="Three ways to work with a Kona champion, from full-season personalized coaching to a one-time custom plan. Every option starts with a free conversation."
       />
 
       {/* Service cards */}
@@ -170,7 +170,7 @@ export default function Services() {
             <Reveal x={-40} y={0}>
               <SectionHeading eyebrow="Who I Coach" title="Every level. Every why." style={{ marginBottom: 20 }} />
               <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.75, marginBottom: 18 }}>
-                Coaching revolves around each athlete's experience, current fitness, and the time they have to train. I build plans for the time-crunched athlete and the athlete with unlimited hours alike — and I coach for accountability and health, not just sport.
+                Coaching revolves around each athlete's experience, current fitness, and the time they have to train. I build plans for the time-crunched athlete and the athlete with unlimited hours alike. I coach for accountability and health, not just sport.
               </p>
               <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.75 }}>
                 I've taught adults to swim well enough to finish an Ironman in two years, and coached countless athletes to Kona. Wherever you're starting, there's a path for you.
@@ -193,7 +193,7 @@ export default function Services() {
 
       <CTABanner
         title="Not sure which is right for you?"
-        subtitle="That's exactly what the free call is for. We'll figure out the best fit together — no pressure, no sales pitch."
+        subtitle="That's exactly what the free call is for. We'll figure out the best fit together. No pressure, no sales pitch."
         primaryLabel="Book a Free 15-Min Call"
       />
     </>

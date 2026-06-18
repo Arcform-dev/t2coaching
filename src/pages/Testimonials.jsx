@@ -22,7 +22,7 @@ function Stars() {
 export default function Testimonials() {
   useDocumentMeta(
     'Testimonials',
-    'Real stories from the athletes Coach Wendy Mader has guided — from a 66-year-old Ironman finisher to lifelong swimmers and trail runners.'
+    'Real stories from the athletes Coach Wendy Mader has guided, from a 66-year-old Ironman finisher to lifelong swimmers and trail runners.'
   )
 
   return (
@@ -31,7 +31,7 @@ export default function Testimonials() {
         eyebrow="Testimonials"
         title="Athletes who crossed"
         titleAccent="their finish lines."
-        subtitle="These are real words from real athletes — beginners and veterans, in their own voice. No cherry-picked one-liners, just the whole story."
+        subtitle="These are real words from real athletes, beginners and veterans, in their own voice. No cherry-picked one-liners, just the whole story."
         photo="/photos/finish-line-celebration.jpg"
       />
 

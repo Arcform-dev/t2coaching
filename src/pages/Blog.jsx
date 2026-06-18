@@ -53,7 +53,7 @@ function PostCard({ post }) {
 }
 
 export default function Blog() {
-  useDocumentMeta('Blog', 'Training tips, swim technique, race-day nutrition and lessons from 30+ years of racing — from Coach Wendy Mader.')
+  useDocumentMeta('Blog', 'Training tips, swim technique, race-day nutrition and lessons from 30+ years of racing, from Coach Wendy Mader.')
 
   return (
     <>
@@ -78,7 +78,7 @@ export default function Blog() {
 
       <CTABanner
         title="Want coaching, not just tips?"
-        subtitle="Articles are a great start — but a plan built for you is how the real progress happens. Book a free call."
+        subtitle="Articles are a great start, but a plan built for you is how the real progress happens. Book a free call."
       />
     </>
   )

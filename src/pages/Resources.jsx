@@ -15,13 +15,13 @@ const facebook = SOCIALS.find(s => s.label === 'Facebook')?.url
 const RESOURCES = [
   {
     title: 'Training Articles',
-    desc: 'Swim technique, race-day nutrition, injury prevention and more — practical reads from 30+ years in the sport.',
+    desc: 'Swim technique, race-day nutrition, injury prevention, and more. Practical reads from 30+ years in the sport.',
     cta: 'Read the blog',
     to: '/blog',
     icon: 'M4 19.5A2.5 2.5 0 016.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z',
   },
   {
-    title: 'YouTube — 200+ Videos',
+    title: 'YouTube: 200+ Videos',
     desc: 'In-depth technique breakdowns, workouts and race insights. Subscribe and learn at your own pace.',
     cta: 'Watch on YouTube',
     href: youtube,
@@ -105,7 +105,7 @@ function GuideSignup() {
         <div>
           <span style={{ fontSize: 11, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Free Insider's Guide</span>
           <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 'clamp(1.6rem, 3vw, 2.3rem)', color: '#fff', margin: '14px 0 16px', lineHeight: 1.2 }}>
-            How world-class athletes stay on top — without overtraining.
+            How world-class athletes stay on top without overtraining.
           </h3>
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 12 }}>
             {GUIDE_POINTS.map((g, i) => (
@@ -124,7 +124,7 @@ function GuideSignup() {
             <div style={{ textAlign: 'center', padding: '20px 0' }}>
               <div style={{ fontSize: 40, marginBottom: 12 }}>🎉</div>
               <p style={{ fontSize: 17, color: '#fff', fontWeight: 600, marginBottom: 6 }}>You're on the list!</p>
-              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)' }}>Keep an eye on your inbox — your guide is on the way.</p>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)' }}>Keep an eye on your inbox. Your guide is on the way.</p>
             </div>
           ) : (
             <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -143,7 +143,7 @@ function GuideSignup() {
               </button>
               {status === 'error' && (
                 <p style={{ fontSize: 13, color: '#F5A623', textAlign: 'center' }}>
-                  Couldn't submit just now — please email t2coachwendy@gmail.com and I'll send it over.
+                  Couldn't submit just now. Please email t2coachwendy@gmail.com and I'll send it over.
                 </p>
               )}
               <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', textAlign: 'center' }}>No spam. Unsubscribe anytime.</p>
@@ -162,13 +162,13 @@ const inputStyle = {
 }
 
 export default function Resources() {
-  useDocumentMeta('Free Resources', 'Free training resources from Coach Wendy Mader — articles, videos, her WSJ feature, and a free insider\'s guide.')
+  useDocumentMeta('Free Resources', 'Free training resources from Coach Wendy Mader: articles, videos, her WSJ feature, and a free insider\'s guide.')
 
   return (
     <>
       <PageHeader
         eyebrow="Free Resources"
-        title="Learn with me —"
+        title="Learn with me,"
         titleAccent="for free."
         subtitle="Articles, videos, and the same hard-won lessons I share with my athletes. Dive in, and grab the free guide while you're here."
       />

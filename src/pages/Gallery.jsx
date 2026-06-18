@@ -7,19 +7,19 @@ import CTABanner from '../components/ui/CTABanner'
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 
 const PHOTOS = [
-  { src: '/photos/kona-world-championship-finish.jpg', caption: '2008 Ironman World Championship — Kona, Hawaii', span: true },
+  { src: '/photos/kona-world-championship-finish.jpg', caption: '2008 Ironman World Championship, Kona, Hawaii', span: true },
   { src: '/photos/guiding-blind-athlete-ironman-boulder.jpg', caption: 'Guiding a blind athlete at Ironman Boulder' },
   { src: '/photos/finish-line-celebration.jpg', caption: 'Crossing the finish line' },
   { src: '/photos/pool-swim-training.jpg', caption: 'Swim technique session' },
   { src: '/wendy-bike.jpg', caption: 'On the bike' },
   { src: '/photos/swimrun-tennessee.jpg', caption: 'SwimRun Tennessee' },
-  { src: '/photos/trail-running.jpg', caption: 'Trail running — a recent passion' },
+  { src: '/photos/trail-running.jpg', caption: 'Trail running, a recent passion' },
   { src: '/wendy-finish.jpg', caption: 'Race day' },
-  { src: '/photos/athlete-finisher-medals.jpg', caption: 'Athlete success — finisher medals earned' },
+  { src: '/photos/athlete-finisher-medals.jpg', caption: 'Hard-earned finisher medals' },
 ]
 
 export default function Gallery() {
-  useDocumentMeta('Gallery', 'Photos from three decades of racing and coaching with Wendy Mader — Kona, Ironman Boulder, open water, trail and more.')
+  useDocumentMeta('Gallery', 'Photos from three decades of racing and coaching with Wendy Mader. Kona, Ironman Boulder, open water, trail, and more.')
   const [active, setActive] = useState(null)
 
   const close = useCallback(() => setActive(null), [])
@@ -44,7 +44,7 @@ export default function Gallery() {
         eyebrow="Gallery"
         title="Thirty years of"
         titleAccent="dirt, sweat & finish lines."
-        subtitle="A look at the racing and coaching behind T2 — from the Kona finish line to guiding athletes at every level."
+        subtitle="A look at the racing and coaching behind T2, from the Kona finish line to guiding athletes at every level."
       />
 
       <section style={{ padding: '50px 0 90px' }}>

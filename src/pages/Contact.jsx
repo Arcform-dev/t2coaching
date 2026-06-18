@@ -161,7 +161,7 @@ export default function Contact() {
                 <GlassCard style={{ padding: '32px 30px' }}>
                   <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 20, color: '#fff', marginBottom: 8 }}>Prefer to talk?</h3>
                   <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, marginBottom: 18 }}>
-                    Book a free 15-minute discovery call — no commitment, just a real conversation.
+                    Book a free 15-minute discovery call. No commitment, just a real conversation.
                   </p>
                   <Link className="shine-btn" to={BOOKING_URL} style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,

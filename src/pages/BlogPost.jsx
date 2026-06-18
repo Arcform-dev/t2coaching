@@ -20,7 +20,7 @@ export default function BlogPost() {
 
   if (!post) return <Navigate to="/blog" replace />
 
-  // A "coming soon" topic was opened directly — show a friendly placeholder.
+  // A "coming soon" topic was opened directly, so show a friendly placeholder.
   if (post.comingSoon) {
     return (
       <>
@@ -29,7 +29,7 @@ export default function BlogPost() {
             <span style={{ fontSize: 11, fontWeight: 600, color: '#F5A623', letterSpacing: '0.2em', textTransform: 'uppercase' }}>{post.category}</span>
             <h1 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 'clamp(2rem, 5vw, 3.2rem)', color: '#fff', lineHeight: 1.2, margin: '18px 0 20px' }}>{post.title}</h1>
             <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, maxWidth: 560, margin: '0 auto 32px' }}>
-              This one's still in the works ✍️ — check back soon. In the meantime, the best training advice is the kind built just for you.
+              This one's still in the works ✍️. Check back soon. In the meantime, the best training advice is the kind built just for you.
             </p>
             <Link to="/blog" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: '#7EC8E3', fontSize: 15, fontWeight: 600, textDecoration: 'none' }}>
               <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 17l-5-5m0 0l5-5m-5 5h12" /></svg>

@@ -4,7 +4,7 @@
 export const FREE_OFFER = {
   label: 'Free 15-Minute Discovery Call',
   body:
-    "Not sure where to start? Book a free 15-minute call. We'll talk through where you are, where you want to go, and whether we're the right fit — no sales pitch, just a real conversation.",
+    "Not sure where to start? Book a free 15-minute call. We'll talk through where you are, where you want to go, and whether we're a good fit. No sales pitch, just a real conversation.",
 }
 
 export const SERVICES = [
@@ -17,7 +17,7 @@ export const SERVICES = [
     price: '$300',
     cadence: '/ month',
     summary:
-      'Full personalized coaching across triathlon, duathlon, or a single discipline — built around your schedule, your goals, and your life.',
+      'Full personalized coaching across triathlon, duathlon, or a single discipline, built around your schedule, your goals, and your life.',
     includes: [
       'Custom training delivered through TrainingPeaks',
       'Plan that adapts every week to your life and progress',
@@ -38,7 +38,7 @@ export const SERVICES = [
     includes: [
       'Video stroke / gait analysis',
       'Targeted drills for your specific weakness',
-      'Swim, bike, or run — your choice',
+      'Your choice of swim, bike, or run',
       'In person locally, or remotely via video',
       'Discounted $75 rate on every follow-up session',
     ],
@@ -78,7 +78,7 @@ export const HOW_IT_WORKS = [
   {
     step: '03',
     title: 'Your custom plan',
-    body: 'I build a periodized plan in TrainingPeaks — every session with a specific purpose, fit to your real life.',
+    body: 'I build a periodized plan in TrainingPeaks. Every session has a specific purpose and fits your real life.',
   },
   {
     step: '04',
