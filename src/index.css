@@ -335,7 +335,7 @@ section, footer {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: left center;
+  object-position: center;
   filter: grayscale(1) invert(1);
 }
 /* On mobile the copy card fills the bottom, so the corner rotator is hidden. */
