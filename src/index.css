@@ -276,7 +276,7 @@ section, footer {
   position: absolute;
   z-index: 3;
   top: 50%;
-  right: clamp(40px, 11vw, 200px);
+  right: clamp(90px, 26vw, 440px);
   text-align: center;
   color: #F5F1E9;
   pointer-events: none;
