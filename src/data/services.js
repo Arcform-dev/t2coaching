@@ -38,7 +38,7 @@ export const SERVICES = [
       'Targeted drills for your specific weakness',
       'Your choice of swim, bike, or run',
       'In person locally, or remotely via video',
-      'Discounted $75 rate on every follow-up session',
+      'Discounted rate on every follow-up session',
     ],
   },
   {
