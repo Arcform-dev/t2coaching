@@ -125,6 +125,13 @@ section, footer {
 
 /* Process page: stepper spine + scrolling panels, week calendar */
 .process-grid { display: flex; gap: 48px; }
+.process-preview-grid { grid-template-columns: 1fr; }
+@media (min-width: 640px) {
+  .process-preview-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1024px) {
+  .process-preview-grid { grid-template-columns: repeat(6, 1fr); }
+}
 .week-grid    { grid-template-columns: repeat(2, 1fr); }
 @media (min-width: 640px) {
   .week-grid  { grid-template-columns: repeat(4, 1fr); }
