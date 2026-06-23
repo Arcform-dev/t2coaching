@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
-import { BOOKING_URL } from '../data/siteContent'
+import BookingLink from './ui/BookingLink'
 import FeaturedIn from './FeaturedIn'
 
 export default function Hero() {
@@ -93,9 +92,9 @@ export default function Hero() {
       {/* Copy block — headline, action, supporting line; set straight on the navy */}
       <div ref={cardRef} className="champ-hero__card">
         <h2 className="champ-hero__headline">Personalized Coaching.<br />For Your Life.</h2>
-        <Link className="shine-btn cta-gold champ-hero__cta" to={BOOKING_URL}>
+        <BookingLink className="shine-btn cta-gold champ-hero__cta">
           Train with Wendy
-        </Link>
+        </BookingLink>
         <p className="champ-hero__sub">Get coaching by an expert in triathlon and endurance sports. With over 30+ years of experience in the field.</p>
       </div>
 

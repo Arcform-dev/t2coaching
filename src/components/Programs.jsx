@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { BOOKING_URL } from '../data/siteContent'
+import BookingLink from './ui/BookingLink'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -97,9 +97,8 @@ function ProgramCard({ program, index }) {
         {p.description}
       </p>
 
-      <Link
+      <BookingLink
         className="shine-btn"
-        to={BOOKING_URL}
         style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           gap: 8, whiteSpace: 'nowrap',
@@ -115,7 +114,7 @@ function ProgramCard({ program, index }) {
         <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
-      </Link>
+      </BookingLink>
     </div>
   )
 }

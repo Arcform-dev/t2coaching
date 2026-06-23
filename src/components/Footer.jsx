@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { CONTACT, SOCIALS, BOOKING_URL } from '../data/siteContent'
+import { CONTACT, SOCIALS } from '../data/siteContent'
+import BookingLink from './ui/BookingLink'
 
 const NAV_LINKS = [
   { label: 'About', to: '/about' },
@@ -75,15 +76,14 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <Link
+            <BookingLink
               className="shine-btn"
-              to={BOOKING_URL}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 background: '#C9A84C', color: '#fff', fontSize: 14, fontWeight: 600,
                 padding: '12px 24px', borderRadius: 0, textDecoration: 'none',
               }}
-            >Book a Free Call</Link>
+            >Book a Free Call</BookingLink>
           </div>
         </div>
 

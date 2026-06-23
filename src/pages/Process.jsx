@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
 import useDocumentMeta from '../hooks/useDocumentMeta'
 import PageHeader from '../components/ui/PageHeader'
 import CTABanner from '../components/ui/CTABanner'
 import Reveal from '../components/ui/Reveal'
-import { BOOKING_URL } from '../data/siteContent'
+import BookingLink from '../components/ui/BookingLink'
 import { PROCESS_STEPS as STEPS } from '../data/process'
 
 // Scrollytelling "how it works" page, rebuilt on the site's own primitives:
@@ -141,9 +140,9 @@ function PlannerCard() {
         <span style={{ color: SKY, flexShrink: 0 }}><IconCheck size={15} color={SKY} /></span>
         <span>Periodized for your goal race, not a template</span>
       </div>
-      <Link to={BOOKING_URL} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, background: GOLD, color: NAVY, fontSize: 15, fontWeight: 700, padding: '13px 20px', textDecoration: 'none' }}>
+      <BookingLink style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, background: GOLD, color: NAVY, fontSize: 15, fontWeight: 700, padding: '13px 20px', textDecoration: 'none' }}>
         Build my plan <IconArrow size={16} />
-      </Link>
+      </BookingLink>
     </div>
   )
 }
@@ -362,9 +361,9 @@ export default function Process() {
                   The Journey
                 </div>
                 <Stepper steps={STEPS} active={active} onSelect={goTo} />
-                <Link to={BOOKING_URL} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 9, marginTop: 24, flexShrink: 0, background: GOLD, color: NAVY, fontSize: 14, fontWeight: 700, padding: '13px 22px', textDecoration: 'none' }}>
+                <BookingLink style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 9, marginTop: 24, flexShrink: 0, background: GOLD, color: NAVY, fontSize: 14, fontWeight: 700, padding: '13px 22px', textDecoration: 'none' }}>
                   Book a Free Call <IconArrow size={16} />
-                </Link>
+                </BookingLink>
               </div>
             </aside>
 

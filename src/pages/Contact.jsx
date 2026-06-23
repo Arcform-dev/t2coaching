@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import useDocumentMeta from '../hooks/useDocumentMeta'
 import PageHeader from '../components/ui/PageHeader'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
-import { CONTACT, SOCIALS, BOOKING_URL, FORMSPREE_ENDPOINT, FORMS_CONFIGURED } from '../data/siteContent'
+import { CONTACT, SOCIALS, FORMSPREE_ENDPOINT, FORMS_CONFIGURED } from '../data/siteContent'
+import BookingLink from '../components/ui/BookingLink'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 
@@ -169,11 +169,11 @@ export default function Contact() {
                   <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, marginBottom: 18 }}>
                     Book a free 15-minute discovery call. No commitment, just a real conversation.
                   </p>
-                  <Link className="shine-btn" to={BOOKING_URL} style={{
+                  <BookingLink className="shine-btn" style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
                     background: '#C9A84C', color: '#fff', fontSize: 14, fontWeight: 700,
                     padding: '13px 26px', borderRadius: 0, textDecoration: 'none',
-                  }}>Book a Free Call</Link>
+                  }}>Book a Free Call</BookingLink>
                 </GlassCard>
 
                 <GlassCard style={{ padding: '28px 30px' }}>

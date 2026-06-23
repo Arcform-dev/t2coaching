@@ -1,10 +1,15 @@
 // ── Single source of truth for t2coaching site content ──────────────────────
 // All copy here is from Wendy Mader's own intake/content documents.
 
-// "Book a free call" CTAs route to the internal contact page for now. There's
-// no external booking/calendar link wired up yet. Swap in a real URL when ready
-// (and change the <Link> CTAs back to <a target="_blank"> if it's off-site).
-export const BOOKING_URL = '/contact'
+// "Book a Free Call" CTAs. When VITE_CALENDLY_URL is set in Cloudflare Pages →
+// Settings → Environment variables (same place as the Sanity/Formspree vars),
+// every booking button opens that Calendly link in a new tab. Until then they
+// fall back to the internal /contact page, so nothing breaks before the link
+// exists. Swapping it in is a single env-var value — no code change. All booking
+// CTAs render through src/components/ui/BookingLink.jsx, which reads these.
+const CALENDLY_URL = import.meta.env.VITE_CALENDLY_URL || ''
+export const BOOKING_IS_EXTERNAL = /^https?:\/\//.test(CALENDLY_URL)
+export const BOOKING_URL = BOOKING_IS_EXTERNAL ? CALENDLY_URL : '/contact'
 
 // Formspree endpoint for all site forms (contact inquiry + free-guide signup).
 // The default below is a temporary test form. For the real handoff, set

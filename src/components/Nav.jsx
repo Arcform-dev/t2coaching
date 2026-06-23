@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { gsap } from 'gsap'
-import { BOOKING_URL } from '../data/siteContent'
+import BookingLink from './ui/BookingLink'
 
 const LINKS = [
   { label: 'About', to: '/about' },
@@ -79,9 +79,8 @@ export default function Nav() {
                 transition: 'color 0.2s ease',
               })}>{label}</NavLink>
             ))}
-            <Link
+            <BookingLink
               className="cta-gold"
-              to={BOOKING_URL}
               style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 whiteSpace: 'nowrap',
@@ -90,7 +89,7 @@ export default function Nav() {
                 padding: '11px 24px', borderRadius: 0,
                 textDecoration: 'none', letterSpacing: '0.02em',
               }}
-            >Book a Free Call</Link>
+            >Book a Free Call</BookingLink>
           </div>
 
           {/* Mobile hamburger */}
@@ -138,9 +137,8 @@ export default function Nav() {
               borderBottom: '1px solid rgba(255,255,255,0.08)',
             })}>{label}</NavLink>
           ))}
-          <Link
+          <BookingLink
             className="cta-gold"
-            to={BOOKING_URL}
             onClick={() => setOpen(false)}
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -150,7 +148,7 @@ export default function Nav() {
               padding: '15px 0',
               borderRadius: 0, textDecoration: 'none',
             }}
-          >Book a Free Call</Link>
+          >Book a Free Call</BookingLink>
         </div>
       </div>
     </nav>

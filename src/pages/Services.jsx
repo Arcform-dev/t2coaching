@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import useDocumentMeta from '../hooks/useDocumentMeta'
 import PageHeader from '../components/ui/PageHeader'
 import SectionHeading from '../components/ui/SectionHeading'
@@ -6,7 +5,7 @@ import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
 import { SERVICES, FREE_OFFER, HOW_IT_WORKS, WHO_I_COACH } from '../data/services'
-import { BOOKING_URL } from '../data/siteContent'
+import BookingLink from '../components/ui/BookingLink'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 
@@ -116,7 +115,7 @@ export default function Services() {
                 </h3>
                 <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, maxWidth: 520 }}>{FREE_OFFER.body}</p>
               </div>
-              <Link className="shine-btn" to={BOOKING_URL} style={{
+              <BookingLink className="shine-btn" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10, whiteSpace: 'nowrap',
                 background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
                 padding: '16px 36px', borderRadius: 0, textDecoration: 'none',
@@ -124,7 +123,7 @@ export default function Services() {
               }}>
                 Book Your Free Call
                 <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-              </Link>
+              </BookingLink>
             </GlassCard>
           </Reveal>
         </div>

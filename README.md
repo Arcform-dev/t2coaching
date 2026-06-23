@@ -56,6 +56,16 @@ Notes: the free tier allows 50 submissions/month, and spam protection (reCAPTCHA
 etc.) is toggled in the Formspree dashboard. For local dev, put
 `VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/...` in a `.env` file.
 
+## Booking (Calendly)
+
+Every "Book a Free Call" button across the site renders through
+[`src/components/ui/BookingLink.jsx`](src/components/ui/BookingLink.jsx). When
+`VITE_CALENDLY_URL` is set in **Cloudflare Pages → Settings → Environment
+variables**, all of them open that Calendly link in a new tab. Until then they
+fall back to the internal `/contact` page, so nothing breaks before the link
+exists — swapping it in is a single env-var value, no code change. For local dev,
+put `VITE_CALENDLY_URL=https://calendly.com/...` in a `.env` file.
+
 ## Deploy
 
 Cloudflare Pages auto-builds with `npm run build` (publish dir `dist`), and

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { BOOKING_URL } from '../../data/siteContent'
+import BookingLink from './BookingLink'
 import Reveal from './Reveal'
 
 // Compact call-to-action banner reused at the bottom of interior pages.
@@ -7,7 +7,6 @@ export default function CTABanner({
   title = 'Ready to race smarter?',
   subtitle = '30 minutes with Wendy could change your entire season. No commitment — just a real conversation about your goals.',
   primaryLabel = 'Book a Free Call',
-  primaryHref = BOOKING_URL,
 }) {
   return (
     <section style={{
@@ -25,8 +24,7 @@ export default function CTABanner({
             {subtitle}
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center' }}>
-            <Link
-              to={primaryHref}
+            <BookingLink
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10, whiteSpace: 'nowrap',
                 background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
@@ -37,7 +35,7 @@ export default function CTABanner({
               <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </Link>
+            </BookingLink>
             <Link to="/contact" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8, whiteSpace: 'nowrap',
               color: '#7EC8E3', fontSize: 16, fontWeight: 500,
