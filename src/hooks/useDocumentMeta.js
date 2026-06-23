@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const BASE_TITLE = 'T2 Coaching'
+const BASE_TITLE = 't2coaching'
 
 // Basic per-route SEO: sets the document title and meta description on mount.
 export default function useDocumentMeta(title, description) {

@@ -1,4 +1,4 @@
-// ── Single source of truth for T2 Coaching site content ──────────────────────
+// ── Single source of truth for t2coaching site content ──────────────────────
 // All copy here is from Wendy Mader's own intake/content documents.
 
 // "Book a free call" CTAs route to the internal contact page for now. There's
@@ -43,10 +43,10 @@ export const TAGLINE =
 
 // Wendy's first-person story (About page), condensed from her own words.
 export const STORY = [
-  "Hi, I'm Wendy Mader. I've been swimming since I was a teenager and racing since the '90s, so more than 30 years now. I grew up in Colorado, and these days I live just outside Atlanta in Marietta, Georgia.",
+  "Hi, I'm Wendy Mader. I've been swimming since age 4 and racing since the '90s, so more than 30 years now. I grew up in Michigan, moved to Colorado in 1995, and then to Georgia in 2016. These days I live just outside Atlanta in Marietta, Georgia.",
   "I started out as a collegiate swimmer at Eastern Michigan University, and one day a team invited me to swim the relay leg of a triathlon. After I watched my biker and runner friends finish the race, I thought, \"I could do all of that myself.\" That one thought set the course for the next 30 years of my life.",
-  "I finished my first Ironman in 1997 and I was hooked. The internet barely existed back then, so I learned about overtraining the hard way. I didn't rest. I just kept piling on more. Within a year I was in the worst shape of my life, barely able to walk without losing my breath. I still remember looking in the mirror and seeing how far I'd let myself go.",
-  "I climbed back out. In 2008 I won the Overall Amateur title at the Ironman World Championships in Kona, Hawaii. I had come close to losing the sport I loved, and then I was standing at the very top of it. That's the why behind T2 Coaching, which I started more than two decades ago.",
+  "I finished my first Ironman in 1997 and I was hooked. The internet barely existed back then, so I learned about overtraining the hard way. I didn't rest. I just kept piling on more. Within six months I was in the worst shape of my life, barely able to walk without losing my breath. I still remember looking in the mirror and seeing how far I'd let myself go.",
+  "I climbed back out. In 2008 I won the Overall Amateur title at the Ironman World Championships in Kona, Hawaii. I had come close to losing the sport I loved, and then I was standing at the very top of it. That's the why behind t2coaching, which I started more than two decades ago.",
   "I have a Master's degree in Exercise and Sport Science, and I've spent my career helping athletes get healthy, build fitness, and perform. For some people that means walking a first 5k. For others it's finishing an Ironman or running a 100-mile ultra. I'm still out there racing too. I've finished the Run Rabbit Run 100, the Georgia Death Race, and plenty of other ultras. I build your workouts from the science and from my own experience. I swim the swim, bike the bike, and run the run right alongside you.",
 ]
 
@@ -54,7 +54,7 @@ export const STORY = [
 export const NAME_MEANING = {
   title: 'Why "t2"?',
   body:
-    "In triathlon, T2 is the second transition. It's the moment you rack your bike, change into your running gear, and head out for the finish. That's what coaching with me is about. I help you make the move to your next level with guidance that's personal and built on real experience, so you reach your full potential without giving up your family, your time, or your long-term health.",
+    "In triathlon, T2 is the second transition. It's the moment you rack your bike, change into your running gear, and head out for the finish. That's what coaching with me is about: transitioning you to the next level. I help you make the move with guidance that's personal and built on real experience, so you reach your full potential without giving up your family, your time, or your long-term health.",
 }
 
 // Coaching philosophy pillars (About + Services)

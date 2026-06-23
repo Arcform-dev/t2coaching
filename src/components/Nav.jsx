@@ -57,13 +57,13 @@ export default function Nav() {
         }}>
           {/* Logo */}
           <Link to="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
-            <img src="/photos/logo.png" alt="T2 Coaching" style={{ height: 42, width: 'auto', flexShrink: 0, display: 'block' }} />
+            <img src="/photos/logo.png" alt="t2coaching" style={{ height: 42, width: 'auto', flexShrink: 0, display: 'block' }} />
             <span style={{
               fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
               fontSize: 22, lineHeight: 1, fontWeight: 600,
-              letterSpacing: '0.14em', textTransform: 'uppercase',
+              letterSpacing: '0.04em',
               color: '#F5F1E9',
-            }}>T2 Coaching</span>
+            }}>t2coaching</span>
           </Link>
 
           {/* Desktop links */}

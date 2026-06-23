@@ -44,7 +44,7 @@ export async function onRequestPost(context) {
   }
 
   const to = env.CONTACT_TO || 't2coachwendy@gmail.com'
-  const from = env.CONTACT_FROM || 'T2 Coaching <onboarding@resend.dev>'
+  const from = env.CONTACT_FROM || 't2coaching <onboarding@resend.dev>'
 
   let subject, html
   if (type === 'newsletter') {

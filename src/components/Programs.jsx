@@ -143,7 +143,7 @@ export default function Programs() {
             Coaching built for how you actually live.
           </h2>
           <p style={{ fontSize: 18, color: 'rgba(13,43,62,0.7)', lineHeight: 1.65 }}>
-            Whether you're chasing your first finish line or gunning for Kona, there's a path designed for you.
+            Whether you're chasing your first finish line or gunning for Kona, I create a path designed for you.
           </p>
         </div>
 

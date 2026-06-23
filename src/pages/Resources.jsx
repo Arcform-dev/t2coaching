@@ -43,7 +43,7 @@ const RESOURCES = [
   },
   {
     title: 'Facebook',
-    desc: "Join the community, follow race recaps, and keep up with everything happening at T2 Coaching.",
+    desc: "Join the community, follow race recaps, and keep up with everything happening at t2coaching.",
     cta: 'Follow on Facebook',
     href: facebook,
     icon: 'M24 12a12 12 0 10-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3H15.8c-1.5 0-2 .9-2 1.9V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0024 12z',
