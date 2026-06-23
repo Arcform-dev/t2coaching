@@ -51,7 +51,11 @@ function ServiceCard({ s }) {
       <div style={{ width: 52, height: 52, borderRadius: 0, background: 'rgba(126,200,227,0.14)', color: '#7EC8E3', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 22 }}>
         {ICONS[s.icon]}
       </div>
-      <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 21, color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>{s.title}</h3>
+      <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 21, color: '#fff', lineHeight: 1.3, marginBottom: s.price ? 8 : 12 }}>{s.title}</h3>
+
+      {s.price && (
+        <p style={{ fontSize: 14, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.02em', marginBottom: 12 }}>{s.price}</p>
+      )}
 
       <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.66)', lineHeight: 1.7, marginBottom: 22 }}>{s.summary}</p>
 

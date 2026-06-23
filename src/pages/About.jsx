@@ -42,8 +42,8 @@ export default function About() {
     <>
       <PageHeader
         eyebrow="About Coach Wendy"
-        title="I've been in your shoes,"
-        titleAccent="and on that finish line."
+        title="I've been where you are,"
+        titleAccent="and where you want to go."
         subtitle="I went from a Division I swimmer to a Kona Ironman World Champion, with over three decades of racing experience and 26 years of coaching behind me."
         photo="/photos/kona-world-championship-finish.jpg"
       />

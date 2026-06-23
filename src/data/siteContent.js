@@ -19,7 +19,7 @@ export const CONTACT = {
 
 export const SOCIALS = [
   { label: 'Instagram', handle: '@t2coachwendy', url: 'https://www.instagram.com/t2coachwendy/' },
-  { label: 'Facebook',  handle: 'Wendy Mader',   url: 'https://www.facebook.com/wendy.mader.7' },
+  { label: 'Facebook',  handle: 't2coaching',    url: 'https://www.facebook.com/t2coach' },
   { label: 'YouTube',   handle: '@WendyMader',    url: 'https://www.youtube.com/@WendyMader' },
 ]
 

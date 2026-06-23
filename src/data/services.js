@@ -15,6 +15,7 @@ export const SERVICES = [
     badgeColor: '#C9A84C',
     icon: 'clock',
     title: 'Multisport & Single-Sport Coaching',
+    price: '$150/mo single sport · $300/mo multisport',
     summary:
       'Full personalized coaching across triathlon, duathlon, or a single discipline, built around your schedule, your goals, and your life.',
     includes: [
