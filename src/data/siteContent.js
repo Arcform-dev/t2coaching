@@ -7,11 +7,12 @@
 export const BOOKING_URL = '/contact'
 
 // Formspree endpoint for all site forms (contact inquiry + free-guide signup).
-// Set VITE_FORMSPREE_ENDPOINT in Cloudflare Pages → Settings → Environment
-// variables (same place as the Sanity vars) to the form's URL, e.g.
-// https://formspree.io/f/abcdwxyz. Until then, forms show a friendly
-// "email me directly" fallback instead of failing silently.
-export const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || ''
+// The default below is a temporary test form. For the real handoff, set
+// VITE_FORMSPREE_ENDPOINT in Cloudflare Pages → Settings → Environment variables
+// (same place as the Sanity vars) to Wendy's own form URL, e.g.
+// https://formspree.io/f/abcdwxyz — the env var overrides this default.
+export const FORMSPREE_ENDPOINT =
+  import.meta.env.VITE_FORMSPREE_ENDPOINT || 'https://formspree.io/f/mjgqkjzp'
 export const FORMS_CONFIGURED = /^https:\/\/formspree\.io\/f\/.+/.test(FORMSPREE_ENDPOINT)
 
 export const CONTACT = {
