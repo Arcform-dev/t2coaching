@@ -23,9 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# Local secrets for Cloudflare Pages Functions (wrangler pages dev)
-.dev.vars
-
 # Environment variables (real values live in Cloudflare Pages / a local .env)
 .env
 .env.*

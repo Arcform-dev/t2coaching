@@ -4,7 +4,7 @@ import useDocumentMeta from '../hooks/useDocumentMeta'
 import PageHeader from '../components/ui/PageHeader'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
-import { SOCIALS, WSJ_FEATURE } from '../data/siteContent'
+import { SOCIALS, WSJ_FEATURE, FORMSPREE_ENDPOINT, FORMS_CONFIGURED } from '../data/siteContent'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 
@@ -82,12 +82,14 @@ function GuideSignup() {
   const submit = async (e) => {
     e.preventDefault()
     if (!email) return
+    // No endpoint configured yet → show the "email me directly" fallback.
+    if (!FORMS_CONFIGURED) { setStatus('error'); return }
     setStatus('sending')
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'newsletter', email, message: "Requested the free Insider's Guide." }),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ _subject: 'New free-guide signup', email, message: "Requested the free Insider's Guide." }),
       })
       setStatus(res.ok ? 'ok' : 'error')
     } catch {

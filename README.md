@@ -28,8 +28,6 @@ src/
   data/         single source of truth for all content — edit copy here:
                 siteContent, services, testimonials, credentials, posts
   hooks/        useDocumentMeta (per-route <title> + meta description)
-functions/
-  api/contact.js  Cloudflare Pages Function for the contact form (Resend)
 public/
   photos/       site imagery
 ```
@@ -37,31 +35,29 @@ public/
 **To update site copy** (bio, pricing, testimonials, stats, socials, blog), edit
 the files in `src/data/` — no component changes needed.
 
-## Contact form (Resend)
+## Forms (Formspree)
 
-The contact + newsletter forms POST to `/api/contact`, handled by
-[`functions/api/contact.js`](functions/api/contact.js), which sends email via
-[Resend](https://resend.com). The API key stays server-side.
+The contact form and the free-guide signup both submit to one
+[Formspree](https://formspree.io) form. There's no server code or API key — the
+browser POSTs directly to Formspree, which emails the submission. Both forms keep
+their in-page success state; until the endpoint is set, they show an "email me
+directly" fallback instead of failing silently.
 
-**Setup:**
+**Setup (one-time):**
 
-1. Create a Resend account and an API key.
-2. (Production) Verify a sending domain in Resend, e.g. `t2coaching.com`.
-3. In **Cloudflare Pages → Settings → Environment variables**, add:
-   - `RESEND_API_KEY` — your key (required)
-   - `CONTACT_TO` — recipient (optional, defaults to `t2coachwendy@gmail.com`)
-   - `CONTACT_FROM` — verified sender, e.g. `T2 Coaching <noreply@t2coaching.com>`
-     (optional; defaults to Resend's test sender `onboarding@resend.dev`, which
-     only delivers to the Resend account owner).
-4. For local testing: `cp .dev.vars.example .dev.vars`, fill in the key, then:
+1. Create a free account at [formspree.io](https://formspree.io).
+2. Create a new form; set the notification email to `t2coachwendy@gmail.com`.
+3. Copy the form endpoint URL, e.g. `https://formspree.io/f/abcdwxyz`.
+4. In **Cloudflare Pages → Settings → Environment variables** (same place as the
+   Sanity vars), set `VITE_FORMSPREE_ENDPOINT` to that URL, then redeploy.
+5. The first submission triggers a one-click Formspree email verification.
 
-```bash
-npm run build
-npx wrangler pages dev dist
-```
+Notes: the free tier allows 50 submissions/month, and spam protection (reCAPTCHA,
+etc.) is toggled in the Formspree dashboard. For local dev, put
+`VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/...` in a `.env` file.
 
 ## Deploy
 
-Cloudflare Pages auto-builds with `npm run build` (publish dir `dist`). The
-top-level `functions/` directory is deployed automatically as Pages Functions,
-and `public/_redirects` provides the SPA fallback for client-side routing.
+Cloudflare Pages auto-builds with `npm run build` (publish dir `dist`), and
+`public/_redirects` provides the SPA fallback for client-side routing. The site
+is fully static — no Pages Functions or server runtime required.

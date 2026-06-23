@@ -4,7 +4,7 @@ import useDocumentMeta from '../hooks/useDocumentMeta'
 import PageHeader from '../components/ui/PageHeader'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
-import { CONTACT, SOCIALS, BOOKING_URL } from '../data/siteContent'
+import { CONTACT, SOCIALS, BOOKING_URL, FORMSPREE_ENDPOINT, FORMS_CONFIGURED } from '../data/siteContent'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 
@@ -29,12 +29,18 @@ export default function Contact() {
 
   const submit = async (e) => {
     e.preventDefault()
+    // No endpoint configured yet → show the "email me directly" fallback rather
+    // than firing a request that can't succeed.
+    if (!FORMS_CONFIGURED) { setStatus('error'); return }
     setStatus('sending')
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: 'inquiry', ...form }),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          _subject: `New coaching inquiry from ${form.name}`,
+          ...form,
+        }),
       })
       if (res.ok) { setStatus('ok'); setForm(EMPTY) }
       else setStatus('error')
