@@ -12,6 +12,7 @@ const PROGRAMS = [
     badgeColor: '#C9A84C',
     featured: true,
     title: 'Multisport & Single-Sport Coaching',
+    price: '$150/mo single sport · $300/mo multisport',
     description:
       'Full-season personalized coaching across triathlon, duathlon, or individual disciplines. Custom training in TrainingPeaks, unlimited communication, and race-day strategy built around your schedule and goals.',
   },
@@ -85,8 +86,12 @@ function ProgramCard({ program, index }) {
       <h3 style={{
         fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
         fontSize: 20, color: '#ffffff',
-        lineHeight: 1.3, marginBottom: 12,
+        lineHeight: 1.3, marginBottom: p.price ? 8 : 12,
       }}>{p.title}</h3>
+
+      {p.price && (
+        <p style={{ fontSize: 13, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.02em', marginBottom: 12 }}>{p.price}</p>
+      )}
 
       <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.72, flex: 1, marginBottom: 24 }}>
         {p.description}
