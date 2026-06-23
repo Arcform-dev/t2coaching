@@ -6,6 +6,7 @@ import { BOOKING_URL } from '../data/siteContent'
 const LINKS = [
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/services' },
+  { label: 'Process', to: '/process' },
   { label: 'Testimonials', to: '/testimonials' },
   { label: 'Gallery', to: '/gallery' },
   { label: 'Blog', to: '/blog' },

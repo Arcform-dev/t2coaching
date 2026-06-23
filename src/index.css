@@ -123,6 +123,16 @@ section, footer {
   .resources-grid  { grid-template-columns: repeat(3, 1fr); }
 }
 
+/* Process page: stepper spine + scrolling panels, week calendar */
+.process-grid { display: flex; gap: 48px; }
+.week-grid    { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 640px) {
+  .week-grid  { grid-template-columns: repeat(4, 1fr); }
+}
+@media (min-width: 1024px) {
+  .week-grid  { grid-template-columns: repeat(7, 1fr); }
+}
+
 /* Gallery hover zoom */
 .gallery-item:hover img { transform: scale(1.06); }
 
