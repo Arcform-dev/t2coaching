@@ -69,18 +69,6 @@ function ServiceCard({ s }) {
           </li>
         ))}
       </ul>
-
-      <Link className="shine-btn" to={BOOKING_URL} style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-        background: featured ? '#C9A84C' : 'transparent',
-        color: featured ? '#fff' : '#7EC8E3',
-        border: featured ? '1px solid #C9A84C' : '1px solid rgba(126,200,227,0.5)',
-        fontSize: 14, fontWeight: featured ? 700 : 600,
-        padding: '14px 24px', borderRadius: 0, textDecoration: 'none',
-      }}>
-        {featured ? 'Book Your Free Call' : 'Book a Call'}
-        <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-      </Link>
     </div>
   )
 }
