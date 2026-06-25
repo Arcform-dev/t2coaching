@@ -18,6 +18,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { pathname } = useLocation()
+  const menuId = 'site-mobile-menu'
 
   // Full-width bar: transparent over the hero on the home page, solid once
   // scrolled. Interior pages have no hero behind it, so it's solid throughout.
@@ -26,10 +27,15 @@ export default function Nav() {
 
   useEffect(() => {
     const el = ref.current
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (el) {
-      gsap.fromTo(el,
-        { y: -70, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.75, ease: 'power3.out', delay: 0.15 })
+      if (reduceMotion) {
+        gsap.set(el, { y: 0, opacity: 1 })
+      } else {
+        gsap.fromTo(el,
+          { y: -70, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.75, ease: 'power3.out' })
+      }
     }
     const onScroll = () => setScrolled(window.scrollY > 24)
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -68,7 +74,7 @@ export default function Nav() {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex" style={{ alignItems: 'center', gap: 26 }}>
+          <div className="hidden xl:flex" style={{ alignItems: 'center', gap: 26 }}>
             {LINKS.map(({ label, to }) => (
               <NavLink key={label} to={to} style={({ isActive }) => ({
                 fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
@@ -94,12 +100,16 @@ export default function Nav() {
 
           {/* Mobile hamburger */}
           <button
+            type="button"
             onClick={() => setOpen(v => !v)}
-            className="flex md:hidden"
-            aria-label="Toggle menu"
+            className="flex xl:hidden"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls={menuId}
             style={{
               background: 'none', border: 'none', cursor: 'pointer',
-              padding: 8, flexDirection: 'column', gap: 5, alignItems: 'center',
+              minWidth: 44, minHeight: 44, padding: 10, flexDirection: 'column',
+              gap: 5, alignItems: 'center', justifyContent: 'center',
             }}
           >
             {[0, 1, 2].map(i => (
@@ -117,9 +127,10 @@ export default function Nav() {
       </div>
 
       {/* Mobile menu */}
-      <div style={{
+      <div id={menuId} aria-hidden={!open} style={{
         overflow: 'hidden',
         maxHeight: open ? 460 : 0,
+        visibility: open ? 'visible' : 'hidden',
         transition: 'max-height 0.3s ease',
         background: 'rgba(8,24,35,0.98)',
         backdropFilter: 'blur(20px)',
@@ -127,7 +138,7 @@ export default function Nav() {
       }}>
         <div style={{ padding: '12px 32px 24px' }}>
           {LINKS.map(({ label, to }) => (
-            <NavLink key={label} to={to} onClick={() => setOpen(false)} style={({ isActive }) => ({
+            <NavLink key={label} to={to} tabIndex={open ? 0 : -1} onClick={() => setOpen(false)} style={({ isActive }) => ({
               display: 'block', padding: '14px 0',
               fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
               textTransform: 'uppercase', letterSpacing: '0.1em',
@@ -139,6 +150,7 @@ export default function Nav() {
           ))}
           <BookingLink
             className="cta-gold"
+            tabIndex={open ? 0 : -1}
             onClick={() => setOpen(false)}
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',

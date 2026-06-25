@@ -194,7 +194,7 @@ function ChatBubble({ sent, avatar, children }) {
     <div style={{ display: 'flex', alignItems: 'flex-end', gap: 10, marginBottom: 14, flexDirection: sent ? 'row-reverse' : 'row' }}>
       <div style={{ width: 38, height: 38, borderRadius: '50%', flexShrink: 0, overflow: 'hidden', background: sent ? 'rgba(255,255,255,0.12)' : '#1A6B8A', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700 }}>
         {avatar === 'wendy'
-          ? <img src="/wendy-cutout.png" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+          ? <img src="/wendy-cutout.png" alt="" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
           : 'You'}
       </div>
       <div style={{

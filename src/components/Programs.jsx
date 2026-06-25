@@ -93,7 +93,7 @@ function ProgramCard({ program, index }) {
         <p style={{ fontSize: 13, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.02em', marginBottom: 12 }}>{p.price}</p>
       )}
 
-      <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.72, flex: 1, marginBottom: 24 }}>
+      <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.82)', lineHeight: 1.72, flex: 1, marginBottom: 24 }}>
         {p.description}
       </p>
 
@@ -103,7 +103,7 @@ function ProgramCard({ program, index }) {
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           gap: 8, whiteSpace: 'nowrap',
           background: featured ? '#C9A84C' : 'transparent',
-          color: featured ? '#fff' : '#7EC8E3',
+          color: featured ? '#0D2B3E' : '#7EC8E3',
           border: featured ? '1px solid #C9A84C' : '1px solid rgba(126,200,227,0.5)',
           fontSize: 14, fontWeight: featured ? 700 : 600,
           padding: '14px 24px', borderRadius: 0,

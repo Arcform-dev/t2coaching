@@ -20,14 +20,14 @@ export default function CTABanner({
             fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
             fontSize: 'clamp(2rem, 5vw, 3.4rem)', color: '#fff', lineHeight: 1.12, marginBottom: 18,
           }}>{title}</h2>
-          <p style={{ fontSize: 'clamp(1rem, 1.8vw, 1.15rem)', color: 'rgba(255,255,255,0.65)', lineHeight: 1.65, maxWidth: 520, margin: '0 auto 32px' }}>
+          <p style={{ fontSize: 'clamp(1rem, 1.8vw, 1.15rem)', color: 'rgba(255,255,255,0.84)', lineHeight: 1.65, maxWidth: 520, margin: '0 auto 32px' }}>
             {subtitle}
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center' }}>
             <BookingLink
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10, whiteSpace: 'nowrap',
-                background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
+                background: '#C9A84C', color: '#0D2B3E', fontSize: 16, fontWeight: 700,
                 padding: '16px 38px', borderRadius: 0, textDecoration: 'none',
               }}
             >

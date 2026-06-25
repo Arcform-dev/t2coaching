@@ -12,13 +12,12 @@ export const BOOKING_IS_EXTERNAL = /^https?:\/\//.test(CALENDLY_URL)
 export const BOOKING_URL = BOOKING_IS_EXTERNAL ? CALENDLY_URL : '/contact'
 
 // Formspree endpoint for all site forms (contact inquiry + free-guide signup).
-// The default below is a temporary test form. For the real handoff, set
-// VITE_FORMSPREE_ENDPOINT in Cloudflare Pages → Settings → Environment variables
-// (same place as the Sanity vars) to Wendy's own form URL, e.g.
-// https://formspree.io/f/abcdwxyz — the env var overrides this default.
-export const FORMSPREE_ENDPOINT =
-  import.meta.env.VITE_FORMSPREE_ENDPOINT || 'https://formspree.io/f/mjgqkjzp'
-export const FORMS_CONFIGURED = /^https:\/\/formspree\.io\/f\/.+/.test(FORMSPREE_ENDPOINT)
+// It must be explicitly configured. If it is missing, forms show the direct
+// email fallback instead of sending personal data to a test endpoint.
+const configuredFormEndpoint = (import.meta.env.VITE_FORMSPREE_ENDPOINT || '').trim()
+export const FORMSPREE_ENDPOINT = configuredFormEndpoint
+export const FORMS_CONFIGURED =
+  /^https:\/\/formspree\.io\/f\/[a-z0-9]+$/i.test(configuredFormEndpoint)
 
 export const CONTACT = {
   preferredName: 'Coach Wendy',

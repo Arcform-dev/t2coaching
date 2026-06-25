@@ -1,5 +1,5 @@
 import './App.css'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -11,6 +11,8 @@ import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
 import Resources from './pages/Resources'
 import Contact from './pages/Contact'
+import Privacy from './pages/Privacy'
+import NotFound from './pages/NotFound'
 
 export default function App() {
   return (
@@ -26,7 +28,8 @@ export default function App() {
         <Route path="blog/:slug" element={<BlogPost />} />
         <Route path="resources" element={<Resources />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="privacy" element={<Privacy />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )

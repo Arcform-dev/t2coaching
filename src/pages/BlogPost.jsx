@@ -1,10 +1,11 @@
-import { useParams, Navigate, Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { PortableText } from '@portabletext/react'
 import useDocumentMeta from '../hooks/useDocumentMeta'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
 import { usePost } from '../lib/content'
+import NotFound from './NotFound'
 
 const WRAP = { maxWidth: 800, margin: '0 auto', padding: '0 32px' }
 
@@ -35,13 +36,17 @@ export default function BlogPost() {
   const { slug } = useParams()
   const post = usePost(slug)
 
-  useDocumentMeta(post ? post.title : 'Blog', post ? post.excerpt : undefined)
+  useDocumentMeta(
+    post === undefined ? 'Page Not Found' : post ? post.title : 'Blog',
+    post === undefined ? 'The requested t2coaching blog post could not be found.' : post ? post.excerpt : undefined,
+    post === undefined ? { robots: 'noindex,follow' } : undefined
+  )
 
   // Sanity fetch still in flight.
   if (post === null) {
     return <section style={{ padding: '180px 0', textAlign: 'center', color: 'rgba(255,255,255,0.5)' }}>Loading…</section>
   }
-  if (!post) return <Navigate to="/blog" replace />
+  if (!post) return <NotFound />
 
   // A "coming soon" topic was opened directly, so show a friendly placeholder.
   if (post.comingSoon) {

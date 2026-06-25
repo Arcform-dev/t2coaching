@@ -9,6 +9,7 @@ export default function PageHeader({ eyebrow, title, titleAccent, subtitle, phot
   useEffect(() => {
     const el = ref.current
     if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const items = el.querySelectorAll('[data-ph]')
     gsap.fromTo(items,
       { y: 30, opacity: 0 },
@@ -36,6 +37,13 @@ export default function PageHeader({ eyebrow, title, titleAccent, subtitle, phot
         </>
       )}
       <div style={{ position: 'relative', zIndex: 2, maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
+        {eyebrow && (
+          <p data-ph style={{
+            fontSize: 11, fontWeight: 700, color: '#C9A84C',
+            letterSpacing: '0.16em', textTransform: 'uppercase',
+            marginBottom: 18,
+          }}>{eyebrow}</p>
+        )}
         <h1 data-ph style={{
           fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
           fontSize: 'clamp(2.6rem, 6vw, 5rem)',
@@ -48,7 +56,7 @@ export default function PageHeader({ eyebrow, title, titleAccent, subtitle, phot
         {subtitle && (
           <p data-ph style={{
             fontSize: 'clamp(1.05rem, 2vw, 1.3rem)',
-            color: 'rgba(255,255,255,0.72)', fontWeight: 300, lineHeight: 1.6,
+            color: 'rgba(255,255,255,0.84)', fontWeight: 300, lineHeight: 1.6,
             maxWidth: 620, marginTop: 24,
           }}>{subtitle}</p>
         )}

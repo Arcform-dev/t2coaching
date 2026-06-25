@@ -86,6 +86,10 @@ export default function Hero() {
         ref={photoRef}
         className="champ-hero__photo"
         src="/wendy-cutout.png"
+        width="571"
+        height="1504"
+        decoding="async"
+        fetchPriority="high"
         alt="Wendy Mader celebrating at the Ironman World Championship finish line in Kona, arms raised."
       />
 

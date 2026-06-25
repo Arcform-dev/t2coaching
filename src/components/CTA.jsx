@@ -79,7 +79,7 @@ export default function CTA() {
           {/* Sub */}
           <p ref={subRef} style={{
             fontSize: 'clamp(1rem, 1.8vw, 1.2rem)',
-            color: 'rgba(255,255,255,0.62)',
+            color: 'rgba(255,255,255,0.82)',
             maxWidth: 480, lineHeight: 1.68,
           }}>
             Thirty minutes with Wendy can change the shape of your season. It is a real conversation about where you are now and where you want to go.
@@ -92,7 +92,7 @@ export default function CTA() {
             style={{
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
               gap: 10, whiteSpace: 'nowrap', marginTop: 8,
-              background: '#C9A84C', color: '#fff',
+              background: '#C9A84C', color: '#0D2B3E',
               fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)', fontWeight: 700,
               padding: '18px 42px', borderRadius: 0,
               textDecoration: 'none',
@@ -104,7 +104,7 @@ export default function CTA() {
             </svg>
           </BookingLink>
 
-          <p ref={noteRef} style={{ fontSize: 13, color: 'rgba(255,255,255,0.3)' }}>
+          <p ref={noteRef} style={{ fontSize: 13, color: 'rgba(255,255,255,0.64)' }}>
             The first call is free and takes about fifteen minutes.
           </p>
         </div>

@@ -22,12 +22,12 @@ npm run lint
 ```
 src/
   pages/        one component per route (Home, About, Services, Testimonials,
-                Gallery, Blog, BlogPost, Resources, Contact)
+                Gallery, Blog, BlogPost, Resources, Contact, Privacy, NotFound)
   components/   Layout, Nav, Footer, RaceCourse + the home-page sections
   components/ui SectionHeading, PageHeader, GlassCard, Reveal, CTABanner
   data/         single source of truth for all content — edit copy here:
                 siteContent, services, testimonials, credentials, posts
-  hooks/        useDocumentMeta (per-route <title> + meta description)
+  hooks/        useDocumentMeta (per-route title, meta, canonical and social tags)
 public/
   photos/       site imagery
 ```

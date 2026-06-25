@@ -42,7 +42,7 @@ function ServiceCard({ s }) {
       {featured && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: '#C9A84C' }} />}
       {s.badge && (
         <div style={{ position: 'absolute', top: 18, right: 22 }}>
-          <span style={{ display: 'inline-block', background: s.badgeColor, color: '#fff', fontSize: 11, fontWeight: 700, padding: '4px 12px', borderRadius: 0, letterSpacing: '0.04em' }}>
+          <span style={{ display: 'inline-block', background: s.badgeColor, color: '#0D2B3E', fontSize: 11, fontWeight: 700, padding: '4px 12px', borderRadius: 0, letterSpacing: '0.04em' }}>
             {s.badge}
           </span>
         </div>
@@ -56,7 +56,7 @@ function ServiceCard({ s }) {
         <p style={{ fontSize: 14, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.02em', marginBottom: 12 }}>{s.price}</p>
       )}
 
-      <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.66)', lineHeight: 1.7, marginBottom: 22 }}>{s.summary}</p>
+      <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.82)', lineHeight: 1.7, marginBottom: 22 }}>{s.summary}</p>
 
       <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 11, marginBottom: 28, flex: 1 }}>
         {s.includes.map((inc, i) => (
@@ -113,11 +113,11 @@ export default function Services() {
                 <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 'clamp(1.5rem, 3vw, 2.1rem)', color: '#fff', margin: '12px 0 14px' }}>
                   {FREE_OFFER.label}
                 </h3>
-                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, maxWidth: 520 }}>{FREE_OFFER.body}</p>
+                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.84)', lineHeight: 1.7, maxWidth: 520 }}>{FREE_OFFER.body}</p>
               </div>
               <BookingLink className="shine-btn" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10, whiteSpace: 'nowrap',
-                background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
+                background: '#C9A84C', color: '#0D2B3E', fontSize: 16, fontWeight: 700,
                 padding: '16px 36px', borderRadius: 0, textDecoration: 'none',
                 boxShadow: '0 12px 40px rgba(201,168,76,0.4)',
               }}>
@@ -141,7 +141,7 @@ export default function Services() {
                 <GlassCard style={{ padding: '32px 26px', height: '100%' }}>
                   <div style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 34, color: 'rgba(126,200,227,0.5)', marginBottom: 12 }}>{step.step}</div>
                   <h3 style={{ fontSize: 17, fontWeight: 600, color: '#fff', marginBottom: 10 }}>{step.title}</h3>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.64)', lineHeight: 1.65 }}>{step.body}</p>
+                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.82)', lineHeight: 1.65 }}>{step.body}</p>
                 </GlassCard>
               </Reveal>
             ))}
@@ -155,10 +155,10 @@ export default function Services() {
           <div className="story-grid" style={{ display: 'grid', gap: 48, alignItems: 'center' }}>
             <Reveal x={-40} y={0}>
               <SectionHeading eyebrow="Who I Coach" title="Every level. Every why." style={{ marginBottom: 20 }} />
-              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.75, marginBottom: 18 }}>
+              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.84)', lineHeight: 1.75, marginBottom: 18 }}>
                 Coaching revolves around each athlete's experience, current fitness, and the time they have to train. I build plans for the time-crunched athlete and the athlete with unlimited hours alike. I coach for accountability and health, not just sport.
               </p>
-              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.75 }}>
+              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.84)', lineHeight: 1.75 }}>
                 I've taught adults to swim well enough to finish an Ironman in two years, and coached countless athletes to Kona. Wherever you're starting, there's a path for you.
               </p>
             </Reveal>

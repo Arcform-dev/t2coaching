@@ -3,7 +3,6 @@
    ONLY on small, mostly all-caps UI (buttons, labels). Playfair Display SC is
    kept for the giant gold hero title; Caveat is used ONLY for the hand-drawn
    scrapbook annotation in the hero. */
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=Playfair+Display+SC:wght@400;700;900&display=swap');
 @import "tailwindcss";
 @source "../index.html";
 @source "./src";
@@ -22,6 +21,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -152,6 +152,18 @@ section, footer {
 }
 .cta-gold:hover {
   background: #d8b85e;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ── Champion hero (homepage) ──────────────────────────────────────────────

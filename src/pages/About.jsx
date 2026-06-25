@@ -65,6 +65,7 @@ export default function About() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
                 <div style={{ position: 'relative', borderRadius: 0, overflow: 'hidden', aspectRatio: '3/4', background: '#0D2B3E' }}>
                   <img src="/photos/kona-world-championship-finish.jpg" alt="Wendy Mader finishing the Ironman World Championship in Kona"
+                    loading="lazy" decoding="async"
                     style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
                   <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '38%', background: 'linear-gradient(to top, rgba(13,43,62,0.85), transparent)' }} />
                   <div style={{ position: 'absolute', bottom: 18, left: 20, right: 20 }}>
@@ -113,7 +114,7 @@ export default function About() {
                   <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 19, color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>
                     {p.title}
                   </h3>
-                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.66)', lineHeight: 1.7 }}>{p.body}</p>
+                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.82)', lineHeight: 1.7 }}>{p.body}</p>
                 </GlassCard>
               </Reveal>
             ))}
@@ -148,7 +149,7 @@ export default function About() {
                 <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 'clamp(1.3rem, 2.4vw, 1.8rem)', color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>
                   "{WSJ_FEATURE.title}"
                 </h3>
-                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.66)', lineHeight: 1.7, marginBottom: 16 }}>{WSJ_FEATURE.blurb}</p>
+                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.82)', lineHeight: 1.7, marginBottom: 16 }}>{WSJ_FEATURE.blurb}</p>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: '#7EC8E3', fontSize: 14, fontWeight: 600 }}>
                   Read the article
                   <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">

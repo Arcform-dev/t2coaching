@@ -4,7 +4,7 @@ import useDocumentMeta from '../hooks/useDocumentMeta'
 import PageHeader from '../components/ui/PageHeader'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
-import { SOCIALS, WSJ_FEATURE, FORMSPREE_ENDPOINT, FORMS_CONFIGURED } from '../data/siteContent'
+import { CONTACT, SOCIALS, WSJ_FEATURE, FORMSPREE_ENDPOINT, FORMS_CONFIGURED } from '../data/siteContent'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 
@@ -57,7 +57,7 @@ function ResourceCard({ r }) {
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={r.icon} /></svg>
       </div>
       <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 19, color: '#fff', marginBottom: 12 }}>{r.title}</h3>
-      <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.64)', lineHeight: 1.7, flex: 1, marginBottom: 20 }}>{r.desc}</p>
+      <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.78)', lineHeight: 1.7, flex: 1, marginBottom: 20 }}>{r.desc}</p>
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 600, color: '#C9A84C' }}>
         {r.cta}
         <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
@@ -71,7 +71,7 @@ function ResourceCard({ r }) {
 const GUIDE_POINTS = [
   'Proven running tweaks that make you faster with zero extra training',
   '10 performance-killing habits that pros avoid before every race',
-  'Game-changing nutrition & training the top athletes actually use',
+  'Game-changing nutrition and training the top athletes actually use',
   'A behind-the-curtain look at racing big global competitions',
 ]
 
@@ -82,7 +82,6 @@ function GuideSignup() {
   const submit = async (e) => {
     e.preventDefault()
     if (!email) return
-    // No endpoint configured yet → show the "email me directly" fallback.
     if (!FORMS_CONFIGURED) { setStatus('error'); return }
     setStatus('sending')
     try {
@@ -91,7 +90,12 @@ function GuideSignup() {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({ _subject: 'New free-guide signup', email, message: "Requested the free Insider's Guide." }),
       })
-      setStatus(res.ok ? 'ok' : 'error')
+      if (res.ok) {
+        setStatus('ok')
+        setEmail('')
+      } else {
+        setStatus('error')
+      }
     } catch {
       setStatus('error')
     }
@@ -115,7 +119,7 @@ function GuideSignup() {
                 <span style={{ color: '#C9A84C', flexShrink: 0, marginTop: 2 }}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                 </span>
-                <span style={{ fontSize: 15, color: 'rgba(255,255,255,0.78)', lineHeight: 1.55 }}>{g}</span>
+                <span style={{ fontSize: 15, color: 'rgba(255,255,255,0.84)', lineHeight: 1.55 }}>{g}</span>
               </li>
             ))}
           </ul>
@@ -123,32 +127,44 @@ function GuideSignup() {
 
         <div>
           {status === 'ok' ? (
-            <div style={{ textAlign: 'center', padding: '20px 0' }}>
-              <div style={{ fontSize: 40, marginBottom: 12 }}>🎉</div>
+            <div role="status" aria-live="polite" style={{ textAlign: 'center', padding: '20px 0' }}>
+              <svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1.8" style={{ marginBottom: 12 }}>
+                <circle cx="12" cy="12" r="9" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8 12.5l2.4 2.4L16.5 9" />
+              </svg>
               <p style={{ fontSize: 17, color: '#fff', fontWeight: 600, marginBottom: 6 }}>You're on the list!</p>
-              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)' }}>Keep an eye on your inbox. Your guide is on the way.</p>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.74)' }}>Keep an eye on your inbox. Your guide is on the way.</p>
             </div>
           ) : (
-            <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <form onSubmit={submit} aria-busy={status === 'sending'} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+              <label htmlFor="guide-email" className="sr-only">Email address</label>
               <input
-                type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
+                id="guide-email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                value={email}
+                onChange={(e) => { if (status === 'error') setStatus('idle'); setEmail(e.target.value) }}
                 placeholder="Your email address"
                 style={inputStyle}
               />
               <button type="submit" disabled={status === 'sending'} style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
-                padding: '15px 28px', borderRadius: 0, border: 'none', cursor: 'pointer',
+                background: '#C9A84C', color: '#0D2B3E', fontSize: 16, fontWeight: 700,
+                padding: '15px 28px', borderRadius: 0, border: 'none', cursor: status === 'sending' ? 'wait' : 'pointer',
                 opacity: status === 'sending' ? 0.7 : 1,
               }}>
-                {status === 'sending' ? 'Sending…' : 'Get the Free Guide'}
+                {status === 'sending' ? 'Sending...' : 'Get the Free Guide'}
               </button>
               {status === 'error' && (
-                <p style={{ fontSize: 13, color: '#C9A84C', textAlign: 'center' }}>
-                  Couldn't submit just now. Please email t2coachwendy@gmail.com and I'll send it over.
+                <p role="alert" style={{ fontSize: 13, color: '#F2D46E', textAlign: 'center' }}>
+                  Couldn't submit just now. Please email{' '}
+                  <a href={`mailto:${CONTACT.email}`} style={{ color: '#7EC8E3' }}>{CONTACT.email}</a>{' '}
+                  and I'll send it over.
                 </p>
               )}
-              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', textAlign: 'center' }}>No spam. Unsubscribe anytime.</p>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.64)', textAlign: 'center' }}>No spam. Unsubscribe anytime.</p>
             </form>
           )}
         </div>
@@ -160,11 +176,12 @@ function GuideSignup() {
 const inputStyle = {
   width: '100%', padding: '15px 18px', borderRadius: 0,
   background: 'rgba(8,18,32,0.6)', border: '1px solid rgba(255,255,255,0.15)',
-  color: '#fff', fontSize: 15, fontFamily: 'inherit', outline: 'none',
+  color: '#fff', fontSize: 16, fontFamily: 'inherit', outline: 'none',
+  minHeight: 48,
 }
 
 export default function Resources() {
-  useDocumentMeta('Free Resources', 'Free training resources from Coach Wendy Mader: articles, videos, her WSJ feature, and a free insider\'s guide.')
+  useDocumentMeta('Free Resources', 'Free training resources from Coach Wendy Mader: articles, videos, her WSJ feature, and a free insider guide.')
 
   return (
     <>
