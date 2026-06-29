@@ -34,4 +34,5 @@ content-source/
 # Local Claude Code tooling (do not commit)
 .claude/
 .agents/
+.audit-chrome/
 skills-lock.json

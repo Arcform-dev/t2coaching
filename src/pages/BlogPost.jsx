@@ -4,7 +4,7 @@ import useDocumentMeta from '../hooks/useDocumentMeta'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
-import { usePost } from '../lib/content'
+import { getPost } from '../data/posts'
 import NotFound from './NotFound'
 
 const WRAP = { maxWidth: 800, margin: '0 auto', padding: '0 32px' }
@@ -34,12 +34,16 @@ const ptComponents = {
 
 export default function BlogPost() {
   const { slug } = useParams()
-  const post = usePost(slug)
+  const post = getPost(slug)
 
   useDocumentMeta(
     post === undefined ? 'Page Not Found' : post ? post.title : 'Blog',
     post === undefined ? 'The requested t2coaching blog post could not be found.' : post ? post.excerpt : undefined,
-    post === undefined ? { robots: 'noindex,follow' } : undefined
+    post === undefined
+      ? { robots: 'noindex,follow' }
+      : post
+        ? { canonical: `https://t2coaching.com/blog/${post.slug}` }
+        : undefined
   )
 
   // Sanity fetch still in flight.
@@ -107,6 +111,13 @@ export default function BlogPost() {
 
           {/* Sanity posts carry rich text in `body`; local posts use intro/exercises. */}
           {post.body && <PortableText value={post.body} components={ptComponents} />}
+
+          {post.contentHtml && (
+            <div
+              className="legacy-post"
+              dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+            />
+          )}
 
           {post.intro?.map((p, i) => (
             <p key={i} style={{ fontSize: 17, color: 'rgba(255,255,255,0.8)', lineHeight: 1.85, marginBottom: 22 }}>{p}</p>

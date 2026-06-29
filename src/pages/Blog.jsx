@@ -4,7 +4,7 @@ import PageHeader from '../components/ui/PageHeader'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
-import { usePosts } from '../lib/content'
+import { POSTS } from '../data/posts'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 
@@ -55,7 +55,7 @@ function PostCard({ post }) {
 export default function Blog() {
   useDocumentMeta('Blog', 'Training tips, swim technique, race-day nutrition and lessons from 30+ years of racing, from Coach Wendy Mader.')
 
-  const posts = usePosts() || []
+  const posts = POSTS
 
   return (
     <>

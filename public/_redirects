@@ -1,1 +1,5 @@
+/blogs    /blog   301
+/blogs/   /blog   301
+/blogs/*  /blog/:splat  301
+
 /*    /index.html   200

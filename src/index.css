@@ -143,6 +143,53 @@ section, footer {
 /* Gallery hover zoom */
 .gallery-item:hover img { transform: scale(1.06); }
 
+.legacy-post {
+  font-size: 17px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.85;
+}
+.legacy-post p,
+.legacy-post ul,
+.legacy-post ol,
+.legacy-post blockquote,
+.legacy-post figure {
+  margin-bottom: 22px;
+}
+.legacy-post h2,
+.legacy-post h3,
+.legacy-post h4 {
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  color: #fff;
+  line-height: 1.25;
+  margin: 34px 0 14px;
+}
+.legacy-post h2 { font-size: 28px; }
+.legacy-post h3 { font-size: 22px; }
+.legacy-post h4 { font-size: 18px; }
+.legacy-post ul,
+.legacy-post ol {
+  padding-left: 24px;
+}
+.legacy-post li {
+  margin-bottom: 10px;
+}
+.legacy-post a {
+  color: #7EC8E3;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.legacy-post blockquote {
+  border-left: 3px solid #C9A84C;
+  padding-left: 18px;
+  color: rgba(255,255,255,0.88);
+}
+.legacy-post img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 28px auto;
+}
+
 /* ── Gold primary CTA ───────────────────────────────────────────────────────
    Flat gold button, no shine sweep and no glow pulse — just a quiet hover. The
    .shine-btn class is left inert on existing buttons (no effect). */
