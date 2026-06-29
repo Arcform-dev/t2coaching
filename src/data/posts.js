@@ -1,8 +1,8 @@
-import { IMPORTED_POSTS } from './importedPosts'
+import { POST_INDEX } from './postIndex.js'
 
 // Local blog source. The archived posts are imported from the prior WordPress
 // site and stored locally so the new site does not need Sanity.
-const CURATED_POSTS = [
+export const CURATED_POSTS = [
   {
     slug: 'swim-strength-workout-no-water-required',
     title: "An Ironman Coach's Swim Strength Workout - No Water Required",
@@ -54,14 +54,25 @@ const CURATED_POSTS = [
   },
 ]
 
-const importedSlugs = new Set(IMPORTED_POSTS.map((post) => post.slug))
+const importedSlugs = new Set(POST_INDEX.map((post) => post.slug))
 const POST_ALIASES = {
   'an-ironman-coachs-swim-strength-workout-no-water-required': 'swim-strength-workout-no-water-required',
 }
 
 export const POSTS = [
-  ...IMPORTED_POSTS,
+  ...POST_INDEX,
   ...CURATED_POSTS.filter((post) => !importedSlugs.has(post.slug)),
 ].sort((a, b) => (b.date || '').localeCompare(a.date || ''))
 
-export const getPost = (slug) => POSTS.find((p) => p.slug === (POST_ALIASES[slug] || slug))
+export const normalizePostSlug = (slug) => POST_ALIASES[slug] || slug
+
+export const getPost = (slug) => POSTS.find((p) => p.slug === normalizePostSlug(slug))
+
+export async function loadPost(slug) {
+  const normalized = normalizePostSlug(slug)
+  const curated = CURATED_POSTS.find((post) => post.slug === normalized)
+  if (curated) return curated
+
+  const { IMPORTED_POSTS } = await import('./importedPosts.js')
+  return IMPORTED_POSTS.find((post) => post.slug === normalized)
+}

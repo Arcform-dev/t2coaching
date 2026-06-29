@@ -1,10 +1,11 @@
+import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { PortableText } from '@portabletext/react'
 import useDocumentMeta from '../hooks/useDocumentMeta'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
-import { getPost } from '../data/posts'
+import { getPost, loadPost } from '../data/posts'
 import NotFound from './NotFound'
 
 const WRAP = { maxWidth: 800, margin: '0 auto', padding: '0 32px' }
@@ -38,20 +39,35 @@ const ptComponents = {
 
 export default function BlogPost() {
   const { slug } = useParams()
-  const post = getPost(slug)
-  const hasCategory = post ? showCategory(post.category) : false
+  const summary = getPost(slug)
+  const [loadedPost, setLoadedPost] = useState({ slug: null, post: null })
+  const hasCategory = summary ? showCategory(summary.category) : false
+  const post = loadedPost.slug === slug ? loadedPost.post : null
+
+  useEffect(() => {
+    let active = true
+    if (!summary) return
+    loadPost(slug).then((loaded) => {
+      if (active) setLoadedPost({ slug, post: loaded || undefined })
+    })
+    return () => {
+      active = false
+    }
+  }, [slug, summary])
 
   useDocumentMeta(
-    post === undefined ? 'Page Not Found' : post ? post.title : 'Blog',
-    post === undefined ? 'The requested t2coaching blog post could not be found.' : post ? post.excerpt : undefined,
-    post === undefined
+    summary === undefined ? 'Page Not Found' : summary ? summary.title : 'Blog',
+    summary === undefined ? 'The requested t2coaching blog post could not be found.' : summary ? summary.excerpt : undefined,
+    summary === undefined
       ? { robots: 'noindex,follow' }
-      : post
-        ? { canonical: `https://t2coaching.com/blog/${post.slug}` }
+      : summary
+        ? { canonical: `https://t2coaching.com/blog/${summary.slug}` }
         : undefined
   )
 
-  // Sanity fetch still in flight.
+  if (!summary) return <NotFound />
+
+  // Full article body still in flight.
   if (post === null) {
     return <section style={{ padding: '180px 0', textAlign: 'center', color: 'rgba(255,255,255,0.5)' }}>Loading…</section>
   }

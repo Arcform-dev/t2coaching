@@ -2,10 +2,11 @@
 # don't split between www and non-www. https is already forced by the host.
 https://www.t2coaching.com/*  https://t2coaching.com/:splat  301!
 
-# Legacy WordPress blog paths → new /blog
+# Legacy WordPress blog paths -> new /blog
 /blogs    /blog   301
 /blogs/   /blog   301
 /blogs/*  /blog/:splat  301
 
-# SPA fallback — every other path serves the app shell.
-/*    /index.html   200
+# Unknown paths should be true 404s. The build generates static HTML for every
+# canonical route and blog post, so direct visits to valid URLs still work.
+/*    /404.html   404
