@@ -4,6 +4,7 @@ import PageHeader from '../components/ui/PageHeader'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
+import { BlogArtwork } from '../components/ui/BlogArtwork'
 import { POSTS } from '../data/posts'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
@@ -12,13 +13,7 @@ function PostCard({ post }) {
   const inner = (
     <GlassCard style={{ height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       <div style={{ position: 'relative', aspectRatio: '16/10', background: '#0D2B3E', overflow: 'hidden' }}>
-        {post.cover ? (
-          <img src={post.cover} alt={post.title} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-        ) : (
-          <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(126,200,227,0.5)' }}>
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" /></svg>
-          </div>
-        )}
+        <BlogArtwork post={post} />
         {post.comingSoon && (
           <span style={{ position: 'absolute', top: 14, right: 14, background: 'rgba(8,18,32,0.85)', color: '#C9A84C', fontSize: 11, fontWeight: 600, padding: '5px 12px', borderRadius: 0, letterSpacing: '0.04em' }}>
             Coming Soon

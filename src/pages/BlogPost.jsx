@@ -4,6 +4,7 @@ import useDocumentMeta from '../hooks/useDocumentMeta'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
+import { BlogHeaderBackdrop } from '../components/ui/BlogArtwork'
 import { getPost } from '../data/posts'
 import NotFound from './NotFound'
 
@@ -78,12 +79,7 @@ export default function BlogPost() {
     <>
       {/* Article header */}
       <header style={{ position: 'relative', padding: '140px 0 40px', overflow: 'hidden' }}>
-        {post.cover && (
-          <>
-            <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${post.cover})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.2 }} />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(8,18,32,0.7), rgba(8,18,32,0.92))' }} />
-          </>
-        )}
+        <BlogHeaderBackdrop post={post} />
         <div style={{ position: 'relative', zIndex: 2, ...WRAP }}>
           <Link to="/blog" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: '#7EC8E3', fontSize: 14, fontWeight: 600, textDecoration: 'none', marginBottom: 24 }}>
             <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 17l-5-5m0 0l5-5m-5 5h12" /></svg>
