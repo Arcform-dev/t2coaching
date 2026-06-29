@@ -1,5 +1,11 @@
+# Canonicalize the domain: force the apex (non-www) host so ranking signals
+# don't split between www and non-www. https is already forced by the host.
+https://www.t2coaching.com/*  https://t2coaching.com/:splat  301!
+
+# Legacy WordPress blog paths → new /blog
 /blogs    /blog   301
 /blogs/   /blog   301
 /blogs/*  /blog/:splat  301
 
+# SPA fallback — every other path serves the app shell.
 /*    /index.html   200

@@ -6,6 +6,7 @@ import Stats from '../components/Stats'
 import About from '../components/About'
 import WhyT2 from '../components/WhyT2'
 import Testimonials from '../components/Testimonials'
+import FAQ from '../components/FAQ'
 import CTA from '../components/CTA'
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
         <About />
         <WhyT2 />
         <Testimonials />
+        <FAQ />
         <CTA />
       </div>
     </>

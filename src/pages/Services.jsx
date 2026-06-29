@@ -6,8 +6,36 @@ import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
 import { SERVICES, FREE_OFFER, HOW_IT_WORKS, WHO_I_COACH } from '../data/services'
 import BookingLink from '../components/ui/BookingLink'
+import JsonLd from '../components/ui/JsonLd'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
+
+// Service schema for each coaching offering, provided by the business entity
+// declared in index.html, plus a breadcrumb trail for clean hierarchy signals.
+const SERVICES_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://t2coaching.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://t2coaching.com/services' },
+      ],
+    },
+    ...SERVICES.map((s) => ({
+      '@type': 'Service',
+      name: s.title,
+      description: s.summary,
+      serviceType: 'Endurance & triathlon coaching',
+      provider: { '@id': 'https://t2coaching.com/#business' },
+      areaServed: [
+        { '@type': 'Place', name: 'Worldwide (online)' },
+        { '@type': 'City', name: 'Atlanta, Georgia' },
+      ],
+      url: 'https://t2coaching.com/services',
+    })),
+  ],
+}
 
 const ICONS = {
   clock: (
@@ -80,6 +108,7 @@ export default function Services() {
 
   return (
     <>
+      <JsonLd data={SERVICES_SCHEMA} />
       <PageHeader
         eyebrow="Coaching Services"
         title="Coaching built for"

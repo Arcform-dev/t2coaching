@@ -2,8 +2,24 @@ import { useEffect } from 'react'
 
 const BASE_TITLE = 't2coaching'
 const SITE_URL = 'https://t2coaching.com'
+const CANONICAL_HOST = 't2coaching.com'
 const DEFAULT_DESCRIPTION =
   'Personalized triathlon, swim, run and endurance coaching by Kona Ironman Champion Wendy Mader.'
+
+// Normalize a pathname for the canonical URL: strip a trailing slash (except on
+// the root) so /about and /about/ don't produce two competing canonical signals.
+function canonicalPath(pathname) {
+  if (pathname.length > 1 && pathname.endsWith('/')) return pathname.slice(0, -1)
+  return pathname
+}
+
+// Preview/staging deploys (*.pages.dev, *.netlify.app, localhost, branch
+// previews) must never be indexed alongside the live domain. Any host that
+// isn't the canonical apex gets forced to noindex.
+function isProductionHost() {
+  if (typeof window === 'undefined') return true
+  return window.location.hostname === CANONICAL_HOST
+}
 
 function upsertMeta(selector, attributes) {
   let tag = document.head.querySelector(selector)
@@ -28,9 +44,10 @@ function upsertLink(rel, href) {
 export default function useDocumentMeta(title, description = DEFAULT_DESCRIPTION, options = {}) {
   useEffect(() => {
     const fullTitle = title ? `${title} - ${BASE_TITLE}` : `${BASE_TITLE} - Coached by a Kona Champion`
-    const url = options.canonical || `${SITE_URL}${window.location.pathname}`
+    const url = options.canonical || `${SITE_URL}${canonicalPath(window.location.pathname)}`
     const image = options.image || `${SITE_URL}/wendy-hero.jpg`
-    const robots = options.robots || 'index,follow'
+    // Force noindex on any non-production host, regardless of the page's own setting.
+    const robots = !isProductionHost() ? 'noindex,follow' : options.robots || 'index,follow'
 
     document.title = fullTitle
     upsertMeta('meta[name="description"]', { name: 'description', content: description })
