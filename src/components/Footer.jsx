@@ -95,7 +95,7 @@ export default function Footer() {
           <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.64)' }}>
             © {new Date().getFullYear()} t2coaching, LLC. All rights reserved.
           </p>
-          <a href="https://arcform.dev" target="_blank" rel="noopener noreferrer"
+          <a href="https://arcform.agency" target="_blank" rel="noopener noreferrer"
             style={{ fontSize: 13, color: 'rgba(255,255,255,0.52)', textDecoration: 'none' }}>
             Built by ArcForm
           </a>
