@@ -4,7 +4,6 @@ import useDocumentMeta from '../hooks/useDocumentMeta'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
-import { BlogHeaderBackdrop } from '../components/ui/BlogArtwork'
 import { getPost } from '../data/posts'
 import NotFound from './NotFound'
 
@@ -13,6 +12,10 @@ const WRAP = { maxWidth: 800, margin: '0 auto', padding: '0 32px' }
 function formatDate(d) {
   if (!d) return ''
   return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+}
+
+function showCategory(category) {
+  return category && category.toLowerCase() !== 'uncategorized'
 }
 
 // Renders a Sanity post's rich-text body, styled to match the article layout.
@@ -36,6 +39,7 @@ const ptComponents = {
 export default function BlogPost() {
   const { slug } = useParams()
   const post = getPost(slug)
+  const hasCategory = post ? showCategory(post.category) : false
 
   useDocumentMeta(
     post === undefined ? 'Page Not Found' : post ? post.title : 'Blog',
@@ -59,7 +63,7 @@ export default function BlogPost() {
       <>
         <section style={{ padding: '160px 0 90px', textAlign: 'center' }}>
           <div style={WRAP}>
-            <span style={{ fontSize: 11, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.2em', textTransform: 'uppercase' }}>{post.category}</span>
+            {hasCategory && <span style={{ fontSize: 11, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.2em', textTransform: 'uppercase' }}>{post.category}</span>}
             <h1 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 'clamp(2rem, 5vw, 3.2rem)', color: '#fff', lineHeight: 1.2, margin: '18px 0 20px' }}>{post.title}</h1>
             <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, maxWidth: 560, margin: '0 auto 32px' }}>
               This one's still in the works ✍️. Check back soon. In the meantime, the best training advice is the kind built just for you.
@@ -79,16 +83,21 @@ export default function BlogPost() {
     <>
       {/* Article header */}
       <header style={{ position: 'relative', padding: '140px 0 40px', overflow: 'hidden' }}>
-        <BlogHeaderBackdrop post={post} />
+        {post.cover && (
+          <>
+            <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${post.cover})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.2 }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(8,18,32,0.7), rgba(8,18,32,0.92))' }} />
+          </>
+        )}
         <div style={{ position: 'relative', zIndex: 2, ...WRAP }}>
           <Link to="/blog" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: '#7EC8E3', fontSize: 14, fontWeight: 600, textDecoration: 'none', marginBottom: 24 }}>
             <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 17l-5-5m0 0l5-5m-5 5h12" /></svg>
             All articles
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16, flexWrap: 'wrap' }}>
-            <span style={{ fontSize: 11, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{post.category}</span>
+            {hasCategory && <span style={{ fontSize: 11, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{post.category}</span>}
             {post.date && <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>{formatDate(post.date)}</span>}
-            {post.readTime && <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>· {post.readTime}</span>}
+            {post.readTime && <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>{hasCategory || post.date ? '· ' : ''}{post.readTime}</span>}
           </div>
           <h1 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 'clamp(2.2rem, 5vw, 3.6rem)', color: '#fff', lineHeight: 1.15 }}>{post.title}</h1>
         </div>

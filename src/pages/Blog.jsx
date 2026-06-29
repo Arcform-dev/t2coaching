@@ -4,26 +4,32 @@ import PageHeader from '../components/ui/PageHeader'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
-import { BlogArtwork } from '../components/ui/BlogArtwork'
 import { POSTS } from '../data/posts'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 
+function showCategory(category) {
+  return category && category.toLowerCase() !== 'uncategorized'
+}
+
 function PostCard({ post }) {
+  const hasCategory = showCategory(post.category)
   const inner = (
     <GlassCard style={{ height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ position: 'relative', aspectRatio: '16/10', background: '#0D2B3E', overflow: 'hidden' }}>
-        <BlogArtwork post={post} />
-        {post.comingSoon && (
-          <span style={{ position: 'absolute', top: 14, right: 14, background: 'rgba(8,18,32,0.85)', color: '#C9A84C', fontSize: 11, fontWeight: 600, padding: '5px 12px', borderRadius: 0, letterSpacing: '0.04em' }}>
-            Coming Soon
-          </span>
-        )}
-      </div>
+      {post.cover && (
+        <div style={{ position: 'relative', aspectRatio: '16/10', background: '#0D2B3E', overflow: 'hidden' }}>
+          <img src={post.cover} alt={post.title} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          {post.comingSoon && (
+            <span style={{ position: 'absolute', top: 14, right: 14, background: 'rgba(8,18,32,0.85)', color: '#C9A84C', fontSize: 11, fontWeight: 600, padding: '5px 12px', borderRadius: 0, letterSpacing: '0.04em' }}>
+              Coming Soon
+            </span>
+          )}
+        </div>
+      )}
       <div style={{ padding: '26px 26px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-          <span style={{ fontSize: 11, fontWeight: 600, color: '#7EC8E3', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{post.category}</span>
-          {post.readTime && <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>· {post.readTime}</span>}
+          {hasCategory && <span style={{ fontSize: 11, fontWeight: 600, color: '#7EC8E3', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{post.category}</span>}
+          {post.readTime && <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>{hasCategory ? '· ' : ''}{post.readTime}</span>}
         </div>
         <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 20, color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>{post.title}</h3>
         <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.64)', lineHeight: 1.65, flex: 1 }}>{post.excerpt}</p>
