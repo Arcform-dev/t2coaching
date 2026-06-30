@@ -1,10 +1,9 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import useDocumentMeta from '../hooks/useDocumentMeta'
 import PageHeader from '../components/ui/PageHeader'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
-import { CONTACT, SOCIALS, WSJ_FEATURE, FORMSPREE_ENDPOINT, FORMS_CONFIGURED } from '../data/siteContent'
+import { SOCIALS, WSJ_FEATURE } from '../data/siteContent'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 
@@ -76,31 +75,6 @@ const GUIDE_POINTS = [
 ]
 
 function GuideSignup() {
-  const [email, setEmail] = useState('')
-  const [status, setStatus] = useState('idle') // idle | sending | ok | error
-
-  const submit = async (e) => {
-    e.preventDefault()
-    if (!email) return
-    if (!FORMS_CONFIGURED) { setStatus('error'); return }
-    setStatus('sending')
-    try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ _subject: 'New free-guide signup', email, message: "Requested the free Insider's Guide." }),
-      })
-      if (res.ok) {
-        setStatus('ok')
-        setEmail('')
-      } else {
-        setStatus('error')
-      }
-    } catch {
-      setStatus('error')
-    }
-  }
-
   return (
     <GlassCard style={{
       padding: 'clamp(32px, 5vw, 52px)',
@@ -125,59 +99,20 @@ function GuideSignup() {
           </ul>
         </div>
 
-        <div>
-          {status === 'ok' ? (
-            <div role="status" aria-live="polite" style={{ textAlign: 'center', padding: '20px 0' }}>
-              <svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1.8" style={{ marginBottom: 12 }}>
-                <circle cx="12" cy="12" r="9" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8 12.5l2.4 2.4L16.5 9" />
-              </svg>
-              <p style={{ fontSize: 17, color: '#fff', fontWeight: 600, marginBottom: 6 }}>You're on the list!</p>
-              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.74)' }}>Keep an eye on your inbox. Your guide is on the way.</p>
-            </div>
-          ) : (
-            <form onSubmit={submit} aria-busy={status === 'sending'} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-              <label htmlFor="guide-email" className="sr-only">Email address</label>
-              <input
-                id="guide-email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                value={email}
-                onChange={(e) => { if (status === 'error') setStatus('idle'); setEmail(e.target.value) }}
-                placeholder="Your email address"
-                style={inputStyle}
-              />
-              <button type="submit" disabled={status === 'sending'} style={{
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                background: '#C9A84C', color: '#0D2B3E', fontSize: 16, fontWeight: 700,
-                padding: '15px 28px', borderRadius: 0, border: 'none', cursor: status === 'sending' ? 'wait' : 'pointer',
-                opacity: status === 'sending' ? 0.7 : 1,
-              }}>
-                {status === 'sending' ? 'Sending...' : 'Get the Free Guide'}
-              </button>
-              {status === 'error' && (
-                <p role="alert" style={{ fontSize: 13, color: '#F2D46E', textAlign: 'center' }}>
-                  Couldn't submit just now. Please email{' '}
-                  <a href={`mailto:${CONTACT.email}`} style={{ color: '#7EC8E3' }}>{CONTACT.email}</a>{' '}
-                  and I'll send it over.
-                </p>
-              )}
-              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.64)', textAlign: 'center' }}>No spam. Unsubscribe anytime.</p>
-            </form>
-          )}
+        <div style={{ textAlign: 'center' }}>
+          <a href="/t2coaching-insiders-guide.pdf" download style={{
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+            background: '#C9A84C', color: '#0D2B3E', fontSize: 16, fontWeight: 700,
+            padding: '16px 30px', borderRadius: 0, textDecoration: 'none',
+          }}>
+            Download the Free Guide
+            <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" /></svg>
+          </a>
+          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.64)', textAlign: 'center', marginTop: 14 }}>Free PDF · no email required.</p>
         </div>
       </div>
     </GlassCard>
   )
-}
-
-const inputStyle = {
-  width: '100%', padding: '15px 18px', borderRadius: 0,
-  background: 'rgba(8,18,32,0.6)', border: '1px solid rgba(255,255,255,0.15)',
-  color: '#fff', fontSize: 16, fontFamily: 'inherit', outline: 'none',
-  minHeight: 48,
 }
 
 export default function Resources() {

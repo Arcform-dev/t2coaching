@@ -3,7 +3,7 @@ import useDocumentMeta from '../hooks/useDocumentMeta'
 import PageHeader from '../components/ui/PageHeader'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
-import { CONTACT, SOCIALS, FORMSPREE_ENDPOINT, FORMS_CONFIGURED } from '../data/siteContent'
+import { CONTACT, SOCIALS } from '../data/siteContent'
 import BookingLink from '../components/ui/BookingLink'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
@@ -25,30 +25,26 @@ export default function Contact() {
   useDocumentMeta('Contact', `Get in touch with Coach Wendy Mader. Email ${CONTACT.email} or send an inquiry to start your coaching journey.`)
 
   const [form, setForm] = useState(EMPTY)
-  const [status, setStatus] = useState('idle') // idle | sending | ok | error
-  const set = (k) => (e) => {
-    if (status === 'ok' || status === 'error') setStatus('idle')
-    setForm((f) => ({ ...f, [k]: e.target.value }))
-  }
+  const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
 
-  const submit = async (e) => {
+  // No backend: the form composes a pre-filled email and hands it to the
+  // visitor's mail app. Nothing to configure and nothing that can break.
+  const submit = (e) => {
     e.preventDefault()
-    if (!FORMS_CONFIGURED) { setStatus('error'); return }
-    setStatus('sending')
-    try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          _subject: `New coaching inquiry from ${form.name}`,
-          ...form,
-        }),
-      })
-      if (res.ok) { setStatus('ok'); setForm(EMPTY) }
-      else setStatus('error')
-    } catch {
-      setStatus('error')
-    }
+    const details = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      form.phone && `Phone: ${form.phone}`,
+      form.goal && `Race goal / distance: ${form.goal}`,
+      form.experience && `Experience level: ${form.experience}`,
+      form.start && `Preferred start date: ${form.start}`,
+      form.heard && `How they heard about you: ${form.heard}`,
+    ].filter(Boolean).join('\n')
+    const body = `${details}\n\n${form.message}`
+    const mailto = `mailto:${CONTACT.email}`
+      + `?subject=${encodeURIComponent(`New coaching inquiry from ${form.name}`)}`
+      + `&body=${encodeURIComponent(body)}`
+    window.location.href = mailto
   }
 
   return (
@@ -66,19 +62,7 @@ export default function Contact() {
 
             <Reveal x={-40} y={0}>
               <GlassCard style={{ padding: 'clamp(28px, 4vw, 44px)' }}>
-                {status === 'ok' ? (
-                  <div role="status" aria-live="polite" style={{ textAlign: 'center', padding: '40px 0' }}>
-                    <svg aria-hidden="true" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1.8" style={{ marginBottom: 16 }}>
-                      <circle cx="12" cy="12" r="9" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M8 12.5l2.4 2.4L16.5 9" />
-                    </svg>
-                    <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 26, color: '#fff', marginBottom: 12 }}>Message sent!</h3>
-                    <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.84)', lineHeight: 1.6, maxWidth: 380, margin: '0 auto' }}>
-                      Thanks for reaching out. I'll get back to you within 1-2 business days. Talk soon!
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={submit} aria-busy={status === 'sending'}>
+                <form onSubmit={submit}>
                     <h2 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 24, color: '#fff', marginBottom: 24 }}>Send an inquiry</h2>
 
                     <div className="form-row" style={{ display: 'grid', gap: 18, marginBottom: 18 }}>
@@ -130,26 +114,21 @@ export default function Contact() {
                       <textarea id="message" name="message" required rows={5} value={form.message} onChange={set('message')} style={{ ...inputStyle, resize: 'vertical' }} placeholder="Tell me a bit about your goals and what you're looking for..." />
                     </div>
 
-                    <button type="submit" disabled={status === 'sending'} style={{
+                    <button type="submit" style={{
                       width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10,
                       background: '#C9A84C', color: '#0D2B3E', fontSize: 16, fontWeight: 700,
-                      padding: '16px 28px', borderRadius: 0, border: 'none', cursor: status === 'sending' ? 'wait' : 'pointer',
-                      opacity: status === 'sending' ? 0.7 : 1, boxShadow: '0 10px 30px rgba(201,168,76,0.35)',
+                      padding: '16px 28px', borderRadius: 0, border: 'none', cursor: 'pointer',
+                      boxShadow: '0 10px 30px rgba(201,168,76,0.35)',
                     }}>
-                      {status === 'sending' ? 'Sending...' : 'Send Message'}
-                      {status !== 'sending' && (
-                        <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                      )}
+                      Send Message
+                      <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                     </button>
 
-                    {status === 'error' && (
-                      <p role="alert" style={{ fontSize: 14, color: '#F2D46E', textAlign: 'center', marginTop: 16, lineHeight: 1.5 }}>
-                        Something went wrong sending your message. Please email me directly at{' '}
-                        <a href={`mailto:${CONTACT.email}`} style={{ color: '#7EC8E3' }}>{CONTACT.email}</a>.
-                      </p>
-                    )}
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.62)', textAlign: 'center', marginTop: 16, lineHeight: 1.5 }}>
+                      This opens your email app with your message ready to send. Prefer to write directly? Email{' '}
+                      <a href={`mailto:${CONTACT.email}`} style={{ color: '#7EC8E3' }}>{CONTACT.email}</a>.
+                    </p>
                   </form>
-                )}
               </GlassCard>
             </Reveal>
 
