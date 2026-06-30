@@ -10,6 +10,7 @@ const LINKS = [
   { label: 'Testimonials', to: '/testimonials' },
   { label: 'Gallery', to: '/gallery' },
   { label: 'Blog', to: '/blog' },
+  { label: 'Resources', to: '/resources' },
   { label: 'Contact', to: '/contact' },
 ]
 

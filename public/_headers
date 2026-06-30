@@ -3,6 +3,7 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
 # HTML must always re-validate so a new deploy never serves a stale
 # index.html that points at old hashed JS (Cloudflare Pages defaults HTML

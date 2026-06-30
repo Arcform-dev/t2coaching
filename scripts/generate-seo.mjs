@@ -2,6 +2,8 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { POSTS } from '../src/data/posts.js'
+import { FAQS } from '../src/data/faq.js'
+import { SERVICES } from '../src/data/services.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const root = path.resolve(__dirname, '..')
@@ -24,6 +26,8 @@ const STATIC_ROUTES = [
   ['/resources', 'Free Resources - t2coaching', 'Free endurance training resources from Coach Wendy Mader, including articles, videos, a Wall Street Journal feature and an insider guide.', 'Learn with Wendy.'],
   ['/contact', 'Contact - t2coaching', 'Contact Coach Wendy Mader to ask a coaching question, book a free call or start a personalized endurance training plan.', "Let's talk about your goals."],
   ['/privacy', 'Privacy - t2coaching', 'Privacy details for t2coaching, including what information the site collects and how coaching inquiries are handled.', 'Privacy policy.'],
+  ['/disclaimer', 'Disclaimer - t2coaching', 'Health, fitness and liability disclaimer for t2coaching, LLC. Please read before beginning any training program.', 'Health & liability disclaimer.'],
+  ['/terms', 'Terms of Use - t2coaching', 'Terms of use for the t2coaching, LLC website.', 'Terms of use.'],
 ].map(([routePath, title, description, h1]) => ({
   path: routePath,
   title,
@@ -117,7 +121,55 @@ function blogPostingSchema(post) {
   }
 }
 
-function replaceOrInsertHead(html, route, schema) {
+// FAQPage for the home page — the single highest-leverage format for getting
+// pulled into AI answers. Baked into the static HTML so non-JS crawlers see it.
+function faqPageSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQS.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  }
+}
+
+// Service + BreadcrumbList for the Services page.
+function servicesSchemas() {
+  return [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+        { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE_URL}/services` },
+      ],
+    },
+    ...SERVICES.map((s) => ({
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: s.title,
+      description: s.summary,
+      serviceType: 'Endurance & triathlon coaching',
+      provider: { '@id': `${SITE_URL}/#business` },
+      areaServed: [
+        { '@type': 'Place', name: 'Worldwide (online)' },
+        { '@type': 'City', name: 'Atlanta, Georgia' },
+      ],
+      url: `${SITE_URL}/services`,
+    })),
+  ]
+}
+
+// Extra page-specific schema layered on top of the WebPage schema.
+function extraSchemas(route) {
+  if (route.path === '/') return [faqPageSchema()]
+  if (route.path === '/services') return servicesSchemas()
+  return []
+}
+
+function replaceOrInsertHead(html, route, schemas) {
   const url = absoluteUrl(route.path)
   const image = route.image || DEFAULT_IMAGE
   const replacements = [
@@ -136,7 +188,10 @@ function replaceOrInsertHead(html, route, schema) {
   ]
 
   let out = replacements.reduce((current, [pattern, replacement]) => current.replace(pattern, replacement), html)
-  out = out.replace('</head>', `\n    <script type="application/ld+json">${JSON.stringify(schema)}</script>\n  </head>`)
+  const scriptTags = schemas
+    .map((s) => `    <script type="application/ld+json">${JSON.stringify(s)}</script>`)
+    .join('\n')
+  out = out.replace('</head>', `\n${scriptTags}\n  </head>`)
   return out
 }
 
@@ -144,10 +199,10 @@ function rootContent(route) {
   return `<main class="seo-shell" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden"><h1>${escapeHtml(route.h1 || route.title)}</h1><p>${escapeHtml(route.summary || route.description)}</p></main>`
 }
 
-function writeRoute(template, route, schema) {
+function writeRoute(template, route, schemas) {
   const file = routeToFile(route.path)
   fs.mkdirSync(path.dirname(file), { recursive: true })
-  const html = replaceOrInsertHead(template, route, schema)
+  const html = replaceOrInsertHead(template, route, schemas)
     .replace('<div id="root"></div>', `<div id="root">${rootContent(route)}</div>`)
   fs.writeFileSync(file, html)
 }
@@ -195,7 +250,7 @@ function notFoundHtml(template) {
     h1: 'Page not found',
     summary: 'The requested page may have moved or the address may be incorrect.',
   }
-  return replaceOrInsertHead(template, route, webPageSchema(route))
+  return replaceOrInsertHead(template, route, [webPageSchema(route)])
     .replace('<div id="root"></div>', `<div id="root">${rootContent(route)}</div>`)
 }
 
@@ -218,7 +273,10 @@ const postRoutes = POSTS.map((post) => ({
 const routes = [...STATIC_ROUTES, ...postRoutes]
 
 routes.forEach((route) => {
-  writeRoute(template, route, route.post ? blogPostingSchema(route.post) : webPageSchema(route))
+  const schemas = route.post
+    ? [blogPostingSchema(route.post)]
+    : [webPageSchema(route), ...extraSchemas(route)]
+  writeRoute(template, route, schemas)
 })
 
 fs.writeFileSync(path.join(distDir, '404.html'), notFoundHtml(template))

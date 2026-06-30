@@ -3,21 +3,12 @@ import { FAQS } from '../data/siteContent'
 import SectionHeading from './ui/SectionHeading'
 import GlassCard from './ui/GlassCard'
 import Reveal from './ui/Reveal'
-import JsonLd from './ui/JsonLd'
 
 const WRAP = { maxWidth: 880, margin: '0 auto', padding: '0 32px' }
 
-// FAQPage structured data — double-duty: rich results in Google and the
-// highest-leverage format for getting pulled into AI answers.
-const FAQ_SCHEMA = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: FAQS.map(({ q, a }) => ({
-    '@type': 'Question',
-    name: q,
-    acceptedAnswer: { '@type': 'Answer', text: a },
-  })),
-}
+// The visible FAQ. Its FAQPage JSON-LD is baked into the static HTML at build
+// time by scripts/generate-seo.mjs, so it's present in the raw page for search
+// and AI crawlers without relying on client-side rendering.
 
 function FaqItem({ q, a, open, onToggle }) {
   return (
@@ -53,7 +44,6 @@ export default function FAQ() {
 
   return (
     <section style={{ padding: '80px 0 90px' }}>
-      <JsonLd data={FAQ_SCHEMA} />
       <div style={WRAP}>
         <Reveal style={{ marginBottom: 44 }}>
           <SectionHeading

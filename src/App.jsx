@@ -11,6 +11,8 @@ import Gallery from './pages/Gallery'
 import Resources from './pages/Resources'
 import Contact from './pages/Contact'
 import Privacy from './pages/Privacy'
+import Disclaimer from './pages/Disclaimer'
+import Terms from './pages/Terms'
 import NotFound from './pages/NotFound'
 
 const Blog = lazy(() => import('./pages/Blog'))
@@ -35,6 +37,8 @@ export default function App() {
           <Route path="resources" element={<Resources />} />
           <Route path="contact" element={<Contact />} />
           <Route path="privacy" element={<Privacy />} />
+          <Route path="disclaimer" element={<Disclaimer />} />
+          <Route path="terms" element={<Terms />} />
           <Route path=":slug" element={<BlogRedirect />} />
           <Route path="*" element={<NotFound />} />
         </Route>

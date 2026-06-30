@@ -87,7 +87,7 @@ export default function WhyT2() {
           }}>
             What makes Wendy different.
           </h2>
-          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6 }}>
+          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.72)', lineHeight: 1.6 }}>
             Not every coach has stood on the Kona finish line.
           </p>
         </div>

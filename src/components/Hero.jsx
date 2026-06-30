@@ -82,16 +82,19 @@ export default function Hero() {
       </h1>
 
       {/* Wendy, cut out and layered over the letters */}
-      <img
-        ref={photoRef}
-        className="champ-hero__photo"
-        src="/wendy-cutout.png"
-        width="571"
-        height="1504"
-        decoding="async"
-        fetchPriority="high"
-        alt="Wendy Mader celebrating at the Ironman World Championship finish line in Kona, arms raised."
-      />
+      <picture>
+        <source srcSet="/wendy-cutout.webp" type="image/webp" />
+        <img
+          ref={photoRef}
+          className="champ-hero__photo"
+          src="/wendy-cutout.png"
+          width="571"
+          height="1504"
+          decoding="async"
+          fetchPriority="high"
+          alt="Wendy Mader celebrating at the Ironman World Championship finish line in Kona, arms raised."
+        />
+      </picture>
 
       {/* Copy block — headline, action, supporting line; set straight on the navy */}
       <div ref={cardRef} className="champ-hero__card">

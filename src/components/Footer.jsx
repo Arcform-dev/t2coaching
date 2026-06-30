@@ -11,6 +11,8 @@ const NAV_LINKS = [
   { label: 'Resources', to: '/resources' },
   { label: 'Contact', to: '/contact' },
   { label: 'Privacy', to: '/privacy' },
+  { label: 'Disclaimer', to: '/disclaimer' },
+  { label: 'Terms', to: '/terms' },
 ]
 
 const SOCIAL_ICONS = {

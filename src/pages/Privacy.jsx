@@ -32,31 +32,33 @@ export default function Privacy() {
         <div style={WRAP}>
           <Reveal>
             <GlassCard style={{ padding: 'clamp(28px, 5vw, 48px)' }}>
-              <p style={P}>Last updated: June 25, 2026.</p>
+              <p style={P}>Last updated: June 30, 2026.</p>
 
               <h2 style={H2}>Information we collect</h2>
               <p style={P}>
-                If you submit a contact form or request a free guide, t2coaching may collect the information you
-                choose to provide, such as your name, email address, phone number, race goals, experience level,
-                preferred start date, and message.
+                This site does not run analytics, advertising trackers, or cookies, and it does not store anything
+                you type. When you use the contact form, your browser&rsquo;s own email app opens with the details
+                you entered (such as your name, email, phone, race goals, and message) so you can send them directly
+                to Wendy. The information only leaves your device if you choose to hit send.
               </p>
 
               <h2 style={H2}>How we use it</h2>
               <p style={P}>
-                Wendy uses this information to reply to inquiries, send requested resources, discuss coaching fit,
-                and provide coaching-related follow-up. We do not sell personal information.
+                Wendy uses anything you email her to reply to your inquiry, discuss coaching fit, and provide
+                coaching-related follow-up. We do not sell or share your personal information.
               </p>
 
-              <h2 style={H2}>Form processing</h2>
+              <h2 style={H2}>Downloads</h2>
               <p style={P}>
-                Site forms are processed through Formspree when a production Formspree endpoint is configured. If the
-                form endpoint is not configured, the site shows a direct email fallback instead of sending the request.
+                The free guide on the Resources page is a direct PDF download. You are not asked for an email address
+                or any other information to access it.
               </p>
 
               <h2 style={H2}>Third-party links</h2>
               <p style={P}>
-                This site links to services such as Instagram, Facebook, YouTube, Wall Street Journal, and Calendly
-                when configured. Those services have their own privacy practices.
+                This site links out to services such as Instagram, Facebook, YouTube, The Wall Street Journal, and a
+                scheduling tool for booking calls. Those services have their own privacy practices, and this site also
+                loads fonts from Google Fonts. We don&rsquo;t control how those third parties handle data.
               </p>
 
               <h2 style={H2}>Contact</h2>
