@@ -34,13 +34,14 @@ const ICONS = {
 function ServiceCard({ s }) {
   const featured = s.badge === 'Most Popular'
   return (
-    <div style={{
+    <div id={s.id} style={{
       position: 'relative', display: 'flex', flexDirection: 'column',
       padding: '40px 32px 32px', height: '100%', overflow: 'hidden',
       background: '#0D2B3E',
       border: featured ? '1px solid rgba(201,168,76,0.55)' : '1px solid rgba(255,255,255,0.1)',
       borderRadius: 0,
       boxShadow: featured ? '0 18px 48px rgba(0,0,0,0.32)' : 'none',
+      scrollMarginTop: 96,
     }}>
       {featured && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: '#C9A84C' }} />}
       {s.badge && (

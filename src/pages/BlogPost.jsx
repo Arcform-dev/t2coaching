@@ -5,7 +5,9 @@ import useDocumentMeta from '../hooks/useDocumentMeta'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
-import { getPost, loadPost } from '../data/posts'
+import BookingLink from '../components/ui/BookingLink'
+import { getPost, loadPost, POSTS } from '../data/posts'
+import { getBlogSeoLinks } from '../data/blogSeo'
 import NotFound from './NotFound'
 
 const WRAP = { maxWidth: 800, margin: '0 auto', padding: '0 32px' }
@@ -35,6 +37,139 @@ const ptComponents = {
     strong: ({ children }) => <strong style={{ color: '#fff', fontWeight: 700 }}>{children}</strong>,
     link: ({ children, value }) => <a href={value?.href} target="_blank" rel="noopener noreferrer" style={{ color: '#7EC8E3', textDecoration: 'underline' }}>{children}</a>,
   },
+}
+
+function ArticleSeoFooter({ post }) {
+  const { topic, service, ctaCopy, supportLinks, relatedPosts } = getBlogSeoLinks(post, POSTS)
+
+  return (
+    <aside aria-labelledby="article-next-steps" style={{ marginTop: 58 }}>
+      <div style={{
+        borderTop: '1px solid rgba(255,255,255,0.12)',
+        borderBottom: '1px solid rgba(255,255,255,0.12)',
+        padding: '34px 0',
+      }}>
+        <span style={{
+          display: 'inline-block',
+          fontSize: 11,
+          fontWeight: 700,
+          color: '#C9A84C',
+          letterSpacing: '0.16em',
+          textTransform: 'uppercase',
+          marginBottom: 12,
+        }}>
+          {topic.label}
+        </span>
+        <h2 id="article-next-steps" style={{
+          fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
+          fontSize: 'clamp(1.45rem, 3vw, 2rem)',
+          color: '#fff',
+          lineHeight: 1.2,
+          marginBottom: 12,
+        }}>
+          Put this into a plan that fits your life.
+        </h2>
+        <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, marginBottom: 24 }}>
+          {ctaCopy}
+        </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+          <BookingLink style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minHeight: 46,
+            padding: '12px 22px',
+            background: '#C9A84C',
+            color: '#0D2B3E',
+            fontSize: 14,
+            fontWeight: 700,
+            textDecoration: 'none',
+            borderRadius: 0,
+          }}>
+            Book a Free Call
+          </BookingLink>
+          <Link to={service.to} style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minHeight: 46,
+            padding: '11px 20px',
+            color: '#7EC8E3',
+            fontSize: 14,
+            fontWeight: 700,
+            textDecoration: 'none',
+            border: '1px solid rgba(126,200,227,0.45)',
+          }}>
+            {service.title}
+          </Link>
+        </div>
+      </div>
+
+      <div className="article-seo-grid" style={{ display: 'grid', gap: 22, marginTop: 30 }}>
+        <section aria-labelledby="related-posts-heading">
+          <h2 id="related-posts-heading" style={{
+            fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
+            fontSize: 19,
+            color: '#fff',
+            marginBottom: 14,
+          }}>
+            Related articles
+          </h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            {relatedPosts.map((related) => (
+              <Link key={related.slug} to={`/blog/${related.slug}`} style={{
+                display: 'block',
+                padding: '16px 18px',
+                textDecoration: 'none',
+                background: 'rgba(8,18,32,0.42)',
+                border: '1px solid rgba(255,255,255,0.1)',
+              }}>
+                <h3 style={{ fontSize: 15, color: '#fff', lineHeight: 1.35, marginBottom: 7 }}>{related.title}</h3>
+                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.62)', lineHeight: 1.55 }}>
+                  {related.excerpt}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section aria-labelledby="site-links-heading">
+          <h2 id="site-links-heading" style={{
+            fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
+            fontSize: 19,
+            color: '#fff',
+            marginBottom: 14,
+          }}>
+            Work with t2coaching
+          </h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <Link to={service.to} style={{
+              display: 'block',
+              padding: '16px 18px',
+              textDecoration: 'none',
+              background: 'rgba(201,168,76,0.1)',
+              border: '1px solid rgba(201,168,76,0.32)',
+            }}>
+              <h3 style={{ fontSize: 15, color: '#C9A84C', lineHeight: 1.35, marginBottom: 7 }}>{service.title}</h3>
+              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.72)', lineHeight: 1.55 }}>{service.description}</p>
+            </Link>
+            {supportLinks.map((link) => (
+              <Link key={link.to} to={link.to} style={{
+                display: 'block',
+                padding: '14px 0',
+                color: '#fff',
+                textDecoration: 'none',
+                borderBottom: '1px solid rgba(255,255,255,0.1)',
+              }}>
+                <span style={{ display: 'block', fontSize: 14, fontWeight: 700, color: '#7EC8E3', marginBottom: 5 }}>{link.label}</span>
+                <span style={{ display: 'block', fontSize: 13, color: 'rgba(255,255,255,0.62)', lineHeight: 1.55 }}>{link.description}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </div>
+    </aside>
+  )
 }
 
 export default function BlogPost() {
@@ -165,6 +300,8 @@ export default function BlogPost() {
               ))}
             </div>
           )}
+
+          <ArticleSeoFooter post={post} />
         </div>
       </article>
 

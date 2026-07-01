@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { POSTS } from '../src/data/posts.js'
 import { FAQS } from '../src/data/faq.js'
 import { SERVICES } from '../src/data/services.js'
+import { getBlogSeoLinks, getBlogTopicKeywords } from '../src/data/blogSeo.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const root = path.resolve(__dirname, '..')
@@ -128,6 +129,8 @@ function blogPostingSchema(post) {
     dateModified: postDateModified(post),
     author: { '@id': `${SITE_URL}/#wendy`, name: 'Wendy Mader' },
     publisher: { '@id': `${SITE_URL}/#business`, name: SITE_NAME },
+    articleSection: post.category || 'Endurance training',
+    keywords: getBlogTopicKeywords(post),
     inLanguage: 'en-US',
   }
 }
@@ -236,8 +239,25 @@ function replaceOrInsertHead(html, route, schemas) {
   return out
 }
 
+function seoLinkList(route) {
+  if (!route.post) return ''
+
+  const { service, supportLinks, relatedPosts } = getBlogSeoLinks(route.post, POSTS)
+  const links = [
+    service,
+    ...supportLinks,
+    ...relatedPosts.map((post) => ({
+      label: post.title,
+      to: `/blog/${post.slug}`,
+      description: post.excerpt,
+    })),
+  ]
+
+  return `<nav aria-label="Related t2coaching resources"><h2>Related t2coaching resources</h2><ul>${links.map((link) => `<li><a href="${absoluteUrl(link.to)}">${escapeHtml(link.label || link.title)}</a><p>${escapeHtml(link.description || '')}</p></li>`).join('')}</ul></nav>`
+}
+
 function rootContent(route) {
-  return `<main class="seo-shell" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden"><h1>${escapeHtml(route.h1 || route.title)}</h1><p>${escapeHtml(route.summary || route.description)}</p></main>`
+  return `<main class="seo-shell" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden"><h1>${escapeHtml(route.h1 || route.title)}</h1><p>${escapeHtml(route.summary || route.description)}</p>${seoLinkList(route)}</main>`
 }
 
 function writeRoute(template, route, schemas) {
