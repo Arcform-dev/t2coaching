@@ -1,0 +1,33 @@
+# t2coaching — robots.txt
+# Everything is open to standard search crawlers.
+User-agent: *
+Allow: /
+
+# ── AI search / answer engines (GEO/AEO) ────────────────────────────────────
+# Explicitly welcome the retrieval bots that cite live pages in ChatGPT,
+# Perplexity, Gemini, Copilot and Claude, plus the training crawlers. For a
+# lead-gen site, being citable is worth more than withholding the content.
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: GPTBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: meta-externalagent
+Allow: /
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://t2coaching.com/sitemap.xml

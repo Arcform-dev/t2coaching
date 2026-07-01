@@ -36,7 +36,7 @@ export default function Marquee() {
               textTransform: 'uppercase',
               padding: '0 28px',
             }}>{item}</span>
-            <span style={{ color: '#F5A623', fontSize: 10, flexShrink: 0 }}>✦</span>
+            <span style={{ color: '#C9A84C', fontSize: 10, flexShrink: 0 }}>✦</span>
           </div>
         ))}
       </div>

@@ -1,119 +1,116 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { gsap } from 'gsap'
-import { BOOKING_URL } from '../data/siteContent'
-
-const BLUE = '#1A6B8A'
+import BookingLink from './ui/BookingLink'
 
 const LINKS = [
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/services' },
+  { label: 'Process', to: '/process' },
   { label: 'Testimonials', to: '/testimonials' },
   { label: 'Gallery', to: '/gallery' },
   { label: 'Blog', to: '/blog' },
+  { label: 'Resources', to: '/resources' },
   { label: 'Contact', to: '/contact' },
 ]
 
 export default function Nav() {
   const ref = useRef(null)
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const { pathname } = useLocation()
+  const menuId = 'site-mobile-menu'
 
-  // Solid (white, blurred) on every page — the homepage hero now has a light
-  // left panel, so a transparent nav would render the logo invisible.
-  const solid = true
+  // Full-width bar: transparent over the hero on the home page, solid once
+  // scrolled. Interior pages have no hero behind it, so it's solid throughout.
+  const isHome = pathname === '/'
+  const solid = scrolled || !isHome
 
   useEffect(() => {
     const el = ref.current
-    if (!el) return
-    gsap.fromTo(el,
-      { y: -70, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.75, ease: 'power3.out', delay: 0.2 }
-    )
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (el) {
+      if (reduceMotion) {
+        gsap.set(el, { y: 0, opacity: 1 })
+      } else {
+        gsap.fromTo(el,
+          { y: -70, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.75, ease: 'power3.out' })
+      }
+    }
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
-  const linkColor = 'rgba(245,241,233,0.82)'
-  const activeColor = '#ffffff'
 
   return (
     <nav
       ref={ref}
       style={{
         position: 'fixed',
-        top: 16, left: 16, right: 16,
-        margin: '0 auto',
-        maxWidth: 1280,
+        top: 0, left: 0, right: 0,
         zIndex: 9999,
-        borderRadius: 36,
-        overflow: 'hidden',
         transition: 'background 0.35s ease, box-shadow 0.35s ease',
-        background: 'rgba(6, 18, 25, 0.92)',
-        backdropFilter: 'blur(18px)',
-        WebkitBackdropFilter: 'blur(18px)',
-        border: '1px solid rgba(255,255,255,0.08)',
-        boxShadow: '0 18px 46px rgba(0,0,0,0.4)',
+        background: solid ? 'rgba(8, 24, 35, 0.95)' : 'transparent',
+        backdropFilter: solid ? 'blur(14px)' : 'none',
+        WebkitBackdropFilter: solid ? 'blur(14px)' : 'none',
+        boxShadow: solid ? '0 1px 0 rgba(255,255,255,0.06)' : 'none',
       }}
     >
-      <div style={{ padding: '0 34px' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
         <div style={{
           display: 'flex', alignItems: 'center',
-          justifyContent: 'space-between', height: 64,
+          justifyContent: 'space-between', height: 72,
         }}>
           {/* Logo */}
-          <Link to="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-            <div style={{
-              width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
-              background: BLUE,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-              <span style={{ color: '#fff', fontWeight: 700, fontSize: 12, letterSpacing: '0.04em' }}>T2</span>
-            </div>
+          <Link to="/" onClick={() => setOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
+            <img src="/photos/logo.png" alt="t2coaching" style={{ height: 42, width: 'auto', flexShrink: 0, display: 'block' }} />
             <span style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize: 24, lineHeight: 1, fontWeight: 600,
-              letterSpacing: '0.16em', textTransform: 'uppercase',
+              fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
+              fontSize: 22, lineHeight: 1, fontWeight: 600,
+              letterSpacing: '0.04em',
               color: '#F5F1E9',
-              transition: 'color 0.35s ease',
-            }}>T2 Coaching</span>
+            }}>t2coaching</span>
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex" style={{ alignItems: 'center', gap: 8 }}>
+          <div className="hidden xl:flex" style={{ alignItems: 'center', gap: 26 }}>
             {LINKS.map(({ label, to }) => (
               <NavLink key={label} to={to} style={({ isActive }) => ({
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
                 textTransform: 'uppercase',
-                fontSize: 16, fontWeight: 600, letterSpacing: '0.12em',
-                color: isActive ? activeColor : linkColor,
+                fontSize: 14, fontWeight: 600, letterSpacing: '0.1em',
+                color: isActive ? '#ffffff' : 'rgba(245,241,233,0.82)',
                 textDecoration: 'none',
-                transition: 'color 0.2s ease, border-color 0.2s ease',
-                padding: '7px 16px',
-                borderRadius: 999,
-                border: isActive ? '1px solid rgba(245,241,233,0.4)' : '1px solid transparent',
+                transition: 'color 0.2s ease',
               })}>{label}</NavLink>
             ))}
-            <a
-              className="shine-btn cta-gold"
-              href={BOOKING_URL}
-              target="_blank" rel="noopener noreferrer"
+            <BookingLink
+              className="cta-gold"
               style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 whiteSpace: 'nowrap',
                 color: '#0D2B3E',
                 fontSize: 14, fontWeight: 700,
-                padding: '11px 24px', borderRadius: 100,
-                textDecoration: 'none', letterSpacing: '0.04em',
+                padding: '11px 24px', borderRadius: 0,
+                textDecoration: 'none', letterSpacing: '0.02em',
               }}
-            >Book a Free Call</a>
+            >Book a Free Call</BookingLink>
           </div>
 
           {/* Mobile hamburger */}
           <button
+            type="button"
             onClick={() => setOpen(v => !v)}
-            className="flex md:hidden"
-            aria-label="Toggle menu"
+            className="flex xl:hidden"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls={menuId}
             style={{
               background: 'none', border: 'none', cursor: 'pointer',
-              padding: 8, flexDirection: 'column', gap: 5, alignItems: 'center',
+              minWidth: 44, minHeight: 44, padding: 10, flexDirection: 'column',
+              gap: 5, alignItems: 'center', justifyContent: 'center',
             }}
           >
             {[0, 1, 2].map(i => (
@@ -131,31 +128,30 @@ export default function Nav() {
       </div>
 
       {/* Mobile menu */}
-      <div style={{
+      <div id={menuId} aria-hidden={!open} style={{
         overflow: 'hidden',
         maxHeight: open ? 460 : 0,
+        visibility: open ? 'visible' : 'hidden',
         transition: 'max-height 0.3s ease',
-        background: 'rgba(6,18,25,0.97)',
+        background: 'rgba(8,24,35,0.98)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderTop: open ? '1px solid rgba(255,255,255,0.1)' : 'none',
       }}>
-        <div style={{ padding: '12px 26px 24px' }}>
+        <div style={{ padding: '12px 32px 24px' }}>
           {LINKS.map(({ label, to }) => (
-            <NavLink key={label} to={to} onClick={() => setOpen(false)} style={({ isActive }) => ({
+            <NavLink key={label} to={to} tabIndex={open ? 0 : -1} onClick={() => setOpen(false)} style={({ isActive }) => ({
               display: 'block', padding: '14px 0',
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              textTransform: 'uppercase', letterSpacing: '0.12em',
-              fontSize: 18, fontWeight: 600,
+              fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
+              textTransform: 'uppercase', letterSpacing: '0.1em',
+              fontSize: 16, fontWeight: 600,
               color: isActive ? '#ffffff' : 'rgba(245,241,233,0.8)',
               textDecoration: 'none',
               borderBottom: '1px solid rgba(255,255,255,0.08)',
             })}>{label}</NavLink>
           ))}
-          <a
-            className="shine-btn cta-gold"
-            href={BOOKING_URL}
-            target="_blank" rel="noopener noreferrer"
+          <BookingLink
+            className="cta-gold"
+            tabIndex={open ? 0 : -1}
             onClick={() => setOpen(false)}
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -163,9 +159,9 @@ export default function Nav() {
               color: '#0D2B3E',
               fontSize: 14, fontWeight: 700,
               padding: '15px 0',
-              borderRadius: 100, textDecoration: 'none',
+              borderRadius: 0, textDecoration: 'none',
             }}
-          >Book a Free Call</a>
+          >Book a Free Call</BookingLink>
         </div>
       </div>
     </nav>

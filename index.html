@@ -2,12 +2,115 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="170x170" href="/photos/logo.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="T2 Coaching — Personalized triathlon coaching by Kona Ironman Champion Wendy Mader. 30+ years of elite coaching experience." />
-    <title>T2 Coaching — Coached by a Kona Champion</title>
+    <meta name="description" content="t2coaching - Personalized triathlon coaching by Kona Ironman Champion Wendy Mader. 30+ years of elite coaching experience." />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0D2B3E" />
+    <meta property="og:site_name" content="t2coaching" />
+    <meta property="og:title" content="t2coaching - Coached by a Kona Champion" />
+    <meta property="og:description" content="Personalized triathlon, swim, run and endurance coaching by Kona Ironman Champion Wendy Mader." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://t2coaching.com/" />
+    <meta property="og:image" content="https://t2coaching.com/wendy-hero.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="t2coaching - Coached by a Kona Champion" />
+    <meta name="twitter:description" content="Personalized triathlon, swim, run and endurance coaching by Kona Ironman Champion Wendy Mader." />
+    <meta name="twitter:image" content="https://t2coaching.com/wendy-hero.jpg" />
+    <link rel="canonical" href="https://t2coaching.com/" />
+    <title>t2coaching - Coached by a Kona Champion</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=Playfair+Display+SC:wght@400;700;900&display=swap" />
+
+    <!-- Core structured data (Organization + Person + WebSite). Lives in the
+         static HTML so it's present in the raw server response that AI/search
+         crawlers read, not only after the SPA hydrates. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["ProfessionalService", "SportsActivityLocation"],
+          "@id": "https://t2coaching.com/#business",
+          "name": "t2coaching",
+          "legalName": "t2coaching, LLC",
+          "url": "https://t2coaching.com/",
+          "logo": "https://t2coaching.com/apple-touch-icon.png",
+          "image": "https://t2coaching.com/wendy-hero.jpg",
+          "description": "Personalized triathlon, swim, run and endurance coaching by 2008 Kona Ironman World Champion Wendy Mader. 30+ years racing and 26 years coaching athletes from first-timers to Kona qualifiers.",
+          "email": "t2coachwendy@gmail.com",
+          "telephone": "+1-970-308-4499",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Marietta",
+            "addressRegion": "GA",
+            "addressCountry": "US"
+          },
+          "areaServed": [
+            { "@type": "Place", "name": "Worldwide (online coaching via Zoom & TrainingPeaks)" },
+            { "@type": "City", "name": "Atlanta, Georgia" }
+          ],
+          "founder": { "@id": "https://t2coaching.com/#wendy" },
+          "knowsAbout": [
+            "Triathlon coaching",
+            "Ironman training",
+            "Swim technique and stroke analysis",
+            "Endurance and ultra running",
+            "Marathon training",
+            "Race-day strategy and pacing"
+          ],
+          "sameAs": [
+            "https://www.instagram.com/t2coachwendy/",
+            "https://www.facebook.com/t2coach",
+            "https://www.youtube.com/@WendyMader"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://t2coaching.com/#wendy",
+          "name": "Wendy Mader",
+          "givenName": "Wendy",
+          "familyName": "Mader",
+          "jobTitle": "Founder & Head Coach",
+          "worksFor": { "@id": "https://t2coaching.com/#business" },
+          "image": "https://t2coaching.com/wendy-hero.jpg",
+          "description": "Wendy Mader is a Division I collegiate swimmer, 2008 Ironman World Championship Overall Amateur Champion (Kona), and the founder of t2coaching. She holds a Master's in Exercise & Sport Science and is an Ironman U Certified Coach with 26 years of coaching experience.",
+          "alumniOf": { "@type": "CollegeOrUniversity", "name": "Eastern Michigan University" },
+          "homeLocation": { "@type": "Place", "name": "Marietta, Georgia" },
+          "award": [
+            "2008 Ironman World Championship — Overall Amateur Champion (Kona)",
+            "21-time Ironman Finisher",
+            "10-time Kona World Championship Finisher"
+          ],
+          "knowsAbout": [
+            "Triathlon",
+            "Ironman racing",
+            "Swimming",
+            "Endurance running",
+            "Coaching"
+          ],
+          "sameAs": [
+            "https://www.instagram.com/t2coachwendy/",
+            "https://www.facebook.com/t2coach",
+            "https://www.youtube.com/@WendyMader"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://t2coaching.com/#website",
+          "url": "https://t2coaching.com/",
+          "name": "t2coaching",
+          "description": "Personalized triathlon, swim and run coaching by Kona Ironman World Champion Wendy Mader.",
+          "publisher": { "@id": "https://t2coaching.com/#business" },
+          "inLanguage": "en-US"
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

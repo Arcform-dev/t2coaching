@@ -3,13 +3,27 @@
 
 export const TESTIMONIALS = [
   {
+    name: 'Andrew',
+    tag: 'IRONMAN 70.3 Finisher · 6:17:02',
+    photo: '/photos/swimrun-tennessee.jpg',
+    excerpt:
+      "ChatGPT can build you a training plan, but AI can't talk you through your fears before your first open-water swim or give you the confidence to trust the process. Nine months in, Wendy helped me cross my first IRONMAN 70.3 finish line in 6:17:02, and the swim I was terrified of ended up my strongest leg.",
+    full: [
+      "ChatGPT can build you a training plan. But AI can't talk you through your fears before your first open water swim, answer your endless questions during race week, adjust your training when life or injuries get in the way, or give you the confidence to trust the process when self doubt creeps in. And it could most certainly never replace a world-class coach like Wendy.",
+      "When I started working with Wendy to train for my first IRONMAN 70.3, I was genuinely terrified of the swim and could barely make it a full lap in the pool without feeling breathless. Nine months later, she helped me cross the finish line in 6:17:02, shattering my goal of finishing in under 7 hours. The best part? The swim ended up being my strongest leg of the entire race!",
+      "What makes that accomplishment even more impressive is that Wendy coached me entirely remotely. We never trained together in person, yet she guided me from being an anxious beginner swimmer to confidently completing an IRONMAN 70.3. That's a true testament to her coaching ability, communication, and attention to detail. She knew exactly how to adapt my training, provide feedback, and keep me moving forward from start to finish.",
+      "She built a training plan that fit my busy schedule, helped me dial in my nutrition, held me accountable throughout the journey, and gave me the confidence to succeed. She removed all the guesswork and gave me a clear path to follow every step of the way.",
+      "If you're considering your first triathlon or endurance event, I'd absolutely recommend working with Wendy. She genuinely cares about every athlete she coaches, is always available to answer questions, and brings a level of professionalism and organization that makes the entire process enjoyable and 100% stress free. Any training plan can help you get fitter, but only a great coach like Wendy can help you believe in yourself long before you cross the finish line.",
+    ],
+  },
+  {
     name: 'Jay',
     tag: 'Ironman Finisher · Age 66',
     photo: '/photos/athlete-finisher-medals.jpg',
     excerpt:
       "Wendy was an ideal coach for me. My biggest weakness was swimming. I went from not being able to swim freestyle to a 62-minute 2.4-mile open-water swim. She's not a cheerleader; she's straightforward and honest, and she'll push you hard.",
     full: [
-      'I found T2 Coaching by searching Google for "Ironman Certified Coach." I contacted Wendy, she interviewed me over the phone, and took me on to prepare for a full 140.6 Ironman. I started triathlon at 63 to improve my fitness and, honestly, to slow down the aging process — I was never a gym rat or a sports guy in school.',
+      'I found t2coaching by searching Google for "Ironman Certified Coach." I contacted Wendy, she interviewed me over the phone, and took me on to prepare for a full 140.6 Ironman. I started triathlon at 63 to improve my fitness and, honestly, to slow down the aging process — I was never a gym rat or a sports guy in school.',
       'After self-coaching a 70.3 and suffering through some mistakes, I knew I needed help for a full Ironman. Coach Wendy was my choice. We identified my strengths and weaknesses and had a clear goal in mind, tracking everything in TrainingPeaks with her insight after almost every workout. My biggest weakness was swimming — and Wendy is incredibly strong in that discipline. I went from swimming breaststroke my first two years to a 62-minute 2.4-mile open-water swim.',
       "Wendy is not a cheerleader; she is straightforward and honest. She'll push you hard, listen, and design workouts that let you succeed — if you're willing to do the work. Coaching helped me become far more disciplined with my time and diet. I slept better, had more energy, fewer aches, and at 68 I'm only a few pounds above my college weight. I honestly reversed the aging clock for the four years I've worked with her.",
       "I'd recommend Coach Wendy without hesitation to anybody — not just for triathlon and Ironman, but swimming, running, ultras and more. The girl's got the goods. New goal: Ironman World Championships at age 70.",
@@ -34,7 +48,7 @@ export const TESTIMONIALS = [
     excerpt:
       'After I lost my husband, I asked Wendy to coach me. She made it easy and comfortable to talk about personal issues. She knows emotional factors affect performance. She has a wholistic approach, and she practices what she preaches.',
     full: [
-      'I knew about T2 Coaching because Wendy is my sister, but I had the privilege of seeing her in action when I went with her to Turkey, where she was coaching a number of athletes. I\'ve been on swim teams with different coaches, but watching her with this group was something special. The "turkeys," as we affectionately called them, loved her with a genuineness that couldn\'t be faked — matched by how genuine she was with them.',
+      'I knew about t2coaching because Wendy is my sister, but I had the privilege of seeing her in action when I went with her to Turkey, where she was coaching a number of athletes. I\'ve been on swim teams with different coaches, but watching her with this group was something special. The "turkeys," as we affectionately called them, loved her with a genuineness that couldn\'t be faked — matched by how genuine she was with them.',
       'After I lost my husband, I decided training for triathlons was a good way to not be consumed by grief. Naturally, I asked her to coach me. What I loved was how we morphed in and out of being sisters and coach-and-athlete — I was treated the same as everyone else she coached. After an injury made running difficult, I competed in aqua-bike races and ended up in the top 15 of my age group nationally.',
       'She was always available for questions or concerns, big or small. She knew emotional factors could affect performance, and she made it easy and comfortable to talk about personal issues — a wholistic approach to coaching. And she practices what she preaches: every experience she has as an athlete, she uses to become a better coach. Hire her as your coach and you can see for yourself.',
     ],

@@ -9,6 +9,7 @@ export default function PageHeader({ eyebrow, title, titleAccent, subtitle, phot
   useEffect(() => {
     const el = ref.current
     if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const items = el.querySelectorAll('[data-ph]')
     gsap.fromTo(items,
       { y: 30, opacity: 0 },
@@ -37,26 +38,25 @@ export default function PageHeader({ eyebrow, title, titleAccent, subtitle, phot
       )}
       <div style={{ position: 'relative', zIndex: 2, maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
         {eyebrow && (
-          <div data-ph style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
-            <div style={{ width: 36, height: 1, background: '#F5A623' }} />
-            <span style={{ fontSize: 11, fontWeight: 600, color: '#F5A623', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
-              {eyebrow}
-            </span>
-          </div>
+          <p data-ph style={{
+            fontSize: 11, fontWeight: 700, color: '#C9A84C',
+            letterSpacing: '0.16em', textTransform: 'uppercase',
+            marginBottom: 18,
+          }}>{eyebrow}</p>
         )}
         <h1 data-ph style={{
-          fontFamily: "'Cormorant Garamond', 'DM Serif Display', Georgia, serif",
+          fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
           fontSize: 'clamp(2.6rem, 6vw, 5rem)',
           color: '#ffffff', lineHeight: 1.05, fontWeight: 600,
           maxWidth: 900,
         }}>
           {title}{' '}
-          {titleAccent && <em style={{ color: '#7EC8E3', fontStyle: 'italic' }}>{titleAccent}</em>}
+          {titleAccent && <span style={{ color: '#7EC8E3' }}>{titleAccent}</span>}
         </h1>
         {subtitle && (
           <p data-ph style={{
             fontSize: 'clamp(1.05rem, 2vw, 1.3rem)',
-            color: 'rgba(255,255,255,0.72)', fontWeight: 300, lineHeight: 1.6,
+            color: 'rgba(255,255,255,0.84)', fontWeight: 300, lineHeight: 1.6,
             maxWidth: 620, marginTop: 24,
           }}>{subtitle}</p>
         )}

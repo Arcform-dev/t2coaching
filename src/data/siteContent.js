@@ -1,7 +1,23 @@
-// ── Single source of truth for T2 Coaching site content ──────────────────────
+// ── Single source of truth for t2coaching site content ──────────────────────
 // All copy here is from Wendy Mader's own intake/content documents.
 
-export const BOOKING_URL = 'https://t2coaching.com/calendar/'
+// "Book a Free Call" CTAs. When VITE_CALENDLY_URL is set in Cloudflare Pages →
+// Settings → Environment variables (same place as the Sanity/Formspree vars),
+// every booking button opens that Calendly link in a new tab. Until then they
+// fall back to the internal /contact page, so nothing breaks before the link
+// exists. Swapping it in is a single env-var value — no code change. All booking
+// CTAs render through src/components/ui/BookingLink.jsx, which reads these.
+const CALENDLY_URL = import.meta.env.VITE_CALENDLY_URL || ''
+export const BOOKING_IS_EXTERNAL = /^https?:\/\//.test(CALENDLY_URL)
+export const BOOKING_URL = BOOKING_IS_EXTERNAL ? CALENDLY_URL : '/contact'
+
+// Formspree endpoint for all site forms (contact inquiry + free-guide signup).
+// It must be explicitly configured. If it is missing, forms show the direct
+// email fallback instead of sending personal data to a test endpoint.
+const configuredFormEndpoint = (import.meta.env.VITE_FORMSPREE_ENDPOINT || '').trim()
+export const FORMSPREE_ENDPOINT = configuredFormEndpoint
+export const FORMS_CONFIGURED =
+  /^https:\/\/formspree\.io\/f\/[a-z0-9]+$/i.test(configuredFormEndpoint)
 
 export const CONTACT = {
   preferredName: 'Coach Wendy',
@@ -11,16 +27,16 @@ export const CONTACT = {
   phone: '(970) 308-4499',
   phoneHref: 'tel:+19703084499',
   location: 'Marietta, GA',
-  reach: 'Coaching athletes worldwide via Zoom — plus in-person at races and locally in Atlanta.',
+  reach: 'I coach athletes worldwide over Zoom, plus in person at races and locally in Atlanta.',
 }
 
 export const SOCIALS = [
   { label: 'Instagram', handle: '@t2coachwendy', url: 'https://www.instagram.com/t2coachwendy/' },
-  { label: 'Facebook',  handle: 'Wendy Mader',   url: 'https://www.facebook.com/wendy.mader.7' },
+  { label: 'Facebook',  handle: 't2coaching',    url: 'https://www.facebook.com/t2coach' },
   { label: 'YouTube',   handle: '@WendyMader',    url: 'https://www.youtube.com/@WendyMader' },
 ]
 
-// Headline stats — shown in the Hero (3) and the Stats band (4).
+// Headline stats, shown in the Hero (3) and the Stats band (4).
 export const HERO_STATS = [
   { num: '2008', label: 'Kona Amateur Champion' },
   { num: '26yr', label: 'Coaching Athletes' },
@@ -36,22 +52,22 @@ export const STATS = [
 
 // Short tagline used across the site
 export const TAGLINE =
-  'Personalized swim, run & triathlon coaching built around your life — by a Kona Ironman World Champion.'
+  'Personalized swim, run & triathlon coaching built around your life, by a Kona Ironman World Champion.'
 
-// Wendy's first-person story (About page) — condensed from her own words.
+// Wendy's first-person story (About page), condensed from her own words.
 export const STORY = [
-  "Hi, I'm Wendy Mader. I've been swimming since my teenage years and racing since the '90s — more than 30 years now. I was born and raised in Colorado and now live just outside Atlanta in Marietta, Georgia.",
-  "My journey started as a collegiate swimmer at Eastern Michigan University, when I was invited to swim the relay leg of a triathlon. After watching my biker and runner friends finish the race, I thought, \"I could do all of that myself.\" That single thought set the course for the next 30+ years of my life.",
-  "After finishing my first-ever Ironman in 1997, I was hooked. But the internet didn't really exist back then, so I learned about overtraining the hard way — I didn't rest, I piled on more, and within a year I was in the worst shape of my life, barely able to walk without losing my breath. I'll never forget the look in the mirror when I saw how far I'd let myself go.",
-  "Thankfully, I climbed out of that hole — and in 2008 I won the Overall Amateur title at the Ironman World Championships in Kona, Hawaii. That contrast, between nearly losing the sport I loved and standing at the very top of it, became the 'why' behind starting T2 Coaching more than two decades ago.",
-  "I have a Master's degree in Exercise & Sport Science, and I've spent my career helping athletes get healthy, build fitness, and perform — whether that means walking a first 5k, finishing an Ironman, or running a 100-mile ultra. I'm still out there racing too: I've completed the Run Rabbit Run 100, the Georgia Death Race, and plenty of ultras. I prescribe workouts based on science and lived experience, because I swim the swim, bike the bike, and run the run right alongside you.",
+  "Hi, I'm Wendy Mader. I've been swimming since age 4 and racing since the '90s, so more than 30 years now. I grew up in Michigan, moved to Colorado in 1995, and then to Georgia in 2016. These days I live just outside Atlanta in Marietta, Georgia.",
+  "I started out as a collegiate swimmer at Eastern Michigan University, and one day a team invited me to swim the relay leg of a triathlon. After I watched my biker and runner friends finish the race, I thought, \"I could do all of that myself.\" That one thought set the course for the next 30 years of my life.",
+  "I finished my first Ironman in 1997 and I was hooked. The internet barely existed back then, so I learned about overtraining the hard way. I didn't rest. I just kept piling on more. Within six months I was in the worst shape of my life, barely able to walk without losing my breath. I still remember looking in the mirror and seeing how far I'd let myself go.",
+  "I climbed back out. In 2008 I won the Overall Amateur title at the Ironman World Championships in Kona, Hawaii. I had come close to losing the sport I loved, and then I was standing at the very top of it. That's the why behind t2coaching, which I started more than two decades ago.",
+  "I have a Master's degree in Exercise and Sport Science, and I've spent my career helping athletes get healthy, build fitness, and perform. For some people that means walking a first 5k. For others it's finishing an Ironman or running a 100-mile ultra. I'm still out there racing too. I've finished the Run Rabbit Run 100, the Georgia Death Race, and plenty of other ultras. I build your workouts from the science and from my own experience. I swim the swim, bike the bike, and run the run right alongside you.",
 ]
 
 // The meaning behind the name
 export const NAME_MEANING = {
   title: 'Why "t2"?',
   body:
-    "In triathlon, T2 is the second transition — the moment an athlete racks the bike and changes into their running gear to push toward the finish. That's exactly what coaching with me is about: helping you transition to the next level with personalized, experience-based guidance — pushing your body to its full potential without compromising family, time, or your long-term health.",
+    "In triathlon, T2 is the second transition. It's the moment you rack your bike, change into your running gear, and head out for the finish. That's what coaching with me is about: transitioning you to the next level. I help you make the move with guidance that's personal and built on real experience, so you reach your full potential without giving up your family, your time, or your long-term health.",
 }
 
 // Coaching philosophy pillars (About + Services)
@@ -59,40 +75,43 @@ export const PHILOSOPHY = [
   {
     title: 'Health → Fitness → Sport',
     body:
-      'T2 is the umbrella over all three. You have to be healthy — mind and body, strength and mobility, nutrition and sleep — to build the fitness that lets you perform in your sport. We build in that order, and health is always priority #1.',
+      'T2 is the umbrella over all three. You have to be healthy first. That means mind and body, strength and mobility, nutrition and sleep. Health is what lets you build fitness, and fitness is what lets you perform in your sport. We build in that order, and health is always priority #1.',
   },
   {
     title: 'Relationship over programming',
     body:
-      "I'm in the relationship-building business. The magic isn't the plan itself — it's working together, adjusting, and finding what works for you. That's the difference between coaching and just handing someone a program.",
+      "I'm in the relationship business. The magic isn't the plan itself. It's the two of us working together, adjusting as we go, and finding what actually works for you. That's the difference between real coaching and handing someone a program.",
   },
   {
     title: 'Your goals, not mine',
     body:
-      "I fully support your goals, whether or not they're goals I'd chase myself. Once I understand what's meaningful to you, it's incredibly satisfying to build a plan that carries you there.",
+      "I support your goals, whether or not they're goals I'd chase myself. Once I understand what matters to you, I love building the plan that gets you there.",
   },
   {
     title: "It's in the details",
     body:
-      'Every workout has a specific purpose — type, duration, and intensity all matter. Ask me "why" any time. Understanding the reason behind a session empowers you to execute it with intention, and that produces real results.',
+      'Every workout has a purpose. The type, the duration, and the intensity all matter. Ask me "why" any time. When you understand the reason behind a session, you do it with intention, and that produces real results.',
   },
   {
     title: 'Communication is a two-way street',
     body:
-      "The better I know how you respond to training, the better I can coach you. If you're tired, traveling, or your schedule shifts — tell me. Fatigue isn't a badge of honor; we adjust so you keep moving toward your goals.",
+      "The better I know how you respond to training, the better I can coach you. If you're tired, traveling, or your schedule changes, tell me. Fatigue isn't a badge of honor. We adjust, and you keep moving toward your goals.",
   },
   {
     title: 'Relatable, and still racing',
     body:
-      "I work full-time, value family, and balance it all — just like you. I've had my own setbacks, including a serious patella injury, so I know how to coach you through the comebacks as well as the breakthroughs.",
+      "I work full-time, I value my family, and I balance all of it, just like you. I've had my own setbacks too, including a serious patella injury. I know how to coach you through the comebacks, not just the breakthroughs.",
   },
 ]
+
+// FAQs live in their own file so the Node SEO build script can import them too.
+export { FAQS } from './faq.js'
 
 // WSJ feature callout
 export const WSJ_FEATURE = {
   outlet: 'The Wall Street Journal',
   title: "An Ironman Coach's Swim Strength Workout — No Water Required",
   blurb:
-    'Wendy was featured in The Wall Street Journal sharing a land-based strength routine that improves stroke technique and swim speed.',
+    'Wendy shared a strength routine you can do on dry land to sharpen your stroke and swim faster, no pool required.',
   url: 'https://www.wsj.com/articles/an-ironman-coachs-swim-strength-workout-no-water-required-11607166000',
 }

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { BOOKING_URL } from '../data/siteContent'
+import BookingLink from './ui/BookingLink'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -67,47 +67,44 @@ export default function CTA() {
 
           {/* Headline — word-by-word wipe */}
           <h2 ref={headlineRef} style={{
-            fontFamily: "'DM Serif Display', Georgia, serif",
+            fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
             fontSize: 'clamp(2.5rem, 6vw, 5rem)',
             lineHeight: 1.1,
           }}>
             <Words text="Ready to" style={{ color: '#ffffff' }} />
             {' '}
-            <Words text="race smarter?" style={{ color: '#7EC8E3', fontStyle: 'italic' }} />
+            <Words text="race smarter?" style={{ color: '#7EC8E3' }} />
           </h2>
 
           {/* Sub */}
           <p ref={subRef} style={{
             fontSize: 'clamp(1rem, 1.8vw, 1.2rem)',
-            color: 'rgba(255,255,255,0.62)',
+            color: 'rgba(255,255,255,0.82)',
             maxWidth: 480, lineHeight: 1.68,
           }}>
             Thirty minutes with Wendy can change the shape of your season. It is a real conversation about where you are now and where you want to go.
           </p>
 
           {/* CTA */}
-          <a
+          <BookingLink
             ref={btnRef}
             className="shine-btn"
-            href={BOOKING_URL}
-            target="_blank" rel="noopener noreferrer"
             style={{
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
               gap: 10, whiteSpace: 'nowrap', marginTop: 8,
-              background: '#C9A84C', color: '#fff',
+              background: '#C9A84C', color: '#0D2B3E',
               fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)', fontWeight: 700,
-              padding: '18px 42px', borderRadius: 100,
+              padding: '18px 42px', borderRadius: 0,
               textDecoration: 'none',
-              boxShadow: '0 12px 40px rgba(201,168,76,0.45)',
             }}
           >
             Book a free call with Wendy
             <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
+          </BookingLink>
 
-          <p ref={noteRef} style={{ fontSize: 13, color: 'rgba(255,255,255,0.3)' }}>
+          <p ref={noteRef} style={{ fontSize: 13, color: 'rgba(255,255,255,0.64)' }}>
             The first call is free and takes about fifteen minutes.
           </p>
         </div>

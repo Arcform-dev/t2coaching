@@ -12,6 +12,10 @@ export default function Reveal({ children, y = 36, x = 0, delay = 0, duration = 
   useEffect(() => {
     const el = ref.current
     if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      gsap.set(el, { y: 0, x: 0, opacity: 1 })
+      return
+    }
     const anim = gsap.fromTo(el,
       { y, x, opacity: 0 },
       {

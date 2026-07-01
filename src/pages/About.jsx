@@ -13,7 +13,7 @@ function CredColumn({ title, items, accent }) {
   return (
     <GlassCard style={{ padding: '36px 32px' }}>
       <h3 style={{
-        fontFamily: "'DM Serif Display', Georgia, serif",
+        fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
         fontSize: 22, color: '#fff', marginBottom: 22,
       }}>{title}</h3>
       <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -35,16 +35,16 @@ function CredColumn({ title, items, accent }) {
 export default function About() {
   useDocumentMeta(
     'About Coach Wendy',
-    "Wendy Mader — D1 swimmer, 2008 Kona Ironman World Champion, and founder of T2 Coaching. Her story, coaching philosophy, and credentials."
+    "Wendy Mader is a Division I swimmer, 2008 Kona Ironman World Champion, and the founder of t2coaching. Here's her story, coaching philosophy, and credentials."
   )
 
   return (
     <>
       <PageHeader
         eyebrow="About Coach Wendy"
-        title="I've been in your shoes —"
-        titleAccent="and on that finish line."
-        subtitle="A D1 swimmer turned Kona Ironman World Champion, sharing 30+ years of racing and 26 years of coaching with athletes like you."
+        title="I've been where you are,"
+        titleAccent="and where you want to go."
+        subtitle="I went from a Division I swimmer to a Kona Ironman World Champion, with over three decades of racing experience and 26 years of coaching behind me."
         photo="/photos/kona-world-championship-finish.jpg"
       />
 
@@ -63,13 +63,14 @@ export default function About() {
 
             <Reveal x={50} y={0} delay={0.1} style={{ position: 'sticky', top: 96 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-                <div style={{ position: 'relative', borderRadius: 20, overflow: 'hidden', aspectRatio: '3/4', background: '#0D2B3E' }}>
+                <div style={{ position: 'relative', borderRadius: 0, overflow: 'hidden', aspectRatio: '3/4', background: '#0D2B3E' }}>
                   <img src="/photos/kona-world-championship-finish.jpg" alt="Wendy Mader finishing the Ironman World Championship in Kona"
+                    loading="lazy" decoding="async"
                     style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
                   <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '38%', background: 'linear-gradient(to top, rgba(13,43,62,0.85), transparent)' }} />
                   <div style={{ position: 'absolute', bottom: 18, left: 20, right: 20 }}>
                     <span style={{ fontSize: 12, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.08em' }}>
-                      2008 Ironman World Championship — Kona, Hawaii
+                      2008 Ironman World Championship, Kona, Hawaii
                     </span>
                   </div>
                 </div>
@@ -84,13 +85,10 @@ export default function About() {
         <div style={WRAP}>
           <Reveal>
             <GlassCard style={{ padding: 'clamp(32px, 5vw, 56px)', textAlign: 'center', maxWidth: 880, margin: '0 auto' }}>
-              <span style={{ fontSize: 11, fontWeight: 600, color: '#F5A623', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-                {NAME_MEANING.title}
-              </span>
               <p style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontSize: 'clamp(1.4rem, 2.6vw, 1.9rem)', fontStyle: 'italic',
-                color: '#fff', lineHeight: 1.5, marginTop: 18,
+                fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
+                fontSize: 'clamp(1.4rem, 2.6vw, 1.9rem)',
+                color: '#fff', lineHeight: 1.5, margin: 0,
               }}>
                 {NAME_MEANING.body}
               </p>
@@ -106,17 +104,17 @@ export default function About() {
             <SectionHeading
               eyebrow="Coaching Philosophy"
               title="More than a training plan."
-              subtitle="The greatest joy and purpose of coaching, for me, is the relationship. The magic of your training comes not from the plan itself — but from working together to find what works for you."
+              subtitle="The best part of coaching, for me, is the relationship. The magic of your training doesn't come from the plan. It comes from the two of us working together to find what works for you."
             />
           </Reveal>
           <div className="philosophy-grid" style={{ display: 'grid', gap: 24 }}>
             {PHILOSOPHY.map((p, i) => (
               <Reveal key={p.title} delay={(i % 3) * 0.08}>
                 <GlassCard style={{ padding: '32px 28px', height: '100%' }}>
-                  <h3 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 19, color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>
+                  <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 19, color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>
                     {p.title}
                   </h3>
-                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.66)', lineHeight: 1.7 }}>{p.body}</p>
+                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.82)', lineHeight: 1.7 }}>{p.body}</p>
                 </GlassCard>
               </Reveal>
             ))}
@@ -131,7 +129,7 @@ export default function About() {
             <SectionHeading eyebrow="Credentials & Results" title="Three decades. Every discipline." align="center" />
           </Reveal>
           <div className="story-grid" style={{ display: 'grid', gap: 24 }}>
-            <Reveal x={-40} y={0}><CredColumn title="Race Results & Honors" items={RACE_RESULTS} accent="#F5A623" /></Reveal>
+            <Reveal x={-40} y={0}><CredColumn title="Race Results & Honors" items={RACE_RESULTS} accent="#C9A84C" /></Reveal>
             <Reveal x={40} y={0} delay={0.1}><CredColumn title="Coaching Credentials & Career" items={COACHING_CREDENTIALS} accent="#7EC8E3" /></Reveal>
           </div>
         </div>
@@ -148,10 +146,10 @@ export default function About() {
                     Featured in {WSJ_FEATURE.outlet}
                   </span>
                 </div>
-                <h3 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(1.3rem, 2.4vw, 1.8rem)', color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>
+                <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 'clamp(1.3rem, 2.4vw, 1.8rem)', color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>
                   "{WSJ_FEATURE.title}"
                 </h3>
-                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.66)', lineHeight: 1.7, marginBottom: 16 }}>{WSJ_FEATURE.blurb}</p>
+                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.82)', lineHeight: 1.7, marginBottom: 16 }}>{WSJ_FEATURE.blurb}</p>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: '#7EC8E3', fontSize: 14, fontWeight: 600 }}>
                   Read the article
                   <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">

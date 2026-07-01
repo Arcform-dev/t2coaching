@@ -59,23 +59,19 @@ export default function About() {
   }, [])
 
   return (
-    <section id="about" ref={sectionRef} style={{ background: 'transparent', padding: '80px 0 100px', overflow: 'hidden' }}>
+    <section id="about" ref={sectionRef} style={{ background: '#F1ECE3', padding: '110px 0', overflow: 'hidden' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
-        <div className="about-grid" style={{ display: 'grid', gap: 60, alignItems: 'center' }}>
+        {/* Barrier-style: a full-width rule opens the section, then an asymmetric
+            two-column block with generous spacing (no boxed card). */}
+        <div style={{ height: 1, background: 'rgba(13,43,62,0.16)', marginBottom: 'clamp(40px, 6vw, 72px)' }} />
+        <div className="about-grid" style={{ display: 'grid', gap: 'clamp(40px, 6vw, 88px)', alignItems: 'start' }}>
 
           {/* Text */}
-          <div ref={textRef} style={{
-            background: 'rgba(8,18,32,0.72)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            borderRadius: 20,
-            padding: '48px 40px',
-            border: '1px solid rgba(255,255,255,0.08)',
-          }}>
+          <div ref={textRef}>
             <h2 style={{
-              fontFamily: "'DM Serif Display', Georgia, serif",
-              fontSize: 'clamp(1.9rem, 3.5vw, 2.8rem)',
-              color: '#ffffff', lineHeight: 1.2, marginBottom: 28,
+              fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
+              fontSize: 'clamp(2.1rem, 4vw, 3.2rem)',
+              fontWeight: 600, color: '#0D2B3E', lineHeight: 1.12, marginBottom: 34,
             }}>
               I've been in your shoes,<br />
               and on that finish line.
@@ -87,7 +83,7 @@ export default function About() {
                 "Her approach is simple: good coaching meets you where you are. Whether you're juggling family and a full-time job, learning to swim for your first Ironman, or chasing a Kona slot, Wendy designs training that fits the life you already have.",
                 "Based in Marietta, Georgia, she coaches athletes worldwide over Zoom and in person at races. With a Master's in Exercise & Sport Science and 26 years of coaching, she still swims, bikes, and runs right alongside the athletes she guides.",
               ].map((text, i) => (
-                <p key={i} style={{ fontSize: 16, color: 'rgba(255,255,255,0.72)', lineHeight: 1.72 }}>{text}</p>
+                <p key={i} style={{ fontSize: 16, color: 'rgba(13,43,62,0.74)', lineHeight: 1.72 }}>{text}</p>
               ))}
             </div>
 
@@ -95,17 +91,17 @@ export default function About() {
               {CREDS.map((c, i) => (
                 <span key={c} ref={el => credsRef.current[i] = el} style={{
                   display: 'inline-block',
-                  border: '1px solid rgba(126,200,227,0.55)',
-                  color: '#7EC8E3',
+                  border: '1px solid rgba(13,43,62,0.3)',
+                  color: '#0D2B3E',
                   fontSize: 12, fontWeight: 600,
-                  padding: '6px 14px', borderRadius: 100, letterSpacing: '0.03em',
+                  padding: '6px 14px', borderRadius: 0, letterSpacing: '0.03em',
                 }}>{c}</span>
               ))}
             </div>
 
             <Link to="/about" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
-              color: '#F5A623', fontSize: 15, fontWeight: 600, textDecoration: 'none',
+              color: '#C9A84C', fontSize: 15, fontWeight: 600, textDecoration: 'none',
             }}>
               Read Wendy's full story
               <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -117,12 +113,14 @@ export default function About() {
           {/* Image + Quote */}
           <div ref={imageRef} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div style={{
-              position: 'relative', borderRadius: 20, overflow: 'hidden', aspectRatio: '4 / 5',
+              position: 'relative', borderRadius: 0, overflow: 'hidden', aspectRatio: '4 / 5',
               background: '#0D2B3E',
             }}>
               <img
                 src="/wendy-bike.jpg"
                 alt="Wendy Mader cycling"
+                loading="lazy"
+                decoding="async"
                 style={{
                   position: 'absolute', inset: 0,
                   width: '100%', height: '100%',
@@ -134,25 +132,17 @@ export default function About() {
                 position: 'absolute', bottom: 0, left: 0, right: 0, height: '35%',
                 background: 'linear-gradient(to top, rgba(13,43,62,0.7), transparent)',
               }} />
-              <div style={{ position: 'absolute', top: 16, right: 16, width: 36, height: 36, borderTop: '2px solid rgba(245,166,35,0.55)', borderRight: '2px solid rgba(245,166,35,0.55)' }} />
-              <div style={{ position: 'absolute', bottom: 16, left: 16, width: 36, height: 36, borderBottom: '2px solid rgba(245,166,35,0.55)', borderLeft: '2px solid rgba(245,166,35,0.55)' }} />
             </div>
 
-            <div ref={quoteRef} style={{ background: '#0D2B3E', borderRadius: 18, padding: '28px 28px 24px', position: 'relative' }}>
-              <div style={{
-                position: 'absolute', top: 12, left: 22,
-                fontSize: 56, color: 'rgba(245,166,35,0.45)',
-                fontFamily: 'Georgia, serif', lineHeight: 1,
-              }}>"</div>
+            <div ref={quoteRef} style={{ background: '#0D2B3E', borderRadius: 0, padding: '28px 28px 24px' }}>
               <blockquote style={{
-                fontFamily: "'DM Serif Display', Georgia, serif",
+                fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
                 fontSize: 'clamp(1rem, 1.8vw, 1.15rem)',
-                color: '#ffffff', fontStyle: 'italic', lineHeight: 1.55, paddingTop: 20,
+                color: '#ffffff', lineHeight: 1.55, margin: 0,
               }}>
                 Crossing that Kona finish line changed everything I understand about what athletes are capable of. I bring that to every training plan I write.
               </blockquote>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 18 }}>
-                <div style={{ width: 28, height: 2, background: '#F5A623', flexShrink: 0 }} />
+              <div style={{ marginTop: 18 }}>
                 <span style={{ fontSize: 13, fontWeight: 600, color: '#7EC8E3' }}>
                   Wendy Mader, Kona Ironman Champion
                 </span>

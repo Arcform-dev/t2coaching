@@ -1,10 +1,11 @@
-// Wendy's real coaching services & pricing (from her intake form).
+// Wendy's real coaching services (from her intake form). Prices are
+// intentionally omitted — each service routes to a free discovery call.
 // `icon` is a key resolved to an SVG in the components that render services.
 
 export const FREE_OFFER = {
   label: 'Free 15-Minute Discovery Call',
   body:
-    "Not sure where to start? Book a free 15-minute call. We'll talk through where you are, where you want to go, and whether we're the right fit — no sales pitch, just a real conversation.",
+    "Not sure where to start? Book a free 15-minute call. We'll talk through where you are, where you want to go, and whether we're a good fit. No sales pitch, just a real conversation.",
 }
 
 export const SERVICES = [
@@ -14,10 +15,9 @@ export const SERVICES = [
     badgeColor: '#C9A84C',
     icon: 'clock',
     title: 'Multisport & Single-Sport Coaching',
-    price: '$300',
-    cadence: '/ month',
+    price: '$150/mo single sport · $300/mo multisport',
     summary:
-      'Full personalized coaching across triathlon, duathlon, or a single discipline — built around your schedule, your goals, and your life.',
+      'Full personalized coaching across triathlon, duathlon, or a single discipline, built around your schedule, your goals, and your life.',
     includes: [
       'Custom training delivered through TrainingPeaks',
       'Plan that adapts every week to your life and progress',
@@ -31,34 +31,30 @@ export const SERVICES = [
     badge: null,
     icon: 'whistle',
     title: 'Private Swim, Bike or Run Lessons',
-    price: '$150',
-    cadence: 'first lesson · $75 follow-ups',
     summary:
       'One-on-one technique sessions with an Ironman-certified, collegiate-level swim coach. Ideal for a focused breakthrough before race day.',
     includes: [
       'Video stroke / gait analysis',
       'Targeted drills for your specific weakness',
-      'Swim, bike, or run — your choice',
+      'Your choice of swim, bike, or run',
       'In person locally, or remotely via video',
-      'Discounted $75 rate on every follow-up session',
+      'Discounted rate on every follow-up session',
     ],
   },
   {
     id: 'plan',
     badge: 'Budget Friendly',
-    badgeColor: '#F5A623',
+    badgeColor: '#C9A84C',
     icon: 'calendar',
     title: '12-Week Custom Training Plan',
-    price: '$300',
-    cadence: 'one-time',
     summary:
-      'A fully customized 12-week plan after a one-on-one phone consult. A structured, periodized roadmap to your goal race at an accessible price.',
+      'A fully customized 12-week plan after a one-on-one phone consult. A structured, periodized roadmap to your goal race, without an ongoing monthly commitment.',
     includes: [
       'Kickoff phone consultation',
       'Custom, periodized 12-week plan built for your race',
       'Sport-specific workouts with clear purpose',
       "Wendy's signature race-day strategy",
-      'One-time payment (plan delivered as-is, no revisions)',
+      'A one-time plan, delivered as-is (no ongoing revisions)',
     ],
   },
 ]
@@ -78,7 +74,7 @@ export const HOW_IT_WORKS = [
   {
     step: '03',
     title: 'Your custom plan',
-    body: 'I build a periodized plan in TrainingPeaks — every session with a specific purpose, fit to your real life.',
+    body: 'I build a periodized plan in TrainingPeaks. Every session has a specific purpose and fits your real life.',
   },
   {
     step: '04',

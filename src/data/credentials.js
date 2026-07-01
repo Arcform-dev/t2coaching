@@ -9,7 +9,7 @@ export const TOP_CREDENTIALS = [
 
 // Race results & honors
 export const RACE_RESULTS = [
-  '2008 Ironman World Championship — Overall Amateur Winner (Kona)',
+  '2008 Ironman World Championship, Overall Amateur Winner (Kona)',
   '21-time Ironman Finisher',
   '10-time Kona World Championship Finisher',
   'D1 Collegiate Swimmer, Eastern Michigan University',
@@ -28,7 +28,7 @@ export const COACHING_CREDENTIALS = [
   'Head Coach & founder of Team Trifecta and t2coaching, LLC',
   'Former Head Coach, Northern Colorado High School Triathlon Team',
   'Former Head Coach, Rocky Mountain High School Swim Team (2009–2015)',
-  'Race Director — Pelican Fest Triathlon (2009–2013)',
-  'Race Director — t2coaching Indoor Triathlon Series (2000–2015)',
+  'Race Director, Pelican Fest Triathlon (2009–2013)',
+  'Race Director, t2coaching Indoor Triathlon Series (2000–2015)',
   'Coached the Leukemia & Lymphoma Society’s Team In Training (2002)',
 ]

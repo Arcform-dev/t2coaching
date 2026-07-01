@@ -33,13 +33,11 @@ const FEATURES = [
 
 // Editorial "reasons" rows — a short accent rule instead of a card box, so the
 // differentiators read distinctly from the solid offer cards and the quotes.
-function FeatureRow({ f, index }) {
-  const accent = index % 2 === 0 ? '#F5A623' : '#7EC8E3'
+function FeatureRow({ f }) {
   return (
     <div style={{ paddingTop: 28, borderTop: '1px solid rgba(255,255,255,0.16)' }}>
-      <div style={{ width: 28, height: 3, background: accent, borderRadius: 2, marginBottom: 16 }} />
       <h3 style={{
-        fontFamily: "'DM Serif Display', Georgia, serif",
+        fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
         fontSize: 'clamp(1.15rem, 1.8vw, 1.35rem)',
         color: '#ffffff', lineHeight: 1.3, marginBottom: 10,
       }}>{f.title}</h3>
@@ -78,17 +76,18 @@ export default function WhyT2() {
   }, [])
 
   return (
-    <section style={{ background: 'transparent', padding: '80px 0 100px' }}>
+    <section style={{ background: '#0D2B3E', padding: '110px 0' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
-        <div ref={headerRef} style={{ textAlign: 'center', maxWidth: 580, margin: '0 auto 56px' }}>
+        <div style={{ height: 1, background: 'rgba(255,255,255,0.16)', marginBottom: 'clamp(40px, 6vw, 72px)' }} />
+        <div ref={headerRef} style={{ maxWidth: 580, margin: '0 0 56px' }}>
           <h2 style={{
-            fontFamily: "'DM Serif Display', Georgia, serif",
+            fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
             fontSize: 'clamp(2rem, 3.5vw, 2.8rem)',
             color: '#ffffff', lineHeight: 1.2, marginBottom: 10,
           }}>
             What makes Wendy different.
           </h2>
-          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6 }}>
+          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.72)', lineHeight: 1.6 }}>
             Not every coach has stood on the Kona finish line.
           </p>
         </div>

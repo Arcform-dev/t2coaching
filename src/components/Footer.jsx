@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { CONTACT, SOCIALS, BOOKING_URL } from '../data/siteContent'
+import { CONTACT, SOCIALS } from '../data/siteContent'
+import BookingLink from './ui/BookingLink'
 
 const NAV_LINKS = [
   { label: 'About', to: '/about' },
@@ -9,6 +10,9 @@ const NAV_LINKS = [
   { label: 'Blog', to: '/blog' },
   { label: 'Resources', to: '/resources' },
   { label: 'Contact', to: '/contact' },
+  { label: 'Privacy', to: '/privacy' },
+  { label: 'Disclaimer', to: '/disclaimer' },
+  { label: 'Terms', to: '/terms' },
 ]
 
 const SOCIAL_ICONS = {
@@ -36,35 +40,35 @@ export default function Footer() {
               }}>
                 <span style={{ color: '#fff', fontWeight: 700, fontSize: 12 }}>T2</span>
               </div>
-              <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 20, color: '#ffffff' }}>T2 Coaching</span>
+              <span style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 20, color: '#ffffff' }}>t2coaching</span>
             </Link>
-            <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 18 }}>
+            <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, marginBottom: 18 }}>
               Personalized swim, run & triathlon coaching from a Kona Ironman World Champion, built around your life.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <a href={`mailto:${CONTACT.email}`} style={{ fontSize: 14, color: 'rgba(255,255,255,0.62)', textDecoration: 'none' }}>{CONTACT.email}</a>
               <a href={CONTACT.phoneHref} style={{ fontSize: 14, color: 'rgba(255,255,255,0.62)', textDecoration: 'none' }}>{CONTACT.phone}</a>
-              <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.4)' }}>{CONTACT.location}</span>
+              <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.72)' }}>{CONTACT.location}</span>
             </div>
           </div>
 
           {/* Nav links */}
           <div>
-            <h4 style={{ fontSize: 12, fontWeight: 600, color: '#F5A623', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 18 }}>Explore</h4>
+            <h4 style={{ fontSize: 12, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 18 }}>Explore</h4>
             <nav style={{ display: 'grid', gap: 12 }}>
               {NAV_LINKS.map(l => (
-                <Link key={l.label} to={l.to} style={{ fontSize: 14, color: 'rgba(255,255,255,0.55)', textDecoration: 'none' }}>{l.label}</Link>
+                <Link key={l.label} to={l.to} style={{ fontSize: 14, color: 'rgba(255,255,255,0.72)', textDecoration: 'none' }}>{l.label}</Link>
               ))}
             </nav>
           </div>
 
           {/* Connect */}
           <div>
-            <h4 style={{ fontSize: 12, fontWeight: 600, color: '#F5A623', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 18 }}>Connect</h4>
+            <h4 style={{ fontSize: 12, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 18 }}>Connect</h4>
             <div style={{ display: 'flex', gap: 10, marginBottom: 22 }}>
               {SOCIALS.map(s => (
                 <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" aria-label={s.label} style={{
-                  width: 40, height: 40, borderRadius: 8,
+                  width: 40, height: 40, borderRadius: 0,
                   border: '1px solid rgba(255,255,255,0.12)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   color: 'rgba(255,255,255,0.62)',
@@ -75,16 +79,14 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <a
+            <BookingLink
               className="shine-btn"
-              href={BOOKING_URL}
-              target="_blank" rel="noopener noreferrer"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                background: '#C9A84C', color: '#fff', fontSize: 14, fontWeight: 600,
-                padding: '12px 24px', borderRadius: 100, textDecoration: 'none',
+                background: '#C9A84C', color: '#0D2B3E', fontSize: 14, fontWeight: 700,
+                padding: '12px 24px', borderRadius: 0, textDecoration: 'none',
               }}
-            >Book a Free Call</a>
+            >Book a Free Call</BookingLink>
           </div>
         </div>
 
@@ -92,11 +94,9 @@ export default function Footer() {
         <div className="footer-row" style={{
           display: 'flex', flexDirection: 'column', gap: 10, paddingTop: 28,
         }}>
-          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.27)' }}>
+          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.64)' }}>
             © {new Date().getFullYear()} t2coaching, LLC. All rights reserved.
           </p>
-          <a href="https://t2coaching.com" target="_blank" rel="noopener noreferrer"
-            style={{ fontSize: 13, color: 'rgba(255,255,255,0.27)', textDecoration: 'none' }}>t2coaching.com</a>
         </div>
       </div>
     </footer>

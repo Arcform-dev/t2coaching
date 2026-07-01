@@ -5,9 +5,12 @@ import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import CTABanner from '../components/ui/CTABanner'
 import { SERVICES, FREE_OFFER, HOW_IT_WORKS, WHO_I_COACH } from '../data/services'
-import { BOOKING_URL } from '../data/siteContent'
+import BookingLink from '../components/ui/BookingLink'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
+
+// Service + BreadcrumbList JSON-LD for this page is baked into the static HTML
+// at build time by scripts/generate-seo.mjs (so crawlers see it in raw HTML).
 
 const ICONS = {
   clock: (
@@ -36,68 +39,55 @@ function ServiceCard({ s }) {
       padding: '40px 32px 32px', height: '100%', overflow: 'hidden',
       background: '#0D2B3E',
       border: featured ? '1px solid rgba(201,168,76,0.55)' : '1px solid rgba(255,255,255,0.1)',
-      borderRadius: 20,
+      borderRadius: 0,
       boxShadow: featured ? '0 18px 48px rgba(0,0,0,0.32)' : 'none',
     }}>
       {featured && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: '#C9A84C' }} />}
       {s.badge && (
         <div style={{ position: 'absolute', top: 18, right: 22 }}>
-          <span style={{ display: 'inline-block', background: s.badgeColor, color: '#fff', fontSize: 11, fontWeight: 700, padding: '4px 12px', borderRadius: 100, letterSpacing: '0.04em' }}>
+          <span style={{ display: 'inline-block', background: s.badgeColor, color: '#0D2B3E', fontSize: 11, fontWeight: 700, padding: '4px 12px', borderRadius: 0, letterSpacing: '0.04em' }}>
             {s.badge}
           </span>
         </div>
       )}
-      <div style={{ width: 52, height: 52, borderRadius: 12, background: 'rgba(126,200,227,0.14)', color: '#7EC8E3', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 22 }}>
+      <div style={{ width: 52, height: 52, borderRadius: 0, background: 'rgba(126,200,227,0.14)', color: '#7EC8E3', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 22 }}>
         {ICONS[s.icon]}
       </div>
-      <h3 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 21, color: '#fff', lineHeight: 1.3, marginBottom: 12 }}>{s.title}</h3>
+      <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 21, color: '#fff', lineHeight: 1.3, marginBottom: s.price ? 8 : 12 }}>{s.title}</h3>
 
-      <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 16 }}>
-        <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 36, color: '#7EC8E3' }}>{s.price}</span>
-        <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>{s.cadence}</span>
-      </div>
+      {s.price && (
+        <p style={{ fontSize: 14, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.02em', marginBottom: 12 }}>{s.price}</p>
+      )}
 
-      <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.66)', lineHeight: 1.7, marginBottom: 22 }}>{s.summary}</p>
+      <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.82)', lineHeight: 1.7, marginBottom: 22 }}>{s.summary}</p>
 
       <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 11, marginBottom: 28, flex: 1 }}>
         {s.includes.map((inc, i) => (
           <li key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-            <span style={{ color: '#F5A623', flexShrink: 0, marginTop: 2 }}>
+            <span style={{ color: '#C9A84C', flexShrink: 0, marginTop: 2 }}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
             </span>
             <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.74)', lineHeight: 1.5 }}>{inc}</span>
           </li>
         ))}
       </ul>
-
-      <a className="shine-btn" href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-        background: featured ? '#C9A84C' : 'transparent',
-        color: featured ? '#fff' : '#7EC8E3',
-        border: featured ? '1px solid #C9A84C' : '1px solid rgba(126,200,227,0.5)',
-        fontSize: 14, fontWeight: featured ? 700 : 600,
-        padding: '14px 24px', borderRadius: 100, textDecoration: 'none',
-      }}>
-        {featured ? 'Book Your Free Call' : 'Book a Call'}
-        <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-      </a>
     </div>
   )
 }
 
 export default function Services() {
   useDocumentMeta(
-    'Services & Pricing',
-    'Personalized triathlon coaching ($300/mo), private swim/bike/run lessons ($150 first), and 12-week custom plans ($300). Free 15-minute discovery call.'
+    'Services',
+    'Personalized triathlon coaching, private swim, bike & run lessons, and 12-week custom training plans from Kona Ironman World Champion Wendy Mader. Start with a free 15-minute discovery call.'
   )
 
   return (
     <>
       <PageHeader
-        eyebrow="Coaching & Pricing"
+        eyebrow="Coaching Services"
         title="Coaching built for"
         titleAccent="how you actually live."
-        subtitle="Three ways to work with a Kona champion — from full-season personalized coaching to a one-time custom plan. Every option starts with a free conversation."
+        subtitle="Three ways to work with a Kona champion, from full-season personalized coaching to a one-time custom plan. Every option starts with a free conversation."
       />
 
       {/* Service cards */}
@@ -123,20 +113,20 @@ export default function Services() {
             }}>
               <div style={{ flex: '1 1 360px' }}>
                 <span style={{ fontSize: 11, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Free to start</span>
-                <h3 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(1.5rem, 3vw, 2.1rem)', color: '#fff', margin: '12px 0 14px' }}>
+                <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 'clamp(1.5rem, 3vw, 2.1rem)', color: '#fff', margin: '12px 0 14px' }}>
                   {FREE_OFFER.label}
                 </h3>
-                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, maxWidth: 520 }}>{FREE_OFFER.body}</p>
+                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.84)', lineHeight: 1.7, maxWidth: 520 }}>{FREE_OFFER.body}</p>
               </div>
-              <a className="shine-btn" href={BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{
+              <BookingLink className="shine-btn" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10, whiteSpace: 'nowrap',
-                background: '#C9A84C', color: '#fff', fontSize: 16, fontWeight: 700,
-                padding: '16px 36px', borderRadius: 100, textDecoration: 'none',
+                background: '#C9A84C', color: '#0D2B3E', fontSize: 16, fontWeight: 700,
+                padding: '16px 36px', borderRadius: 0, textDecoration: 'none',
                 boxShadow: '0 12px 40px rgba(201,168,76,0.4)',
               }}>
                 Book Your Free Call
                 <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-              </a>
+              </BookingLink>
             </GlassCard>
           </Reveal>
         </div>
@@ -152,9 +142,9 @@ export default function Services() {
             {HOW_IT_WORKS.map((step, i) => (
               <Reveal key={step.step} delay={i * 0.08}>
                 <GlassCard style={{ padding: '32px 26px', height: '100%' }}>
-                  <div style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 34, color: 'rgba(126,200,227,0.5)', marginBottom: 12 }}>{step.step}</div>
+                  <div style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 34, color: 'rgba(126,200,227,0.5)', marginBottom: 12 }}>{step.step}</div>
                   <h3 style={{ fontSize: 17, fontWeight: 600, color: '#fff', marginBottom: 10 }}>{step.title}</h3>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.64)', lineHeight: 1.65 }}>{step.body}</p>
+                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.82)', lineHeight: 1.65 }}>{step.body}</p>
                 </GlassCard>
               </Reveal>
             ))}
@@ -168,10 +158,10 @@ export default function Services() {
           <div className="story-grid" style={{ display: 'grid', gap: 48, alignItems: 'center' }}>
             <Reveal x={-40} y={0}>
               <SectionHeading eyebrow="Who I Coach" title="Every level. Every why." style={{ marginBottom: 20 }} />
-              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.75, marginBottom: 18 }}>
-                Coaching revolves around each athlete's experience, current fitness, and the time they have to train. I build plans for the time-crunched athlete and the athlete with unlimited hours alike — and I coach for accountability and health, not just sport.
+              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.84)', lineHeight: 1.75, marginBottom: 18 }}>
+                Coaching revolves around each athlete's experience, current fitness, and the time they have to train. I build plans for the time-crunched athlete and the athlete with unlimited hours alike. I coach for accountability and health, not just sport.
               </p>
-              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.75 }}>
+              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.84)', lineHeight: 1.75 }}>
                 I've taught adults to swim well enough to finish an Ironman in two years, and coached countless athletes to Kona. Wherever you're starting, there's a path for you.
               </p>
             </Reveal>
@@ -181,7 +171,7 @@ export default function Services() {
                   <span key={w} style={{
                     display: 'inline-block', border: '1px solid rgba(126,200,227,0.4)',
                     background: 'rgba(8,18,32,0.5)', color: 'rgba(255,255,255,0.85)',
-                    fontSize: 14, fontWeight: 500, padding: '10px 16px', borderRadius: 100,
+                    fontSize: 14, fontWeight: 500, padding: '10px 16px', borderRadius: 0,
                   }}>{w}</span>
                 ))}
               </div>
@@ -192,7 +182,7 @@ export default function Services() {
 
       <CTABanner
         title="Not sure which is right for you?"
-        subtitle="That's exactly what the free call is for. We'll figure out the best fit together — no pressure, no sales pitch."
+        subtitle="That's exactly what the free call is for. We'll figure out the best fit together. No pressure, no sales pitch."
         primaryLabel="Book a Free 15-Min Call"
       />
     </>
