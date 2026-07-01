@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import useDocumentMeta from '../hooks/useDocumentMeta'
 import PageHeader from '../components/ui/PageHeader'
@@ -7,9 +8,25 @@ import CTABanner from '../components/ui/CTABanner'
 import { POSTS } from '../data/posts'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
+const PAGE_SIZE = 15
+// How many category chips to surface. The long tail stays reachable via search.
+const MAX_CHIPS = 8
 
 function showCategory(category) {
   return category && category.toLowerCase() !== 'uncategorized'
+}
+
+// Top categories by post count, so the busiest filters are one click away.
+function topCategories(posts) {
+  const counts = new Map()
+  for (const post of posts) {
+    if (!showCategory(post.category)) continue
+    counts.set(post.category, (counts.get(post.category) || 0) + 1)
+  }
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, MAX_CHIPS)
+    .map(([name]) => name)
 }
 
 function PostCard({ post }) {
@@ -53,10 +70,65 @@ function PostCard({ post }) {
   return <Link to={`/blog/${post.slug}`} style={{ textDecoration: 'none', display: 'block', height: '100%' }}>{inner}</Link>
 }
 
+function Chip({ label, active, onClick }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      style={{
+        appearance: 'none',
+        cursor: 'pointer',
+        fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
+        fontSize: 13,
+        fontWeight: 600,
+        letterSpacing: '0.02em',
+        padding: '9px 18px',
+        borderRadius: 999,
+        border: active ? '1px solid #C9A84C' : '1px solid rgba(255,255,255,0.16)',
+        background: active ? '#C9A84C' : 'rgba(8,18,32,0.5)',
+        color: active ? '#081220' : 'rgba(255,255,255,0.72)',
+        transition: 'all 0.18s ease',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      {label}
+    </button>
+  )
+}
+
 export default function Blog() {
   useDocumentMeta('Blog', 'Training tips, swim technique, race-day nutrition and lessons from 30+ years of racing, from Coach Wendy Mader.')
 
-  const posts = POSTS
+  const categories = useMemo(() => ['All', ...topCategories(POSTS)], [])
+  const [activeCategory, setActiveCategory] = useState('All')
+  const [query, setQuery] = useState('')
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    return POSTS.filter((post) => {
+      if (activeCategory !== 'All' && post.category !== activeCategory) return false
+      if (!q) return true
+      return (
+        (post.title && post.title.toLowerCase().includes(q)) ||
+        (post.excerpt && post.excerpt.toLowerCase().includes(q)) ||
+        (post.category && post.category.toLowerCase().includes(q))
+      )
+    })
+  }, [activeCategory, query])
+
+  const visible = filtered.slice(0, visibleCount)
+  const remaining = filtered.length - visible.length
+
+  // Any change to the filters starts the list back at the top of the results.
+  function selectCategory(cat) {
+    setActiveCategory(cat)
+    setVisibleCount(PAGE_SIZE)
+  }
+  function onSearch(e) {
+    setQuery(e.target.value)
+    setVisibleCount(PAGE_SIZE)
+  }
 
   return (
     <>
@@ -69,13 +141,77 @@ export default function Blog() {
 
       <section style={{ padding: '50px 0 90px' }}>
         <div style={WRAP}>
-          <div className="blog-grid" style={{ display: 'grid', gap: 28 }}>
-            {posts.map((post, i) => (
-              <Reveal key={post.slug} delay={(i % 3) * 0.08}>
-                <PostCard post={post} />
-              </Reveal>
+          {/* Search */}
+          <div style={{ maxWidth: 520, margin: '0 auto 26px', position: 'relative' }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" style={{ position: 'absolute', left: 18, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}>
+              <circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" strokeLinecap="round" />
+            </svg>
+            <input
+              type="search"
+              value={query}
+              onChange={onSearch}
+              placeholder="Search articles…"
+              aria-label="Search articles"
+              style={{
+                width: '100%',
+                boxSizing: 'border-box',
+                padding: '14px 18px 14px 48px',
+                fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
+                fontSize: 15,
+                color: '#fff',
+                background: 'rgba(8,18,32,0.7)',
+                border: '1px solid rgba(255,255,255,0.14)',
+                borderRadius: 999,
+                outline: 'none',
+              }}
+            />
+          </div>
+
+          {/* Category chips */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 10, marginBottom: 40 }}>
+            {categories.map((cat) => (
+              <Chip key={cat} label={cat} active={activeCategory === cat} onClick={() => selectCategory(cat)} />
             ))}
           </div>
+
+          {visible.length === 0 ? (
+            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.6)', fontSize: 16, padding: '40px 0' }}>
+              No articles match your search. Try a different keyword or category.
+            </p>
+          ) : (
+            <div className="blog-grid" style={{ display: 'grid', gap: 28 }}>
+              {visible.map((post, i) => (
+                <Reveal key={post.slug} delay={(i % 3) * 0.08}>
+                  <PostCard post={post} />
+                </Reveal>
+              ))}
+            </div>
+          )}
+
+          {remaining > 0 && (
+            <div style={{ textAlign: 'center', marginTop: 48 }}>
+              <button
+                type="button"
+                onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+                style={{
+                  appearance: 'none',
+                  cursor: 'pointer',
+                  fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
+                  fontSize: 15,
+                  fontWeight: 700,
+                  letterSpacing: '0.02em',
+                  padding: '15px 34px',
+                  borderRadius: 999,
+                  border: '1px solid rgba(201,168,76,0.6)',
+                  background: 'transparent',
+                  color: '#C9A84C',
+                  transition: 'all 0.18s ease',
+                }}
+              >
+                Load more <span style={{ color: 'rgba(255,255,255,0.5)', fontWeight: 500 }}>({visible.length} of {filtered.length})</span>
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
