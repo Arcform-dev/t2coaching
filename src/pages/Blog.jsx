@@ -83,7 +83,7 @@ function Chip({ label, active, onClick }) {
         fontWeight: 600,
         letterSpacing: '0.02em',
         padding: '9px 18px',
-        borderRadius: 999,
+        borderRadius: 0,
         border: active ? '1px solid #C9A84C' : '1px solid rgba(255,255,255,0.16)',
         background: active ? '#C9A84C' : 'rgba(8,18,32,0.5)',
         color: active ? '#081220' : 'rgba(255,255,255,0.72)',
@@ -161,7 +161,7 @@ export default function Blog() {
                 color: '#fff',
                 background: 'rgba(8,18,32,0.7)',
                 border: '1px solid rgba(255,255,255,0.14)',
-                borderRadius: 999,
+                borderRadius: 0,
                 outline: 'none',
               }}
             />
@@ -201,7 +201,7 @@ export default function Blog() {
                   fontWeight: 700,
                   letterSpacing: '0.02em',
                   padding: '15px 34px',
-                  borderRadius: 999,
+                  borderRadius: 0,
                   border: '1px solid rgba(201,168,76,0.6)',
                   background: 'transparent',
                   color: '#C9A84C',

@@ -123,15 +123,6 @@ section, footer {
   .resources-grid  { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Testimonials page: editorial alternating photo / story rows */
-.testimonial-grid { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; }
-@media (min-width: 900px) {
-  .testimonial-grid            { grid-template-columns: 0.82fr 1.18fr; gap: 52px; }
-  .testimonial-grid.media-right { grid-template-columns: 1.18fr 0.82fr; }
-  .testimonial-grid.media-right .t-media { order: 2; }
-  .testimonial-grid.media-right .t-story { order: 1; }
-}
-
 /* Process page: stepper spine + scrolling panels, week calendar */
 .process-grid { display: flex; gap: 48px; }
 .process-preview-grid { grid-template-columns: 1fr; }
