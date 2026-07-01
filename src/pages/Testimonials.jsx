@@ -1,10 +1,11 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
 import useDocumentMeta from '../hooks/useDocumentMeta'
 import PageHeader from '../components/ui/PageHeader'
 import CTABanner from '../components/ui/CTABanner'
 import { useTestimonials } from '../lib/content'
 
 const WRAP = { maxWidth: 860, margin: '0 auto', padding: '0 32px' }
+const HEADER_H = 72 // fixed site nav height
 
 // Square nav button, in keeping with the site's sharp-cornered geometry.
 function ArrowButton({ dir, onClick }) {
@@ -47,18 +48,82 @@ export default function Testimonials() {
   const count = testimonials.length
   const [index, setIndex] = useState(0)
 
+  // The site sets html{overflow-x:hidden}, which makes the document a scroll
+  // container and breaks position:sticky. So the control bar is position:fixed
+  // and we reveal it once the reader scrolls past the hero — detected by a
+  // sentinel crossing the header line.
+  const [stuck, setStuck] = useState(false)
+  const sentinelRef = useRef(null)
+  const barRef = useRef(null)
+  const contentRef = useRef(null)
+
+  useEffect(() => {
+    const el = sentinelRef.current
+    if (!el || typeof IntersectionObserver === 'undefined') return
+    const io = new IntersectionObserver(
+      ([entry]) => setStuck(!entry.isIntersecting),
+      { rootMargin: `-${HEADER_H}px 0px 0px 0px`, threshold: 0 }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
+  // Jump the reader to the start of the story, just below the header + bar.
+  // Force behavior:auto because html{scroll-behavior:smooth} would otherwise
+  // animate (and swallow) this jump.
+  const scrollToStart = useCallback(() => {
+    const content = contentRef.current
+    if (!content) return
+    const barH = barRef.current?.offsetHeight || 74
+    const top = content.getBoundingClientRect().top + window.scrollY - HEADER_H - barH
+    const html = document.documentElement
+    const prev = html.style.scrollBehavior
+    html.style.scrollBehavior = 'auto'
+    window.scrollTo(0, Math.max(0, top))
+    html.style.scrollBehavior = prev
+  }, [])
+
   const go = useCallback((next) => {
     if (count === 0) return
     setIndex((i) => (i + next + count) % count)
-    window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [count])
+    scrollToStart()
+  }, [count, scrollToStart])
   const select = useCallback((i) => {
     setIndex(i)
-    window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [])
+    scrollToStart()
+  }, [scrollToStart])
 
   if (count === 0) return null
   const t = testimonials[index]
+
+  const Controls = (
+    <div style={{ ...WRAP, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, padding: '14px 32px' }}>
+      <ArrowButton dir="prev" onClick={() => go(-1)} />
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
+        {testimonials.map((item, i) => (
+          <button
+            key={item.name}
+            type="button"
+            onClick={() => select(i)}
+            aria-label={`Go to ${item.name}'s testimonial`}
+            aria-current={i === index}
+            style={{
+              appearance: 'none',
+              cursor: 'pointer',
+              width: i === index ? 26 : 10,
+              height: 10,
+              padding: 0,
+              borderRadius: 0,
+              border: 'none',
+              background: i === index ? '#C9A84C' : 'rgba(255,255,255,0.22)',
+              transition: 'width 0.22s ease, background 0.22s ease',
+            }}
+          />
+        ))}
+      </div>
+      <ArrowButton dir="next" onClick={() => go(1)} />
+    </div>
+  )
 
   return (
     <>
@@ -70,40 +135,36 @@ export default function Testimonials() {
         photo="/photos/finish-line-celebration.jpg"
       />
 
-      {/* Sticky control bar — stays under the fixed 72px header so you can jump
-          between stories no matter how far down a long testimonial you've read. */}
-      <div style={{ position: 'sticky', top: 72, zIndex: 20, background: 'rgba(8,24,35,0.96)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-        <div style={{ ...WRAP, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, padding: '14px 32px' }}>
-          <ArrowButton dir="prev" onClick={() => go(-1)} />
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
-            {testimonials.map((item, i) => (
-              <button
-                key={item.name}
-                type="button"
-                onClick={() => select(i)}
-                aria-label={`Go to ${item.name}'s testimonial`}
-                aria-current={i === index}
-                style={{
-                  appearance: 'none',
-                  cursor: 'pointer',
-                  width: i === index ? 26 : 10,
-                  height: 10,
-                  padding: 0,
-                  borderRadius: 0,
-                  border: 'none',
-                  background: i === index ? '#C9A84C' : 'rgba(255,255,255,0.22)',
-                  transition: 'width 0.22s ease, background 0.22s ease',
-                }}
-              />
-            ))}
-          </div>
-
-          <ArrowButton dir="next" onClick={() => go(1)} />
-        </div>
+      {/* Fixed control bar — slides in under the header once you scroll past the
+          hero, so it stays with you no matter how far down a story you read. */}
+      <div
+        ref={barRef}
+        style={{
+          position: 'fixed',
+          top: HEADER_H,
+          left: 0,
+          right: 0,
+          zIndex: 20,
+          background: 'rgba(8,24,35,0.96)',
+          backdropFilter: 'blur(14px)',
+          WebkitBackdropFilter: 'blur(14px)',
+          borderBottom: '1px solid rgba(255,255,255,0.08)',
+          transform: stuck ? 'translateY(0)' : 'translateY(-100%)',
+          opacity: stuck ? 1 : 0,
+          pointerEvents: stuck ? 'auto' : 'none',
+          transition: 'transform 0.25s ease, opacity 0.25s ease',
+        }}
+      >
+        {Controls}
       </div>
 
-      <section style={{ padding: '56px 0 90px' }}>
+      {/* Sentinel: when this scrolls above the header, the fixed bar appears. */}
+      <div ref={sentinelRef} aria-hidden="true" />
+
+      {/* Inline controls at the top of the content, visible before you scroll. */}
+      <div style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>{Controls}</div>
+
+      <section ref={contentRef} style={{ padding: '48px 0 90px' }}>
         <div style={WRAP}>
           {/* Attribution */}
           <div style={{ marginBottom: 30 }}>
