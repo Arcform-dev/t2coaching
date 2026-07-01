@@ -12,7 +12,9 @@ const publicDir = path.join(root, 'public')
 
 const SITE_URL = 'https://t2coaching.com'
 const SITE_NAME = 't2coaching'
-const DEFAULT_IMAGE = `${SITE_URL}/wendy-hero.jpg`
+// Landscape 1200x630 share card — renders as a full-size preview in iMessage,
+// Facebook, LinkedIn, X, etc. (the old hero was portrait and got thumbnailed).
+const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`
 const DEFAULT_IMAGE_ALT = 'Coach Wendy Mader, 2008 Kona Ironman World Champion and founder of t2coaching'
 // Regenerated on every build so static pages report an accurate <lastmod>.
 const BUILD_LASTMOD = new Date().toISOString().slice(0, 10)
@@ -197,8 +199,15 @@ function replaceOrInsertHead(html, route, schemas) {
   const url = absoluteUrl(route.path)
   const image = route.image || DEFAULT_IMAGE
   // A post with its own cover describes it with the post title; everything else
-  // falls back to the default hero alt.
-  const imageAlt = route.image && route.post ? fixText(route.post.title) : DEFAULT_IMAGE_ALT
+  // falls back to the default share-card alt.
+  const usesCustomCover = Boolean(route.image && route.post)
+  const imageAlt = usesCustomCover ? fixText(route.post.title) : DEFAULT_IMAGE_ALT
+  // We only know the dimensions of the default 1200x630 card. For a post's own
+  // cover (unknown size) strip the width/height hints rather than assert wrong
+  // ones — platforms will read the real dimensions from the image itself.
+  const dimensionTag = (prop, value) => usesCustomCover
+    ? ''
+    : `<meta property="og:image:${prop}" content="${value}" />`
   const replacements = [
     [/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(route.title)}</title>`],
     [/<meta name="description" content="[^"]*"\s*\/?>/, `<meta name="description" content="${escapeHtml(route.description)}" />`],
@@ -208,6 +217,9 @@ function replaceOrInsertHead(html, route, schemas) {
     [/<meta property="og:type" content="[^"]*"\s*\/?>/, `<meta property="og:type" content="${route.type || 'website'}" />`],
     [/<meta property="og:url" content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${url}" />`],
     [/<meta property="og:image" content="[^"]*"\s*\/?>/, `<meta property="og:image" content="${image}" />`],
+    [/<meta property="og:image:width" content="[^"]*"\s*\/?>/, dimensionTag('width', 1200)],
+    [/<meta property="og:image:height" content="[^"]*"\s*\/?>/, dimensionTag('height', 630)],
+    [/<meta property="og:image:type" content="[^"]*"\s*\/?>/, usesCustomCover ? '' : '<meta property="og:image:type" content="image/jpeg" />'],
     [/<meta property="og:image:alt" content="[^"]*"\s*\/?>/, `<meta property="og:image:alt" content="${escapeHtml(imageAlt)}" />`],
     [/<meta name="twitter:title" content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="${escapeHtml(route.title)}" />`],
     [/<meta name="twitter:description" content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${escapeHtml(route.description)}" />`],
