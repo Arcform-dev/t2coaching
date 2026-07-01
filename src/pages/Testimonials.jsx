@@ -60,10 +60,17 @@ export default function Testimonials() {
   const testimonials = useTestimonials() || []
   const count = testimonials.length
   const [index, setIndex] = useState(0)
+  const [expanded, setExpanded] = useState(false)
 
+  // Changing slides always collapses back to the quote.
+  const select = useCallback((i) => {
+    setIndex(i)
+    setExpanded(false)
+  }, [])
   const go = useCallback((next) => {
     if (count === 0) return
     setIndex((i) => (i + next + count) % count)
+    setExpanded(false)
   }, [count])
 
   if (count === 0) return null
@@ -101,7 +108,47 @@ export default function Testimonials() {
                   <div style={{ width: 40, height: 2, background: 'rgba(201,168,76,0.6)', margin: '0 auto 16px' }} />
                   <p style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 20, color: '#fff', fontWeight: 600 }}>{t.name}</p>
                   {t.tag && <p style={{ fontSize: 13, color: '#7EC8E3', fontWeight: 500, marginTop: 5, letterSpacing: '0.02em' }}>{t.tag}</p>}
+
+                  {t.full && t.full.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => setExpanded((v) => !v)}
+                      aria-expanded={expanded}
+                      style={{
+                        appearance: 'none',
+                        cursor: 'pointer',
+                        marginTop: 22,
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 8,
+                        fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif",
+                        fontSize: 14,
+                        fontWeight: 700,
+                        letterSpacing: '0.02em',
+                        padding: '11px 22px',
+                        borderRadius: 0,
+                        border: '1px solid rgba(201,168,76,0.6)',
+                        background: 'transparent',
+                        color: '#C9A84C',
+                        transition: 'border-color 0.18s ease',
+                      }}
+                    >
+                      {expanded ? 'Hide full testimonial' : 'Read full testimonial'}
+                      <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" style={{ transform: expanded ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s ease' }}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                  )}
                 </div>
+
+                {/* Full story */}
+                {expanded && t.full && (
+                  <div style={{ marginTop: 30, paddingTop: 30, borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', flexDirection: 'column', gap: 16, textAlign: 'left' }}>
+                    {t.full.map((p, i) => (
+                      <p key={i} style={{ fontSize: 16, color: 'rgba(255,255,255,0.74)', lineHeight: 1.78 }}>{p}</p>
+                    ))}
+                  </div>
+                )}
               </div>
             </GlassCard>
           </Reveal>
@@ -116,7 +163,7 @@ export default function Testimonials() {
                 <button
                   key={item.name}
                   type="button"
-                  onClick={() => setIndex(i)}
+                  onClick={() => select(i)}
                   aria-label={`Go to testimonial ${i + 1}`}
                   aria-current={i === index}
                   style={{
