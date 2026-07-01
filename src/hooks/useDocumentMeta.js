@@ -46,6 +46,7 @@ export default function useDocumentMeta(title, description = DEFAULT_DESCRIPTION
     const fullTitle = title ? `${title} - ${BASE_TITLE}` : `${BASE_TITLE} - Coached by a Kona Champion`
     const url = options.canonical || `${SITE_URL}${canonicalPath(window.location.pathname)}`
     const image = options.image || `${SITE_URL}/wendy-hero.jpg`
+    const imageAlt = options.imageAlt || 'Coach Wendy Mader, 2008 Kona Ironman World Champion and founder of t2coaching'
     // Force noindex on any non-production host, regardless of the page's own setting.
     const robots = !isProductionHost() ? 'noindex,follow' : options.robots || 'index,follow'
 
@@ -57,10 +58,12 @@ export default function useDocumentMeta(title, description = DEFAULT_DESCRIPTION
     upsertMeta('meta[property="og:type"]', { property: 'og:type', content: options.type || 'website' })
     upsertMeta('meta[property="og:url"]', { property: 'og:url', content: url })
     upsertMeta('meta[property="og:image"]', { property: 'og:image', content: image })
+    upsertMeta('meta[property="og:image:alt"]', { property: 'og:image:alt', content: imageAlt })
     upsertMeta('meta[name="twitter:card"]', { name: 'twitter:card', content: 'summary_large_image' })
     upsertMeta('meta[name="twitter:title"]', { name: 'twitter:title', content: fullTitle })
     upsertMeta('meta[name="twitter:description"]', { name: 'twitter:description', content: description })
     upsertMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: image })
+    upsertMeta('meta[name="twitter:image:alt"]', { name: 'twitter:image:alt', content: imageAlt })
     upsertLink('canonical', url)
-  }, [title, description, options.canonical, options.image, options.robots, options.type])
+  }, [title, description, options.canonical, options.image, options.imageAlt, options.robots, options.type])
 }

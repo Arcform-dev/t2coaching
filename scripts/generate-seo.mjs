@@ -13,7 +13,9 @@ const publicDir = path.join(root, 'public')
 const SITE_URL = 'https://t2coaching.com'
 const SITE_NAME = 't2coaching'
 const DEFAULT_IMAGE = `${SITE_URL}/wendy-hero.jpg`
-const BUILD_LASTMOD = '2026-06-29'
+const DEFAULT_IMAGE_ALT = 'Coach Wendy Mader, 2008 Kona Ironman World Champion and founder of t2coaching'
+// Regenerated on every build so static pages report an accurate <lastmod>.
+const BUILD_LASTMOD = new Date().toISOString().slice(0, 10)
 
 const STATIC_ROUTES = [
   ['/', 't2coaching - Coached by a Kona Champion', 'Personalized triathlon, swim & run coaching by Kona Ironman World Champion Wendy Mader. 30+ years racing, 25+ years coaching, and plans built around your life.', 'World Champion Level Coaching'],
@@ -89,6 +91,13 @@ function postLastmod(post) {
   return /^\d{4}-\d{2}-\d{2}$/.test(post.date || '') ? post.date : BUILD_LASTMOD
 }
 
+// Prefer an explicit modified/updated date when a post has one, so dateModified
+// reflects real edits rather than always mirroring datePublished.
+function postDateModified(post) {
+  const modified = post.modified || post.updated || post.dateModified
+  return /^\d{4}-\d{2}-\d{2}$/.test(modified || '') ? modified : postLastmod(post)
+}
+
 function webPageSchema(route) {
   return {
     '@context': 'https://schema.org',
@@ -114,10 +123,25 @@ function blogPostingSchema(post) {
     description: postDescription(post),
     image: post.cover ? absoluteUrl(post.cover) : DEFAULT_IMAGE,
     datePublished: postLastmod(post),
-    dateModified: postLastmod(post),
+    dateModified: postDateModified(post),
     author: { '@id': `${SITE_URL}/#wendy`, name: 'Wendy Mader' },
     publisher: { '@id': `${SITE_URL}/#business`, name: SITE_NAME },
     inLanguage: 'en-US',
+  }
+}
+
+// Home › Blog › Post breadcrumb so the SERP can show the trail and search
+// engines understand each post's place in the hierarchy.
+function postBreadcrumbSchema(post) {
+  const url = absoluteUrl(`/blog/${post.slug}`)
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog` },
+      { '@type': 'ListItem', position: 3, name: fixText(post.title), item: url },
+    ],
   }
 }
 
@@ -172,6 +196,9 @@ function extraSchemas(route) {
 function replaceOrInsertHead(html, route, schemas) {
   const url = absoluteUrl(route.path)
   const image = route.image || DEFAULT_IMAGE
+  // A post with its own cover describes it with the post title; everything else
+  // falls back to the default hero alt.
+  const imageAlt = route.image && route.post ? fixText(route.post.title) : DEFAULT_IMAGE_ALT
   const replacements = [
     [/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(route.title)}</title>`],
     [/<meta name="description" content="[^"]*"\s*\/?>/, `<meta name="description" content="${escapeHtml(route.description)}" />`],
@@ -181,9 +208,11 @@ function replaceOrInsertHead(html, route, schemas) {
     [/<meta property="og:type" content="[^"]*"\s*\/?>/, `<meta property="og:type" content="${route.type || 'website'}" />`],
     [/<meta property="og:url" content="[^"]*"\s*\/?>/, `<meta property="og:url" content="${url}" />`],
     [/<meta property="og:image" content="[^"]*"\s*\/?>/, `<meta property="og:image" content="${image}" />`],
+    [/<meta property="og:image:alt" content="[^"]*"\s*\/?>/, `<meta property="og:image:alt" content="${escapeHtml(imageAlt)}" />`],
     [/<meta name="twitter:title" content="[^"]*"\s*\/?>/, `<meta name="twitter:title" content="${escapeHtml(route.title)}" />`],
     [/<meta name="twitter:description" content="[^"]*"\s*\/?>/, `<meta name="twitter:description" content="${escapeHtml(route.description)}" />`],
     [/<meta name="twitter:image" content="[^"]*"\s*\/?>/, `<meta name="twitter:image" content="${image}" />`],
+    [/<meta name="twitter:image:alt" content="[^"]*"\s*\/?>/, `<meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}" />`],
     [/<link rel="canonical" href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${url}" />`],
   ]
 
@@ -274,7 +303,7 @@ const routes = [...STATIC_ROUTES, ...postRoutes]
 
 routes.forEach((route) => {
   const schemas = route.post
-    ? [blogPostingSchema(route.post)]
+    ? [blogPostingSchema(route.post), postBreadcrumbSchema(route.post)]
     : [webPageSchema(route), ...extraSchemas(route)]
   writeRoute(template, route, schemas)
 })
