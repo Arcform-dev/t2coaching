@@ -21,7 +21,9 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  /* `clip` (not `hidden`) prevents horizontal scroll without turning the
+     document into a scroll container — `hidden` here breaks position:sticky. */
+  overflow-x: clip;
 }
 
 body {
@@ -30,7 +32,7 @@ body {
      Content sections are transparent and sit on this; navy bands provide rhythm. */
   background: #1A6B8A;
   color: #ffffff;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
