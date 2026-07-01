@@ -16,8 +16,8 @@ const DEFAULT_IMAGE = `${SITE_URL}/wendy-hero.jpg`
 const BUILD_LASTMOD = '2026-06-29'
 
 const STATIC_ROUTES = [
-  ['/', 't2coaching - Coached by a Kona Champion', 'Personalized triathlon, swim & run coaching by Kona Ironman World Champion Wendy Mader. 30+ years racing, 26 years coaching, and plans built around your life.', 'World Champion Level Coaching'],
-  ['/about', 'About - t2coaching', 'Meet Wendy Mader, Kona Ironman World Champion and founder of t2coaching, with 30+ years of racing and 26 years of coaching experience.', "I've been where you are, and I know the way forward."],
+  ['/', 't2coaching - Coached by a Kona Champion', 'Personalized triathlon, swim & run coaching by Kona Ironman World Champion Wendy Mader. 30+ years racing, 25+ years coaching, and plans built around your life.', 'World Champion Level Coaching'],
+  ['/about', 'About - t2coaching', 'Meet Wendy Mader, Kona Ironman World Champion and founder of t2coaching, with 30+ years of racing and 25+ years of coaching experience.', "I've been where you are, and I know the way forward."],
   ['/services', 'Services - t2coaching', 'Personalized triathlon, swim, run and endurance coaching options from Coach Wendy Mader, built around your goals, schedule and experience.', 'Coaching built for your life.'],
   ['/process', 'Process - t2coaching', 'See how t2coaching works from the first discovery call through assessment, planning, training, feedback and race-day execution.', "What it's like to train with Wendy."],
   ['/testimonials', 'Testimonials - t2coaching', 'Read athlete stories and testimonials from triathletes, runners and swimmers coached by Wendy Mader and t2coaching.', 'Athletes who crossed their finish lines.'],

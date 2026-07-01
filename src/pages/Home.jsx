@@ -12,7 +12,7 @@ import CTA from '../components/CTA'
 export default function Home() {
   useDocumentMeta(
     null,
-    'Personalized triathlon, swim & run coaching by Kona Ironman World Champion Wendy Mader. 30+ years racing, 26 years coaching, and plans built around your life.'
+    'Personalized triathlon, swim & run coaching by Kona Ironman World Champion Wendy Mader. 30+ years racing, 25+ years coaching, and plans built around your life.'
   )
   return (
     <>

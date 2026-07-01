@@ -21,7 +21,7 @@ export const RACE_RESULTS = [
 export const COACHING_CREDENTIALS = [
   'Ironman U Certified Coach',
   "Master's Degree in Wellness / Exercise & Sport Science",
-  '26 years of professional coaching',
+  '25+ years of professional coaching',
   'Masters Swim Coach & adult swim-technique specialist',
   'TRX, Insanity & ACE Certified Personal Trainer',
   'Guided Turkey’s first-ever Kona qualifier',

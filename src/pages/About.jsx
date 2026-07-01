@@ -44,7 +44,7 @@ export default function About() {
         eyebrow="About Coach Wendy"
         title="I've been where you are,"
         titleAccent="and where you want to go."
-        subtitle="I went from a Division I swimmer to a Kona Ironman World Champion, with over three decades of racing experience and 26 years of coaching behind me."
+        subtitle="I went from a Division I swimmer to a Kona Ironman World Champion, with over three decades of racing experience and 25+ years of coaching behind me."
         photo="/photos/kona-world-championship-finish.jpg"
       />
 

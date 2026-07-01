@@ -81,7 +81,7 @@ export default function About() {
               {[
                 "Wendy Mader coaches from inside the sport. She's a D1 collegiate swimmer turned Kona Ironman World Champion, the 2008 Overall Amateur Winner, and a 21-time Ironman finisher who has spent more than 30 years racing at the highest level.",
                 "Her approach is simple: good coaching meets you where you are. Whether you're juggling family and a full-time job, learning to swim for your first Ironman, or chasing a Kona slot, Wendy designs training that fits the life you already have.",
-                "Based in Marietta, Georgia, she coaches athletes worldwide over Zoom and in person at races. With a Master's in Exercise & Sport Science and 26 years of coaching, she still swims, bikes, and runs right alongside the athletes she guides.",
+                "Based in Marietta, Georgia, she coaches athletes worldwide over Zoom and in person at races. With a Master's in Exercise & Sport Science and 25+ years of coaching, she still swims, bikes, and runs right alongside the athletes she guides.",
               ].map((text, i) => (
                 <p key={i} style={{ fontSize: 16, color: 'rgba(13,43,62,0.74)', lineHeight: 1.72 }}>{text}</p>
               ))}
