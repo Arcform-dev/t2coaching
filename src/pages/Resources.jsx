@@ -116,7 +116,7 @@ function GuideSignup() {
 }
 
 export default function Resources() {
-  useDocumentMeta('Free Resources', 'Free training resources from Coach Wendy Mader: articles, videos, her WSJ feature, and a free insider guide.')
+  useDocumentMeta('Free Endurance Training Resources', 'Free training resources from Coach Wendy Mader: articles, videos, her WSJ feature, and a free insider guide.')
 
   return (
     <>

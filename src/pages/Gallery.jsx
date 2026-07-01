@@ -8,7 +8,7 @@ import { useGallery } from '../lib/content'
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 
 export default function Gallery() {
-  useDocumentMeta('Gallery', 'Photos from three decades of racing and coaching with Wendy Mader. Kona, Ironman Boulder, open water, trail, and more.')
+  useDocumentMeta('Race & Coaching Photo Gallery', 'Photos from three decades of racing and coaching with Wendy Mader. Kona, Ironman Boulder, open water, trail, and more.')
   const photos = useGallery() || []
   const [active, setActive] = useState(null)
   const overlayRef = useRef(null)

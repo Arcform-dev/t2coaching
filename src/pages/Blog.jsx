@@ -97,7 +97,7 @@ function Chip({ label, active, onClick }) {
 }
 
 export default function Blog() {
-  useDocumentMeta('Blog', 'Training tips, swim technique, race-day nutrition and lessons from 30+ years of racing, from Coach Wendy Mader.')
+  useDocumentMeta('Triathlon & Endurance Training Blog', 'Training tips, swim technique, race-day nutrition and lessons from 30+ years of racing, from Coach Wendy Mader.')
 
   const categories = useMemo(() => ['All', ...topCategories(POSTS)], [])
   const [activeCategory, setActiveCategory] = useState('All')

@@ -20,18 +20,18 @@ const DEFAULT_IMAGE_ALT = 'Coach Wendy Mader, 2008 Kona Ironman World Champion a
 const BUILD_LASTMOD = new Date().toISOString().slice(0, 10)
 
 const STATIC_ROUTES = [
-  ['/', 't2coaching - Coached by a Kona Champion', 'Personalized triathlon, swim & run coaching by Kona Ironman World Champion Wendy Mader. 30+ years racing, 25+ years coaching, and plans built around your life.', 'World Champion Level Coaching'],
-  ['/about', 'About - t2coaching', 'Meet Wendy Mader, Kona Ironman World Champion and founder of t2coaching, with 30+ years of racing and 25+ years of coaching experience.', "I've been where you are, and I know the way forward."],
-  ['/services', 'Services - t2coaching', 'Personalized triathlon, swim, run and endurance coaching options from Coach Wendy Mader, built around your goals, schedule and experience.', 'Coaching built for your life.'],
-  ['/process', 'Process - t2coaching', 'See how t2coaching works from the first discovery call through assessment, planning, training, feedback and race-day execution.', "What it's like to train with Wendy."],
-  ['/testimonials', 'Testimonials - t2coaching', 'Read athlete stories and testimonials from triathletes, runners and swimmers coached by Wendy Mader and t2coaching.', 'Athletes who crossed their finish lines.'],
-  ['/gallery', 'Gallery - t2coaching', 'Photos from three decades of racing and coaching with Wendy Mader, including Kona, Ironman, open water, trails and finish lines.', 'Thirty years of racing and coaching.'],
-  ['/blog', 'Blog - t2coaching', 'Training tips, swim technique, race-day nutrition and lessons from 30+ years of racing and coaching by Wendy Mader.', 'Lessons from three decades in the sport.'],
-  ['/resources', 'Free Resources - t2coaching', 'Free endurance training resources from Coach Wendy Mader, including articles, videos, a Wall Street Journal feature and an insider guide.', 'Learn with Wendy.'],
-  ['/contact', 'Contact - t2coaching', 'Contact Coach Wendy Mader to ask a coaching question, book a free call or start a personalized endurance training plan.', "Let's talk about your goals."],
-  ['/privacy', 'Privacy - t2coaching', 'Privacy details for t2coaching, including what information the site collects and how coaching inquiries are handled.', 'Privacy policy.'],
-  ['/disclaimer', 'Disclaimer - t2coaching', 'Health, fitness and liability disclaimer for t2coaching, LLC. Please read before beginning any training program.', 'Health & liability disclaimer.'],
-  ['/terms', 'Terms of Use - t2coaching', 'Terms of use for the t2coaching, LLC website.', 'Terms of use.'],
+  ['/', 't2coaching – Triathlon & Endurance Coach | Kona Champion', 'Personalized triathlon, swim & run coaching by Kona Ironman World Champion Wendy Mader. 30+ years racing, 25+ years coaching, and plans built around your life.', 'World Champion Level Coaching'],
+  ['/about', 'Meet Coach Wendy Mader, Kona Champion – t2coaching', 'Meet Wendy Mader, Kona Ironman World Champion and founder of t2coaching, with 30+ years of racing and 25+ years of coaching experience.', "I've been where you are, and I know the way forward."],
+  ['/services', 'Triathlon, Swim, Bike & Run Coaching – t2coaching', 'Personalized triathlon, swim, run and endurance coaching options from Coach Wendy Mader, built around your goals, schedule and experience.', 'Coaching built for your life.'],
+  ['/process', 'How Triathlon Coaching Works with Wendy – t2coaching', 'See how t2coaching works from the first discovery call through assessment, planning, training, feedback and race-day execution.', "What it's like to train with Wendy."],
+  ['/testimonials', 'Athlete Reviews & Testimonials – t2coaching', 'Read athlete stories and testimonials from triathletes, runners and swimmers coached by Wendy Mader and t2coaching.', 'Athletes who crossed their finish lines.'],
+  ['/gallery', 'Race & Coaching Photo Gallery – t2coaching', 'Photos from three decades of racing and coaching with Wendy Mader, including Kona, Ironman, open water, trails and finish lines.', 'Thirty years of racing and coaching.'],
+  ['/blog', 'Triathlon & Endurance Training Blog – t2coaching', 'Training tips, swim technique, race-day nutrition and lessons from 30+ years of racing and coaching by Wendy Mader.', 'Lessons from three decades in the sport.'],
+  ['/resources', 'Free Endurance Training Resources – t2coaching', 'Free endurance training resources from Coach Wendy Mader, including articles, videos, a Wall Street Journal feature and an insider guide.', 'Learn with Wendy.'],
+  ['/contact', 'Contact Coach Wendy Mader – t2coaching', 'Contact Coach Wendy Mader to ask a coaching question, book a free call or start a personalized endurance training plan.', "Let's talk about your goals."],
+  ['/privacy', 'Privacy Policy – t2coaching', 'Privacy details for t2coaching, including what information the site collects and how coaching inquiries are handled.', 'Privacy policy.'],
+  ['/disclaimer', 'Disclaimer – t2coaching', 'Health, fitness and liability disclaimer for t2coaching, LLC. Please read before beginning any training program.', 'Health & liability disclaimer.'],
+  ['/terms', 'Terms of Use – t2coaching', 'Terms of use for the t2coaching, LLC website.', 'Terms of use.'],
 ].map(([routePath, title, description, h1]) => ({
   path: routePath,
   title,
@@ -285,7 +285,7 @@ function redirectFile() {
 function notFoundHtml(template) {
   const route = {
     path: '/404',
-    title: 'Page Not Found - t2coaching',
+    title: 'Page Not Found – t2coaching',
     description: 'The requested t2coaching page could not be found.',
     robots: 'noindex,follow',
     h1: 'Page not found',
@@ -302,7 +302,7 @@ if (!fs.existsSync(distDir)) {
 const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8')
 const postRoutes = POSTS.map((post) => ({
   path: `/blog/${post.slug}`,
-  title: `${fixText(post.title)} - ${SITE_NAME}`,
+  title: `${fixText(post.title)} – ${SITE_NAME}`,
   description: postDescription(post),
   image: post.cover ? absoluteUrl(post.cover) : DEFAULT_IMAGE,
   type: 'article',

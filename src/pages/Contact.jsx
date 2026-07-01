@@ -22,7 +22,7 @@ const HEARD = ['Google search', 'Instagram', 'Facebook', 'YouTube', 'Referral fr
 const EMPTY = { name: '', email: '', phone: '', goal: '', experience: '', start: '', heard: '', message: '' }
 
 export default function Contact() {
-  useDocumentMeta('Contact', `Get in touch with Coach Wendy Mader. Email ${CONTACT.email} or send an inquiry to start your coaching journey.`)
+  useDocumentMeta('Contact Coach Wendy Mader', `Get in touch with Coach Wendy Mader. Email ${CONTACT.email} or send an inquiry to start your coaching journey.`)
 
   const [form, setForm] = useState(EMPTY)
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))

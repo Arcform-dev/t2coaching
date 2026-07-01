@@ -294,7 +294,7 @@ function StepVisual({ index }) {
 
 export default function Process() {
   useDocumentMeta(
-    "What It's Like to Work With Wendy",
+    'How Triathlon Coaching Works with Wendy',
     'A look at the full t2coaching journey, from intake and your custom 48-hour plan to weekly adjustments and race day. Personal, dynamic coaching built around your life.'
   )
 

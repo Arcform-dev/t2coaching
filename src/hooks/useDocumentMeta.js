@@ -43,9 +43,9 @@ function upsertLink(rel, href) {
 // Per-route SEO metadata for the client-rendered app.
 export default function useDocumentMeta(title, description = DEFAULT_DESCRIPTION, options = {}) {
   useEffect(() => {
-    const fullTitle = title ? `${title} - ${BASE_TITLE}` : `${BASE_TITLE} - Coached by a Kona Champion`
+    const fullTitle = title ? `${title} – ${BASE_TITLE}` : `${BASE_TITLE} – Triathlon & Endurance Coach | Kona Champion`
     const url = options.canonical || `${SITE_URL}${canonicalPath(window.location.pathname)}`
-    const image = options.image || `${SITE_URL}/wendy-hero.jpg`
+    const image = options.image || `${SITE_URL}/og-image.jpg`
     const imageAlt = options.imageAlt || 'Coach Wendy Mader, 2008 Kona Ironman World Champion and founder of t2coaching'
     // Force noindex on any non-production host, regardless of the page's own setting.
     const robots = !isProductionHost() ? 'noindex,follow' : options.robots || 'index,follow'

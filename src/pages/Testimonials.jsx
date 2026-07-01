@@ -40,7 +40,7 @@ function ArrowButton({ dir, onClick }) {
 
 export default function Testimonials() {
   useDocumentMeta(
-    'Testimonials',
+    'Athlete Reviews & Testimonials',
     'Real stories from the athletes Coach Wendy Mader has guided, from a 66-year-old Ironman finisher to lifelong swimmers and trail runners.'
   )
 

@@ -77,7 +77,7 @@ function ServiceCard({ s }) {
 
 export default function Services() {
   useDocumentMeta(
-    'Services',
+    'Triathlon, Swim, Bike & Run Coaching',
     'Personalized triathlon coaching, private swim, bike & run lessons, and 12-week custom training plans from Kona Ironman World Champion Wendy Mader. Start with a free 15-minute discovery call.'
   )
 

@@ -34,7 +34,7 @@ function CredColumn({ title, items, accent }) {
 
 export default function About() {
   useDocumentMeta(
-    'About Coach Wendy',
+    'Meet Coach Wendy Mader, Kona Champion',
     "Wendy Mader is a Division I swimmer, 2008 Kona Ironman World Champion, and the founder of t2coaching. Here's her story, coaching philosophy, and credentials."
   )
 
