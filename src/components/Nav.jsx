@@ -127,10 +127,12 @@ export default function Nav() {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — fills the screen below the fixed 72px header and scrolls
+          if the links + CTA are taller than the viewport, so nothing clips. */}
       <div id={menuId} aria-hidden={!open} style={{
-        overflow: 'hidden',
-        maxHeight: open ? 460 : 0,
+        overflowY: open ? 'auto' : 'hidden',
+        WebkitOverflowScrolling: 'touch',
+        maxHeight: open ? 'calc(100dvh - 72px)' : 0,
         visibility: open ? 'visible' : 'hidden',
         transition: 'max-height 0.3s ease',
         background: 'rgba(8,24,35,0.98)',
