@@ -69,7 +69,7 @@ export const STORY = [
 export const NAME_MEANING = {
   title: 'Why "t2"?',
   body:
-    "In triathlon, T2 is the second transition. It's the moment you rack your bike, change into your running gear, and head out for the finish. That's what coaching with me is about: transitioning you to the next level. I help you make the move with guidance that's personal and built on real experience, so you reach your full potential without giving up your family, your time, or your long-term health.",
+    "In triathlon, T2 is the second transition. It's the moment you rack your bike, change into your running gear, and head out for the finish. That's what coaching with me is about: transitioning you to the next level. I help you make the move with guidance that's personal and built on experience, so you reach your full potential without giving up your family, your time, or your long-term health.",
 }
 
 // Coaching philosophy pillars (About + Services)
@@ -82,7 +82,7 @@ export const PHILOSOPHY = [
   {
     title: 'Relationship over programming',
     body:
-      "I'm in the relationship business. The magic isn't the plan itself. It's the two of us working together, adjusting as we go, and finding what actually works for you. That's the difference between real coaching and handing someone a program.",
+      "I'm in the relationship business. The magic isn't the plan itself. It's the two of us working together, adjusting as we go, and finding what actually works for you. That's the difference between coaching and handing someone a program.",
   },
   {
     title: 'Your goals, not mine',
@@ -92,7 +92,7 @@ export const PHILOSOPHY = [
   {
     title: "It's in the details",
     body:
-      'Every workout has a purpose. The type, the duration, and the intensity all matter. Ask me "why" any time. When you understand the reason behind a session, you do it with intention, and that produces real results.',
+      'Every workout has a purpose. The type, the duration, and the intensity all matter. Ask me "why" any time. When you understand the reason behind a session, you do it with intention, and that produces results.',
   },
   {
     title: 'Communication is a two-way street',

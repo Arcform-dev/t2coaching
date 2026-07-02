@@ -82,7 +82,7 @@ export default function CTA() {
             color: 'rgba(255,255,255,0.82)',
             maxWidth: 480, lineHeight: 1.68,
           }}>
-            Thirty minutes with Wendy can change the shape of your season. It is a real conversation about where you are now and where you want to go.
+            Thirty minutes with Wendy can change the shape of your season. It is an honest conversation about where you are now and where you want to go.
           </p>
 
           {/* CTA */}

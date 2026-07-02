@@ -92,7 +92,7 @@ function Stepper({ steps, active, onSelect }) {
 function IntakeCard() {
   const rows = [
     { tone: SKY, title: 'Fitness history', detail: 'Years training, recent races, current volume' },
-    { tone: SKY, title: 'Life constraints', detail: 'Work, family, travel, sleep, real hours per week' },
+    { tone: SKY, title: 'Life constraints', detail: 'Work, family, travel, sleep, actual hours per week' },
     { tone: SKY, title: 'Goal race', detail: 'Distance, date, terrain, and your why' },
     { tone: GOLD, title: 'Limiters', detail: 'The weak link quietly capping your results' },
   ]

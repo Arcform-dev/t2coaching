@@ -8,15 +8,15 @@ export const PROCESS_STEPS = [
   },
   {
     n: '02', title: 'Custom Plan Build', label: 'Yours within 48 hours',
-    body: "Within 48 hours of your intake, your plan is live in TrainingPeaks, built session by session around your goal race and your real calendar, never pulled from a template. Every workout has a purpose you can ask about, and it bends as your life and fitness change.",
+    body: "Within 48 hours of your intake, your plan is live in TrainingPeaks, built session by session around your goal race and your actual calendar, never pulled from a template. Every workout has a purpose you can ask about, and it bends as your life and fitness change.",
   },
   {
-    n: '03', title: 'Life-Wrapped Calendar', label: 'Training around real life',
+    n: '03', title: 'Life-Wrapped Calendar', label: 'Training around your life',
     body: "Your week is built around your life, not the other way around. The plan fits the hours you really have, and when there's a gap, it's there on purpose. Recovery, a family night, a heavy work week: rest is part of the training, not a failure of it.",
   },
   {
     n: '04', title: 'Ongoing Communication', label: 'Wendy in your corner',
-    body: "You're not talking to a form or waiting days for a reply. Wendy is genuinely in your corner, reading how a session felt and adjusting on the fly. Slept badly? Schedule blew up? Tell her, and the plan moves with you. That two-way conversation is where the real coaching happens.",
+    body: "You're not talking to a form or waiting days for a reply. Wendy is genuinely in your corner, reading how a session felt and adjusting on the fly. Slept badly? Schedule blew up? Tell her, and the plan moves with you. That two-way conversation is where the coaching happens.",
   },
   {
     n: '05', title: 'Progress & Adjustments', label: 'Weekly data, weekly tweaks',

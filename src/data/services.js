@@ -5,7 +5,7 @@
 export const FREE_OFFER = {
   label: 'Free 15-Minute Discovery Call',
   body:
-    "Not sure where to start? Book a free 15-minute call. We'll talk through where you are, where you want to go, and whether we're a good fit. No sales pitch, just a real conversation.",
+    "Not sure where to start? Book a free 15-minute call. We'll talk through where you are, where you want to go, and whether we're a good fit. No sales pitch, just an honest conversation.",
 }
 
 export const SERVICES = [
@@ -74,7 +74,7 @@ export const HOW_IT_WORKS = [
   {
     step: '03',
     title: 'Your custom plan',
-    body: 'I build a periodized plan in TrainingPeaks. Every session has a specific purpose and fits your real life.',
+    body: 'I build a periodized plan in TrainingPeaks. Every session has a specific purpose and fits your life.',
   },
   {
     step: '04',

@@ -15,7 +15,7 @@ const FEATURES = [
   },
   {
     title: 'Coaching, not just a program.',
-    body: 'The plan is only the start. The real value is in working together every week, reviewing how each session felt, and changing course when something is not working for you.',
+    body: 'The plan is only the start. The value is in working together every week, reviewing how each session felt, and changing course when something is not working for you.',
   },
   {
     title: 'Every workout has a reason.',

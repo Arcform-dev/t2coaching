@@ -30,6 +30,6 @@ export const FAQS = [
   },
   {
     q: 'How do I get started?',
-    a: "Book a free 15-minute discovery call. We'll talk through where you are, where you want to go, and whether we're a good fit. There's no sales pitch, just a real conversation about your goals.",
+    a: "Book a free 15-minute discovery call. We'll talk through where you are, where you want to go, and whether we're a good fit. There's no sales pitch, just an honest conversation about your goals.",
   },
 ]

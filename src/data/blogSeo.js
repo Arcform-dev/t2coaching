@@ -74,7 +74,7 @@ export const BLOG_SUPPORT_LINKS = [
   {
     label: 'How coaching works',
     to: '/process',
-    description: 'See how Wendy builds, reviews, and adapts your training around real life.',
+    description: 'See how Wendy builds, reviews, and adapts your training around your life.',
   },
   {
     label: 'Free endurance resources',

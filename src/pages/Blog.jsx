@@ -217,7 +217,7 @@ export default function Blog() {
 
       <CTABanner
         title="Want coaching, not just tips?"
-        subtitle="Articles are a great start, but a plan built for you is how the real progress happens. Book a free call."
+        subtitle="Articles are a great start, but a plan built for you is how progress happens. Book a free call."
       />
     </>
   )

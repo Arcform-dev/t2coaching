@@ -57,7 +57,7 @@ export default function Contact() {
       })
       if (res.ok) {
         setForm(EMPTY)
-        setStatus({ type: 'success', message: 'Thanks — your message was sent. Wendy will reply within 1-2 business days.' })
+        setStatus({ type: 'success', message: 'Thanks, your message was sent. Wendy will reply within 1-2 business days.' })
       } else {
         const data = await res.json().catch(() => null)
         const detail = data?.errors?.map((err) => err.message).join(', ')
@@ -195,7 +195,7 @@ export default function Contact() {
                 <GlassCard style={{ padding: '32px 30px' }}>
                   <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 20, color: '#fff', marginBottom: 8 }}>Prefer to talk?</h3>
                   <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.78)', lineHeight: 1.6, marginBottom: 18 }}>
-                    Book a free 15-minute discovery call. No commitment, just a real conversation.
+                    Book a free 15-minute discovery call. No commitment, just an honest conversation.
                   </p>
                   <BookingLink className="shine-btn" style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,

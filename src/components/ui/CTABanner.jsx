@@ -5,7 +5,7 @@ import Reveal from './Reveal'
 // Compact call-to-action banner reused at the bottom of interior pages.
 export default function CTABanner({
   title = 'Ready to race smarter?',
-  subtitle = '30 minutes with Wendy could change your entire season. No commitment — just a real conversation about your goals.',
+  subtitle = '30 minutes with Wendy could change your entire season. No commitment, just an honest conversation about your goals.',
   primaryLabel = 'Book a Free Call',
 }) {
   return (
