@@ -4,7 +4,6 @@ import PageHeader from '../components/ui/PageHeader'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
 import { CONTACT, SOCIALS, FORMSPREE_ENDPOINT } from '../data/siteContent'
-import BookingLink from '../components/ui/BookingLink'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 
@@ -19,7 +18,7 @@ const labelStyle = { display: 'block', fontSize: 13, fontWeight: 600, color: 'rg
 const EXPERIENCE = ['Complete beginner', 'Intermediate (1-3 races)', 'Advanced / competitive', 'Returning from a break', 'Just need accountability']
 const HEARD = ['Google search', 'Instagram', 'Facebook', 'YouTube', 'Referral from an athlete', 'The Wall Street Journal', 'Other']
 
-const EMPTY = { name: '', email: '', phone: '', goal: '', experience: '', start: '', heard: '', message: '', _gotcha: '' }
+const EMPTY = { name: '', email: '', phone: '', goal: '', experience: '', start: '', heard: '', message: '' }
 
 export default function Contact() {
   useDocumentMeta('Contact Coach Wendy Mader', `Get in touch with Coach Wendy Mader. Email ${CONTACT.email} or send an inquiry to start your coaching journey.`)
@@ -34,10 +33,6 @@ export default function Contact() {
   const submit = async (e) => {
     e.preventDefault()
     setStatus({ type: '', message: '' })
-
-    // Honeypot: real people leave this hidden field empty; bots fill it.
-    if (form._gotcha) return
-
     setSubmitting(true)
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
@@ -85,20 +80,18 @@ export default function Contact() {
 
             <Reveal x={-40} y={0}>
               <GlassCard style={{ padding: 'clamp(28px, 4vw, 44px)' }}>
+                {status.type === 'success' ? (
+                  <div style={{ textAlign: 'center', padding: '30px 10px' }}>
+                    <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(155,231,192,0.14)', border: '1px solid rgba(155,231,192,0.6)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: 22 }}>
+                      <svg width="30" height="30" fill="none" stroke="#9BE7C0" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    </div>
+                    <h2 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 26, color: '#fff', marginBottom: 12 }}>Message sent!</h2>
+                    <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.78)', lineHeight: 1.6, maxWidth: 380, margin: '0 auto 26px' }}>{status.message}</p>
+                    <button type="button" onClick={() => setStatus({ type: '', message: '' })} style={{ appearance: 'none', cursor: 'pointer', background: 'transparent', border: '1px solid rgba(201,168,76,0.6)', color: '#C9A84C', fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 14, fontWeight: 700, padding: '12px 26px', borderRadius: 0 }}>Send another message</button>
+                  </div>
+                ) : (
                 <form onSubmit={submit}>
                     <h2 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 24, color: '#fff', marginBottom: 24 }}>Send an inquiry</h2>
-
-                    {/* Honeypot — hidden from people, catches bots */}
-                    <input
-                      type="text"
-                      name="_gotcha"
-                      tabIndex={-1}
-                      autoComplete="off"
-                      aria-hidden="true"
-                      value={form._gotcha}
-                      onChange={set('_gotcha')}
-                      style={{ position: 'absolute', left: '-10000px', width: 1, height: 1, opacity: 0 }}
-                    />
 
                     <div className="form-row" style={{ display: 'grid', gap: 18, marginBottom: 18 }}>
                       <div>
@@ -175,6 +168,7 @@ export default function Contact() {
                       <a href={`mailto:${CONTACT.email}`} style={{ color: '#7EC8E3' }}>{CONTACT.email}</a>.
                     </p>
                   </form>
+                )}
               </GlassCard>
             </Reveal>
 
@@ -190,18 +184,6 @@ export default function Contact() {
                   <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.74)', lineHeight: 1.6, marginTop: 20, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
                     {CONTACT.reach}
                   </p>
-                </GlassCard>
-
-                <GlassCard style={{ padding: '32px 30px' }}>
-                  <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 20, color: '#fff', marginBottom: 8 }}>Prefer to talk?</h3>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.78)', lineHeight: 1.6, marginBottom: 18 }}>
-                    Book a free 15-minute discovery call. No commitment, just an honest conversation.
-                  </p>
-                  <BookingLink className="shine-btn" style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 8,
-                    background: '#C9A84C', color: '#0D2B3E', fontSize: 14, fontWeight: 700,
-                    padding: '13px 26px', borderRadius: 0, textDecoration: 'none',
-                  }}>Book a Free Call</BookingLink>
                 </GlassCard>
 
                 <GlassCard style={{ padding: '28px 30px' }}>

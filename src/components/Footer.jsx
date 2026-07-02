@@ -33,13 +33,7 @@ export default function Footer() {
           {/* Brand + contact */}
           <div style={{ maxWidth: 340 }}>
             <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', marginBottom: 18 }}>
-              <div style={{
-                width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
-                background: '#1A6B8A',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>
-                <span style={{ color: '#fff', fontWeight: 700, fontSize: 12 }}>T2</span>
-              </div>
+              <img src="/photos/logo.png" alt="t2coaching" style={{ height: 38, width: 'auto', flexShrink: 0, display: 'block' }} />
               <span style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 20, color: '#ffffff' }}>t2coaching</span>
             </Link>
             <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.72)', lineHeight: 1.7, marginBottom: 18 }}>
