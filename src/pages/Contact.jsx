@@ -3,7 +3,7 @@ import useDocumentMeta from '../hooks/useDocumentMeta'
 import PageHeader from '../components/ui/PageHeader'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
-import { CONTACT, SOCIALS } from '../data/siteContent'
+import { CONTACT, SOCIALS, FORMSPREE_ENDPOINT } from '../data/siteContent'
 import BookingLink from '../components/ui/BookingLink'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
@@ -19,32 +19,55 @@ const labelStyle = { display: 'block', fontSize: 13, fontWeight: 600, color: 'rg
 const EXPERIENCE = ['Complete beginner', 'Intermediate (1-3 races)', 'Advanced / competitive', 'Returning from a break', 'Just need accountability']
 const HEARD = ['Google search', 'Instagram', 'Facebook', 'YouTube', 'Referral from an athlete', 'The Wall Street Journal', 'Other']
 
-const EMPTY = { name: '', email: '', phone: '', goal: '', experience: '', start: '', heard: '', message: '' }
+const EMPTY = { name: '', email: '', phone: '', goal: '', experience: '', start: '', heard: '', message: '', _gotcha: '' }
 
 export default function Contact() {
   useDocumentMeta('Contact Coach Wendy Mader', `Get in touch with Coach Wendy Mader. Email ${CONTACT.email} or send an inquiry to start your coaching journey.`)
 
   const [form, setForm] = useState(EMPTY)
+  const [status, setStatus] = useState({ type: '', message: '' })
+  const [submitting, setSubmitting] = useState(false)
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
 
-  // No backend: the form composes a pre-filled email and hands it to the
-  // visitor's mail app. Nothing to configure and nothing that can break.
-  const submit = (e) => {
+  // Submits to Formspree, which emails the inquiry straight to Wendy's inbox.
+  // No mail app required on the visitor's end — the message actually sends.
+  const submit = async (e) => {
     e.preventDefault()
-    const details = [
-      `Name: ${form.name}`,
-      `Email: ${form.email}`,
-      form.phone && `Phone: ${form.phone}`,
-      form.goal && `Race goal / distance: ${form.goal}`,
-      form.experience && `Experience level: ${form.experience}`,
-      form.start && `Preferred start date: ${form.start}`,
-      form.heard && `How they heard about you: ${form.heard}`,
-    ].filter(Boolean).join('\n')
-    const body = `${details}\n\n${form.message}`
-    const mailto = `mailto:${CONTACT.email}`
-      + `?subject=${encodeURIComponent(`New coaching inquiry from ${form.name}`)}`
-      + `&body=${encodeURIComponent(body)}`
-    window.location.href = mailto
+    setStatus({ type: '', message: '' })
+
+    // Honeypot: real people leave this hidden field empty; bots fill it.
+    if (form._gotcha) return
+
+    setSubmitting(true)
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          goal: form.goal,
+          experience: form.experience,
+          start: form.start,
+          heard: form.heard,
+          message: form.message,
+          _subject: `New coaching inquiry from ${form.name}`,
+        }),
+      })
+      if (res.ok) {
+        setForm(EMPTY)
+        setStatus({ type: 'success', message: 'Thanks — your message was sent. Wendy will reply within 1-2 business days.' })
+      } else {
+        const data = await res.json().catch(() => null)
+        const detail = data?.errors?.map((err) => err.message).join(', ')
+        throw new Error(detail || 'Submission failed')
+      }
+    } catch {
+      setStatus({ type: 'error', message: `Something went wrong sending your message. Please email ${CONTACT.email} directly.` })
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -64,6 +87,18 @@ export default function Contact() {
               <GlassCard style={{ padding: 'clamp(28px, 4vw, 44px)' }}>
                 <form onSubmit={submit}>
                     <h2 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 24, color: '#fff', marginBottom: 24 }}>Send an inquiry</h2>
+
+                    {/* Honeypot — hidden from people, catches bots */}
+                    <input
+                      type="text"
+                      name="_gotcha"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      value={form._gotcha}
+                      onChange={set('_gotcha')}
+                      style={{ position: 'absolute', left: '-10000px', width: 1, height: 1, opacity: 0 }}
+                    />
 
                     <div className="form-row" style={{ display: 'grid', gap: 18, marginBottom: 18 }}>
                       <div>
@@ -114,18 +149,29 @@ export default function Contact() {
                       <textarea id="message" name="message" required rows={5} value={form.message} onChange={set('message')} style={{ ...inputStyle, resize: 'vertical' }} placeholder="Tell me a bit about your goals and what you're looking for..." />
                     </div>
 
-                    <button type="submit" style={{
+                    {status.message && (
+                      <p role={status.type === 'error' ? 'alert' : 'status'} style={{
+                        fontSize: 14,
+                        color: status.type === 'error' ? '#FFB4A8' : '#9BE7C0',
+                        lineHeight: 1.5,
+                        marginBottom: 18,
+                      }}>
+                        {status.message}
+                      </p>
+                    )}
+
+                    <button type="submit" disabled={submitting} style={{
                       width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-                      background: '#C9A84C', color: '#0D2B3E', fontSize: 16, fontWeight: 700,
-                      padding: '16px 28px', borderRadius: 0, border: 'none', cursor: 'pointer',
+                      background: submitting ? 'rgba(201,168,76,0.6)' : '#C9A84C', color: '#0D2B3E', fontSize: 16, fontWeight: 700,
+                      padding: '16px 28px', borderRadius: 0, border: 'none', cursor: submitting ? 'wait' : 'pointer',
                       boxShadow: '0 10px 30px rgba(201,168,76,0.35)',
                     }}>
-                      Send Message
+                      {submitting ? 'Sending…' : 'Send Message'}
                       <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                     </button>
 
                     <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.62)', textAlign: 'center', marginTop: 16, lineHeight: 1.5 }}>
-                      This opens your email app with your message ready to send. Prefer to write directly? Email{' '}
+                      Prefer to write directly? Email{' '}
                       <a href={`mailto:${CONTACT.email}`} style={{ color: '#7EC8E3' }}>{CONTACT.email}</a>.
                     </p>
                   </form>

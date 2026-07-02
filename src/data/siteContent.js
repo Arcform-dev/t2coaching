@@ -11,10 +11,12 @@ const CALENDLY_URL = import.meta.env.VITE_CALENDLY_URL || ''
 export const BOOKING_IS_EXTERNAL = /^https?:\/\//.test(CALENDLY_URL)
 export const BOOKING_URL = BOOKING_IS_EXTERNAL ? CALENDLY_URL : '/contact'
 
-// Formspree endpoint for all site forms (contact inquiry + free-guide signup).
-// It must be explicitly configured. If it is missing, forms show the direct
-// email fallback instead of sending personal data to a test endpoint.
-const configuredFormEndpoint = (import.meta.env.VITE_FORMSPREE_ENDPOINT || '').trim()
+// Formspree endpoint for all site forms (contact inquiry). Formspree endpoints
+// are public by design (they live in the form itself), so the live endpoint is
+// the default here — no build-time env var required. An env var can still
+// override it (e.g. to point a staging deploy at a different form).
+const DEFAULT_FORM_ENDPOINT = 'https://formspree.io/f/xkolpzaz'
+const configuredFormEndpoint = (import.meta.env.VITE_FORMSPREE_ENDPOINT || '').trim() || DEFAULT_FORM_ENDPOINT
 export const FORMSPREE_ENDPOINT = configuredFormEndpoint
 export const FORMS_CONFIGURED =
   /^https:\/\/formspree\.io\/f\/[a-z0-9]+$/i.test(configuredFormEndpoint)
