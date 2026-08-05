@@ -31,18 +31,11 @@ function topCategories(posts) {
 
 function PostCard({ post }) {
   const hasCategory = showCategory(post.category)
+  // Text-only cards. Most posts carry no cover, so showing thumbnails on the
+  // few that do left the grid looking uneven. `post.cover` still drives the
+  // article header.
   const inner = (
     <GlassCard style={{ height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-      {post.cover && (
-        <div style={{ position: 'relative', aspectRatio: '16/10', background: '#0D2B3E', overflow: 'hidden' }}>
-          <img src={post.cover} alt={post.title} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-          {post.comingSoon && (
-            <span style={{ position: 'absolute', top: 14, right: 14, background: 'rgba(8,18,32,0.85)', color: '#C9A84C', fontSize: 11, fontWeight: 600, padding: '5px 12px', borderRadius: 0, letterSpacing: '0.04em' }}>
-              Coming Soon
-            </span>
-          )}
-        </div>
-      )}
       <div style={{ padding: '26px 26px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
           {hasCategory && <span style={{ fontSize: 11, fontWeight: 600, color: '#7EC8E3', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{post.category}</span>}
