@@ -13,20 +13,6 @@ const facebook = SOCIALS.find(s => s.label === 'Facebook')?.url
 
 const RESOURCES = [
   {
-    title: `${PODCAST.name} on Apple Podcasts`,
-    desc: 'My podcast on training, fueling, recovery and staying healthy while you chase big goals. New episodes on Apple Podcasts.',
-    cta: 'Listen on Apple Podcasts',
-    href: PODCAST.apple,
-    icon: 'M12 15a3 3 0 003-3V6a3 3 0 00-6 0v6a3 3 0 003 3zM19 11a7 7 0 01-14 0M12 18v4M8 22h8',
-  },
-  {
-    title: `${PODCAST.name} on Spotify`,
-    desc: 'Same show, same episodes, streaming on Spotify. Follow along on your commute, your long run, or the trainer.',
-    cta: 'Listen on Spotify',
-    href: PODCAST.spotify,
-    icon: 'M12 2a10 10 0 100 20 10 10 0 000-20M7.2 15.2c2.9-.8 5.7-.5 8 .8M6.4 11.8c3.5-1 7-.6 9.8 1.1M5.9 8.3c4.1-1.2 8.3-.7 11.6 1.4',
-  },
-  {
     title: 'The Newsletter',
     desc: "Training tips, race lessons and what I'm working on with athletes, sent straight to your inbox. Free to join.",
     cta: 'Sign up free',
@@ -55,6 +41,15 @@ const RESOURCES = [
     icon: 'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h7l2 2h5a2 2 0 012 2v10a2 2 0 01-2 2z',
   },
   {
+    title: `The ${PODCAST.name} Podcast`,
+    desc: 'My show on training, fueling, recovery and staying healthy while you chase big goals. Listen on whichever app you already use.',
+    links: [
+      { label: 'Apple Podcasts', href: PODCAST.apple },
+      { label: 'Spotify', href: PODCAST.spotify },
+    ],
+    icon: 'M12 15a3 3 0 003-3V6a3 3 0 00-6 0v6a3 3 0 003 3zM19 11a7 7 0 01-14 0M12 18v4M8 22h8',
+  },
+  {
     title: 'Instagram',
     desc: 'Day-to-day training, race updates and behind-the-scenes from athletes around the world.',
     cta: 'Follow @t2coachwendy',
@@ -70,6 +65,10 @@ const RESOURCES = [
   },
 ]
 
+const ARROW = (
+  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+)
+
 function ResourceCard({ r }) {
   const body = (
     <GlassCard style={{ padding: '32px 28px', height: '100%', display: 'flex', flexDirection: 'column' }} className="resource-card">
@@ -78,12 +77,32 @@ function ResourceCard({ r }) {
       </div>
       <h3 style={{ fontFamily: "'DM Sans', system-ui, -apple-system, sans-serif", fontSize: 19, color: '#fff', marginBottom: 12 }}>{r.title}</h3>
       <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.78)', lineHeight: 1.7, flex: 1, marginBottom: 20 }}>{r.desc}</p>
-      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 600, color: '#C9A84C' }}>
-        {r.cta}
-        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-      </span>
+
+      {/* One destination gets a plain label (the whole card is the link). Cards
+          with several places to go carry their own links instead, since an
+          anchor cannot be nested inside another anchor. */}
+      {r.links ? (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+          {r.links.map(l => (
+            <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 7,
+              fontSize: 13, fontWeight: 600, color: '#C9A84C', textDecoration: 'none',
+              padding: '9px 14px', border: '1px solid rgba(201,168,76,0.4)',
+            }}>
+              {l.label}
+              {ARROW}
+            </a>
+          ))}
+        </div>
+      ) : (
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 600, color: '#C9A84C' }}>
+          {r.cta}
+          {ARROW}
+        </span>
+      )}
     </GlassCard>
   )
+  if (r.links) return body
   if (r.to) return <Link to={r.to} style={{ textDecoration: 'none', display: 'block', height: '100%' }}>{body}</Link>
   return <a href={r.href} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'block', height: '100%' }}>{body}</a>
 }
