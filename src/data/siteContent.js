@@ -38,6 +38,18 @@ export const SOCIALS = [
   { label: 'YouTube',   handle: '@WendyMader',    url: 'https://www.youtube.com/@WendyMader' },
 ]
 
+// Wendy's podcast, listed on both platforms.
+export const PODCAST = {
+  name: 'Wellness Made Easy',
+  apple: 'https://podcasts.apple.com/us/podcast/wellness-made-easy/id1787486120',
+  spotify: 'https://open.spotify.com/show/4ereoOz8UBjE06wecHkV43',
+}
+
+// Email newsletter signup (Kit).
+export const NEWSLETTER = {
+  url: 'https://t2endurnace.kit.com/094bf19fcd',
+}
+
 // Headline stats, shown in the Hero (3) and the Stats band (4).
 export const HERO_STATS = [
   { num: '2008', label: 'Kona Amateur Champion' },

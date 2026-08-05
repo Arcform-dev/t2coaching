@@ -3,7 +3,7 @@ import useDocumentMeta from '../hooks/useDocumentMeta'
 import PageHeader from '../components/ui/PageHeader'
 import GlassCard from '../components/ui/GlassCard'
 import Reveal from '../components/ui/Reveal'
-import { SOCIALS, WSJ_FEATURE } from '../data/siteContent'
+import { SOCIALS, WSJ_FEATURE, PODCAST, NEWSLETTER } from '../data/siteContent'
 
 const WRAP = { maxWidth: 1280, margin: '0 auto', padding: '0 32px' }
 
@@ -12,6 +12,27 @@ const instagram = SOCIALS.find(s => s.label === 'Instagram')?.url
 const facebook = SOCIALS.find(s => s.label === 'Facebook')?.url
 
 const RESOURCES = [
+  {
+    title: `${PODCAST.name} on Apple Podcasts`,
+    desc: 'My podcast on training, fueling, recovery and staying healthy while you chase big goals. New episodes on Apple Podcasts.',
+    cta: 'Listen on Apple Podcasts',
+    href: PODCAST.apple,
+    icon: 'M12 15a3 3 0 003-3V6a3 3 0 00-6 0v6a3 3 0 003 3zM19 11a7 7 0 01-14 0M12 18v4M8 22h8',
+  },
+  {
+    title: `${PODCAST.name} on Spotify`,
+    desc: 'Same show, same episodes, streaming on Spotify. Follow along on your commute, your long run, or the trainer.',
+    cta: 'Listen on Spotify',
+    href: PODCAST.spotify,
+    icon: 'M12 2a10 10 0 100 20 10 10 0 000-20M7.2 15.2c2.9-.8 5.7-.5 8 .8M6.4 11.8c3.5-1 7-.6 9.8 1.1M5.9 8.3c4.1-1.2 8.3-.7 11.6 1.4',
+  },
+  {
+    title: 'The Newsletter',
+    desc: 'Training tips, race lessons and what I'm working on with athletes, sent straight to your inbox. Free to join.',
+    cta: 'Sign up free',
+    href: NEWSLETTER.url,
+    icon: 'M3 6h18v12H3zM3 7l9 6 9-6',
+  },
   {
     title: 'Training Articles',
     desc: 'Swim technique, race-day nutrition, injury prevention, and more. Practical reads from 30+ years in the sport.',
@@ -116,7 +137,7 @@ function GuideSignup() {
 }
 
 export default function Resources() {
-  useDocumentMeta('Free Endurance Training Resources', 'Free training resources from Coach Wendy Mader: articles, videos, her WSJ feature, and a free insider guide.')
+  useDocumentMeta('Free Endurance Training Resources', 'Free training resources from Coach Wendy Mader: the Wellness Made Easy podcast, her newsletter, articles, videos, her WSJ feature, and a free insider guide.')
 
   return (
     <>
@@ -124,7 +145,7 @@ export default function Resources() {
         eyebrow="Free Resources"
         title="Learn with me,"
         titleAccent="for free."
-        subtitle="Articles, videos, and the same hard-won lessons I share with my athletes. Dive in, and grab the free guide while you're here."
+        subtitle="The podcast, the newsletter, articles, videos, and the same hard-won lessons I share with my athletes. Dive in, and grab the free guide while you're here."
       />
 
       <section style={{ padding: '50px 0 70px' }}>
