@@ -28,7 +28,7 @@ const RESOURCES = [
   },
   {
     title: 'The Newsletter',
-    desc: 'Training tips, race lessons and what I'm working on with athletes, sent straight to your inbox. Free to join.',
+    desc: "Training tips, race lessons and what I'm working on with athletes, sent straight to your inbox. Free to join.",
     cta: 'Sign up free',
     href: NEWSLETTER.url,
     icon: 'M3 6h18v12H3zM3 7l9 6 9-6',
